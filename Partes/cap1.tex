@@ -1,33 +1,33 @@
 \chapter{INTRODUCTION}\label{chap:introduction}
 
 % What are proteins
-There are four main types of macromolecules essential to life: proteins,
+There are four main types of macromolecules essential to life as we know: proteins,
 carbohydrates, lipids and nucleic acids. Proteins are responsible for several
 functions in the human body, such as structural, regulatory and metabolic,
 where its functionality is directly dependent on the three-dimensional
 structure conformation~\cite{kihara2014protein}.
 
 % Why they are important
-%Each protein is supposed to have a unique conformation, where it has one function.
 In cases where this conformation is incorrectly structured (or misfolded) due to
-some environmental influence, a series of problems may arrive. Proteins can gain
-toxic properties or suffer loss of functionality, where it can cause damage to cells,
+some environmental or genetic influence, a series of problems usually arrive.
+Proteins can gain toxic properties or suffer loss of functionality,
+where it can cause damage to cells,
 tissues, and organs. The diseases rooted in abnormal proteins formation or somehow
 caused by them are known as proteinopathies~\cite{shrestha2015yeast}.
 In light of this, knowing the conformation of a protein can give insights on its
-functionality, can aid the design of drugs and help understand, treat and even prevent diseases.
+functionality, aid the design of drugs and help understand, treat and even prevent diseases.
 
 % How do we find out the structure of a protein
 The \ac{DNA} (or \ac{RNA} in some less complex forms of life) encodes the information
 required to synthesize a protein. From the \ac{DNA}, the information is used to
 synthesize a protein through the process of translation and transcription. The
-construction of the protein happens by chaining a series of amino acids held
-together with peptide bonds. This chain of amino acids is called the primary
+construction of the protein happens by chaining a series of amino acids, which are
+held together with peptide bonds. This chain of amino acids is called the primary
 sequence, and it can uniquely identify a protein. Determining the primary
 sequence is a very straightforward process and relatively cheap and can be
 achieved by processes such as protein mass
 spectroscopy~\cite{domon2006mass,covey1999protein}
-and via Edman Degradation~\cite{edman1967protein}.
+or via Edman Degradation~\cite{edman1967protein}.
 
 On the other hand, finding the three-dimensional structure of a protein is a
 much harder and expensive process~\cite{guntert2004automated}.
@@ -37,25 +37,24 @@ time, money and are susceptible to have errors in the results.
 
 % TODO: Update PDB / UniProt numbers
 Due to these differences in determining the sequence and structure of a
-protein, \num{139694261} protein sequences are catalogued in
-UniProtKB/TrEMBL\footnote{\url{https://www.ebi.ac.uk/uniprot/TrEMBLstats}},
+protein, there is a significant difference between the number of known protein
+primary and tertiary structures. There are \num{139694261} protein sequences 
+catalogued in UniProtKB/TrEMBL\footnote{\url{https://www.ebi.ac.uk/uniprot/TrEMBLstats}},
 whereas only \num{148037} protein structures are catalogued in
 the \ac{PDB}\footnote{\url{https://www.rcsb.org/}}\footnote{Numbers from January 19th, 2019}.
-This difference of three orders of magnitude is known as the protein gap.
+This is often refered as the protein gap, and currently measures three orders of magnitude.
 
 % What is the protein structure prediction
-Given the ever so growing protein gap, several scientists from fields like
+Given the ever so growing protein gap, several scientists from the fields of
 mathematics, physics, chemistry, biology, and computer science have worked for
 decades with the common goal of being to predict the conformation of a sequence
 of amino acids and help close this gap. This problem is known as the
 \ac{PSPP} and has been one of the leading open problems
-in structural biology and computer science~\cite{dorn2014three}.
-The \ac{PSPP} consists of
-taking an amino acid sequence as input and outputting the structure of the
-protein.
+in structural biology and computer science~\cite{dorn2014three}. The \ac{PSPP} consists of
+taking an amino acid sequence as input and outputting a prediction of the protein structure.
 
 % Why it is hard
-Solving the \ac{PSPP} has proven to be a very challenging problem since that
+Solving the \ac{PSPP} has proven to be a very challenging problem, since that
 after more than 20 years no general viable solution has been found. From a
 strictly computational point of view, the \ac{PSPP} is expected to be a
 $\mathcal{NP}$-hard problem. No proof of the $\mathcal{NP}$-hardness of the
@@ -77,7 +76,7 @@ three variables. Therefore, one can consider that the \ac{PSPP} is a
 \ac{LSOP}~\cite{mahdavi2015metaheuristics}, which happens to be a very
 challenging problem.
 
-%What are the main methods of solving it (ab initio, threading modeling, homology modeling)
+% What are the main methods of solving it (ab initio, threading modeling, homology modeling)
 There are two main approaches to solving the \ac{PSPP}: Knowledge-based methods
 and \textit{ab initio} methods. Knowledge-based methods have two subgroups:
 Threading and Homology-based method. Threading modeling is based on the use of
@@ -91,7 +90,7 @@ on the templates being representative of the (unknown) target conformation. In
 contrast with Knowledge-based methods, \textit{ab initio} methods do not rely
 on previously known information. The main characteristic of \textit{Ab Initio}
 method is that it operates by building the conformation from scratch guided by
-an energy function. The main advantage of \text{Ab Initio} over the other
+an energy function. Its advantage \text{Ab Initio} over the other
 methods is that is can (theoretically) predict any protein, regardless of a
 presence of a template or homologous protein. Furthermore, it can lead to
 further insights on the folding process. This works focus on solving the
@@ -118,7 +117,7 @@ and side chains, both using torsion angles.
 Solving the \ac{PSPP} in an \textit{ab initio} approach requires an energy function
 which must be able to estimate the potential energy of a conformation. Since a
 protein \textit{In Natura} will fold towards the point of least potential
-energy, by estimating its potential energy \textit{In Cilico} it is possible to
+energy, by estimating its potential energy \textit{In Silico}, it is possible to
 use an optimizer to find the global minimum and give a prediction of the
 protein structure. The computational representation of this potential energy is
 an approximation of the real world interactions between the atoms and molecules
@@ -139,7 +138,8 @@ Some of the more employed \ac{MH}s in the literature are the
 \ac{GA}~\cite{holland1992genetic} and the
 \ac{DE}~\cite{storn1997differential}. Both of them are
 \ac{EA} due to their inspiration by the Darwinian process of natural
-selection. As all \ac{EA}s, \ac{GA} and \ac{DE} relies on a population (set of solutions) where an
+selection. As all \ac{EA}s, \ac{GA} and \ac{DE} relies on a population
+(set of solutions) where an
 individual (a candidate solution) compete among each other where the fittest (the one
 with the best objective function) will have a higher chance of surviving into
 the next generation.
@@ -169,13 +169,12 @@ knowledge of the problem domain with a procedure that has. This allows for the
 optimization procedure to be guided to search directions which are more
 relevant, and thus, possibly improve the overall performance.
 
-% Close the intro
-% How are we planning on solving it.
+% Close the intro. How are we planning on solving PSPP.
 This work has as its primary goal to study and solve the \ac{PSPP}. For this an
 off-lattice \textit{ab initio} method will be used. The proteins will be
 represented computationally as torsion angles of the backbone and side chain
-centroids. The \textit{Ab Initio} model will be optimized
-using a hybrid \ac{DE} / \ac{MC} with online parameter control.
+centroids. The \textit{Ab Initio} model will be optimized using a hybrid
+optimizer based on \ac{MC} and Local Search with online parameter control.
 
 
 \section{Motivation}\label{sec:chap1_motivation}
@@ -200,22 +199,17 @@ how to design better optimizers.
 
 This work has as its main objective to explore the \ac{PSPP} and to develop a
 competitive solver for the off-lattice \textit{ab initio} \ac{PSPP} using a
-hybrid \ac{DE} with online parameter control. For this, several secondary
+hybrid optimizer with online parameter control. For this, several secondary
 objectives have to be achieved as well:
 
 \begin{itemize}
-    \item Determine the base performance of \ac{DE} for solving the \ac{PSPP};
-    \item Determine the impact of using online parameter control for \ac{DE};
-    \item Determine the impact of the hybridization of \ac{DE};
-    \item Explore the applicable operators for the hybrid \ac{DE};
-    \item Assess the performance of the proposed method on several proteins.
+    \item ??;
+    \item Assess the performance of the proposed method on several proteins;
 \end{itemize}
 
 This work has three hypothesis to test and/or confirm. They are:
 \begin{enumerate}
-    \item The use of a domain specific operator (fragment insertion in this case) can improve the prediction performance measured in RMSD and potential energy? If this hypothesis is confirmed it will prove the potential of using hybrid methods for solving the \ac{PSPP}.
-    \item The use of online parameter control can improve the performance of a pure (black-box) optimizer? This hypothesis has been explored before. The goal here is to demonstrate it in the scenario of the \ac{PSPP}, a challenging real world problem instead of a set of synthetic benchmarks. To assert this hypothesis a Self Adaptive Differential Evolution Algorithm is compared against a Differential Evolution based method in the literature without parameter control.
-    \item The combined proposed hybrid method with online parameter control can lead to a better performance than the competing methods in the literature? To conduct this analysis, the proposed methods are compared against competing methods in the literature, including pure methods and hybrid methods.
+    \item ??;
 \end{enumerate}
 
 \section{List of Publications}\label{sec:future_works}
