@@ -1,0 +1,183 @@
+\documentclass[
+	12pt,
+	openright,
+	oneside,			
+	a4paper,
+	chapter=TITLE,
+	section=TITLE,
+	brazil,
+	english,
+	]{abntex2}
+
+\usepackage{./Estilo/udesc}
+\usepackage{tikz}
+\usepackage{pgf-pie}
+\usepackage{pgfplots}
+\usepackage{adjustbox}
+\usepackage{bm}
+\usepackage{float}
+\usepackage{multicol}
+%\usepackage{algorithm}
+%\usepackage{algorithmic}
+\usepackage[linesnumbered]{algorithm2e}
+\usepackage{multirow}
+\usepackage{ulem}
+\usepackage{subcaption}
+\usepackage{siunitx}
+%\usepackage{subfigure}
+
+\pgfplotsset{compat=1.14}
+
+\DeclareMathOperator*{\argmin}{argmin}
+
+\usepackage{lastpage}
+
+\titulo{A hybrid method based on Monte Carlo and differential evolution for the ab initio protein structure prediction problem}
+\autor{RENAN SAMUEL DA SILVA}
+\local{Joinville}
+\instituicao{Santa Catarina State University - UDESC}
+\campus{Center of Technological Sciences - CCT}
+\curso{Graduate Program in Applied Computing - PPGCA}
+\data{2018}
+\fulldata{25th, January of 2018}
+
+\inforosto{Master thesis submitted to the Computer Science Department  at the College of Technological Science of Santa Catarina State University in fulfillment of the partial requirement for the Master's degree in Applied Computing.}
+\orientador{Dr. Rafael Stubs Parpinelli}
+\orientadorRotulo{Dr. }
+
+\begin{document}
+
+\include{Partes/pretextual}
+
+\begin{siglas}
+\SingleSpacing
+  %AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+  \acro{AMBER}{Assisted Model Building with Energy Refinement}
+  \acro{ABC}{Artificial Bee Colony}
+  \acro{ACO}{Ant Colony Optimization}
+  \acro{APL}{Angle Probability List}
+  %BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+  %CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+  \acro{CASP}{Critical Assessement of Structure Prediction}
+  \acro{CHARMM}{Chemistry at HARvard Macromolecular Mechanics}
+  %DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD
+  \acro{DE}{Differential Evolution}
+  \acro{DNA}{Deoxyribonucleic Acid}
+  %EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
+  \acro{EDA}{Estimation of Distribution Algorithm}
+  \acro{EA}{Evolutionary Algorithms}
+  \acro{EC}{Evolutionary Computation}
+  %FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+  \acro{FA}{Firefly Algorithm}
+  \acro{FCC}{Face Centered Cubic}
+  %GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG
+  \acro{GA}{Genetic Algorithms}
+  \acro{GDT-TS}{Global Distance Test Total Score}
+  \acro{GDT-HA}{Global Distance Test High Accuracy}
+  \acro{GRASP}{Greedy Randomied Adaptive Search Procedure}
+  \acro{GROMOS}{GROningen MOlecular Simulation}
+  %HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+  \acro{HM}{Homology Modeling}
+  \acro{HP}{Hydrophobic-Polar}
+  %IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+  \acro{ILS}{Iterative Local Search}
+  %JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ
+  %KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK
+  %LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL
+  \acro{LSOP}{Large Scale Optimization Problem}
+  %MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
+  \acro{MH}{Meta Heuristics}
+  \acro{MA}{Memetic Algorithm}
+  \acro{MC}{Monte Carlo}
+  \acro{MCMC}{Monte Carlo Markov Chain}
+  %NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
+  \acro{NMR}{Nuclear Magnetic Resonance}
+  %OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+  \acro{OPC}{Online Parameter Control}
+  %PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP
+  \acro{PDB}{Protein Databank}
+  \acro{PSO}{Particle Swarm Optimization}
+  \acro{PSPP}{Protein Structure Prediction Problem}
+  \acro{PSP}{Protein Structure Prediction}
+  %QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+  %RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR
+  \acro{RNA}{Ribonucleic Acid}
+  \acro{REU}{Rosetta Energy Unit}
+  \acro{REMC}{Replica Exchange Monte Carlo}
+  \acro{RMSD}{Root-Mean-Square Deviation}
+  %SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
+  \acro{SaDE}{Self Adaptive Differential Evolution}
+  \acro{SA}{Simulated Annealing}
+  \acro{SI}{Swarm Inteligence}
+  %TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
+  \acro{TM}{Thread Modeling}
+  \acro{TM-Score}{Thread Modeling Score}
+  \acro{TSP}{Traveling Salesman Problem}
+  %UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
+  %VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+  %WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
+  %XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  %YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY
+  %ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ
+\end{siglas} 
+
+\begin{simbolos}
+	\SingleSpacing
+    \item[$NP$] The population size used in populational algorithms
+    \item[1ZDD] Disulfide-Stabilized mini protein A domain
+    \item[1CRN] Crambin
+    \item[1ENH] DNA binding protein of Drosophila
+    \item[1AIL] Influenza A RNA binding protein
+    \item[1A3N] Deoxy Human Hemoglobin
+    \item[1CTF] Ribosomal Protein from E. Coli
+    \item[1PLW] Methionine-Enkephalin
+    \item[4ZRY] Human Keratin
+    \item[$D$] Problem dimensionality
+    \item[$F$] DE's scaling factor
+    \item[$Cr$] DE's crossover ratio
+    \item[$\Vec{w}$] The new solution vector
+    \item[$\Vec{x}_{r}$] Random solution vector
+    \item[$\Vec{x}_{best}$] Best solution vector
+    \item[C$_\alpha$] Alpha Carbon of the protein backbone
+    \item[$\chi_i$] The $i$-th dihedral angle of the protein side chain
+    \item[$\phi$] The dihedral angle in the $N-C_\alpha$ atom pair
+    \item[$\psi$] The dihedral angle in the $C_\alpha-C$ atom pair
+    \item[$\omega$] The dihedral angle in the $C-N$ atom pair
+    \item[SADE-DE] The base implementation of SaDE with the full set of DE operators
+    \item[SADE-DE-MC] The proposed method with SaDE, the DE operators and MC search
+    \item[SADE-DE-REMC] The proposed method with SaDE, the DE operators and REMC search
+    \item[SADE-MC] The proposed method with SaDE and MC search
+    \item[SADE-REMC] The proposed method with SaDE and REMC search
+\end{simbolos}
+
+\pdfbookmark[0]{\contentsname}{toc}
+\tableofcontents*
+\cleardoublepage
+
+\textual
+
+\pagestyle{eudesc}
+\aliaspagestyle{chapter}{eudesc}
+
+\include{Partes/cap1}
+%\include{Partes/cap2}
+\include{Partes/cap3}
+\include{Partes/cap4}
+\include{Partes/cap5}
+\include{Partes/cap6}
+
+\bookmarksetup{startatroot}% 
+
+\postextual
+
+\bibliography{references}
+
+\begin{apendicesenv}
+	\include{Partes/apeA}
+\end{apendicesenv}
+
+% \begin{anexosenv}
+% 	\include{Partes/aneA}
+% \end{anexosenv}
+
+\end{document}

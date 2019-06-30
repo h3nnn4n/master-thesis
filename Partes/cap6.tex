@@ -1,0 +1,182 @@
+\chapter{Final Considerations and Future Work}\label{chap:final_considerations}
+
+% Intro to the final considerations
+Proteins are macromolecules found in all known living forms and are
+considered to be the working horses of the cells. The biological
+function of any given protein is directly dependent on its
+function, in a way that knowing it is a very valuable information
+for several fields of science. The Human
+Genome~\footnote{\url{https://www.genome.gov/10001772/all-about-the--human-genome-project-hgp/}}
+and Human Proteome~\footnote{\url{https://hupo.org/human-proteome-project}} project
+lead to a exponentially increasing number of sequenced proteins.
+However, due to the price and time efforts required to structure
+these proteins, a gap quickly formed between the number of sequenced
+and structured proteins. This gap now spans more than 3 orders
+of magnitude. With that in mind, computer scientists, mathematicians,
+physicists, chemists and biologists have been working to accurately
+predict the structure of a protein from its primary
+sequence and it is known as \textit{ab initio} PSPP.
+
+In light of this, this work proposed four methods to
+approach the PSPP. To model the problem the score0, score3 and scorefxn energy functions from Rosetta were utilized in a centroid
+and full atom computational representation of the target proteins.
+The conformation sampling method, which is the main contribution
+of this work, was based on a hybrid approach using a
+Self Adaptive Differential Evolution algorithm and a Monte Carlo
+based fragment insertion. In total four methods were proposed:
+SADE-DE-MC, SADE-MC, SADE-DE-REMC and SADE-REMC.
+
+Three hypothesis were formulated. The first one is that the use of domain specific
+operators can lead to better results (measured in RMSD and Energy) than using
+the standard DE operators. The second hypothesis is that the use of online parameter
+control can improve the results (also measured in RMSD and Energy) compared to
+a method with fixed parameters. Third, that the combined method with
+domain specific operators and online parameter controls can also lead to better performance.
+
+To validate the proposed methods and the hypothesis, a comparison with the
+standard implementation of SaDE and four other methods found in the
+literature, based of three different works, was conducted. The proposed methods
+and the one from the literature all used the same metrics and proteins, in order to provide a straight and fair comparison. A protein set of four proteins was utilized: 1ZDD, 1CRN, 1ENH and 1AIL. The experiments utilized 500 thousand function evaluations and
+were repeated 60 times for comparing the proposed methods between them and 10 times for comparing with the literature, in order to match the other experiments.
+
+The analysis of the RMSD and the energy of the predictions
+demonstrated that the SADE-REMC and the SADE-MC are statistically
+equivalent and better than the other two proposed methods.
+One possible explanation for this is the possibility that the DE
+operators act blindly to the problem and destroy the information
+assembled by the fragment insertion operator. Considering that the
+four proposed methods outperformed SaDE, it is clear that the use
+of a hybrid method was better in the experiment scenario utilized.
+And, backed up by further statistical analysis the second hypothesis
+was proven to be truthful. The results also indicate that
+the DE operators had a small negative
+impact on the hybrid method. Furthermore, while SADE-MC and SADE-REMC
+were equivalent, SADE-REMC is faster.
+
+To compare to the literature, two of the four proposed methods were
+chosen: SADE-MC and SADE-REMC. These two methods had better
+predictions (RMSD) than the other four methods from the literature.
+However, when looking at the statistical data regarding the values
+from the scorefxn function, the proposed methods were statistically
+equivalent to MSA in the 1CRN and 1AIL protein. For 1ZDD and 1ENH
+the two proposed methods outperformed MSA and the other methods
+from the literature. This is another contribution of this work,
+showing that hybrid methods can improve the prediction
+of pure methods, demonstrating the validity of the third hypothesis.
+Furthermore, comparing the standard SaDE
+algorithm to DE$_{C_1}$ and DE$_{C_2}$ another contribution
+of this work can be found: That online parameter control
+leads to a significantly better prediction, proving the first
+hypothesis to be truthful in the current experiment setup. 
+
+In order to increase the quality of future analysis, the TM-Score and GDT-TS for the two best performing proposals were presented. An analysis of these results was conducted, where it was shown that they both agree on the overall performance. Furthermore, the use of these metrics gave insight on which
+methods and proteins had the best/worst predictions. Compared to the RSMD, it is possible to directly compare the performance of different proteins for the same method. For instance, the 1CRN protein has the worst RMSD, but on the
+GDT-TS it has the second best metric. This shows the importance of using a good metric for evaluating the prediction performance.
+
+A visual analysis of the SADE-REMC predicted conformation
+for the target proteins was conducted. For 1ZDD, a near native
+conformation was found. On the other three proteins the
+predictions had significant flaws. Upon inspection
+of the optimization procedure it was found that the 
+source of the errors was due to incorrect information
+from the Secondary Structure Predictor, which
+incorrectly predicted some portions of the target
+proteins. This lead to some incorrect assumptions being
+used by the proposed methods. In a way this is another
+contribution of this work. Showing that the Tertiary
+Structure Prediction relies greatly upon the
+Secondary Structure Prediction and that more robust
+methods of dealing with the inevitable incorrect predictions
+are required.
+
+\section{Future Works}\label{sec:future_works}
+
+% Secondary Structure Prediction
+While the proposed methods were able to outperform the methods from the literature some flaws and weak points were identified. Possibly the major source of errors in the proposed methods was the heavy dependence on the information from the Secondary Structure Predictor. A future research direction would be to employ more than one predictor, in a way that if one is wrong, there is a chance that the other is not. It is also possible to research in the direction of making the Tertiary Structure Prediction either less dependent on the Secondary Structure Prediction or making it more resilient to faulty information.
+
+% Operators that are more smart (apl or something like that)
+Another weak point of the proposed methods is the destructive
+interference between the DE operators and the fragment insertion
+operators. Therefore, a possible future research direction is to
+investigate how this interference happens and how it can be avoided.
+One possibility is to give information to the DE operators
+about the problem domain, so that they do not operate blindly,
+similar to the approach of~\cite{borguesan2015apl}.
+
+% Better frags
+The use of better generated fragments is also a research direction,
+since a big portion of the conformation sampling method is dependent
+on it. A fragment library of poor quality will lead to a poor
+prediction.
+% More hybridization
+The further hybridization with methods can also be considered.
+One possible direction is the inclusion on gradient descent methods
+to quickly find nearby areas of low energy.
+% Diversity
+Another weak point of this work is that there is no passive or active method of controlling the diversity of the population. This, as show
+in other works~\cite{narloch2016diversification,simoncini2017balancing},
+can lead to better predictions.
+
+% Better conformation sampling
+A recent trend worth exploring is the focusing the search on loops and
+coil regions of the proteins. These areas usually have a lower acceptance rate
+of perturbation due to the high impact they have on the overall conformation.
+In contrast, $\alpha$-helices are relatively stable and have a much higher
+acceptance rate while having a low impact in the overall structure. Furthermore,
+the use of forced moves has also seem some recent use. With this, it is possible
+to escape local minima by accepting conformation changes that decrease the 
+energy score.
+
+% Expand the protein set
+The expansion of the protein set is a clear future direction for this
+work as it would help to validate and investigate better the proposed
+methods. However, due to a lack of a standard protein set in the literature the comparison to other works is not always direct.
+% Provide an extra partial comparison to other works
+A future step is to compare partially to other works, this would
+allow for a bigger number of methods to be compared against.
+% Use more function evaluations
+The use of more function evaluations is also a point of this work which can be improved. The current setup used 500 thousand function evaluations to match other works in the literature. However, in a real world scenario, a prediction that takes days would still be faster than the current \textit{in vitro} methods. It could possibly allow for the proposed hybrid method to behave differently in the later stages of the prediction.
+% Include more metrics (tm score etc)
+Finally, as RMSD has several disadvantages, the use of other metrics
+seems a clear future research direction. Metrics such as the TM-Score and GDT-TS offers normalized scores that can be used to measure
+the performance of different methods on different proteins directly.
+However, the use of these metrics are still not wide spread and have
+very few works using it. This limits the current potential of using
+these metrics to compare to other works. %Nevertheless, there is the possibility of laying a foundation of using better metrics in the future.
+
+\subsection{Chronogram}
+
+For the first half of February an initial analysis of convergence will be realized
+with the goal of assessing the more likely bottlenecks of the methods. Both the
+genotipic and phenotipic diversity will be studied. Then for the rest of the month
+and for March the study of using niching methods will be explored. Initially a 
+literature review will be ran to extract the main methods of niching for DE. 
+Based on that, a preliminary exploration phase and the results of the convergence
+analysis it will be identified what needs to be done and implemented. A set
+of preliminary experiments will be ran in order to identify the impact of the 
+niching methods. 
+
+In the month of April, a study of local operators will be ran, starting with
+a literature review to identify the main methods.
+A comparative analysis will be done based on the methods found,
+its performance and ease of implementation or source code availability. Then,
+a integration phase of the considered local search methods into the current
+best method from the previous experimentation will be put into effect.
+
+The month of May will be dedicated for studying how to shape the search
+process better into the problem. This stage of the research will be
+mostly dependent in identifying the main weak points of the methods and trying
+to improve it. Also, the correctness of the method will be revised with the goal
+of improving code quality and removing bugs and errors in implementation.
+
+The remaining months will be dedicated for further exploration into previous
+experiments, running the current methods with a expanded set of proteins and
+possibly for longer and/or with a bigger function evaluation budget. In parallel,
+the writing of the thesis will be carried out.
+
+% February
+% March
+% April
+% May
+%June
+%July

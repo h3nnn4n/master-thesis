@@ -1,0 +1,237 @@
+\chapter{INTRODUCTION}\label{chap:introduction}
+
+% What are proteins
+There are four main types of macromolecules essential to life:
+proteins, carbohydrates, lipids and nucleic acids. Proteins are responsible for
+several functions in the human body, such as structural, regulatory and
+metabolic, where its functionality is directly dependent on the
+three-dimensional structure conformation~\cite{kihara2014protein}.
+
+% Why they are important
+%Each protein is supposed to have a unique conformation, where it has one function. 
+In cases where this conformation is incorrectly structured (or misfolded) due to some environmental influence, a series of problems may arrive. Proteins can gain toxic properties or suffer loss of functionality, where it can cause damage to cells, tissues, and organs. The
+diseases rooted in abnormal proteins formation or somehow
+caused by them are known as proteinopathies~\cite{shrestha2015yeast}.
+In light of this, knowing the conformation of a protein can give insights on its functionality, can aid the design of drugs and help understand, treat and even prevent diseases.
+
+% How do we find out the structure of a protein
+The \ac{DNA} (or \ac{RNA} in some less complex forms of life) encodes the information
+required to synthesize a protein. From the \ac{DNA}, the information is used to
+synthesize a protein through the process of translation and transcription. The
+construction of the protein happens by chaining a series of amino acids held
+together with peptide bonds. This chain of amino acids is called the primary
+sequence, and it can uniquely identify a protein. Determining the primary
+sequence is a very straightforward process and relatively cheap and can be
+achieved by processes such as protein mass
+spectroscopy~\cite{domon2006mass,covey1999protein}
+and via Edman Degradation~\cite{edman1967protein}.
+
+On the other hand, finding the three-dimensional structure of a protein is a
+much harder and expensive process~\cite{guntert2004automated}.
+Currently, the two main methods are
+\ac{NMR} and X-Rays Crystallography. Both methods take more
+time, money and are susceptible to have errors in the results.
+
+Due to these differences in determining the sequence and structure of a
+protein, \num{139694261} protein sequences are catalogued in
+UniProtKB/TrEMBL\footnote{\url{https://www.ebi.ac.uk/uniprot/TrEMBLstats}},
+whereas only \num{148037} protein structures are catalogued in
+the \ac{PDB}\footnote{\url{https://www.rcsb.org/}}\footnote{Numbers from January 19th, 2019}.
+%Furthermore, there are several repeated entries on the PDB, due to different studies on the same protein, further spreading the difference between the number of sequenced and structured proteins. 
+This difference of three orders of magnitude is known as the protein gap.
+
+% What is the protein structure prediction
+Given the ever so growing protein gap, several scientists from fields like
+mathematics, physics, chemistry, biology, and computer science have worked for
+decades with the common goal of being to predict the conformation of a sequence
+of amino acids and help close this gap. This problem is known as the
+\ac{PSPP} and has been one of the leading open problems
+in structural biology and computer science~\cite{dorn2014three}.
+The \ac{PSPP} consists of
+taking an amino acid sequence as input and outputting the structure of the
+protein.
+
+% Why it is hard
+Solving the \ac{PSPP} has proven to be a very challenging problem since that after more than 20 years no general viable
+solution has been found. From a strictly computational point of view, the \ac{PSPP} is expected to be a $\mathcal{NP}$-hard problem. No proof of the $\mathcal{NP}$-hardness of the problem has been found for the more complex and accurate models, such as the full atom model~\cite{rohl2004protein}. However, the model which is arguably considered the less complex one, the \ac{HP} model, has been proved to be a $\mathcal{NP}$-hard problem~\cite{berger1998protein}. Furthermore, several other models such as the triangular 2D and 3D \ac{HP}
+model~\cite{agarwala1997local} and the \ac{FCC} model~\cite{hoque2007protein},
+which have an increasing level of complexity, have been found to be $\mathcal{NP}$-hard problems.
+Therefore, it is reasonable to expect the full problem to be $\mathcal{NP}$-hard as well.
+
+From a practical point of view, each amino acid in the protein has between 10
+to 27 atoms, where each one requires three variables to describe its position.
+Except for the smallest of the proteins, they will have hundreds or thousands
+of variables, and can even reach millions assuming that all atoms have the
+three variables. Therefore, one can consider that the \ac{PSPP} is a
+\ac{LSOP}~\cite{mahdavi2015metaheuristics}, which happens to be a very challenging problem.
+
+%What are the main methods of solving it (ab initio, threading modeling, homology modeling)
+There are two main approaches to solving the \ac{PSPP}: Knowledge-based methods and
+\textit{ab initio} methods. Knowledge-based methods have two subgroups:
+Threading and Homology-based method. Threading modeling is based on the use of
+templates that represents the vast majority of the proteins. These templates
+are them combined and aligned in order to predict the protein conformation.
+Homology-based methods rely on homologous proteins having the same (or similar)
+conformation. Therefore, if a protein has an amino acid sequence very similar
+to a protein of known structure, it will probably have a similar structure.
+Homology methods require homologous protein, whereas Threading methods relies
+on the templates being representative of the (unknown) target conformation. In
+contrast with Knowledge-based methods, \textit{ab initio} methods do not rely
+on previously known information. The main characteristic of \textit{Ab Initio}
+method is that it operates by building the conformation from scratch guided by
+an energy function. The main advantage of \text{Ab Initio} over the other methods
+is that is can (theoretically) predict any protein, regardless of a presence
+of a template or homologous protein. Furthermore, it can lead to further insights
+on the folding process. This works focus on solving the \ac{PSPP} with an \textit{Ab
+Initio} method.
+
+% How can proteins be represented computationally (on and off-lattice)
+The \textit{In Silico} modeling and representation of proteins are split in two
+groups: On lattice and off-lattice models. The former limits the angles between
+the amino acids in discrete increments, in such way that the protein is limited
+to be placed over a point in the lattice and can be considered to be a discrete
+problem. It also uses a much-simplified protein model, where each amino acid is
+very often represented as a sphere or as a point in space~\cite{berger1998protein}.
+The latter does not force the limitation of using a
+lattice and can be considered as a problem with
+a continuous search space. \textit{Off lattice} models have several
+sub-models, with different levels of complexity and accuracy. The main models
+found in the literature are $C_\alpha$ Coordinates, all heavy atoms
+coordinates, backbone and centroid coordinates, backbone and side chain torsion
+angles, and all atoms coordinates~\cite{dorn2014three,rohl2004protein}.
+This work uses two models in its proposals: Backbone and centroids and backbone
+and side chains, both using torsion angles.
+
+% Energy potential
+Solving the \ac{PSPP} in an \textit{ab initio} approach requires an energy function
+which must be able to estimate the potential energy of a conformation. Since a
+protein \textit{In Natura} will fold towards the point of least potential
+energy, by estimating its potential energy \textit{In Cilico} it is possible to
+use an optimizer to find the global minimum and give a prediction of the
+protein structure. The computational representation of this potential energy is
+an approximation of the real world interactions between the atoms and molecules
+in the protein~\cite{alford2017rosetta}. Therefore,
+different energy representations can lead to
+significantly different conformations. Furthermore, more accurate energy
+functions will take more processing power to be evaluated and may not be
+proportionally more accurate~\cite{xu2012ab}. At this point,
+there is a clear trade-off between time and accuracy.
+This work uses the energy functions and protein representations provided by
+Rosetta~\cite{rohl2004protein,leaver2011rosetta3}.
+
+% What are metaheuristics and natural computing
+Given that the \ac{PSPP} can be represented as a $\mathcal{NP}$-hard optimization
+problem, a robust set of solvers for this kind of problem are
+\ac{MH}, and in particular, bio-inspired \ac{MH}~\cite{kar2016bio}.
+%MHs have been employed to solve several real world hard problems, such as face recognition~\cite{plichoski2018adjustable}, data mining~\cite{parpinelli2002data}, truss optimization~\cite{cazacu2014steel} and cancer detection~\cite{cazacu2014steel}.
+Some of the more employed \ac{MH}s in the literature are the
+\ac{GA}~\cite{holland1992genetic} and the
+\ac{DE}~\cite{storn1997differential}. Both of them are
+\ac{EA} due to their inspiration by the Darwinian process of natural
+selection. As all \ac{EA}s, \ac{GA} and \ac{DE} relies on a population (set of solutions) where an
+individual (a candidate solution) compete among each other where the fittest (the one
+with the best objective function) will have a higher chance of surviving into
+the next generation.
+
+% What is parameter control and why do we need it
+Bio-inspired algorithms are known to have several parameters and to have their
+performance dependant on both the problem instance and the set of parameters in
+use~\cite{eiben2007parameter}.
+Finding the best set of parameters for a given \ac{MH} is a time-consuming
+process since it requires the runs of the same \ac{MH} for the same instances
+several times to assess its performance. Furthermore, using a different set of
+instances on the \ac{MH} with the previously found set of parameters may give a
+sub-optimal performance, requiring the same process to be rerun.  This process
+is known as offline parameter control. One way to avoid this time-intensive
+process is to enable the \ac{MH} to be able to detect parameters have the best
+improvement potential and which operations lead more successful explorations of
+the solution space. The process of changing the parameter while the algorithm
+is running is known as online parameter control and is an active area of
+research~\cite{parpinelli18review}.
+
+% What are hybrid algorithms
+Furthermore, given the high complexity of the problem, a blind optimizer might
+underperform due to the roughness of the energy function and the large
+search space. In this case, it is possible to employ a hybrid
+algorithm~\cite{blum2011hybrid}. A hybrid algorithm employs an optimizer which has no
+knowledge of the problem domain with a procedure that has. This allows for the
+optimization procedure to be guided to search directions which are more
+relevant, and thus, possibly improve the overall performance. 
+%A hybridization method found throughout the literature is the Monte Carlo (MC) procedure~\cite{a}. It consists of a probabilistic random sampling of the search space.
+%For the particular case of \textit{ab initio} protein prediction, a MC
+%procedure can be employed to replace small (for instance, 3 or 9) continuous segments of the
+%protein with know pieces of other proteins which may be similar to the target protein. This
+%is know as fragment insertion~\cite{a}, and when coupled with a MC procedure it is a MC based
+%fragment insertion.
+
+% How are we planning on solving it. 
+% Close the intro
+This work has as its primary goal to study and solve the \ac{PSPP}. For this an
+off-lattice \textit{ab initio} method will be used. The proteins will be
+represented computationally as torsion angles of the backbone and side chain
+centroids. The \textit{Ab Initio} model will be optimized
+using a hybrid \ac{DE} / \ac{MC} with online parameter control. 
+% Several MC based fragment insertion procedures will be utilized.
+
+
+\section{Motivation}\label{sec:chap1_motivation}
+
+% Relevancy of the problem
+% Applications of the problem
+The \ac{PSPP} is currently one of the leading open problems in computer science and
+structural bioinformatics, and as such, it is a highly relevant one. Solving
+the \ac{PSPP} has numerous implications over many fields. It can help to understand
+proteinopathies better and aid the development of new smart drugs.
+Also, it can give access to research groups that cannot afford the use of the
+machinery required to determine the conformation of proteins and by doing so
+help to generate further knowledge.
+
+% Difficulty of the problem
+Due to the $\mathcal{NP}$-hardness of the problem and its inherent complexity,
+being able to solve it in a reasonable time frame can lead to better
+understanding of the solving process of this kind of problems. It also can lead
+to better understanding of the solving mechanisms as well, giving insight on
+how to design better optimizers.
+
+\section{Objectives and Hypothesis}\label{sec:chap1_objectives}
+
+% Develop a DE into a competitive method
+% Utilize parameter adaptation
+% Utilize fragments
+% Benchmark it on several proteins
+
+This work has as its main objective to explore the \ac{PSPP} and to develop a
+competitive solver for the off-lattice \textit{ab initio} \ac{PSPP} using a hybrid
+\ac{DE} with online parameter control. For this, several secondary objectives have to be achieved as well:
+
+\begin{itemize}
+    \item Determine the base performance of \ac{DE} for solving the \ac{PSPP};
+    \item Determine the impact of using online parameter control for \ac{DE};
+    \item Determine the impact of the hybridization of \ac{DE};
+    \item Explore the applicable operators for the hybrid \ac{DE};
+    \item Assess the performance of the proposed method on several proteins.
+\end{itemize}
+
+This work has three hypothesis to test and/or confirm. They are:
+\begin{enumerate}
+    \item The use of a domain specific operator (fragment insertion in this case) can improve the prediction performance measured in RMSD and potential energy? If this hypothesis is confirmed it will prove the potential of using hybrid methods for solving the \ac{PSPP}.
+    \item The use of online parameter control can improve the performance of a pure (black-box) optimizer? This hypothesis has been explored before. The goal here is to demonstrate it in the scenario of the \ac{PSPP}, a challenging real world problem instead of a set of synthetic benchmarks. To assert this hypothesis a Self Adaptive Differential Evolution Algorithm is compared against a Differential Evolution based method in the literature without parameter control.
+    \item The combined proposed hybrid method with online parameter control can lead to a better performance than the competing methods in the literature? To conduct this analysis, the proposed methods are compared against competing methods in the literature, including pure methods and hybrid methods.
+\end{enumerate}
+
+\section{List of Publications}\label{sec:future_works}
+
+\begin{itemize}
+    \item SILVA, R. S.; PARPINELLI, R. S. A multistage simulated annealing for protein structure prediction using rosetta. Anais do Computer on the Beach, p. 850–859, 2018.
+    \item PARPINELLI, R. S. et al. A review of technique for on-line control of parameters in swarm intelligence and evolutionary computation algorithms. International Journal of Bio-Inspired Computation (IJBIC), 2018.
+    \item SILVA, R. S.; PARPINELLI, R. S. A self-adaptive differential evolution with fragment insertion  for  the  protein  structure  prediction  problem.  In:  SPRINGER. International Workshop on Hybrid Metaheuristics. 2019. p. 136–149.
+\end{itemize}
+
+\section{Document Structure} \label{sec:chap1_document_structure}
+
+This document is organized as follows:
+Chapter~\ref{chap:systematic_literature_review} presents the background
+required to understand this work, the literature review and the related work; Chapter~\ref{chap:methodology} presents the proposed methodology; Chapter~\ref{chap:experiments_and_results} presents the experimentation,
+results and its respective analysis;
+Chapter~\ref{chap:final_considerations} presents the final considerations for
+this work and future research directions.

@@ -1,0 +1,215 @@
+\imprimircapa
+
+\imprimirfolhaderosto*
+
+% ---
+% Caso a Biblioteca da UDESC forneça, utilize o comando
+% ---
+% \begin{fichacatalografica}
+%     \includepdf{fig_ficha_catalografica.pdf}
+% \end{fichacatalografica}
+
+% ---
+% Geração da Ficha Catalográfica Via LaTeX
+% ---
+\begin{fichacatalografica}
+	\vspace*{\fill}					% Posição vertical
+	\begin{center}					% Minipage Centralizado
+	\begin{minipage}[c]{12.5cm}		% Largura
+	
+	\imprimirautor
+	
+	\hspace{0.5cm} \imprimirtitulo  / \imprimirautor. --
+	\imprimirlocal, \imprimirdata-
+	
+	\hspace{0.5cm} \pageref{LastPage} p. : il. (algumas color.) ; 30 cm.\\
+	
+	\hspace{0.5cm} \imprimirorientadorRotulo~\imprimirorientador\\
+	
+	\hspace{0.5cm}
+	\parbox[t]{\textwidth}{\imprimirtipotrabalho~--~\imprimirinstituicao,
+	\imprimirdata.}\\
+	
+	\hspace{0.5cm}
+		1. Tópico 01.
+		2. Tópico 02.
+		I. Prof. Dr. xxxxx.
+		II. Universidade do Estado de Santa Catarina.
+		III. Centro de Ciências Tecnológicas.
+		IV. identificação xxxx\\ 			
+	
+	\hspace{8.75cm} CDU 02:121:005.7\\
+	
+	\end{minipage}
+	\end{center}
+\end{fichacatalografica}
+
+% ---
+% Folha de Aprovação
+% ---
+% Exemplo de folha de aprovação antes da Banca. Após isso, incluia o pdf digitalizado com as assinaturas%
+% \includepdf{folhadeaprovacao_final.pdf}
+\begin{folhadeaprovacao}
+
+	\begin{center}
+		{\ABNTEXchapterfont\bfseries\imprimirautor}
+		\vspace{6em}
+
+			\ABNTEXchapterfont\bfseries\imprimirtitulo
+		
+	\end{center}
+		\vspace{1em}
+		{\justify
+		This content was submitted to examination board as partial fulfillment to obtain the title of
+    	{\ABNTEXchapterfont\bfseries Master in Applied Computing},   
+   		area of concentration in "Computational Systems", by the Graduate Program in Applied Computing at the College of Technological Science of Santa Catarina State University.}
+
+% 		{\justify
+% 		This Master thesis was considered adequate to obtain the title of
+%     	{\ABNTEXchapterfont\bfseries Master in Applied Computing},   
+%    		area of concentration in "Computational Systems",
+%    		and approved in its final form by the Graduate Program in Applied Computing at the College of Technological Science of Santa Catarina State University.}
+
+	\vspace{3em} 
+	\noindent
+	{\bfseries Examination Board:}
+	\assinatura{\textbf{\imprimirorientador} \\ Advisor} 
+    \assinatura{\textbf{Dr. Rafael Rodrigues Obelheiro} \\ CCT-UDESC}
+    \assinatura{\textbf{Dr. Adriano Fiorese} \\ CCT-UDESC}
+
+    \vspace*{\fill}
+    \begin{center}
+    	\imprimirlocal,\,\imprimirfulldata
+    \end{center}
+\end{folhadeaprovacao}
+
+% ---
+% Dedicatória
+% ---
+\begin{dedicatoria}				
+To my Father that is no longer with us and to my Mother that always stood by me.
+\end{dedicatoria}
+
+% ---
+% Agradecimentos
+% ---
+\begin{agradecimentos}
+Firstly I would like to thank my mother, Tatiana. Without her continuous and never ending support
+I would not been here. Not only did she financially and emotionally support me, she also
+did encourage me since I was very young to study and go after my dreams. This shaped me
+into who I am.
+
+I also would like to deeply thank Rafael Parpinelli for supporting me over this journey
+and helping me push the limits of my knowledge. I also thank all my friends that were with
+me since my first day at the university. In special Andressa Umetsu, Rafael Castro, Vinicius Zuchi,
+Tiago Heinrich,
+Aurelio Grott, Mateus Boiani, William Pereira, Karll Henning, Dalmo Neto, Lucas Zanatta and many others.
+They all made my days more bearable and fun.
+To all the teachers that served both as friends and a role models,
+in special professor Omir. I had the pleasure of working for more than two years with him.
+The experience that I gained while working with him helped define who I am today as an academic.
+To my team lead at JobScore, Thiago, who can understand what is like to be working and doing a master
+degree at the same time and helped along the path as well. 
+
+Finally I would like to thank Andressa Umetsu for becoming one of the closest friends that
+I have. Her friendship made me a happier person. 
+
+\end{agradecimentos}
+
+% ---
+% Epígrafe
+% ---
+\begin{epigrafe}	
+``Ever tried. Ever failed. No matter. Try Again. Fail again. Fail better.''
+\\
+\par
+Samuel Beckett
+\end{epigrafe}
+
+% ---
+% RESUMOS
+% ---
+
+% ---
+% Ao usar o modo twoside (anverso e verso) o resumo não se posiciona na página ímpar.
+% Dessa forma, deve-se forçar o resumo para iniciar em uma página ímpar, usando o seguinte comando:
+% ---
+
+%\newpage\null\thispagestyle{empty}\newpage
+
+% Português
+\begin{resumo}
+The Protein Structure Prediction Problem (PSPP) is currently one of the most important and more challenging open problems
+in both computer science and in structural bioinformatics. Being able to accurately predict protein conformations
+would have a significant impact on several fields. Proteinopathies would be better understood, intelligent protein
+based drugs could be designed more easily and the overall understanding of the protein functions in organisms would
+be further increased. Albeit the problem being several decades old, it still largely unsolved, being only able to
+predict small proteins. As such, this work has as its main goal to attempt to improve the prediction power of
+\textit{ab initio} methods by hybridizing an Differential Evolution algorithm with online parameter control with
+a Monte Carlo based fragment insertion. With this, a powerful meta heuristic is utilized as the core of the
+conformation sampling process with fragment insertion feeding domain specific information into the process. The
+online parameter control allows the method to adapt to proteins of different characteristics and also to adapt
+to different stages of the optimization process. The main contributions of this work are the study of online parameter
+control in the PSPP and the impact of using hybridization. In order to access the performance of the proposed methods
+they were compared against each other using statistical methods. The best performing methods were then compared against
+compatible methods in the literature. Accordingly to the experimentation ran and its respective results, it was
+verified that the use of online parameter control had a positive impact on the proposed methods. Furthermore, the
+combined use of online parameter control and hybridization led to better results than competing methods found
+in the literature.
+ \\ 
+ \vspace{\onelineskip}
+ \noindent
+ \textbf{Keywords}: Differential Evolution, Hybrid Methods, Monte Carlo, Fragment Insertion, Protein Structure Prediction Problem, Parameter Control.
+\end{resumo}
+
+% ---
+% Ao usar o modo twoside (anverso e verso) o resumo não se posiciona na página ímpar.
+% Dessa forma, deve-se forçar o resumo para iniciar em uma página ímpar, usando o seguinte comando:
+% ---
+
+%\newpage\null\thispagestyle{empty}\newpage
+
+% Inglês
+\begin{resumo}[Resumo]
+ \begin{otherlanguage*}{brazil}
+O Problema de Predição de Estrutura de Proteínas (PPEP) é atualmente um dos mais importantes e difíceis problemas 
+em aberto na Ciência da Computação e na Bioinformática Estrutural.
+A capacidade de poder predizer com precisão a conformação de proteínas
+teria um impacto significativo em diversas áreas de pesquisa. Tais como, 
+Proteinopatias seriam melhor entendidas; Drogas inteligentes baseadas em proteínas seriam mais facilmente
+desenvolvidas; O entendimento geral da função das proteínas nos organismos seria melhorado.
+Apesar do problema estar em aberto por diversas décadas, de modo geral ainda não foi resolvido. Atualmente
+apenas pequenas proteínas podem ser preditas com precisão. À vista disto, este trabalho tem como seu objetivo
+principal melhorar o poder preditivo de métodos \textit{ab initio} atráves a hibridização da Evolução Diferencial
+com controle online de parâmetros acoplado com inserção de fragmentos baseada em Monte Carlo.
+Deste modo, uma poderosa meta heurística é utilizada como núcleo de busca de conformações e tem a inserção
+de fragmentos como um método de agregar informações sobre o domínio do problema no processo.
+O uso de controle online de parâmetros permite que o método se adapte a proteínas de diferentes características
+e a diferentes fases do processo de otimização. As principais contribuiçoes deste trabalho estão no estudo
+do uso de controle online de parâmetros no contexto do PPEP e no impacto do uso de métodos híbridos.
+Com o objetivo de avaliar o desempenho dos métodos propostos os mesmos foram comparados entre si utilizando
+métodos estatísticos. Os melhores métodos foram então comparados contra métodos compatíveis na literatura.
+De acordo com a experimentação conduzida e os respectivos resultado, o uso de controle online de parâmetros
+teve um impacto positivo no poder preditivo do método. A combinação de controle online de parâmetros e hibridização
+promoveram resultados melhores que os métodos compatíveis encontrados na literatura.
+  \\
+   \vspace{\onelineskip}
+   \noindent 
+   \textbf{Palavras-chave}: Differential Evolution, Métodos Híbrids, Monte Carlo, Inserção de fragmento, Problema de Predição de Estrutura de Proteínas, Controle de Parâmetros.
+ \end{otherlanguage*}
+\end{resumo}
+
+% ---
+% Lista de Figuras
+% ---
+\pdfbookmark[0]{\listfigurename}{lof}
+\listoffigures*
+\cleardoublepage
+% ---
+
+% ---
+% Lista de Tabelas
+% ---
+\pdfbookmark[0]{\listtablename}{lot}
+\listoftables*
+\cleardoublepage

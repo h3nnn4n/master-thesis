@@ -1,0 +1,238 @@
+\chapter{A Hybrid Method Based on Monte Carlo and 
+Differential Evolution for the \ac{PSPP}}\label{chap:methodology}
+
+This Chapter presents the methods for approaching the \textit{ab initio} \ac{PSPP}. There are three points that need to be specified for an \textit{ab initio} method~\cite{dorn2014three}: The protein computational representation, the
+energy function and the the conformation sampling procedure. These three points are
+visited in Sections~\ref{sec:computation-representation},~\ref{sec:energy-function}
+and~\ref{sec:conformation-sampling}, respectively.
+
+\section{Computational Representation}
+\label{sec:computation-representation}
+
+This work aims for a full atom prediction of a given target protein, which limits the possible representations that can be utilized. 
+Considering its properties, a full atom backbone representation was utilized.
+The backbone is manipulated by changing the three dihedral angles $(\phi, \psi, \omega)$.
+The Side chain is abstracted into an ellipsoid of similar mass and shape, in order
+to maintain some of its properties. Therefore, the model utilized consists of
+a backbone torsion angle representation with side chain ellipsoids.
+
+For this work, the protein model includes more information
+than just the atoms and its respective conformation. The model is split into three
+components and is illustrated in Figure~\ref{fig:protein-model} using the 1PLW polypeptide as example. The first component is a pose object that stores the conformation of a given protein considering all its atoms. This object is responsible for updating
+the atoms when an angle is alternated. Such changes must be propagated down to the chain
+considering an arm lever effect. The second component of this model consists of a vector which
+acts as an interface for the optimization algorithm and holds all the backbone dihedral
+angles. The optimizer does not act directly
+upon the pose object, instead, it operates on this vector. When this vector is changed, the pose object changes accordingly. The third
+component is another vector containing a sequence of predicted secondary structures and its confidence
+intervals. This information is used to coordinate the sampling procedure.
+
+From Figure~\ref{fig:protein-model}, the top part consists of the pose model, responsible for holding the atom representation of the protein. The middle part consists of a vector of dihedral angles. Since 1PLW has 5 amino acids, the angle vector has 15 elements.
+The first three elements represents the $(\phi, \psi, \omega)$ angles for the
+first amino acid, the second three elements represents the dihedral angles for the second
+amino acid and so on. The bottom part models the predicted secondary structure. For the 1PLW it consists of simply a coil along all the protein.
+Each cell of this vector holds the probabilities for each predicted secondary structure.
+For instance, the middle amino acid in 1PLW named GLY could have $(C=0.9123, A=0.0731, B=0.0146)$,
+meaning that the predicted probability of that amino acid being a coil is of 91 percent,
+7 percent for an $\alpha$-helix and 1 percent for a $\beta$-sheet. In the actual model
+all 8 classes presented in Section~\ref{sec:secondary-structure-prediction} are
+considered.
+
+\begin{figure}
+    \centering
+    \includegraphics{Figuras/protein-representation.pdf}
+    \vspace{1mm}
+    \caption{The Protein Computational Model (Source: Author)}
+    \label{fig:protein-model}
+\end{figure}
+
+The secondary structures are classified using a DSSP8 notation~\cite{frishman1995knowledge}.
+For this work they were predicted using the PSIPRED server~\cite{mcguffin2000psipred},
+available for academic use in:
+\url{http://bioinf.cs.ucl.ac.uk/psipred/}.
+The knowledge from the secondary structure prediction
+is incorporated in the model using fragment insertion, which will be further explained in
+Section~\ref{sec:conformation-sampling}.
+
+At the end of the prediction, the output consists of a full atom protein representation, including the side chains. For this, an off-the-shelf
+repacker available in Rosetta toolkit was utilized. 
+The repacker replaces the ellipsoids with the actual side chains. This introduces a series
+of (potential) hysterical clashes between the side chains, specially in more densely packed
+structures. To solve this problem, a gradient descent optimization is performed, where
+the Van der Waals repulsive forces are slightly varied during the gradient descent.
+With this, the gradient descent can rotate the side chains and move the backbone
+in order to make room for the newly inserted side chain structures.
+The final result of this is a full atom representation of the predicted protein, which
+is the output of the proposed approach.
+
+\section{Energy Functions Employed}
+\label{sec:energy-function}
+
+The energy function represents the domain information from the \ac{PSPP} in a mathematical
+equation. Different energy functions considers different aspects of the problem, which
+can be useful for different steps of the prediction. This work makes use of three energy
+functions available in Rosetta.
+
+The first energy function utilized is referenced in Rosetta as score0. This energy function
+consists solely of the repulsive Van der Waals forces. The goal of this energy
+is to aid the generation of initial conformations. Since only the repulsive forces
+are considered, a score0 with a value of $0$ indicates that a given conformation
+has no clashes between different parts of the protein. The assembly of the protein
+guided by the score0 function leads to more plausible starting proteins.
+
+The second energy function utilized is referenced in Rosetta as score3. It uses
+a full atom representation of the backbone and an ellipsoid to represent the
+side chains. A more in depth explanation of this energy function is explained
+in~\cite{alford2017rosetta}. Unfortunately, the only
+up to date documentation found for the energy functions is the Rosetta source code itself.
+The score3 energy function is used during the main portion of the prediction process described next section.
+
+Finally, the last energy function is the scorefxn, as found in Rosetta. It encompasses
+the same information as score3, however, it considers a full atom representation of the
+side chain as well. This energy function is utilized during the last step of the
+prediction in order to output a full atom representation of the protein.
+
+\section{Conformation Sampling}
+\label{sec:conformation-sampling}
+
+% \textbf{FOQUE EXCLUSIVAMENTE NO MÉTODO DE AMOSTRAGEM.}
+
+% \textbf{TODO ESTE TEXTO EM AZUL TEM CARA DE INTRODUÇÃO. AQUI VC DEVE SER BEM DIRETO SOBRE O MÉTODO DE AMOSTRAGEM. REMOVA O QUE JÁ FOI ESCRITO NA INTRO OU NA REVISÃO DA LITERATURA E REESCREVA SENDO PRECISO NO FOCO DESTA SEÇÃO. É INTERESSANTE JUSTIFICAR AS ESCOLHAS MAS NÃO PRECISA CONTEXTUALIZAR PQ SUBENTENDE-SE QUE JÁ FOI CONTEXTUALIZADO NA INTRO OU NA REVISÃO DALITERATURA.}
+
+Given the computational complexity of the problem, exact search procedures are
+not fast enough. Therefore, due to its limitations,
+metaheuristic methods must be employed in order to search for good results
+in a reasonable amount of time. Many metaheuristics can be employed
+on the \ac{PSPP}, as shown in Section~\ref{sec:bioinspired}
+% ESTES TRABALHOS DEVERIAM ESTAR NA SEÇÃO DE TRABALHOS CORRELATOS.}. For this work, 
+the Differential Evolution algorithm is employed, due to its ability to work
+in the continuous space required by the problem. Furthermore, to increase
+its performance, and online parameter control technique will be
+utilized, namely \ac{SaDE}~\cite{qin2005self,qin2009differential}.
+ 
+In~\cite{kim2009sampling} the author states that the bottleneck of solving the \ac{PSPP} is the conformation sampling procedure. Therefore, it is the part that must be more focused on, since increasing its performance will likely lead to better predictions. Furthermore, a blind optimizer that has no knowledge about the problem domain can inherently have a worse performance, since it will spent more time sampling regions of the conformation space that are not biologically plausible. Thus, having an efficient sampling procedure and utilizing problem domain knowledge is important and can possibly lead to a better predictor.
+ 
+% \textcolor{blue}{The DE algorithm has been successfully
+% utilized to solve a vast range of problems.
+% However, on its own, very often the method is not sufficient to solve the
+% more complex real world problems. Furthermore, even when it is, its performance
+% can be increased by enhancing the method with online parameter
+% control~\cite{parpinelli18review} or domain specific methods.
+% Therefore, this work aims in incorporating both aspects
+% into DE.}
+ 
+% \textcolor{blue}{Several online parameter control methods have been proposed for DE and many other
+% MHs. However, one of them presents desired properties for solving the \ac{PSPP}: \ac{SaDE}.
+% \ac{SaDE} controls the parameters F and Cr and it considers a Cr parameter for each
+% operator available for use. This reduces the tuning needed for the prediction
+% method by allowing the algorithm to find good parameters and adapting it during the
+% prediction. Furthermore, the use and control of multiple operators allows for the
+% inclusion of domain specific operators in the search procedure.
+% The use of domain specific operators happens under control of \ac{SaDE}
+% (as well as the non domain specific ones).
+% If the operator is performing well then it will keep being used,
+% if it is under-performing then it will be used less often.}
+
+The domain specific operator utilized in this work consists of
+fragment insertion. Four fragment insertion operators are employed.
+Two classic fragment insertion operators of size 3 and 9 are utilized
+as well as two smooth fragment insertions of size 3 and 9.
+
+The classic fragment insertion can be considered a global search
+operator, as it leads very often to very impactful changes
+in the conformation. Due to the proportions of these changes,
+this operator will have a decreasing chance of making a move
+that can improve the current solution as the optimization process
+progresses.
+
+The smooth fragment insertion on the other hand can be thought as
+being a local search operator. The nature of this operator
+is to try to negate the changes of the first fragment insertion by using
+a second one specially localized. This leads to smaller changes on the
+overall protein conformation, even though twice the residues are changed.
+The use of this operator allows for \ac{SaDE} to have a domain specific local
+search, which stays effective over the whole optimization process.
+
+These four fragment insertion operators require a criteria to be used. For this,
+a \ac{MC} based search is employed. Two different Monte Carlo based approaches
+are utilized. The first being a simple \ac{MC} search, where \ac{SaDE} selects one of
+the four fragment insertion operator and runs a small (less than 100 iterations)
+batch of insertions. The other procedure consists
+of a Replica Exchange Monte Carlo (REMC). In \ac{REMC} either a fragment is inserted or the whole conformation is exchanged with another conformation previously analyzed. This exchange happens also under the Metropolis
+criteria. That is, a good conformation will always be accepted while a worse has
+a inversely proportional change of being accepted based on how worse it is.
+The use of \ac{REMC} allows for a good conformations to be explored more while
+bad ones will have a chance of being ignored. Since the Metropolis criteria
+will always favor the better conformation, \ac{REMC} could lead to a very fast premature
+convergence, where it would replicate the same conformation to all solution vectors.
+In order to avoid this, a ring topology is utilized. The $i$-th conformation can only
+compete with the $i-1$-th conformation, and the first one with the last. This
+adds a latency for the best conformation to replace all the others, giving a chance
+of another good conformations being found.
+
+The standard DE operators utilized are shown in Table~\ref{tab:de-mutations},
+Section~\ref{sec:de}. In the context of search operators,
+this set of operators will be referenced as
+the DE set or the non domain specific operators.
+
+Figure~\ref{fig:search-procedure} presents a flowchart of the proposed approach. It is split into three main steps: The initialization phase, the optimization
+phase and post processing phase. These three steps assemble the predictor as a whole.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{Figuras/search-procedure.pdf}
+    \caption{The Proposed Search Procedure (Source: Author)}
+    \label{fig:search-procedure}
+\end{figure}
+
+In the initialization phase the primary sequence is taken as input in the FASTA format,
+which consists of the one letter code sequence of amino acids. The primary sequence
+is then stored for later use. It is also used as input for PSIPRED, the 
+secondary structure predictor. PSIPRED outputs a probability matrix mapping
+probabilities for the cartesian product of secondary structures versus the amino acid
+sequence. This output is also stored for later use and is fed into the fragment picker.
+The fragment picker used is the Rosetta Fragment Picker and it is responsible for
+selecting a set of fragments for all possible combinations of
+contiguous amino acids of size 3 and 9. The fragment set is stored to be used as input
+for tertiary prediction routine. Since the initialization phase consists only of
+preprocessing, its time is not taken into account when measuring the time required
+to predict a given target protein. Specially considering the waiting time for the
+PSIPRED server.
+
+The second phase is the optimization phase.  It starts with the step of
+generating the initial population. The initial population generation consists of
+assembly random protein conformation using the fragments generated in the initialization
+phase. A Monte Carlo search is ran using the score0 energy function in order to
+search for protein conformations that have no (or as few as possible) hysterical
+clashes. This step stops when a fixed number of samples is used for each solution vector
+in the population or when the score0 function reaches zero.
+
+With the initial population generated, the optimization procedure itself starts
+guided by the score3 energy function. The basis of
+the search procedure is carried out by the \ac{SaDE} algorithm, which consists of the \textit{Online Parameter Control} part
+and the \textit{Differential Evolution Operators}. The hybridization happens when the
+\textit{Domain Operators} are added to the search procedure.
+
+Firstly, the online parameter control portion of \ac{SaDE}
+selects which operator to use for each individual in the population.
+If for any given solution vector the operator selected is one of the standard DE
+operators then its mutation and crossover steps are applied and fed to the selection
+routine. This always spends one function evaluation. When the selected operator
+is a domain specific one (either \ac{MC} or \ac{REMC}) then a small sub search procedure starts.
+A \ac{MC} or \ac{REMC} search procedure is initialized, based on the operator chosen.
+This search takes a fixed amount of function evaluation that is fed as a parameter.
+When this search procedure stops the output is fed to the selection routine.
+From there it is checked if the stop criteria was met. If it was not, then the
+parameter update routine is called, which updated the parameters F and Cr
+(for all operators) as well as the probabilities for each operator. Then, the
+optimization cycle starts over again from the operator selection.
+
+When the stop
+criteria is ultimately met, the best solution (based on the energy function)
+is extracted and fed to the post processing phase.
+This phase applies the repacking routine using the scorefxn energy function,
+which will add the side chains and output a full atom conformation.
+
+There are four hybrid combinations for the optimizer setup. It is possible to use
+either \ac{MC} or \ac{REMC}, giving two configurations. It is also possible to include the
+standard DE set of operators or not, giving another two configurations.
