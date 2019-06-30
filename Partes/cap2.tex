@@ -10,7 +10,7 @@ Section~\ref{sec:related_works} presents the related works.
 
 \section{Proteins}~\label{sec:proteins}
 
-%What are proteins
+% What are proteins
 Proteins are macromolecules synthesized by the body with direct information from
 the \ac{DNA}. The \ac{DNA} encodes an amino acid sequence, that when assembled correctly it
 will originate the desired protein. Upon creation and shortly after the protein
@@ -19,12 +19,12 @@ structure, is directly responsible for the protein function
 \cite{lee2017ab}.
 
 The process of protein assembly happens spontaneously, in a complex manner which
-is not currently understood~\cite{dill2008protein}.
+is not currently fully understood~\cite{dill2008protein}.
 While each protein can be identified uniquely by
 its amino acid sequence, it is possible that the protein folds incorrectly.
 When this occurs the protein either can stop performing its
 original functionality or assume a toxic state where it can harm cells,
-tissues and whole organs.
+tissues and even whole organs.
 If this is a systematic issue then it is called a proteopathy.
 
 \subsection{Amino Acids}~\label{sec:amino-acids}
@@ -53,7 +53,7 @@ an amino acid.
 Each amino acid has several designated identifications, as shown in
 Table~\ref{tab:amino-acids}. The first column shows the amino acid name.
 The second shows the 3 letter code. The third column shows the 1 letter code.
-The 1 letter code is commonly used to describe amino acids sequences and
+The 1 letter code is commonly used to describe amino acid sequences and
 will be used throughout this work.
 
 \begin{table}[h]
@@ -87,15 +87,27 @@ will be used throughout this work.
 
 Each amino acid can be split into groups accordingly to its properties.
 There are six commonly used groups~\cite{garrett1999biochemistry}:
-The Aliphatic Hydrophobic; The Aromatic Hydrophobics; The neutrals; The Basics (Positively Charged); The Acids (Negatively Charged); and the Unique Amino Acids. The Aliphatic Hydrophobic group is composed of Alanine, Isoleucine, Leucine, Methionine and Valine. The Aromatic Hydrophobic is composed of Phenylalanine, Tryptophan and Tyrosine. The neutral group is made out of Asparagine, Cysteine, Glutamine, Serine and Threonin. The acid group is composed of the Aspartic acid and Glutamic acid. The basic group contains Arginine, Histidine and Lysine. The Unique Amino Acids group contains Proline and Glycine. The Knowledge of these groups allow for further insight into the amino acids function inside a protein and are of valuable use in this work.
+The Aliphatic Hydrophobic; The Aromatic Hydrophobics; The neutrals;
+The Basics (Positively Charged); The Acids (Negatively Charged);
+and the Unique Amino Acids. The Aliphatic Hydrophobic group is composed of
+Alanine, Isoleucine, Leucine, Methionine and Valine. The Aromatic Hydrophobic
+is composed of Phenylalanine, Tryptophan and Tyrosine. The neutral group is made
+out of Asparagine, Cysteine, Glutamine, Serine and Threonin. The acid group is
+composed of the Aspartic acid and Glutamic acid. The basic group contains Arginine,
+Histidine and Lysine. The Unique Amino Acids group contains Proline and Glycine.
+The Knowledge of these groups allow for further insight into the amino acids
+function inside a protein and are of valuable use in this work.
 
 % Peptide bonds
 The composition of two or more amino acids to compose a protein is called
 a peptide bond. This bound happens between the amino group of an amino acid
 and the carboxyl group of another amino acid. In this process, as shown in
 Figure~\ref{fig:peptide-bond}, the carboxyl group loses an Oxygen and a Hydrogen
-atom which bounds with an Hydrogen atom of the amino group from the other amino acid. The bound is then formed between the carbon of the carboxyl group and the nitrogen of the amino group. This process can happen several times, where each time it happens a new amino acid is aggregated to the chain and a water molecule is created in the process as a
-residue~\cite{garrett1999biochemistry}.
+atom which bounds with an Hydrogen atom of the amino group from the other amino
+acid. The bound is then formed between the carbon of the carboxyl group and the
+nitrogen of the amino group. This process can happen several times, where each
+time it happens a new amino acid is aggregated to the chain and a water
+molecule is created in the process as a residue~\cite{garrett1999biochemistry}.
 
 \begin{figure}
     \centering
@@ -104,7 +116,19 @@ residue~\cite{garrett1999biochemistry}.
     \label{fig:peptide-bond}
 \end{figure}
 
-When a peptide bond is formed and it starts to grow, it will assume a three dimensional conformation. The manner in which the chain grows is directly dependent on the dihedral angles that the peptide bond assumed. The dihedral angles are enough to describe the protein to a high level of detail. The $N - C_\alpha$ bound is described by the angle $\phi$. The $C_\alpha - C$ bound is described by the angle $\psi$. Both the angles and $\phi$ and $\psi$ are virtually free to rotate around its axis, limited only by steric clashes when a part of the chain gets too close to itself. The $C - N$ pair is described by the angle $\omega$. Due to complex interactions between the atoms in the chain and its resonating properties, the $C - N$ bound behaves as if it was a double bound. This limits the potential angles that $\omega$ can assume to regions close to $0^{\circ}$ and $180^{\circ}$. The position where each dihedral angle operates is shown on
+When a peptide bond is formed and it starts to grow, it will assume a three
+dimensional conformation. The manner in which the chain grows is directly
+dependent on the dihedral angles that the peptide bond assumed. The dihedral
+angles are enough to describe the protein to a high level of detail. The $N -
+C_\alpha$ bound is described by the angle $\phi$. The $C_\alpha - C$ bound is
+described by the angle $\psi$. Both the angles and $\phi$ and $\psi$ are
+virtually free to rotate around its axis, limited only by steric clashes when a
+part of the chain gets too close to itself. The $C - N$ pair is described by
+the angle $\omega$. Due to complex interactions between the atoms in the chain
+and its resonating properties, the $C - N$ bound behaves as if it was a double
+bound. This limits the potential angles that $\omega$ can assume to regions
+close to $0^{\circ}$ and $180^{\circ}$. The position where each dihedral angle
+operates is shown on
 Figure~\ref{fig:angles}.
 
 \begin{figure}
@@ -114,10 +138,23 @@ Figure~\ref{fig:angles}.
     \label{fig:angles}
 \end{figure}
 
-The sequence of bonds $N - C_\alpha$, $C_\alpha - C$ and $C - N$ is called the backbone. This chain extends over all the protein and is responsible for the shape that it assumes, along with its interactions with the side chains. Due to the constraints for $\omega$, the $N, C_\alpha, H$ and $O$ atoms will tend to be co-planar. Two possible configurations are possible, the \textit{cis} and \textit{trans}. In the \textit{cis} configuration the $\omega$ angle will be approximately $180^\circ$ and the side chains will have alternate sides after each peptide bond. This configuration is the most stable one. For the \textit{trans} configuration, which a $\omega$ angle of $0^\circ$, the side chains will be on the same side, making this configuration much less stable and consequently less frequent.
+The sequence of bonds $N - C_\alpha$, $C_\alpha - C$ and $C - N$ is called the
+backbone. This chain extends over all the protein and is responsible for the
+shape that it assumes, along with its interactions with the side chains. Due to
+the constraints for $\omega$, the $N, C_\alpha, H$ and $O$ atoms will tend to
+be co-planar. Two possible configurations are possible, the \textit{cis} and
+\textit{trans}. In the \textit{cis} configuration the $\omega$ angle will be
+approximately $180^\circ$ and the side chains will have alternate sides after
+each peptide bond. This configuration is the most stable one. For the
+\textit{trans} configuration, which a $\omega$ angle of $0^\circ$, the side
+chains will be on the same side, making this configuration much less stable and
+consequently less frequent.
 
-While the tuple $(\phi, \psi, \omega)$ of dihedral angles is enough to accurately
-describe the backbone, it lacks information about the side chains. Due to the nature of the side chains, different side chains will have different dihedral angles. Table~\ref{tab:side-chain-angles} shows the amino acids and the number of side chain angles required to describe it.
+While the tuple $(\phi, \psi, \omega)$ of dihedral angles is enough to
+accurately describe the backbone, it lacks information about the side chains.
+Due to the nature of the side chains, different side chains will have different
+dihedral angles. Table~\ref{tab:side-chain-angles} shows the amino acids and
+the number of side chain angles required to describe it.
 
 \begin{table}[]
     \centering
@@ -138,19 +175,49 @@ describe the backbone, it lacks information about the side chains. Due to the na
 \label{sec:protein-structures}
 %What are primary, secondary, tertiary and quaternary structures
 
-% Present the different levels of details of the proteins at micro and macro levels
-The analysis of a protein happens on increasing levels of details. There are four structures commonly used in proteomics to identify, study and describe a given protein and its properties~\cite{tsai2003introduction}.
+% Present the different levels of details of the proteins at micro and macro
+% levels
+The analysis of a protein happens on increasing levels of details. There are
+four structures commonly used in proteomics to identify, study and describe a
+given protein and its properties~\cite{tsai2003introduction}.
 
 % Primary structure
-The primary structure of a protein is determined by the chain of amino acids that form it. This sequence is encoded on the \ac{DNA}, and after the protein syntheses is complete it will be inside the protein. The primary structure is unique for each protein and can be used to uniquely identify it. For instance, the \textit{Methionine-Enkephalin}\footnote{\url{https://www.rcsb.org/structure/1plw}} (1PLW) is a very simple polypeptide formed by 5 amino acids: Tyrosine, Glycine, Glycine, Phenylalanine and Methionine. Using the one letter notation, the primary sequence can be presented as YGGFM. This one letter sequence of amino acids is available on protein sequence databases, such as the UniProtKB database\footnote{\url{https://www.uniprot.org/help/uniprotkb}}.
+The primary structure of a protein is determined by the chain of amino acids
+that form it. This sequence is encoded on the \ac{DNA}, and after the protein
+syntheses is complete it will be inside the protein. The primary structure is
+unique for each protein and can be used to uniquely identify it. For instance,
+the
+\textit{Methionine-Enkephalin}\footnote{\url{https://www.rcsb.org/structure/1plw}}
+(1PLW) is a very simple polypeptide formed by 5 amino acids: Tyrosine, Glycine,
+Glycine, Phenylalanine and Methionine. Using the one letter notation, the
+primary sequence can be presented as YGGFM. This one letter sequence of amino
+acids is available on protein sequence databases, such as the UniProtKB
+database\footnote{\url{https://www.uniprot.org/help/uniprotkb}}.
 
 % Secondary
-The secondary protein structure consists of local patterns occurring on the protein conformation. These patterns are three dimensional and together they are used to assemble the protein. There are 8 accepted protein secondary structures: 3 types of helices, 2 types of sheets, turns, loops and coils~\cite{geourjon1995sopma}.
+The secondary protein structure consists of local patterns occurring on the
+protein conformation. These patterns are three dimensional and together they
+are used to assemble the protein. There are 8 accepted protein secondary
+structures: 3 types of helices, 2 types of sheets, turns, loops and
+coils~\cite{geourjon1995sopma}.
 
 % helices
-The helices can be split into three types: $\alpha$-helix, $3_{10}$-helix and $\pi$-helix. Helices are characterized for having the $i$-th amino acid bonded to the $i+k$-th amino acid, for a sequence of several amino acids. This bond is a hydrogen bond between the amino group of the $i$-th amino acid and the carboxyl group of the $i+k$ amino acid. The values of $k$ vary from 3 to 5, and they determine the type of helix.
+The helices can be split into three types: $\alpha$-helix, $3_{10}$-helix and
+$\pi$-helix. Helices are characterized for having the $i$-th amino acid bonded
+to the $i+k$-th amino acid, for a sequence of several amino acids. This bond is
+a hydrogen bond between the amino group of the $i$-th amino acid and the
+carboxyl group of the $i+k$ amino acid. The values of $k$ vary from 3 to 5, and
+they determine the type of helix.
 
-The more common type of helix is the $\alpha$-helix, which has $k=4$. That is, the amino group of an amino acid is bonded with a hydrogen bond to the carboxyl group of the amino acid four positions (in the primary sequence) after. There are approximately $3.6$ amino acids per $\alpha$-helix turn, as shown in Figure~\ref{fig:alpha-helix}. The secondary chain of the amino acids in this type of helix are located on the outside of the  helix. The amino acids inside this type of helix will have torsion angles close to ($\phi$, $\psi$) = (-58, -47). An $\alpha$-helix can have from only one turn (formed by 4 amino acids) to more than thirty, such as the human keratin (4ZRY).
+The more common type of helix is the $\alpha$-helix, which has $k=4$. That is,
+the amino group of an amino acid is bonded with a hydrogen bond to the carboxyl
+group of the amino acid four positions (in the primary sequence) after. There
+are approximately $3.6$ amino acids per $\alpha$-helix turn, as shown in
+Figure~\ref{fig:alpha-helix}. The secondary chain of the amino acids in this
+type of helix are located on the outside of the  helix. The amino acids inside
+this type of helix will have torsion angles close to ($\phi$, $\psi$) = (-58,
+-47). An $\alpha$-helix can have from only one turn (formed by 4 amino acids)
+to more than thirty, such as the human keratin (4ZRY).
 
 \begin{figure}
     \centering
@@ -159,13 +226,32 @@ The more common type of helix is the $\alpha$-helix, which has $k=4$. That is, t
     \label{fig:alpha-helix}
 \end{figure}
 
-A seldom found type of helix is the $3_{10}$-helix. For this type of helix the amino acids are bonded to the amino acid three positions after. This implies in a helix more densely packed, and thus, less stable. Each turn has $3$ amino acids and the torsion angles are around (-74, -4). A rarer type of helix is the $\pi$-helix, where the hydrogen bonds happens 5 amino acids apart. There, each turn as approximately 4.6 amino acids and the torsion angles are (-57, -70). Accordingly to~\cite{borguesan2015apl}, $\alpha$-helix happens 34.1\% of the time, $3_{10}$-helix less than 1\% of the time and $\pi$-helix about 4\% of the time. Together, the three types of helix makes up for 39.1\% of the secondary structures.
+A seldom found type of helix is the $3_{10}$-helix. For this type of helix the
+amino acids are bonded to the amino acid three positions after. This implies in
+a helix more densely packed, and thus, less stable. Each turn has $3$ amino
+acids and the torsion angles are around (-74, -4). A rarer type of helix is the
+$\pi$-helix, where the hydrogen bonds happens 5 amino acids apart. There, each
+turn as approximately 4.6 amino acids and the torsion angles are (-57, -70).
+Accordingly to~\cite{borguesan2015apl}, $\alpha$-helix happens 34.1\% of the
+time, $3_{10}$-helix less than 1\% of the time and $\pi$-helix about 4\% of the
+time. Together, the three types of helix makes up for 39.1\% of the secondary
+structures.
 
 % Sheets
-Another group of secondary structures are the sheets. They are characterized for mainly for having planar surfaces. There are two types of sheets: $\beta$-strands and $\beta$-sheets. The $\beta$-strands are sequence of usually $3$ to $10$ amino acids with torsion angles of (-135, 135). $\beta$-strands and $\beta$-sheets compose 25.2\% and 1.3\% of the secondary structures.
+Another group of secondary structures are the sheets. They are characterized
+for mainly for having planar surfaces. There are two types of sheets:
+$\beta$-strands and $\beta$-sheets. The $\beta$-strands are sequence of usually
+$3$ to $10$ amino acids with torsion angles of (-135, 135). $\beta$-strands and
+$\beta$-sheets compose 25.2\% and 1.3\% of the secondary structures.
 
-The $\beta$-sheets are formed from 2 or more $\beta$-strands, where each strand bonds the adjacent ones. This bond is a hydrogen bond between the amino and carboxyl groups of the amino acids, which happens in a alternating manner. There are 2 types of $\beta$-sheets: Parallel and Anti Parallel. In the parallel $\beta$-sheets all chains run in the same direction, as seem in Figure~\ref{fig:parallel-beta-sheet}. In the anti parallel $\beta$-sheet the chains
-runs in oposite directions, as represented in Figure~\ref{fig:anti-parallel-beta-sheet}.
+The $\beta$-sheets are formed from 2 or more $\beta$-strands, where each strand
+bonds the adjacent ones. This bond is a hydrogen bond between the amino and
+carboxyl groups of the amino acids, which happens in a alternating manner.
+There are 2 types of $\beta$-sheets: Parallel and Anti Parallel. In the
+parallel $\beta$-sheets all chains run in the same direction, as seem in
+Figure~\ref{fig:parallel-beta-sheet}. In the anti parallel $\beta$-sheet the
+chains runs in oposite directions, as represented in
+Figure~\ref{fig:anti-parallel-beta-sheet}.
 
 \begin{figure}[htbp]
     \centering
@@ -181,12 +267,14 @@ runs in oposite directions, as represented in Figure~\ref{fig:anti-parallel-beta
     \label{fig:anti-parallel-beta-sheet}
 \end{figure}
 
-It is also possible for more than two $\beta$-strands to align forming a bigger structure, called
-pleated sheets. In this structures, several $\beta$-strands of the same alignment (parallel/anti-parallel)
-run along each other. This allows for a $\beta$-strand to connect with the two neighbor $\beta$-strands.
-An example of a anti-parallel pleated sheet in shown in Figure~\ref{fig:pleated-sheet}. It is also
-possible that the ends of the sheet bond to each other while being off-set by a single bond,
-thus making a shape than resembles a cylinder.
+It is also possible for more than two $\beta$-strands to align forming a bigger
+structure, called pleated sheets. In this structures, several $\beta$-strands
+of the same alignment (parallel/anti-parallel) run along each other. This
+allows for a $\beta$-strand to connect with the two neighbor $\beta$-strands.
+An example of a anti-parallel pleated sheet in shown in
+Figure~\ref{fig:pleated-sheet}. It is also possible that the ends of the sheet
+bond to each other while being off-set by a single bond, thus making a shape
+than resembles a cylinder.
 
 \begin{figure}[htpb]
     \centering
@@ -196,16 +284,31 @@ thus making a shape than resembles a cylinder.
 \end{figure}
 
 % other stuff (coils, turns and loops)
-Finally, when there are no recurrent patterns on the secondary structure, it can be either a loop, turn or a coil. A loop is a sequence of amino acids that holds two helix or $\beta$-sheets together. If a loop is short and makes a quick $180^\circ$ it is called a turn. If the amino acid sequence is located at the start or the end of a protein, then it is called a coil. Turns and loops represent 19.1\% of the secondary structures while coils represent 16.3\%.
+Finally, when there are no recurrent patterns on the secondary structure, it
+can be either a loop, turn or a coil. A loop is a sequence of amino acids that
+holds two helix or $\beta$-sheets together. If a loop is short and makes a
+quick $180^\circ$ it is called a turn. If the amino acid sequence is located at
+the start or the end of a protein, then it is called a coil. Turns and loops
+represent 19.1\% of the secondary structures while coils represent 16.3\%.
 
 % Tertiary
-The tertiary structure is the three dimensional configuration of the amino acids of a given protein. It can be also referenced as the native conformation. The tertiary structure of a protein is directly dependant on the primary structure. Also, the functionality of the protein is dependent on the tertiary structure. A fact that rises the importance of being able to determine the native conformation of a protein.
+The tertiary structure is the three dimensional configuration of the amino
+acids of a given protein. It can be also referenced as the native conformation.
+The tertiary structure of a protein is directly dependant on the primary
+structure. Also, the functionality of the protein is dependent on the tertiary
+structure. A fact that rises the importance of being able to determine the
+native conformation of a protein.
 
-While the secondary structure references amino acids only locally, on the tertiary structure all amino acids are relevant to the final structure.
-Figure~\ref{fig:1ctf} shows a ribosomal protein of the Escherichia Coli (1CTF)\footnote{http://www.rcsb.org/structure/1CTF} composed by 74 residues.
-The figure shows the native conformation of the protein, i.e. its tertiary structure. It also shows grouped in colors the secondary structures. The $\alpha$-helices are
-presented in pink, $\beta$-sheets are presented in yellow and white denotes
-coils. The combination of the secondary structures assemble the tertiary structure. Furthermore, the tertiary structure describes how each secondary structure relates to each other.
+While the secondary structure references amino acids only locally, on the
+tertiary structure all amino acids are relevant to the final structure.
+Figure~\ref{fig:1ctf} shows a ribosomal protein of the Escherichia Coli
+(1CTF)\footnote{http://www.rcsb.org/structure/1CTF} composed by 74 residues.
+The figure shows the native conformation of the protein, i.e. its tertiary
+structure. It also shows grouped in colors the secondary structures. The
+$\alpha$-helices are presented in pink, $\beta$-sheets are presented in yellow
+and white denotes coils. The combination of the secondary structures assemble
+the tertiary structure. Furthermore, the tertiary structure describes how each
+secondary structure relates to each other.
 
 \begin{figure}[htbp]
     \centering
@@ -214,10 +317,17 @@ coils. The combination of the secondary structures assemble the tertiary structu
     \label{fig:1ctf}
 \end{figure}
 
-% Levintal's paradox describes a seemingly paradoxical situation where the protein 
+% Levintal's paradox describes a seemingly paradoxical situation where the protein
 
 % Quaternary
-There are certain groups of proteins that on its own are not able to exercise its function. They need to be combined in pairs or even in bigger numbers. This agglomeration of proteins is the quaternary structure, present in some (groups of) proteins. A well know protein with a quaternary structure is the human hemoglobin (1A3N)\footnote{\url{https://www.rcsb.org/structure/1a3n}}, formed by 4 proteins. Figure~\ref{fig:human-hemoglobin} shows the assembly of four proteins, the green point at the center shows a point of rotational symmetry between the proteins.
+There are certain groups of proteins that on its own are not able to exercise
+its function. They need to be combined in pairs or even in bigger numbers. This
+agglomeration of proteins is the quaternary structure, present in some (groups
+of) proteins. A well know protein with a quaternary structure is the human
+hemoglobin (1A3N)\footnote{\url{https://www.rcsb.org/structure/1a3n}}, formed
+by 4 proteins. Figure~\ref{fig:human-hemoglobin} shows the assembly of four
+proteins, the green point at the center shows a point of rotational symmetry
+between the proteins.
 
 \begin{figure}
     \centering
@@ -230,12 +340,39 @@ There are certain groups of proteins that on its own are not able to exercise it
 \label{sec:secondary-structure-prediction}
 %Secondary protein structure prediction problem
 
-As previous shown on Section \ref{sec:protein-structures}, the secondary structure plays a significant role in describing the native conformation of a given protein. While not enough on its on, knowing in advance the secondary structure of a protein allows one to work on how the groups of amino acids in each substructure relates to each other instead of having to figure out how all amino acids relates to each other. Therefore, knowing, even only approximately, the secondary structure of a protein is a very important asset during the process of predicting the tertiary structure.
+As previous shown on Section \ref{sec:protein-structures}, the secondary
+structure plays a significant role in describing the native conformation of a
+given protein. While not enough on its on, knowing in advance the secondary
+structure of a protein allows one to work on how the groups of amino acids in
+each substructure relates to each other instead of having to figure out how all
+amino acids relates to each other. Therefore, knowing, even only approximately,
+the secondary structure of a protein is a very important asset during the
+process of predicting the tertiary structure.
 
-Currently, there is no \textit{in vitro} method of determining only the secondary structures of a protein. However, it is possible to employ mathematical and computational methods. Considering that some amino acids have more propensity of forming certain secondary structures, it is possible to conduct an statistical analysis in order to assess the likelihood of an amino acid forming a particular structure. This kind of analysis has been done
+Currently, there is no \textit{in vitro} method of determining only the
+secondary structures of a protein. However, it is possible to employ
+mathematical and computational methods. Considering that some amino acids have
+more propensity of forming certain secondary structures, it is possible to
+conduct an statistical analysis in order to assess the likelihood of an amino
+acid forming a particular structure. This kind of analysis has been done
 in~\cite{dunbrack1993backbone} and~\cite{borguesan2015apl}.
 
-Given the number of proteins with a known structure, it is possible to use data mining and artificial intelligence methods for predicting the secondary structure. This approach is the more explored one so far. In~\cite{wang2016protein} the authors used deep neural networks for predicting the secondary structure. Feed forward neural networks were used in~\cite{meng2016computational}. In~\cite{kathuria2018predicting} the authors employed random forests to predict the secondary structure. In~\cite{baldi1999exploiting} the authors used recurrent neural networks. In~\cite{kim2018dihedral} the use of generative adversarial networks was explored to predict the dihedral angles of the secondary structures. In~\cite{pollastri2002improving} and~\cite{mcguffin2000psipred} the authors used the output of (multiple) sequence alignment algorithms as the input of simple feed forward neural networks. These two implementation were ranked top in the \ac{CASP}~\cite{moult1999critical} and are still largely used to this date. More details on secondary structure prediction are available in~\cite{jiang2017protein}.
+Given the number of proteins with a known structure, it is possible to use data
+mining and artificial intelligence methods for predicting the secondary
+structure. This approach is the more explored one so far.
+In~\cite{wang2016protein} the authors used deep neural networks for predicting
+the secondary structure. Feed forward neural networks were used
+in~\cite{meng2016computational}. In~\cite{kathuria2018predicting} the authors
+employed random forests to predict the secondary structure.
+In~\cite{baldi1999exploiting} the authors used recurrent neural networks.
+In~\cite{kim2018dihedral} the use of generative adversarial networks was
+explored to predict the dihedral angles of the secondary structures.
+In~\cite{pollastri2002improving} and~\cite{mcguffin2000psipred} the authors
+used the output of (multiple) sequence alignment algorithms as the input of
+simple feed forward neural networks. These two implementation were ranked top
+in the \ac{CASP}~\cite{moult1999critical} and are still largely used to this
+date. More details on secondary structure prediction are available
+in~\cite{jiang2017protein}.
 
 
 \section{Protein Structure Prediction}
@@ -243,61 +380,196 @@ Given the number of proteins with a known structure, it is possible to use data 
 \label{sec:pspp}
 \label{sec:protein-structure}
 
-%In contrast to the methods presented in Section~\ref{sec:protein-structure}, \textit{in silico} methods required only information that is more easily and fastly obtainable. At this point, however, they are not viable for larger (more than 100 amino acids) proteins. Nevertheless, a significant effort has been put into improving the current methods.
+%In contrast to the methods presented in Section~\ref{sec:protein-structure},
+%\textit{in silico} methods required only information that is more easily and
+%fastly obtainable. At this point, however, they are not viable for larger
+%(more than 100 amino acids) proteins. Nevertheless, a significant effort has
+%been put into improving the current methods.
 
-%In this section it is presented topics on protein computational representation, on and off lattice models and the main prediction methods are presented as well.
+%In this section it is presented topics on protein computational
+%representation, on and off lattice models and the main prediction methods are
+%presented as well.
 
-%\subsection{Protein Representation}
-%\label{sec:protein-representation}
-% on and off lattice
+%\subsection{Protein Representation} \label{sec:protein-representation} on and
+%off lattice
 
-In a laboratory environment, i.e. \textit{in vitro}, it is possible to determine the native conformation of a given protein using mainly two methods. The first method is know as X-Rays crystallography~\cite{nelson2008lehninger}. Overall, the X-Ray crystallography has a better quality in the data generated, however, it can only work on crystallized structures. Due to this fact, it is possible that during the process of crystallization of a given protein sample it crystallizes in a conformation that is not exactly its native one. Proteins \textit{in natura} are dynamic molecules, that can vibrate and tumble around. This property is lost when using X-Ray crystallography.
+In a laboratory environment, i.e. \textit{in vitro}, it is possible to
+determine the native conformation of a given protein using mainly two methods.
+The first method is know as X-Rays crystallography~\cite{nelson2008lehninger}.
+Overall, the X-Ray crystallography has a better quality in the data generated,
+however, it can only work on crystallized structures. Due to this fact, it is
+possible that during the process of crystallization of a given protein sample
+it crystallizes in a conformation that is not exactly its native one. Proteins
+\textit{in natura} are dynamic molecules, that can vibrate and tumble around.
+This property is lost when using X-Ray crystallography.
 
-The other more recent method is ~\ac{NMR}~\cite{nelson2008lehninger}. This method has a slighter lesser accuracy, however, it can work with proteins in an aqueous environment. Thus, having a trade off that can offset the downsides of X-Ray crystallography. Nevertheless, both methods are error prone, possibly outputting noisy data. They also are expensive and take a considerable human effort and economic resources to be utilized.
-Thus the need for a \textit{in silico} method of determining/predicting the protein structure.
+The other more recent method is ~\ac{NMR}~\cite{nelson2008lehninger}. This
+method has a slighter lesser accuracy, however, it can work with proteins in an
+aqueous environment. Thus, having a trade off that can offset the downsides of
+X-Ray crystallography. Nevertheless, both methods are error prone, possibly
+outputting noisy data. They also are expensive and take a considerable human
+effort and economic resources to be utilized.  Thus the need for a \textit{in
+silico} method of determining/predicting the protein structure.
 
-The process of predicting the structure of a protein requires that it be represented computationally in some way. The folding process \textit{in natura} happens very fast, spontaneously and in a continuous environment. However, in order to represent the protein computationally, some trade off is required between level of detail and processing power required. Arguably the main division between the models are the on lattice models and the off lattice models.
+The process of predicting the structure of a protein requires that it be
+represented computationally in some way. The folding process \textit{in natura}
+happens very fast, spontaneously and in a continuous environment. However, in
+order to represent the protein computationally, some trade off is required
+between level of detail and processing power required. Arguably the main
+division between the models are the on lattice models and the off lattice
+models.
 
-The on lattice model, as the name implies, are models where the structures are constrained to a lattice. Possibly the simplest model is the 2D \ac{HP} Model. It is composed of points representing the amino acids, which can be either hydrophobic or polar and are constrained to a 2D quadrilateral lattice. Despite its simplicity, this model is already $\mathcal{NP}$-complete~\cite{berger1998protein}. A 3D approach to a \ac{FCC} lattice is presented in~\cite{hoque2007protein}, which also is a $\mathcal{NP}$-complete problem. A triangular lattice approach is studied in~\cite{agarwala1997local} in two and three dimensions. At the time of the publication it was not know if that particular model was a $\mathcal{NP}$-complete problem, latter it was proved to be. In fact, as demonstrated by~\cite{hart1997robust}, the protein structure prediction problem is $\mathcal{NP}$-complete regardless of the lattice used to represent it.
+The on lattice model, as the name implies, are models where the structures are
+constrained to a lattice. Possibly the simplest model is the 2D \ac{HP} Model.
+It is composed of points representing the amino acids, which can be either
+hydrophobic or polar and are constrained to a 2D quadrilateral lattice. Despite
+its simplicity, this model is already
+$\mathcal{NP}$-complete~\cite{berger1998protein}. A 3D approach to a \ac{FCC}
+lattice is presented in~\cite{hoque2007protein}, which also is a
+$\mathcal{NP}$-complete problem. A triangular lattice approach is studied
+in~\cite{agarwala1997local} in two and three dimensions. At the time of the
+publication it was not know if that particular model was a
+$\mathcal{NP}$-complete problem, latter it was proved to be. In fact, as
+demonstrated by~\cite{hart1997robust}, the protein structure prediction problem
+is $\mathcal{NP}$-complete regardless of the lattice used to represent it.
 
 % explain off lattice models
-Despite the on lattice model simplicity, it still is an intractable problem on large scale due to its $\mathcal{NP}$-completeness. Furthermore, from a practical point of view, these models can not represent a protein with enough details to be able to replace an \textit{in vitro} method for determining the protein structure. Therefore, a more robust representation is required. This higher representation power is possible using off lattice models, that is, a model that is not constrained by a lattice.
+Despite the on lattice model simplicity, it still is an intractable problem on
+large scale due to its $\mathcal{NP}$-completeness. Furthermore, from a
+practical point of view, these models can not represent a protein with enough
+details to be able to replace an \textit{in vitro} method for determining the
+protein structure. Therefore, a more robust representation is required. This
+higher representation power is possible using off lattice models, that is, a
+model that is not constrained by a lattice.
 
-What can possible be considered the simplest model is the AB Off lattice model, which represents the amino acids as spheres that are either hydrophobic or polar, and the angles between them are not constrained~\cite{berger1998protein}.
-A more detailed model consists of using the coordinates of the $C_\alpha$. In this model the amino acids are abstracted into spheres, however, they maintain their properties such as polarity and hydrophobicity, allowing for a increased level of detail. It is possible to represent each of the amino acid heavy atoms (Nitrogen, Carbon and Oxygen) individually, instead of using an sphere to represent the whole amino acid. This model allows for interactions between individual atoms in the  backbone to be considered during the prediction.
+What can possible be considered the simplest model is the AB Off lattice model,
+which represents the amino acids as spheres that are either hydrophobic or
+polar, and the angles between them are not
+constrained~\cite{berger1998protein}.  A more detailed model consists of using
+the coordinates of the $C_\alpha$. In this model the amino acids are abstracted
+into spheres, however, they maintain their properties such as polarity and
+hydrophobicity, allowing for a increased level of detail. It is possible to
+represent each of the amino acid heavy atoms (Nitrogen, Carbon and Oxygen)
+individually, instead of using an sphere to represent the whole amino acid.
+This model allows for interactions between individual atoms in the  backbone to
+be considered during the prediction.
 
-Evolving even more the level of detail, it is possible to represent all atoms in the backbone, including the Hydrogen atoms. This permits that hydrogen bonds be taken into account, which plays a significant
-role in the formation of secondary structures and in the interactions between them. Furthermore, it is possible to include an ellipsoid (also called centroid) to describe the amino acid side chain. With this, the shape of each amino acid also can be considered when predicting the three dimensional structure of the protein.
+Evolving even more the level of detail, it is possible to represent all atoms
+in the backbone, including the Hydrogen atoms. This permits that hydrogen bonds
+be taken into account, which plays a significant role in the formation of
+secondary structures and in the interactions between them. Furthermore, it is
+possible to include an ellipsoid (also called centroid) to describe the amino
+acid side chain. With this, the shape of each amino acid also can be considered
+when predicting the three dimensional structure of the protein.
 
-To fully represent the protein, there are two main models. Backbone and side chain torsion angles and all atoms coordinates~\cite{rohl2004protein}.
-The former describes all atoms in the protein, including the side chain. However, the bond length between these atoms are fixed as well as the position of the hydrogen atoms. This model is enough to describe the protein very accurately and to take into account most of its interactions. Nevertheless, since artificial constrains are imposed in the model, it is possible that some proteins can not be correctly predicted because it depends on one of the aspects that the model removed. For this reason the all atom coordinates model can be employed. In this model all atoms are considered and have all their degrees of freedom. Currently, this model is the most accurate one, at the expense of adding up a hundred variables per amino acid.
+To fully represent the protein, there are two main models. Backbone and side
+chain torsion angles and all atoms coordinates~\cite{rohl2004protein}.  The
+former describes all atoms in the protein, including the side chain. However,
+the bond length between these atoms are fixed as well as the position of the
+hydrogen atoms. This model is enough to describe the protein very accurately
+and to take into account most of its interactions. Nevertheless, since
+artificial constrains are imposed in the model, it is possible that some
+proteins can not be correctly predicted because it depends on one of the
+aspects that the model removed. For this reason the all atom coordinates model
+can be employed. In this model all atoms are considered and have all their
+degrees of freedom. Currently, this model is the most accurate one, at the
+expense of adding up a hundred variables per amino acid.
 
 \subsection{Ab Initio Methods}\label{sec:ab-initio}
 
 One of the main class of protein prediction algorithms are the ab initio
-methods~\cite{lee2017ab}. From the Latin, ab initio means \textit{first principles}. These methods are called as such because they work based only on a primordial aspect of the proteins: They are physicochemical objects. And as such, they follow well know rules.
+methods~\cite{lee2017ab}. From the Latin, ab initio means \textit{first
+principles}. These methods are called as such because they work based only on a
+primordial aspect of the proteins: They are physicochemical objects. And as
+such, they follow well know rules.
 
-The information about the physical and chemical properties from the proteins are encoded on the protein representation as discussed on Section~\ref{sec:pspp}. Its interactions are evaluated by energy functions (or scoring functions). A given protein \textit{in natura} seeks its point of least potential energy~\cite{anfinsen1973principles}. Based on this fact, an energy function for an \textit{ab initio} method tries to evaluate the potential energy of a given conformation. Then, with a search procedure it is (theoretically) possible to find its point of least potential energy, which should be at least close to its respective native conformation. In other words, \textit{ab initio} methods can be seem as an optimization problem where the objective function is the energy function of the protein and
-its variables are the degrees of freedom from its computational representation.
+The information about the physical and chemical properties from the proteins
+are encoded on the protein representation as discussed on
+Section~\ref{sec:pspp}. Its interactions are evaluated by energy functions (or
+scoring functions). A given protein \textit{in natura} seeks its point of least
+potential energy~\cite{anfinsen1973principles}. Based on this fact, an energy
+function for an \textit{ab initio} method tries to evaluate the potential
+energy of a given conformation. Then, with a search procedure it is
+(theoretically) possible to find its point of least potential energy, which
+should be at least close to its respective native conformation. In other words,
+\textit{ab initio} methods can be seem as an optimization problem where the
+objective function is the energy function of the protein and its variables are
+the degrees of freedom from its computational representation.
 
 % present some energy functions
 There are several energy functions in the literature which allows for an
-\textit{ab initio} approach, such as the \ac{AMBER}, \ac{GROMOS}, \ac{CHARMM} e Rosetta.
-The \ac{AMBER}~\cite{salomon2013overview} package contains a set of scoring functions based only on the potential energy of proteins (and other molecules). Its original use was intended for molecular dynamics simulations. However, its is possible to use it just to score a given conformation. Another package which offers energy functions for proteins is \ac{CHARMM}~\cite{brooks2009charmm}. Similar to \ac{AMBER}, it is also primarily intended for molecular dynamics simulations for several organic molecules of interest. Nevertheless, its scoring can be used for \textit{ab initio} methods. The \ac{GROMOS} package~\cite{eichenberger2011gromos++} also intended for molecular dynamics simulations can provide energy scoring of protein conformations. A more detailed discussion of the energy functions is available at~\cite{dorn2014three}. In~\cite{narloch2016diversification} explored the differences between \ac{AMBER}, \ac{CHARMM} and Rosetta. A further discussion on energy fields (from molecular dynamic packages) can be found in~\cite{vlachakis2014current}.
+\textit{ab initio} approach, such as the \ac{AMBER}, \ac{GROMOS}, \ac{CHARMM} e
+Rosetta.  The \ac{AMBER}~\cite{salomon2013overview} package contains a set of
+scoring functions based only on the potential energy of proteins (and other
+molecules). Its original use was intended for molecular dynamics simulations.
+However, its is possible to use it just to score a given conformation. Another
+package which offers energy functions for proteins is
+\ac{CHARMM}~\cite{brooks2009charmm}. Similar to \ac{AMBER}, it is also
+primarily intended for molecular dynamics simulations for several organic
+molecules of interest. Nevertheless, its scoring can be used for \textit{ab
+initio} methods. The \ac{GROMOS} package~\cite{eichenberger2011gromos++} also
+intended for molecular dynamics simulations can provide energy scoring of
+protein conformations. A more detailed discussion of the energy functions is
+available at~\cite{dorn2014three}. In~\cite{narloch2016diversification}
+explored the differences between \ac{AMBER}, \ac{CHARMM} and Rosetta. A further
+discussion on energy fields (from molecular dynamic packages) can be found
+in~\cite{vlachakis2014current}.
 
-Several energy functions are used in the literature. The Rosetta suite~\cite{rohl2004protein,kaufmann2010practically} contains multiple energy functions for all atom coordinates models, backbone and side chain torsion angles and backbone torsion angles with centroids for the side chains. This suite also allows for the customization and creation of new energy functions. The energy functions there consider both the physicochemical properties of the protein as well as its statistical nature, based on a knowledge database with propensities of each amino acids. Information regarding the compactness of the structure and other properties such as the formation of side chain structures are also computed. This removes the possibility of scoring the protein with an physical unit of measurement. Instead, the energy functions are measured by the \ac{REU}. More information about the information considered is available in~\cite{alford2017rosetta}.
+Several energy functions are used in the literature. The Rosetta
+suite~\cite{rohl2004protein,kaufmann2010practically} contains multiple energy
+functions for all atom coordinates models, backbone and side chain torsion
+angles and backbone torsion angles with centroids for the side chains. This
+suite also allows for the customization and creation of new energy functions.
+The energy functions there consider both the physicochemical properties of the
+protein as well as its statistical nature, based on a knowledge database with
+propensities of each amino acids. Information regarding the compactness of the
+structure and other properties such as the formation of side chain structures
+are also computed. This removes the possibility of scoring the protein with an
+physical unit of measurement. Instead, the energy functions are measured by the
+\ac{REU}. More information about the information considered is available
+in~\cite{alford2017rosetta}.
 
 % Briefly present the optimizers
-With an energy function for scoring the protein conformations, it is possible to employ an optimizer in order to search for an conformation of least potential energy. This procedure must sample the conformation space accessible from the computational representation of a given protein. A vast range of methods has been employed over the years in the literature. In~\cite{li1987monte} a Monte Marlo based search is used to optimize a set of dihedral angles. Basin-hopping is a method where a random perturbation is applied to the conformation and then a hill-climbing type of algorithm is employed to find a local minima. It has been used in~\cite{prentiss2008protein} and~\cite{olson2012efficient}.
+With an energy function for scoring the protein conformations, it is possible
+to employ an optimizer in order to search for an conformation of least
+potential energy. This procedure must sample the conformation space accessible
+from the computational representation of a given protein. A vast range of
+methods has been employed over the years in the literature.
+In~\cite{li1987monte} a Monte Marlo based search is used to optimize a set of
+dihedral angles. Basin-hopping is a method where a random perturbation is
+applied to the conformation and then a hill-climbing type of algorithm is
+employed to find a local minima. It has been used in~\cite{prentiss2008protein}
+and~\cite{olson2012efficient}.
 
-One particular branch of algorithms that have been used extensively in the literature are bio inspired algorithms. The more well established algorithms are present in the literature, such as the
-\ac{PSO}~\cite{geng2017protein}, \ac{DE}~\cite{hao2017conformational} and the \ac{GA}~\cite{higgs2010genetic}. Other algorithms that are not so widely used have been also explored for the \ac{PSPP} such as the Cucko Search (CS)~\cite{ramyachitra2017modcsa} and the Bee Colony Algorithm~\cite{li2015balance}. This topic is explored in further detail in Section~\ref{sec:bioinspired}.
+One particular branch of algorithms that have been used extensively in the
+literature are bio inspired algorithms. The more well established algorithms
+are present in the literature, such as the \ac{PSO}~\cite{geng2017protein},
+\ac{DE}~\cite{hao2017conformational} and the \ac{GA}~\cite{higgs2010genetic}.
+Other algorithms that are not so widely used have been also explored for the
+\ac{PSPP} such as the Cucko Search (CS)~\cite{ramyachitra2017modcsa} and the
+Bee Colony Algorithm~\cite{li2015balance}. This topic is explored in further
+detail in Section~\ref{sec:bioinspired}.
 
 \subsubsection{The Rosetta Suite} \label{sec:rosetta}
 
-Practically, working with an \textit{ab initio} method is very time consuming, due to the high amount of boilerplate code required to be able to model the protein and its molecular dynamics from scratch. Furthermore, this process is also very error prone. The Rosetta Suite~\cite{rohl2004protein} introduces a robust and validated suite for working with proteins and other macromolecules. It also includes multiple utilities for manipulating, pre-processing and post-processing the protein conformations in a pipeline. The Rosetta Suite is free for academic use, open-source and is available at \url{https://www.rosettacommons.org/}.
+Practically, working with an \textit{ab initio} method is very time consuming,
+due to the high amount of boilerplate code required to be able to model the
+protein and its molecular dynamics from scratch. Furthermore, this process is
+also very error prone. The Rosetta Suite~\cite{rohl2004protein} introduces a
+robust and validated suite for working with proteins and other macromolecules.
+It also includes multiple utilities for manipulating, pre-processing and
+post-processing the protein conformations in a pipeline. The Rosetta Suite is
+free for academic use, open-source and is available at
+\url{https://www.rosettacommons.org/}.
 
-One of the tools available at Rosetta and required for this work is fragment insertion. A fragment consists of a sequence of continuous amino acids at a specific configuration extracted from some protein of known structure. This sequence must fully match to some continuous sequence of amino acids in the target protein, where the structure is not yet known. The purpose of this is to use multiple fragments as building blocks. It is worth noting that fragments from homologous structures are removed, as for to remove the potential sampling from the same protein from another organism for example.
+One of the tools available at Rosetta and required for this work is fragment
+insertion. A fragment consists of a sequence of continuous amino acids at a
+specific configuration extracted from some protein of known structure. This
+sequence must fully match to some continuous sequence of amino acids in the
+target protein, where the structure is not yet known. The purpose of this is to
+use multiple fragments as building blocks. It is worth noting that fragments
+from homologous structures are removed, as for to remove the potential sampling
+from the same protein from another organism for example.
 
 The process of creating a set of fragments for a particular target protein
 is required to be run only once per target and per fragment size. Two sizes of
@@ -308,44 +580,92 @@ non redundant protein conformations and sampling it in order to assemble
 fragments. More information about the inner workings of the Rosetta Fragment
 Picker is available at~\cite{gront2011generalized}.
 
-Rosetta includes two fragment insertion operators (called \textit{movers} in Rosetta). One is the classical\footnote{Found in Rosetta as ClassicFragmentInsertion} fragment insertion and the other operator is the
-smooth\footnote{Found in Rosetta as SmoothFragmentInsertion} fragment insertion. The classical operator simply replaces one portion of the protein with its respective fragment. This change can be very aggressive and have a high changing impact on the protein conformation. Due to the high impact of this operator, there is a high chance that the
-operator will produce a conformation with a worse energy score, and therefore
-be rejected if used under a \ac{MC} search.
+Rosetta includes two fragment insertion operators (called \textit{movers} in
+Rosetta). One is the classical\footnote{Found in Rosetta as
+ClassicFragmentInsertion} fragment insertion and the other operator is the
+smooth\footnote{Found in Rosetta as SmoothFragmentInsertion} fragment
+insertion. The classical operator simply replaces one portion of the protein
+with its respective fragment. This change can be very aggressive and have a
+high changing impact on the protein conformation. Due to the high impact of
+this operator, there is a high chance that the operator will produce a
+conformation with a worse energy score, and therefore be rejected if used under
+a \ac{MC} search.
 
-The smooth fragment insertion applies a classic fragment insertion
-followed by a second fragment insertion that tries to minimize the
-Gunn Cost~\cite{gunn1997sampling}. The Gunn Cost measures the amount of change in a conformation due to the arm lever effect. That is, the further away from
-the insertion point an amino acid is, the more it will move. Since
-the smooth fragment insertion tends to negate some of the change it will
-preserve some of the structure of the protein, leading to a more localized change in the conformation. It is worth noting that the smooth fragment insertion is an optimization problem as well, which minimizes the Gunn Cost.
-Since this operator tries to minimize the amount of change by its application,
-the impact on the energy score will be smaller, leading to smaller and more refined changes. This, under a \ac{MC} situation will potentially lead to a higher acceptance rate.
+The smooth fragment insertion applies a classic fragment insertion followed by
+a second fragment insertion that tries to minimize the Gunn
+Cost~\cite{gunn1997sampling}. The Gunn Cost measures the amount of change in a
+conformation due to the arm lever effect. That is, the further away from the
+insertion point an amino acid is, the more it will move. Since the smooth
+fragment insertion tends to negate some of the change it will preserve some of
+the structure of the protein, leading to a more localized change in the
+conformation. It is worth noting that the smooth fragment insertion is an
+optimization problem as well, which minimizes the Gunn Cost.  Since this
+operator tries to minimize the amount of change by its application, the impact
+on the energy score will be smaller, leading to smaller and more refined
+changes. This, under a \ac{MC} situation will potentially lead to a higher
+acceptance rate.
 
 \subsection{Knowledge Based Methods}
 
 % Why use it
-Due to the limitation that \textit{ab initio} methods currently have, other methods have been utilized in the literature with greater success. These two methods are the \ac{TM} Methods~\cite{dorn2014three} and \ac{HM} Methods~\cite{leach2001molecular}. Contrary to the \textit{ab initio} methods, these two methods require previous information to be available in order to be successful.
+Due to the limitation that \textit{ab initio} methods currently have, other
+methods have been utilized in the literature with greater success. These two
+methods are the \ac{TM} Methods~\cite{dorn2014three} and \ac{HM}
+Methods~\cite{leach2001molecular}. Contrary to the \textit{ab initio} methods,
+these two methods require previous information to be available in order to be
+successful.
 
 %Threading
-\ac{TM} assumes that protein structure is, to some degree, preserved during the evolution of organisms. Therefore, proteins with a certain degree of difference in the primary sequence may have a very similar tertiary structure. A set of template proteins is used as to represent the conformation space. Then, the amino acid sequence of the target and template protein are aligned in order to fit the target protein into the template. Then, the model is refined and the final prediction is then output. In the event of the target protein having the same overall fold as the template, the prediction can achieve very high levels of accuracy. However, if a suitable template can not be found, the prediction will be of poor quality. This is one of the main downsides of the \ac{TM} method. It requires a suitable template. Nevertheless, \ac{TM} has had the best results in recent \ac{CASP} events~\cite{moult2018critical}.
+\ac{TM} assumes that protein structure is, to some degree, preserved during the
+evolution of organisms. Therefore, proteins with a certain degree of difference
+in the primary sequence may have a very similar tertiary structure. A set of
+template proteins is used as to represent the conformation space. Then, the
+amino acid sequence of the target and template protein are aligned in order to
+fit the target protein into the template. Then, the model is refined and the
+final prediction is then output. In the event of the target protein having the
+same overall fold as the template, the prediction can achieve very high levels
+of accuracy. However, if a suitable template can not be found, the prediction
+will be of poor quality. This is one of the main downsides of the \ac{TM}
+method. It requires a suitable template. Nevertheless, \ac{TM} has had the best
+results in recent \ac{CASP} events~\cite{moult2018critical}.
 
 %Homology
-\ac{HM} is to an extent similar to \ac{TM}. However, while \ac{TM} relies on potential evolutionary similarities between proteins, HM expects homologous (similar primary sequence) to have similar tertiary structures. Thus, HM depends on the existence of a protein with a sufficient degree of similarity. If such protein exists (and has its native conformation available) then it is possible to arrive a high degrees of accuracy.
+\ac{HM} is to an extent similar to \ac{TM}. However, while \ac{TM} relies on
+potential evolutionary similarities between proteins, HM expects homologous
+(similar primary sequence) to have similar tertiary structures. Thus, HM
+depends on the existence of a protein with a sufficient degree of similarity.
+If such protein exists (and has its native conformation available) then it is
+possible to arrive a high degrees of accuracy.
 
 % downsides
-Both \ac{TM} HM require that a suitable known protein to exist to be used as template. Either one with evolutionary similarity for \ac{TM} a homologous protein for HM. If such proteins do exist, then these methods will have a very high chance of outperforming \textit{ab initio} methods. However, as the degree of similarity decays so does the performance of the method. At this point \textit{ab initio} methods have a chance of outperforming knowledge based methods.
+Both \ac{TM} HM require that a suitable known protein to exist to be used as
+template. Either one with evolutionary similarity for \ac{TM} a homologous
+protein for HM. If such proteins do exist, then these methods will have a very
+high chance of outperforming \textit{ab initio} methods. However, as the degree
+of similarity decays so does the performance of the method. At this point
+\textit{ab initio} methods have a chance of outperforming knowledge based
+methods.
 
 \subsection{Evaluating Protein Errors}\label{sec:protein-metrics}
 
-Regardless of the method being used for predicting the protein structure,
-in order to conduct research in this area it is necessary to measure error
-in the prediction. Error measurement has been an active sub area of research
-in the \ac{PSP} field, with dozen of such metrics being proposed since the
-\ac{PSP} started to grow in interest~\cite{xu2010significant,zhang2005tm,siew2000maxsub}.
-Different metrics focus on different aspects of the prediction, and while they should be somewhat directly correlated between then it is possible that different metrics do not always agree on the quality of a prediction. Therefore, it is important to know the metrics and how they can evaluate a prediction.
+Regardless of the method being used for predicting the protein structure, in
+order to conduct research in this area it is necessary to measure error in the
+prediction. Error measurement has been an active sub area of research in the
+\ac{PSP} field, with dozen of such metrics being proposed since the \ac{PSP}
+started to grow in
+interest~\cite{xu2010significant,zhang2005tm,siew2000maxsub}.  Different
+metrics focus on different aspects of the prediction, and while they should be
+somewhat directly correlated between then it is possible that different metrics
+do not always agree on the quality of a prediction. Therefore, it is important
+to know the metrics and how they can evaluate a prediction.
 
-Currently, when conducting a research, the main way of measuring error is to compare the predicted structure against the one that was found \textit{in vitro}. With this, it is possible to measure how far (or close) a prediction is from the ground truth. This approach, however, has some flaws. The main one is that determining the protein structure \textit{in vitro} has an error margin. That is, the native conformation found by \ac{NMR} and X-Rays crystallography methods has a finite resolution, typically in the order
+Currently, when conducting a research, the main way of measuring error is to
+compare the predicted structure against the one that was found \textit{in
+vitro}. With this, it is possible to measure how far (or close) a prediction is
+from the ground truth. This approach, however, has some flaws. The main one is
+that determining the protein structure \textit{in vitro} has an error margin.
+That is, the native conformation found by \ac{NMR} and X-Rays crystallography
+methods has a finite resolution, typically in the order
 of 1 to 3 Angstroms. Due to that, getting and error too low is rather
 pointless, since instead of measuring against the native conformation
 it would be measuring against the method itself. Other point that is
@@ -367,28 +687,63 @@ This variation occurs dues to the reasons listed above.
     \label{fig:protein-error}
 \end{figure}
 
-Possibly the most well known protein prediction measuring method is the \ac{RMSD}. It is typically applied to the alpha carbons, and thus only measuring the error in the backbone. However, it can also be applied to all atoms in the protein. The formula for the \ac{RMSD} is shown in Equation~\eqref{eq:rmsd}. As the name suggests, the \ac{RMSD} is calculated as the Square Root of the mean from the squared deviation.
+Possibly the most well known protein prediction measuring method is the
+\ac{RMSD}. It is typically applied to the alpha carbons, and thus only
+measuring the error in the backbone. However, it can also be applied to all
+atoms in the protein. The formula for the \ac{RMSD} is shown in
+Equation~\eqref{eq:rmsd}. As the name suggests, the \ac{RMSD} is calculated as
+the Square Root of the mean from the squared deviation.
 
-%\textbf{REVEJA ESTAS EQUAÇÕES, PRINCIPALMENTE ONDE APARECEM RAIZ QUADRADA E DIVISÕES.}
-%\textcolor{red}{O q exatamente é pra rever?}
+%\textbf{REVEJA ESTAS EQUAÇÕES, PRINCIPALMENTE ONDE APARECEM RAIZ QUADRADA E
+%DIVISÕES.} \textcolor{red}{O q exatamente é pra rever?}
 
-\begin{equation}
-	RMSD (A, B) = \sqrt[2]{\frac{\sum^{n}_{i = 1}{(A_i - B_i)^2}}{n}}
-    \label{eq:rmsd}
-\end{equation}
+\begin{equation} RMSD (A, B) = \sqrt[2]{\frac{\sum^{n}_{i = 1}{(A_i -
+B_i)^2}}{n}} \label{eq:rmsd} \end{equation}
 
-The fact that the deviation is squared and averaged leads to some downsides in this measurement method. Firstly, a bigger protein can have a much higher error due to the deviations being squared over the number of atoms being considered. This makes the comparison of prediction quality between different proteins impractical. For example, an error of $4{\AA}$ in a 50 residue protein is different from $4{\AA}$ in a 150 residue protein. Furthermore, since the deviation is squared, small deviations in some keys places of the conformation will lead to an error that propagates over the protein due to an arm lever effect.
+The fact that the deviation is squared and averaged leads to some downsides in
+this measurement method. Firstly, a bigger protein can have a much higher error
+due to the deviations being squared over the number of atoms being considered.
+This makes the comparison of prediction quality between different proteins
+impractical. For example, an error of $4{\AA}$ in a 50 residue protein is
+different from $4{\AA}$ in a 150 residue protein. Furthermore, since the
+deviation is squared, small deviations in some keys places of the conformation
+will lead to an error that propagates over the protein due to an arm lever
+effect.
 
-In order to avoid the downsides of the \ac{RMSD}, several other metrics have been proposed. Two of them saw great use in \ac{CASP}~\cite{moult2018critical}: \ac{GDT-TS}~\cite{zemla2003lga} and the \ac{TM-Score}~\cite{zhang2004scoring}. \ac{GDT-TS}, meaning Global Distance Test-Total Score is a measurement which considers four successive alignments and is shown in Equation \ref{eq:gdt-ts}. Each alignment uses a cutoff from $1{\AA}$ to $8{\AA}$ going in powers of two. The score consists of the mean of the ration of the maximum number of atoms that can be aligned using there cutoffs. It is worth noting that calculating the \ac{GDT-TS} is a $\mathcal{NP}$-Hard problem on its own. Nevertheless, heuristics that are sufficiently fast and accurate have been developed to make it of practical use.
+In order to avoid the downsides of the \ac{RMSD}, several other metrics have
+been proposed. Two of them saw great use in \ac{CASP}~\cite{moult2018critical}:
+\ac{GDT-TS}~\cite{zemla2003lga} and the \ac{TM-Score}~\cite{zhang2004scoring}.
+\ac{GDT-TS}, meaning Global Distance Test-Total Score is a measurement which
+considers four successive alignments and is shown in Equation \ref{eq:gdt-ts}.
+Each alignment uses a cutoff from $1{\AA}$ to $8{\AA}$ going in powers of two.
+The score consists of the mean of the ration of the maximum number of atoms
+that can be aligned using there cutoffs. It is worth noting that calculating
+the \ac{GDT-TS} is a $\mathcal{NP}$-Hard problem on its own. Nevertheless,
+heuristics that are sufficiently fast and accurate have been developed to make
+it of practical use.
 
-\begin{equation}
-    \text{GDT-TS} = ( GDT_1 + GDT_2 + GDT_4 + GDT_8 ) / 4
-    \label{eq:gdt-ts}
-\end{equation}
+\begin{equation} \text{GDT-TS} = ( GDT_1 + GDT_2 + GDT_4 + GDT_8 ) / 4
+\label{eq:gdt-ts} \end{equation}
 
-The \ac{TM-Score} can be considered an extension of the \ac{GDT-TS}. While \ac{GDT-TS} improves upon \ac{RMSD}, it has some downsides of its own. For instance, the fixed thresholds may lead to semantic differences when considering proteins of different sizes. That is, a smaller protein will be able to fit more atoms inside the threshold more easily than a bigger protein, thus rendering the measurement method somewhat dependent on residue length, even though the score is normalized between 0 and 1.
+The \ac{TM-Score} can be considered an extension of the \ac{GDT-TS}. While
+\ac{GDT-TS} improves upon \ac{RMSD}, it has some downsides of its own. For
+instance, the fixed thresholds may lead to semantic differences when
+considering proteins of different sizes. That is, a smaller protein will be
+able to fit more atoms inside the threshold more easily than a bigger protein,
+thus rendering the measurement method somewhat dependent on residue length,
+even though the score is normalized between 0 and 1.
 
-\ac{TM-Score} aims to provide a dynamic threshold value based on the protein length, and with this, provide a more meaningful score regardless of the protein length. \ac{TM-Score} also allows for proteins of different size to be compared. It is worth nothing that the \ac{TM-Score} of A compared to B is different from B compared to A (unless they have the same size). Equation~\eqref{eq:tm-score} shows how the error is measured, where $L_{target}$ is the length of the target protein (the native conformation in the case of the \ac{PSP}) and $L_{aligned}$ is the protein which is being evaluated (the predicted conformation in the \ac{PSP}). The distance between two pair of atoms $i$ is $d_i$. The dynamic threshold is shown as $d_0$ in Equation~\eqref{eq:tm-score-d0}.
+\ac{TM-Score} aims to provide a dynamic threshold value based on the protein
+length, and with this, provide a more meaningful score regardless of the
+protein length. \ac{TM-Score} also allows for proteins of different size to be
+compared. It is worth nothing that the \ac{TM-Score} of A compared to B is
+different from B compared to A (unless they have the same size).
+Equation~\eqref{eq:tm-score} shows how the error is measured, where
+$L_{target}$ is the length of the target protein (the native conformation in
+the case of the \ac{PSP}) and $L_{aligned}$ is the protein which is being
+evaluated (the predicted conformation in the \ac{PSP}). The distance between
+two pair of atoms $i$ is $d_i$. The dynamic threshold is shown as $d_0$ in
+Equation~\eqref{eq:tm-score-d0}.
 
 
 \begin{align}
@@ -396,23 +751,72 @@ The \ac{TM-Score} can be considered an extension of the \ac{GDT-TS}. While \ac{G
     d_0(L_\text{target})&=1.24\sqrt[3]{L_\text{target}-15}-1.8 \label{eq:tm-score-d0}
 \end{align}
 
-When comparing \ac{GDT-TS} and \ac{TM-Score} to \ac{RMSD} some key points are worth noting. Firstly, \ac{RMSD} scales quadratically, meaning that the same difference between the \ac{RMSD} of two conformations at difference magnitudes are not necessarily equally proportional. For example, the error between two conformations of an \ac{RMSD} of 2 and 3 is bigger than two conformations of \ac{RMSD} 6 and 7. \ac{GDT-TS} offers a linearly proportional metric. Another key point is that \ac{GDT-TS} and \ac{TM-Score} offers a normalized value which is meaningful over different proteins. That is, it is possible to measure if a method performs better on one protein on another directly. Lastly, studies such as~\cite{xu2010significant} shows that some values of these scores can be used as milestones. For instance a value of 0.5 or higher indicates that the same fold was achieved. For \ac{GDT-TS} a score less than 0.2 corresponds to the performance of a random search. For \ac{TM-Score} that value is somewhere between 0.15 and 0.2. With this information it is possible to evaluate a methods performance using only these error metrics.
+When comparing \ac{GDT-TS} and \ac{TM-Score} to \ac{RMSD} some key points are
+worth noting. Firstly, \ac{RMSD} scales quadratically, meaning that the same
+difference between the \ac{RMSD} of two conformations at difference magnitudes
+are not necessarily equally proportional. For example, the error between two
+conformations of an \ac{RMSD} of 2 and 3 is bigger than two conformations of
+\ac{RMSD} 6 and 7. \ac{GDT-TS} offers a linearly proportional metric. Another
+key point is that \ac{GDT-TS} and \ac{TM-Score} offers a normalized value which
+is meaningful over different proteins. That is, it is possible to measure if a
+method performs better on one protein on another directly. Lastly, studies such
+as~\cite{xu2010significant} shows that some values of these scores can be used
+as milestones. For instance a value of 0.5 or higher indicates that the same
+fold was achieved. For \ac{GDT-TS} a score less than 0.2 corresponds to the
+performance of a random search. For \ac{TM-Score} that value is somewhere
+between 0.15 and 0.2. With this information it is possible to evaluate a
+methods performance using only these error metrics.
 
 % \section{Bio Inspired Metaheuristics}~\label{sec:bioinspired}
 \section{Optimization}~\label{sec:bioinspired}
 
 % Present and show its applications
-As shown in Section~\ref{sec:ab-initio}, \textit{ab initio} methods require an objective function and an optimizer for it in order to search for a conformation of low potential energy where its performance depends both on an accurate energy function and a robust search procedure for optimization. Several search methods can be utilized for this purpose. However, it is important to be mindful of the properties that the selected optimization algorithm has.
+As shown in Section~\ref{sec:ab-initio}, \textit{ab initio} methods require an
+objective function and an optimizer for it in order to search for a
+conformation of low potential energy where its performance depends both on an
+accurate energy function and a robust search procedure for optimization.
+Several search methods can be utilized for this purpose. However, it is
+important to be mindful of the properties that the selected optimization
+algorithm has.
 
-It is possible to split optimization methods into two classes: Construction and Improvement methods~\cite{russell2016artificial}. The class of construction methods is characterized by starting with an empty solution for a given problem and step by step constructing it until the end of the algorithm, where a complete solution will be available as the output from the algorithm. Examples of this class of algorithm are the Dijkstra Algorithm~\cite{dijkstra1959dijkstra} and A*~\cite{hart1968formal}. Most of the instances of Construction Algorithms are exact methods (such as the Dijkstra Algorithm) or heuristic ones (as the A* and \ac{ACO}~\cite{dorigo1999ant}.
-The other class of optimization algorithms consists of improvement algorithms. This one is characterized by starting with a (set of) solution(s) and step by step improving it. Thus, they start with a solution and output a solution that has been improved based on the original one. Improvement algorithms can also be called trajectory algorithms. This is a reference to the fact the a solution starts on the search space and is moved until the algorithm stops, and in the end there will be a trajectory left by the successive moves by the solution.
+It is possible to split optimization methods into two classes: Construction and
+Improvement methods~\cite{russell2016artificial}. The class of construction
+methods is characterized by starting with an empty solution for a given problem
+and step by step constructing it until the end of the algorithm, where a
+complete solution will be available as the output from the algorithm. Examples
+of this class of algorithm are the Dijkstra
+Algorithm~\cite{dijkstra1959dijkstra} and A*~\cite{hart1968formal}. Most of the
+instances of Construction Algorithms are exact methods (such as the Dijkstra
+Algorithm) or heuristic ones (as the A* and \ac{ACO}~\cite{dorigo1999ant}.  The
+other class of optimization algorithms consists of improvement algorithms. This
+one is characterized by starting with a (set of) solution(s) and step by step
+improving it. Thus, they start with a solution and output a solution that has
+been improved based on the original one. Improvement algorithms can also be
+called trajectory algorithms. This is a reference to the fact the a solution
+starts on the search space and is moved until the algorithm stops, and in the
+end there will be a trajectory left by the successive moves by the solution.
 
-It is also possible that a more complex optimization method employs other optimizer algorithms inside. For instance, the \ac{GRASP} is a metaheuristic which utilizes both construction and improvement algorithms inside~\cite{feo1995greedy}. %This kind of algorithm is often referenced as being a Hyper-heuristic~\cite{burke2003hyper}, a heuristic acting upon another.
+It is also possible that a more complex optimization method employs other
+optimizer algorithms inside. For instance, the \ac{GRASP} is a metaheuristic
+which utilizes both construction and improvement algorithms
+inside~\cite{feo1995greedy}. %This kind of algorithm is often referenced as
+being a Hyper-heuristic~\cite{burke2003hyper}, a heuristic acting upon another.
 
-Going further, it is also possible to characterize trajectory algorithms into being single or multi-trajectory. As the name implies, the categorization is based on the number of trajectories that the algorithm has. Single trajectory methods utilize only one during the full extent of the algorithm. Examples of single trajectory algorithms are \ac{SA}~\cite{kirkpatrick1983optimization}, Tabu Search~\cite{glover1998tabu} Variable Neighborhood Search~\cite{mladenovic1997variable} and \ac{MC}~\cite{hastings1970monte}. On the other hand, multi-trajectory methods employ at least two trajectories which are propagated on the search space over time. 
+Going further, it is also possible to characterize trajectory algorithms into
+being single or multi-trajectory. As the name implies, the categorization is
+based on the number of trajectories that the algorithm has. Single trajectory
+methods utilize only one during the full extent of the algorithm. Examples of
+single trajectory algorithms are \ac{SA}~\cite{kirkpatrick1983optimization},
+Tabu Search~\cite{glover1998tabu} Variable Neighborhood
+Search~\cite{mladenovic1997variable} and \ac{MC}~\cite{hastings1970monte}. On
+the other hand, multi-trajectory methods employ at least two trajectories which
+are propagated on the search space over time.
 
 % Bio Inspired Metaheuristics
-A set of very successful multi-trajectory optimizers that have been vastly utilized and explored both in the literature an commercially are bioinspired algorithms~\cite{olariu2005handbook}. It has been used to solve classical combinatorial problems, such as the 
+A set of very successful multi-trajectory optimizers that have been vastly
+utilized and explored both in the literature an commercially are bioinspired
+algorithms~\cite{olariu2005handbook}. It has been used to solve classical
+combinatorial problems, such as the
 \ac{TSP}~\cite{chatterjee1996genetic} and Graph Coloring~\cite{costa1995embedding}.
 It has been also used for more commercial applications, such as placing
 antennas~\cite{calegari1997parallel} and predicting bandwidth
@@ -421,8 +825,15 @@ such as in economics~\cite{li1996economic}, medicine~\cite{wehrens1993hips},
 biology~\cite{cotta2002inferring} and bioinformatics~\cite{cotta2009metaheuristics}.
 
 % Present EA
-When considering bioinspired algorithms for optimization, two main groups exists: \ac{EA}~\cite{back1996evolutionary} and \ac{SI}~\cite{mavrovouniotis2017survey}. \ac{EA}s have its roots in the Darwinian theory of evolution. In the theory of evolution the fittest individuals have a higher chance of surviving until being able to reproduce and create offspring. The offspring will have some of the characteristics from its parents with a small chance of mutation. Over many
-generations, the fittest individuals will be more numerous while the not so fit individuals will tend towards extinction.
+When considering bioinspired algorithms for optimization, two main groups
+exists: \ac{EA}~\cite{back1996evolutionary} and
+\ac{SI}~\cite{mavrovouniotis2017survey}. \ac{EA}s have its roots in the
+Darwinian theory of evolution. In the theory of evolution the fittest
+individuals have a higher chance of surviving until being able to reproduce and
+create offspring. The offspring will have some of the characteristics from its
+parents with a small chance of mutation. Over many
+generations, the fittest individuals will be more numerous while the not so fit
+individuals will tend towards extinction.
 
 % GA
 Possibly the most widespread \ac{EA} is the \ac{GA}~\cite{holland1992genetic},
@@ -489,7 +900,7 @@ The nomenclature is as follows: a base name \textit{x/y/z} is given to the
 mutation to describe it. The \textit{x} term specifies what can be used
 as an base vector for the mutation. There are several possibilities, where
 \textit{rand} denotes that a randomly vector $\Vec{x}_{r1}$ is used from the population.
-Another configuration is \textit{best}, where the solution vector $\Vec{x}_{best}$ 
+Another configuration is \textit{best}, where the solution vector $\Vec{x}_{best}$
 with the best fitness is chosen. Lastly, \textit{curr-to-best} and \textit{curr-to-rand}
 denotes that the current solution vector being iterated is the base vector and that
 it will be matched against the \textit{best} or a \textit{random} vector.
@@ -556,7 +967,7 @@ value does not control the rate of which the variable changes, instead it contro
 rate at which variables are updated. Lastly, $NP$ controls the number of solution
 vectors that are held at the same time in the solution pool. A higher value
 allows for more portions of the solution space to be explored at the same time and gives
-more information for the offspring to operate upon. However, assuming a limited 
+more information for the offspring to operate upon. However, assuming a limited
 budget of function evaluations, a higher value implies that less generations will occur,
 thus giving less time for the solution vectors to evolve.
 
@@ -611,13 +1022,13 @@ Initialize $Pop$ with $NP$ vectors $\Vec{x}$ with $D$ dimensions\;
                 }
             }
         }
-        
+
         \eIf{$f(\Vec{y}) > f(\Vec{x}_i)$}{
             $Pop_{new_i} \gets \Vec{y}$\;
         }{
             $Pop_{new_i} \gets \Vec{x}_i$\;
         }
-        
+
         $Pop \gets Pop_{new}$
     }
     \caption{Standard Differential Evolution}
@@ -693,7 +1104,7 @@ three times as fast than the typical \ac{DE}. In jDE~\cite{brest2006self} the pa
 are encoded in the solution vector, with the reasoning that individuals with the best
 parameter set will have a higher chance of improving its fitness.
 In SHADE\cite{tanabe2013evaluating} a success history of the parameters
-which lead to increases in the fitness function are used to control parameters $F$ and $Cr$. 
+which lead to increases in the fitness function are used to control parameters $F$ and $Cr$.
 A variant of SHADE, the SHADE-ILS~\cite{molina2018shade} uses local search
 operators to further increase exploitation. The local search operators are used based
 on the improvement that they achieved. In \ac{SaDE}~\cite{qin2005self,qin2009differential}
@@ -718,7 +1129,7 @@ The counter $G$ for the number of generations is set to 0 and
 $K$ is set to the number of operator available. Line 2 sets the vector
 $CRm_k$ to 0.5 an $CRmemory_k$ to an empty set. The vector $CRm_k$ is used
 to store the mean of a Gaussian distribution which is update at every
-generation. The set $CRmemory_k$ stores the successful values of the 
+generation. The set $CRmemory_k$ stores the successful values of the
 parameter $CR$ for the operator $k$. On line 3 $P_{k,G}$ is initialized
 to $\frac{1}{K}$. This controls the chance of a given operator $k$ being
 selected, and it starts with a equal probability for all operators. The
@@ -757,20 +1168,20 @@ Initialize $\Vec{X}_i$ randomly inside the variables bounds\;
         %        Remove $ns_{k,G-LP}$ and $nf_{k,G-LP}$\;
         %    }
         %}
-        
+
         % Update $P_{k,G}$, $ns_{k,G-LP}$ and $nf_{k,G-LP}$ \textbf{IF} $G > LP$
         Update $P_{k,G}$ \textbf{IF} $G > LP$
-        
+
         %\For{$i \in 0..NP$}{
         %    $F_i \gets Gaussian(0.5, 0.3)$\;
         %}
-        
+
         $F_i \gets Gaussian(0.5, 0.3) \forall i \in 0..NP$\;
         $CRm_k \gets Median(CRmemory_k) \forall k \in 0..K$ \textbf{IF} $G > LP$\;
         $CR_{k,i} \gets Gaussian(CRmemory_k, 0.1) \forall k \in 0..K, \forall i \in 0..NP$\;
         Generate $\Vec{U}^k_{i,G}$ using operator $k$ with parameters $F_i$ and $CR_{k,i}$\;
         Evaluate all $\Vec{U}^k_{i,G}$\;
-        
+
         \For{$i \in 0..NP$}{
             \eIf{$f(\Vec{U}^k_{i,G}) > f(\Vec{X}_{i,G})$}{
                 $\Vec{X}_{i,G} \gets \Vec{U}^k_{i,G}$\;
@@ -789,11 +1200,11 @@ Initialize $\Vec{X}_i$ randomly inside the variables bounds\;
 On line 8, if the learning phase is over, the vector $CRm_k$ is set to be
 the median of $CRmemory_k$ for each operator $k$. In other words, the median of
 the successful values of the $CR$ parameter of each operator is selected and stored
-for later use. Next, on line 9, the $CR$ parameter is generated for each 
+for later use. Next, on line 9, the $CR$ parameter is generated for each
 operator and solution vector, where $CR_{k,i}$ gets a random number from
 a Gaussian distribution with mean $CRm_k$ and standard deviation $0.1$.
 That is, a Gaussian distribution centered around the median of the successful
-values of $CR$ for the operator $k$. What this does, is to try and use the 
+values of $CR$ for the operator $k$. What this does, is to try and use the
 most successful values, while giving a chance to find new nearby
 good parameters.
 
@@ -817,7 +1228,7 @@ On line 21 the generation counter $G$ is updated and the loop repeats.
 In summary, \ac{SaDE} is able to use the history of successful parameters $CR$
 for each operator $k$ to generate new operators $CR$ for the next generations.
 The new parameter is generated using nearby values, which allows for the
-more successful parameter to be used while giving a change for the 
+more successful parameter to be used while giving a change for the
 parameter to slowly be updated towards a possibly more successful value.
 The successful improved of the operators is record as well as the failed
 attempts. This success (and failure) history is used to select the operators
@@ -826,7 +1237,9 @@ contribution to the improvement of the fitness function will be used more often.
 
 \subsection{Monte Carlo Methods} \label{sec:monte-carlo-methods}
 
-The \ac{MC} method, proposed in~\cite{metropolis1949monte}, is a single-trajectory improvement method based on random sampling in a given search space. First proposed in
+The \ac{MC} method, proposed in~\cite{metropolis1949monte}, is a
+single-trajectory improvement method based on random sampling in a given search
+space. First proposed in
 1949, it was intended to solve complex equations for particle dynamics,
 which at the time were too complex to solve. Instead, the \ac{MC} method was
 used to randomly sample the possible behaviors and achieve a probabilistic
@@ -871,17 +1284,30 @@ local trajectories for further exploitation.
 
 % \subsection{Hybrid Methods}
 
-\section{Related Work}~\label{sec:related_works} 
+\section{Related Work}~\label{sec:related_works}
 
 In~\cite{sudha2015protein} the authors applied \ac{SaDE} with a diversity control
-strategy and local search operators to the PSPP. This modified version of \ac{SaDE}, called DCSaDE-LS, was then compared with \ac{SaDE} and other competing methods. DCSaDE-LS was able to outperform the other methods. However, it is worth noting that the authors used Met-enkephalin (1PLW), a very small protein composed of only 5 amino acids, for the testing. 
+strategy and local search operators to the PSPP. This modified version of
+\ac{SaDE}, called DCSaDE-LS, was then compared with \ac{SaDE} and other
+competing methods. DCSaDE-LS was able to outperform the other methods. However,
+it is worth noting that the authors used Met-enkephalin (1PLW), a very small
+protein composed of only 5 amino acids, for the testing.
 
 In~\cite{borguesan2015apl} the authors present a \ac{GA} and a \ac{PSO} use
 of \ac{APL}. Both \ac{GA} and \ac{PSO}sider the statistical distribution of
 dihedral angles in the search operators. The use of that information lead to a
 significant boost in prediction performance.
 
-In~\cite{garza2016generating} an approach based on a GA based Memetic algorithm is presented. It uses fragment assembly as a form of local search and a special type of crossover is employed a well. This new crossover operator operates exchanging loop regions between two parent proteins to generate new offspring. As pointed earlier in Section~\ref{sec:protein-structures}, $\alpha$-helix and $\beta$-sheets are relatively stable, predictable and well defined structures. Meanwhile, loop regions on the protein are highly unpredictable and have a high impact on the conformation of the protein. Therefore, one of the main contributions of this work is the use of operators specific for loop regions, as well as a local search operators in an memetic environment.
+In~\cite{garza2016generating} an approach based on a GA based Memetic algorithm
+is presented. It uses fragment assembly as a form of local search and a special
+type of crossover is employed a well. This new crossover operator operates
+exchanging loop regions between two parent proteins to generate new offspring.
+As pointed earlier in Section~\ref{sec:protein-structures}, $\alpha$-helix and
+$\beta$-sheets are relatively stable, predictable and well defined structures.
+Meanwhile, loop regions on the protein are highly unpredictable and have a high
+impact on the conformation of the protein. Therefore, one of the main
+contributions of this work is the use of operators specific for loop regions,
+as well as a local search operators in an memetic environment.
 
 Another memetic approach is presented in~\cite{correa2016memetic}. There, a multi-population
 based \ac{GA} is employed in order to maintain diversity. Special crossover operators enforce
@@ -897,7 +1323,7 @@ employed to go around premature convergence and convergence stagnation.
 In~\cite{narloch2017protein} the authors explored the use different operators
 throughout the optimization process in order do maintain diversity and control
 exploration/exploitation. The results do point out that maintaining diversity
-and controlling exploitation/exploration improves the prediction results. 
+and controlling exploitation/exploration improves the prediction results.
 The diversification point is explored in further detail in~\cite{narloch2016diversification}
 and the point about controlling exploration/diversification is confirmed
 in~\cite{simoncini2017balancing}.
@@ -956,7 +1382,7 @@ In~\cite{kandathil2018improved} the authors proposed two changes to the Rosetta
 \textit{Ab Initio} protocol. The first consists of using a Bilevel
 Optimization~\cite{sinha2018review}. As pointed by the authors, this approach had
 a sub par result. The another proposal was the use of \ac{ILS}. With ILS forced
-perturbations are employed for loop regions, where a perturbation is accepted 
+perturbations are employed for loop regions, where a perturbation is accepted
 regardless of the impact it had. The use of \ac{ILS} inside Rosetta's
 \textit{Ab Initio} protocol lead to an improvement in prediction power.
 The authors also note the negative impact that mispredicted secondary structures
@@ -969,11 +1395,6 @@ minor improvements and a modified version (MOD-ABC) are availed.
 The modified version focus the search on coils, loops and turn regions. Both versions
 use \ac{APL} as a way to feed domain specific information into the search.
 
-%\textcolor{red}{\textbf{OS TRABALHOS CORRELATOS ESTÃO MUITO TENDENCIOSOS AOS TRABALHOS DESENVOLVIDOS POR UM ÚNICO GRUPO DE PESQUISA. PRECISA FAZER UMA PESQUISA MAIS AMPLA.}}
-
-%\textbf{INSIRA ESTA REF:  %https://www.researchgate.net/publication/318295874_SADE-SPL_A_Self-Adapting_Differential_Evolution_algorithm_with_a_loop_Structure_Pattern_Library_for_the_PSP_problem } \\
-% \textbf{DO TEXTO ABAIXO DÁ A ENTENDER QUE NUNCA FOI UTILIZADO TÉCNICAS CON CONTROLE ONLINE E ALGS DE BUSCA LOCAIS.}
-
 Based on the literature review there are two points worth exploring. The first one
 is the use of online parameter controls (self adaptive methods) for the PSPP.
 Only one work using online parameter control was found, and the method is arguably
@@ -983,12 +1404,4 @@ attention, it still has several points left for exploring. One of these points i
 use of a Differential Evolution algorithm integrating domain specific operators.
 This two points can be explored in tandem through a hybrid differential evolution
 algorithm using online parameter control with domain specific operators.
-%Despite the several works found in the literature regarding the PSPP, there
-%are two underdeveloped areas that are considered in this work. The first being
-%the use of online parameter control, with the goal of improving prediction
-%performance. The second being the use of hybrid methods, in specific the use
-%of domain information (via fragment insertion) in a Differential Evolution
-%scenario using Monte Carlo sampling.
 
-
-%\textbf{ESTA SEÇÃO ESTÁ MUITO FRACA. ATUALIZAR COM ARTIGOS RECENTES.}
