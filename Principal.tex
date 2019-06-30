@@ -1,13 +1,13 @@
 \documentclass[
-	12pt,
-	openright,
-	oneside,			
-	a4paper,
-	chapter=TITLE,
-	section=TITLE,
-	brazil,
-	english,
-	]{abntex2}
+  12pt,
+  openright,
+  oneside,
+  a4paper,
+  chapter=TITLE,
+  section=TITLE,
+  brazil,
+  english,
+]{abntex2}
 
 \usepackage{./Estilo/udesc}
 \usepackage{tikz}
@@ -17,14 +17,11 @@
 \usepackage{bm}
 \usepackage{float}
 \usepackage{multicol}
-%\usepackage{algorithm}
-%\usepackage{algorithmic}
 \usepackage[linesnumbered]{algorithm2e}
 \usepackage{multirow}
 \usepackage{ulem}
 \usepackage{subcaption}
 \usepackage{siunitx}
-%\usepackage{subfigure}
 
 \pgfplotsset{compat=1.14}
 
@@ -32,14 +29,15 @@
 
 \usepackage{lastpage}
 
-\titulo{A hybrid method based on Monte Carlo and differential evolution for the ab initio protein structure prediction problem}
+% TODO: get a title
+\titulo{Title TODO title todo titl titl titl titl titl titl titl titl title title title titleeeeeeeee title}
 \autor{RENAN SAMUEL DA SILVA}
 \local{Joinville}
 \instituicao{Santa Catarina State University - UDESC}
 \campus{Center of Technological Sciences - CCT}
 \curso{Graduate Program in Applied Computing - PPGCA}
-\data{2018}
-\fulldata{25th, January of 2018}
+\data{2019}
+\fulldata{25th, August of 2019}
 
 \inforosto{Master thesis submitted to the Computer Science Department  at the College of Technological Science of Santa Catarina State University in fulfillment of the partial requirement for the Master's degree in Applied Computing.}
 \orientador{Dr. Rafael Stubs Parpinelli}
@@ -49,8 +47,9 @@
 
 \include{Partes/pretextual}
 
+% TODO: Update list of acronyms
 \begin{siglas}
-\SingleSpacing
+  \SingleSpacing
   %AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
   \acro{AMBER}{Assisted Model Building with Energy Refinement}
   \acro{ABC}{Artificial Bee Colony}
@@ -119,35 +118,36 @@
   %XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
   %YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY
   %ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ
-\end{siglas} 
+\end{siglas}
 
+% TODO: Update list of symbols
 \begin{simbolos}
-	\SingleSpacing
-    \item[$NP$] The population size used in populational algorithms
-    \item[1ZDD] Disulfide-Stabilized mini protein A domain
-    \item[1CRN] Crambin
-    \item[1ENH] DNA binding protein of Drosophila
-    \item[1AIL] Influenza A RNA binding protein
-    \item[1A3N] Deoxy Human Hemoglobin
-    \item[1CTF] Ribosomal Protein from E. Coli
-    \item[1PLW] Methionine-Enkephalin
-    \item[4ZRY] Human Keratin
-    \item[$D$] Problem dimensionality
-    \item[$F$] DE's scaling factor
-    \item[$Cr$] DE's crossover ratio
-    \item[$\Vec{w}$] The new solution vector
-    \item[$\Vec{x}_{r}$] Random solution vector
-    \item[$\Vec{x}_{best}$] Best solution vector
-    \item[C$_\alpha$] Alpha Carbon of the protein backbone
-    \item[$\chi_i$] The $i$-th dihedral angle of the protein side chain
-    \item[$\phi$] The dihedral angle in the $N-C_\alpha$ atom pair
-    \item[$\psi$] The dihedral angle in the $C_\alpha-C$ atom pair
-    \item[$\omega$] The dihedral angle in the $C-N$ atom pair
-    \item[SADE-DE] The base implementation of SaDE with the full set of DE operators
-    \item[SADE-DE-MC] The proposed method with SaDE, the DE operators and MC search
-    \item[SADE-DE-REMC] The proposed method with SaDE, the DE operators and REMC search
-    \item[SADE-MC] The proposed method with SaDE and MC search
-    \item[SADE-REMC] The proposed method with SaDE and REMC search
+  \SingleSpacing
+\item[$NP$] The population size used in populational algorithms
+\item[1ZDD] Disulfide-Stabilized mini protein A domain
+\item[1CRN] Crambin
+\item[1ENH] DNA binding protein of Drosophila
+\item[1AIL] Influenza A RNA binding protein
+\item[1A3N] Deoxy Human Hemoglobin
+\item[1CTF] Ribosomal Protein from E. Coli
+\item[1PLW] Methionine-Enkephalin
+\item[4ZRY] Human Keratin
+\item[$D$] Problem dimensionality
+\item[$F$] DE's scaling factor
+\item[$Cr$] DE's crossover ratio
+\item[$\Vec{w}$] The new solution vector
+\item[$\Vec{x}_{r}$] Random solution vector
+\item[$\Vec{x}_{best}$] Best solution vector
+\item[C$_\alpha$] Alpha Carbon of the protein backbone
+\item[$\chi_i$] The $i$-th dihedral angle of the protein side chain
+\item[$\phi$] The dihedral angle in the $N-C_\alpha$ atom pair
+\item[$\psi$] The dihedral angle in the $C_\alpha-C$ atom pair
+\item[$\omega$] The dihedral angle in the $C-N$ atom pair
+\item[SADE-DE] The base implementation of SaDE with the full set of DE operators
+\item[SADE-DE-MC] The proposed method with SaDE, the DE operators and MC search
+\item[SADE-DE-REMC] The proposed method with SaDE, the DE operators and REMC search
+\item[SADE-MC] The proposed method with SaDE and MC search
+\item[SADE-REMC] The proposed method with SaDE and REMC search
 \end{simbolos}
 
 \pdfbookmark[0]{\contentsname}{toc}
@@ -160,20 +160,19 @@
 \aliaspagestyle{chapter}{eudesc}
 
 \include{Partes/cap1}
-%\include{Partes/cap2}
+\include{Partes/cap2}
 \include{Partes/cap3}
 \include{Partes/cap4}
 \include{Partes/cap5}
-\include{Partes/cap6}
 
-\bookmarksetup{startatroot}% 
+\bookmarksetup{startatroot}
 
 \postextual
 
 \bibliography{references}
 
 \begin{apendicesenv}
-	\include{Partes/apeA}
+  \include{Partes/apeA}
 \end{apendicesenv}
 
 % \begin{anexosenv}

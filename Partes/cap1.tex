@@ -1,18 +1,21 @@
 \chapter{INTRODUCTION}\label{chap:introduction}
 
 % What are proteins
-There are four main types of macromolecules essential to life:
-proteins, carbohydrates, lipids and nucleic acids. Proteins are responsible for
-several functions in the human body, such as structural, regulatory and
-metabolic, where its functionality is directly dependent on the
-three-dimensional structure conformation~\cite{kihara2014protein}.
+There are four main types of macromolecules essential to life: proteins,
+carbohydrates, lipids and nucleic acids. Proteins are responsible for several
+functions in the human body, such as structural, regulatory and metabolic,
+where its functionality is directly dependent on the three-dimensional
+structure conformation~\cite{kihara2014protein}.
 
 % Why they are important
-%Each protein is supposed to have a unique conformation, where it has one function. 
-In cases where this conformation is incorrectly structured (or misfolded) due to some environmental influence, a series of problems may arrive. Proteins can gain toxic properties or suffer loss of functionality, where it can cause damage to cells, tissues, and organs. The
-diseases rooted in abnormal proteins formation or somehow
+%Each protein is supposed to have a unique conformation, where it has one function.
+In cases where this conformation is incorrectly structured (or misfolded) due to
+some environmental influence, a series of problems may arrive. Proteins can gain
+toxic properties or suffer loss of functionality, where it can cause damage to cells,
+tissues, and organs. The diseases rooted in abnormal proteins formation or somehow
 caused by them are known as proteinopathies~\cite{shrestha2015yeast}.
-In light of this, knowing the conformation of a protein can give insights on its functionality, can aid the design of drugs and help understand, treat and even prevent diseases.
+In light of this, knowing the conformation of a protein can give insights on its
+functionality, can aid the design of drugs and help understand, treat and even prevent diseases.
 
 % How do we find out the structure of a protein
 The \ac{DNA} (or \ac{RNA} in some less complex forms of life) encodes the information
@@ -32,12 +35,12 @@ Currently, the two main methods are
 \ac{NMR} and X-Rays Crystallography. Both methods take more
 time, money and are susceptible to have errors in the results.
 
+% TODO: Update PDB / UniProt numbers
 Due to these differences in determining the sequence and structure of a
 protein, \num{139694261} protein sequences are catalogued in
 UniProtKB/TrEMBL\footnote{\url{https://www.ebi.ac.uk/uniprot/TrEMBLstats}},
 whereas only \num{148037} protein structures are catalogued in
 the \ac{PDB}\footnote{\url{https://www.rcsb.org/}}\footnote{Numbers from January 19th, 2019}.
-%Furthermore, there are several repeated entries on the PDB, due to different studies on the same protein, further spreading the difference between the number of sequenced and structured proteins. 
 This difference of three orders of magnitude is known as the protein gap.
 
 % What is the protein structure prediction
@@ -52,22 +55,31 @@ taking an amino acid sequence as input and outputting the structure of the
 protein.
 
 % Why it is hard
-Solving the \ac{PSPP} has proven to be a very challenging problem since that after more than 20 years no general viable
-solution has been found. From a strictly computational point of view, the \ac{PSPP} is expected to be a $\mathcal{NP}$-hard problem. No proof of the $\mathcal{NP}$-hardness of the problem has been found for the more complex and accurate models, such as the full atom model~\cite{rohl2004protein}. However, the model which is arguably considered the less complex one, the \ac{HP} model, has been proved to be a $\mathcal{NP}$-hard problem~\cite{berger1998protein}. Furthermore, several other models such as the triangular 2D and 3D \ac{HP}
+Solving the \ac{PSPP} has proven to be a very challenging problem since that
+after more than 20 years no general viable solution has been found. From a
+strictly computational point of view, the \ac{PSPP} is expected to be a
+$\mathcal{NP}$-hard problem. No proof of the $\mathcal{NP}$-hardness of the
+problem has been found for the more complex and accurate models, such as the
+full atom model~\cite{rohl2004protein}. However, the model which is arguably
+considered the less complex one, the \ac{HP} model, has been proved to be a
+$\mathcal{NP}$-hard problem~\cite{berger1998protein}. Furthermore, several
+other models such as the triangular 2D and 3D \ac{HP}
 model~\cite{agarwala1997local} and the \ac{FCC} model~\cite{hoque2007protein},
-which have an increasing level of complexity, have been found to be $\mathcal{NP}$-hard problems.
-Therefore, it is reasonable to expect the full problem to be $\mathcal{NP}$-hard as well.
+which have an increasing level of complexity, have been found to be
+$\mathcal{NP}$-hard problems.  Therefore, it is reasonable to expect the full
+problem to be $\mathcal{NP}$-hard as well.
 
 From a practical point of view, each amino acid in the protein has between 10
 to 27 atoms, where each one requires three variables to describe its position.
 Except for the smallest of the proteins, they will have hundreds or thousands
 of variables, and can even reach millions assuming that all atoms have the
 three variables. Therefore, one can consider that the \ac{PSPP} is a
-\ac{LSOP}~\cite{mahdavi2015metaheuristics}, which happens to be a very challenging problem.
+\ac{LSOP}~\cite{mahdavi2015metaheuristics}, which happens to be a very
+challenging problem.
 
 %What are the main methods of solving it (ab initio, threading modeling, homology modeling)
-There are two main approaches to solving the \ac{PSPP}: Knowledge-based methods and
-\textit{ab initio} methods. Knowledge-based methods have two subgroups:
+There are two main approaches to solving the \ac{PSPP}: Knowledge-based methods
+and \textit{ab initio} methods. Knowledge-based methods have two subgroups:
 Threading and Homology-based method. Threading modeling is based on the use of
 templates that represents the vast majority of the proteins. These templates
 are them combined and aligned in order to predict the protein conformation.
@@ -79,11 +91,11 @@ on the templates being representative of the (unknown) target conformation. In
 contrast with Knowledge-based methods, \textit{ab initio} methods do not rely
 on previously known information. The main characteristic of \textit{Ab Initio}
 method is that it operates by building the conformation from scratch guided by
-an energy function. The main advantage of \text{Ab Initio} over the other methods
-is that is can (theoretically) predict any protein, regardless of a presence
-of a template or homologous protein. Furthermore, it can lead to further insights
-on the folding process. This works focus on solving the \ac{PSPP} with an \textit{Ab
-Initio} method.
+an energy function. The main advantage of \text{Ab Initio} over the other
+methods is that is can (theoretically) predict any protein, regardless of a
+presence of a template or homologous protein. Furthermore, it can lead to
+further insights on the folding process. This works focus on solving the
+\ac{PSPP} with an \textit{Ab Initio} method.
 
 % How can proteins be represented computationally (on and off-lattice)
 The \textit{In Silico} modeling and representation of proteins are split in two
@@ -123,7 +135,6 @@ Rosetta~\cite{rohl2004protein,leaver2011rosetta3}.
 Given that the \ac{PSPP} can be represented as a $\mathcal{NP}$-hard optimization
 problem, a robust set of solvers for this kind of problem are
 \ac{MH}, and in particular, bio-inspired \ac{MH}~\cite{kar2016bio}.
-%MHs have been employed to solve several real world hard problems, such as face recognition~\cite{plichoski2018adjustable}, data mining~\cite{parpinelli2002data}, truss optimization~\cite{cazacu2014steel} and cancer detection~\cite{cazacu2014steel}.
 Some of the more employed \ac{MH}s in the literature are the
 \ac{GA}~\cite{holland1992genetic} and the
 \ac{DE}~\cite{storn1997differential}. Both of them are
@@ -156,28 +167,20 @@ search space. In this case, it is possible to employ a hybrid
 algorithm~\cite{blum2011hybrid}. A hybrid algorithm employs an optimizer which has no
 knowledge of the problem domain with a procedure that has. This allows for the
 optimization procedure to be guided to search directions which are more
-relevant, and thus, possibly improve the overall performance. 
-%A hybridization method found throughout the literature is the Monte Carlo (MC) procedure~\cite{a}. It consists of a probabilistic random sampling of the search space.
-%For the particular case of \textit{ab initio} protein prediction, a MC
-%procedure can be employed to replace small (for instance, 3 or 9) continuous segments of the
-%protein with know pieces of other proteins which may be similar to the target protein. This
-%is know as fragment insertion~\cite{a}, and when coupled with a MC procedure it is a MC based
-%fragment insertion.
+relevant, and thus, possibly improve the overall performance.
 
-% How are we planning on solving it. 
 % Close the intro
+% How are we planning on solving it.
 This work has as its primary goal to study and solve the \ac{PSPP}. For this an
 off-lattice \textit{ab initio} method will be used. The proteins will be
 represented computationally as torsion angles of the backbone and side chain
 centroids. The \textit{Ab Initio} model will be optimized
-using a hybrid \ac{DE} / \ac{MC} with online parameter control. 
-% Several MC based fragment insertion procedures will be utilized.
+using a hybrid \ac{DE} / \ac{MC} with online parameter control.
 
 
 \section{Motivation}\label{sec:chap1_motivation}
 
-% Relevancy of the problem
-% Applications of the problem
+% Relevancy and Applications of the problem
 The \ac{PSPP} is currently one of the leading open problems in computer science and
 structural bioinformatics, and as such, it is a highly relevant one. Solving
 the \ac{PSPP} has numerous implications over many fields. It can help to understand
@@ -195,14 +198,10 @@ how to design better optimizers.
 
 \section{Objectives and Hypothesis}\label{sec:chap1_objectives}
 
-% Develop a DE into a competitive method
-% Utilize parameter adaptation
-% Utilize fragments
-% Benchmark it on several proteins
-
 This work has as its main objective to explore the \ac{PSPP} and to develop a
-competitive solver for the off-lattice \textit{ab initio} \ac{PSPP} using a hybrid
-\ac{DE} with online parameter control. For this, several secondary objectives have to be achieved as well:
+competitive solver for the off-lattice \textit{ab initio} \ac{PSPP} using a
+hybrid \ac{DE} with online parameter control. For this, several secondary
+objectives have to be achieved as well:
 
 \begin{itemize}
     \item Determine the base performance of \ac{DE} for solving the \ac{PSPP};
@@ -231,7 +230,10 @@ This work has three hypothesis to test and/or confirm. They are:
 
 This document is organized as follows:
 Chapter~\ref{chap:systematic_literature_review} presents the background
-required to understand this work, the literature review and the related work; Chapter~\ref{chap:methodology} presents the proposed methodology; Chapter~\ref{chap:experiments_and_results} presents the experimentation,
+required to understand this work, the literature review and the related work;
+Chapter~\ref{chap:methodology} presents the proposed methodology;
+Chapter~\ref{chap:experiments_and_results} presents the experimentation,
 results and its respective analysis;
 Chapter~\ref{chap:final_considerations} presents the final considerations for
 this work and future research directions.
+
