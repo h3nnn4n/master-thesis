@@ -1143,10 +1143,35 @@ will be operating at a more local level. Also, there is the possibility
 that a value from the global trajectory will be picked by one (or several)
 local trajectories for further exploitation.
 
-\subsection{Hooke-Jeeves}
+\subsection{Hooke-Jeeves Local Search}
 
-% TODO: Hooke-Jeeves
-TODO TODO
+The Hooke-Jeeves Pattern Search is an optimization method presented
+in~\cite{hooke1961direct}. It consists of a single trajectory search, which
+detects an optimal pattern (direction) for searching the variable space and
+repeatedly advances in that direction. Once it no long improves a given
+objective function, a new pattern is searched. A decreasing level of tolerance
+is utilized until a target tolerance is reached and no improving pattern can be
+found and the current solution is returned.
+
+More formaly, Hooke-Jeeves Pattern Search can be defined in four steps:
+\begin{enumerate}
+    \item Find the best point $x_{neighbor}$ in the neighborhood of the current
+    solution $x_{current}$ by pertubating $x_{current}$ by a set ammount $tol$.
+    Find the vector $\vec{v} = x_{neighbor} - x_i$.
+    \item Move the current solution in the search space in the direction $\vec{v}$
+    until $f(x_{current} + \vec{v}) > f(x_{current})$.
+    \item Repeat steps 1 and 2 until $\vec{v}$ is $(0, 0)$.
+    \item Reduce $tol$ by some factor.
+    \item Repeat steps 1 through 4 until the desided level of accuracy is reached.
+\end{enumerate}
+
+There are two way to utilize Hooke-Jeeve Pattern Search. The first is find a
+random point in the search space and use it as the starting point of the optimization.
+Then, Hooke-Jeeves can be considered as an optimization routine on its own. Another
+use of Hooke-Jeeves is to optimize a given function with a coarse optimizer and then
+feed the optimal coarse solution found to Hooke-Jeeves. With this, an initial
+optimizer can quickly sample the search space taking aggressive steps and the best
+solution found by it can then be refined and improved.
 
 \section{Related Work}~\label{sec:related_works}
 
