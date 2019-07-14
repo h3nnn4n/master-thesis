@@ -1288,7 +1288,7 @@ minor improvements and a modified version (MOD-ABC) are availed.
 The modified version focus the search on coils, loops and turn regions. Both versions
 use \ac{APL} as a way to feed domain specific information into the search.
 
-In~\cite{gao2018incorporation} a Multi Object Evolution Strategy based on
+In~\cite{gao2018incorporation} a Multi Objective Evolution Strategy based on
 CHARMM is presented. The authors added \ac{SASA} as one of the three objectives
 being optimized, along with bond and non-bond terms from the CHARMM22 energy
 function. A method using \ac{PSO} and \ac{SVD} is presented in~\cite{alvarez2018protein},
@@ -1329,6 +1329,54 @@ Based on the literature review, there are several noteworth points:
     a more direct use of the optimizer by a third-party which wants to predict the
     conformation from a protein. This allows for it to chose from a set of conformation.
 \end{itemize}
+
+These points are reinforced by Table~\ref{tab:related-works-comparison}. Column
+\ac{EA} indicated wether the method is based on an Evolutionary Algorithm or not. The
+majority of the methods are EA-based. Column \ac{FI} shows the use of fragment insertion
+in the methods. From the 18 related works, 7 used \ac{FI}. Column OPC indicates
+the use of Online Parameter Control. Only 3 works incorporated some form of
+parameter control. Column LS corresponds to the use of a Local Search procedure.
+It is worth noting that mutation/crossover operators from methods such as \ac{DE}
+and \ac{GA} are not considered in this column. However, stand alone procedures that
+were interleaved with another methods were. e.g. a \ac{MC} search during a \ac{PSO}.
+Column \ac{CC} considers the use of Conformational Clustering. Of the itens considered,
+this one was the most scarse with only two occurences. Column KD indicated the use
+of Knowledge Domain Operators. Fragment indicates that \ac{FI} was the main
+source of knowledge domain. APL and SPL indicates that APL or SPL was utilized,
+as presented in~\cite{borguesan2015apl} and~\cite{oliveira2017sade}. From this
+table it worth noting that no work found in the literature uses OPC, LS and CC.
+And as such, it is a point worth exploring.
+
+\begin{table}
+    \centering
+    \begin{tabular}{r|c|c|c|c|c|c} \hline \hline
+        Source                       & EA  & FI  & OPC & LS  & CC  & KD       \\ \hline \hline
+        \cite{sudha2015protein}      & yes & -   & yes & yes & -   & -        \\ \hline
+        \cite{borguesan2015apl}      & yes & -   & -   & -   & -   & apl      \\ \hline
+        \cite{garza2016generating}   & yes & yes & -   & yes & -   & fragment \\ \hline
+        \cite{correa2016memetic}     & yes & -   & -   & yes & -   & apl      \\ \hline
+        \cite{narloch2017protein}    & yes & -   & -   & -   & -   & -        \\ \hline
+        \cite{hao2017double}         & -   & yes & -   & -   & -   & fragment \\ \hline
+        \cite{hao2017conformational} & yes & -   & -   & -   & yes & -        \\ \hline
+        \cite{de2017sequential}      & -   & yes & -   & yes & -   & fragment \\ \hline
+        \cite{oliveira2017sade}      & yes & -   & yes & -   & -   & apl/spl  \\ \hline
+        \cite{borguesan2018genetic}  & yes & -   & -   & yes & -   & apl      \\ \hline
+        \cite{silva2018multistage}   & yes & yes & -   & -   & -   & fragment \\ \hline
+        \cite{kandathil2018improved} & -   & yes & -   & yes & -   & fragment \\ \hline
+        \cite{correa2018knowledge}   & yes & -   & -   & yes & -   & apl      \\ \hline
+        \cite{gao2018incorporation}  & yes & -   & -   & -   & -   & -        \\ \hline
+        \cite{alvarez2018protein}    & yes & -   & -   & -   & -   & -        \\ \hline
+        \cite{song2018adoption}      & yes & -   & -   & -   & yes & -        \\ \hline
+        \cite{narloch2019knowledge}  & yes & -   & yes & -   & -   & apl      \\ \hline
+        \cite{varela2019crowding}    & yes & yes & -   & yes & -   & fragment \\ \hline
+        \cite{zaman2019balancing}    & yes & yes & -   & yes & -   & fragment \\ \hline \hline
+    \end{tabular}
+    \caption{Comparison of the works in the literature. FI means Fragment
+    Insertion. OPC means Parameter Control. LS means local search. CC means
+    Conformation Clusterting. KD means Knowledge Domain. A dash indicates that
+    the relevant criteria in the column was not met.}
+    \label{tab:related-works-comparison}
+\end{table}
 
 These points can be explored in simultainly through a hybrid evolutionary
 algorithm using online parameter control with domain specific operators. And with
