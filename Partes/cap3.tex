@@ -114,11 +114,11 @@ not fast enough. Therefore, due to its limitations,
 metaheuristic methods must be employed in order to search for good results
 in a reasonable amount of time. Many metaheuristics can be employed
 on the \ac{PSPP}, as shown in Section~\ref{sec:bioinspired}
-% ESTES TRABALHOS DEVERIAM ESTAR NA SEÇÃO DE TRABALHOS CORRELATOS.}. For this work,
-the Differential Evolution algorithm is employed, due to its ability to work
-in the continuous space required by the problem. Furthermore, to increase
+For this work, a simple Evolutionary Algorithm is employed due to its capability
+of easily integrating with the necessary tools, while having the required level
+of performance. Furthermore, to increase
 its performance, and online parameter control technique will be
-utilized, namely \ac{SaDE}~\cite{qin2005self,qin2009differential}.
+utilized based on the \ac{SaDE} framework~\cite{qin2005self,qin2009differential}.
 
 In~\cite{kim2009sampling} the author states that the bottleneck of solving the
 \ac{PSPP} is the conformation sampling procedure. Therefore, it is the part
@@ -170,10 +170,32 @@ first one with the last. This adds a latency for the best conformation to
 replace all the others, giving a chance of another good conformations being
 found.
 
-The standard DE operators utilized are shown in Table~\ref{tab:de-mutations},
-Section~\ref{sec:de}. In the context of search operators,
-this set of operators will be referenced as
-the DE set or the non domain specific operators.
+Another important tool in the conformation sampling step is the \ac{FFI}.
+\ac{FFI} consists of inserting a random fragment regardless of its impact. That is,
+differently from the \ac{MC} fragment insertion, \ac{FFI} applies the fragment
+without taking into account the energy impact that it has. This in effect has
+two direct consequences. Firstly it has the potentially bad action that it can
+destroy good conformations. On the other hand, it can also escape from local
+minima, therefore, increasing the sampling efficiency.
+
+Determing when \ac{FFI}
+occurs is of paramount importance. If it happens often, good conformations will
+keep being destroyed and the sampling procedure will be impaired. If it seldom 
+happens, then the benefit of escaping local minima will rarely be used. Therefore,
+the strategy has to be tuned in a way that we escape local minima often enough
+to avoid wasting too many function evaluations while not destroying too many
+good conformations. In addition, exploring local minima is by itself import.
+While the optimization is happening, there is no way of knowing if the best local
+minima found so far is the global minima or not. So, if local minima are not
+explored enough, it is possible that \ac{FFI} prevents the optimal point from
+being found.
+
+Despite its potential downsides, using \ac{FFI} can help prevent premature
+convergence in the system. It adds diversity to conformation pool in a controlled
+manner. With that, a constant stream of information is added to the optimizer.
+Finally, coupled with the optimizer itself, \ac{FFI} acts as a catalyst for the
+optimizer to be able to do big changes in the conformation, because \ac{FFI} can
+bypass the greedy nature of the \ac{EA} utilized.
 
 Figure~\ref{fig:search-procedure} presents a flowchart of the proposed
 approach. It is split into three main steps: The initialization phase, the
@@ -203,7 +225,7 @@ Specially considering the waiting time for the PSIPRED server.
 
 The second phase is the optimization phase.  It starts with the step of
 generating the initial population. The initial population generation consists
-of assembly random protein conformation using the fragments generated in the
+of assembly random protein conformations using the fragments generated in the
 initialization phase. A Monte Carlo search is ran using the score0 energy
 function in order to search for protein conformations that have no (or as few
 as possible) hysterical clashes. This step stops when a fixed number of samples
@@ -213,31 +235,55 @@ reaches zero.
 With the initial population generated, the optimization procedure itself starts
 guided by the score3 energy function. The basis of the search procedure is
 carried out by the \ac{SaDE} algorithm, which consists of the \textit{Online
-Parameter Control} part and the \textit{Differential Evolution Operators}. The
-hybridization happens when the \textit{Domain Operators} are added to the
+Parameter Control} part without the \textit{Differential Evolution Operators}.
+The hybridization happens when the \textit{Domain Operators} are added to the
 search procedure.
 
 Firstly, the online parameter control portion of \ac{SaDE} selects which
-operator to use for each individual in the population.  If for any given
-solution vector the operator selected is one of the standard DE operators then
-its mutation and crossover steps are applied and fed to the selection routine.
-This always spends one function evaluation. When the selected operator is a
-domain specific one (either \ac{MC} or \ac{REMC}) then a small sub search
-procedure starts.  A \ac{MC} or \ac{REMC} search procedure is initialized,
-based on the operator chosen.  This search takes a fixed amount of function
-evaluation that is fed as a parameter.  When this search procedure stops the
-output is fed to the selection routine.  From there it is checked if the stop
+operator to use for each individual in the population.
+%
+The operators can be either \ac{MC} or \ac{REMC}, with different fragment sizes.
+Once it is selected, a small sub search procedure starts, corresponding to the
+operator itself.
+%
+Before the operator is applied, the check for \ac{FFI} happens. The check occurs
+for all solution vectors. If the \ac{FFI} check passes, then a random fragment
+is applied. Regardless of \ac{FFI} being used or not, the next step is to apply
+the standard fragment insertion.
+%
+A \ac{MC} or \ac{REMC} search procedure is initialized,
+based on the operator chosen. This search takes a fixed amount of function
+evaluation that is fed as a parameter. When this search procedure stops the
+output is fed to the selection routine. From there it is checked if the stop
 criteria was met. If it was not, then the parameter update routine is called,
-which updated the parameters F and Cr (for all operators) as well as the
-probabilities for each operator. Then, the optimization cycle starts over again
-from the operator selection.
+updating the parameters F and Cr (for all operators) as well as the
+probabilities for each operator. Since \ac{DE} is not used, the $Cr$ parameter
+actually controler the \ac{MC} temperature parameter. The parameter control is
+agnostic to which parameter it is updating. Once the Parameter Update step is
+finished, the optimization cycle starts over again from the operator selection.
 
-When the stop criteria is ultimately met, the best solution (based on the
-energy function) is extracted and fed to the post processing phase.  This phase
-applies the repacking routine using the scorefxn energy function, which will
-add the side chains and output a full atom conformation.
+The when stop criteria is ultimately met, the optimization phase stops and the
+post processing phase starts. The first postprocessing step is to cluster the
+conformations. After the clustering process finishes, the cluster centroids are
+selected. The number of clusters are a parameter of the algorithms.
+The conformations closest to the centroids are found and feed forward
+to the next steps, while the centroids themselves are discarted. A Hooke-Jeeves
+local search is applied. This helps to reach nearby local minima that might have
+been inaccessible by the fragments alone. Once the local search finishes, the
+repacking procedure is applied to all the conformations that were selected in
+the clustering phase and then re-optimized. The repacking procedure removes the
+centroids and places rotamers (side-chains fragments). The conformation is again
+re-optimized, this time using a gradient descent guided by the scorefxn energy
+function. After this step finishes the conformations are returned. Returning
+the conformation nearest to each centroid (and re-optimizing/repacking it) allows
+for a human specialist to inspect multiple conformations that are appart from
+each other and select the best one. In this way, one run can provide multiple
+potentially useful solutions.
 
-There are four hybrid combinations for the optimizer setup. It is possible to
-use either \ac{MC} or \ac{REMC}, giving two configurations. It is also possible
-to include the standard DE set of operators or not, giving another two
-configurations.
+Two variant of this algorithm exist. One using \ac{MC} for the fragment insertion
+and the other using \ac{REMC}. It is expected that the \ac{MC} variant will have
+a bigger overall diversity, and thus, returning conformations that are more
+different apart. Meanwhile, the \ac{REMC} variant is expect to exploit more at
+the expense of conformation diversity. That is, it may get stuck in a local
+minima more easily in exchange for a increased chance of finding a better solution.
+The first method is named SADE-MC-FINAL and the second is named SADE-REMC-FINAl.
