@@ -1,25 +1,26 @@
 \chapter{Experiments, Results and Analysis}\label{chap:experiments_and_results}
 
-%Present the chapter
+% Present the chapter
 In this Chapter the experiment design is presented. Results are shown and an in
 depth analysis is conducted, including: Energy and distance metrics for
 measuring the performance of the proposed methods; A rigorous statistic testing
 of the proposed methods; A comparison to competing methods in the literature in
 order to validate the proposed methods; Finally, a visual inspection of the
 best predictions and a comparison against the native conformation.
+\textcolor{red}{TODO: tem q atualizar aqui conforme for escrevendo}
 
 \section{Design of Experiments}\label{sec:design_of_experiments}
 
-%Present the hardware setup
+% Present the hardware setup
 The experiments were all conducted on a single machine using the same hardware
-throughout the full experimentation length. Table~\ref{tab:machine-setup}
+throughout the full experimentation. Table~\ref{tab:machine-setup}
 presents the machine utilized to run all the experiments. Each run of a
 prediction method consists of a serial program that run continually without
-interruption.  The experiments were run in parallel, limited to at most one
+interruption. The experiments were run in parallel, limited to at most one
 running test per core\footnote{Only physical cores were considered. No virtual
-(Hyperthreading) core was involved in the computations.}.  To ensure maximum
-repeatability the machine had no graphical interface enabled during the course
-of the experimentation.
+(Hyperthreading) core was involved in the computations.}. To ensure maximum
+repeatability the machine had no graphical interface enabled or any other form
+of user interaction during the course of the experimentation.
 
 \begin{table}[th]
     \centering
@@ -35,47 +36,59 @@ of the experimentation.
     \label{tab:machine-setup}
 \end{table}
 
-The experimentation is separated into two stages. In the first stage the four
-proposed methods are compared against each other and against a standard
-\ac{SaDE}. The metrics utilized are the \textit{scorefxn} energy value of the
-best solution and the \ac{RMSD} associated with the same conformation.  The
-result was collected over 60 independent runs of each method for each target
+The experimentation consisted of running the two proposed methods, namely
+SADE-REMC-FINAL and SADE-MC-FINAL. Two of the methods proposed
+in~\cite{silva2019self} are also included, Namely SADE-REMC and SADE-MC.
+Lastly, the Rosetta Ab Initio protocol is also included, amounting to five
+different methods being ran.
+
+The analysis is divided in two steps. In the first one, the two proposed methods
+are compared agaisnt the works in~\cite{silva2019self} and the Rosetta Ab Initio
+Protocol.
+% Present the "in house" comparison
+The metrics utilized in this are the \textit{scorefxn} energy value of the
+best solution and the \ac{RMSD} associated with the same conformation. The
+results were collected over 50 independent runs of each method for each target
 protein. A graphical analysis is conducted in order to identify visually the
-relative performance between the proposed methods.  Considering that a visual
+relative performance between the proposed methods. Considering that a visual
 analysis is not enough (in this case), a more rigorous numerical statistic set
 of test is conducted.  The Shapiro-Wilk~\cite{wilk1968joint} normality test is
 employed with a confidence level of 5\%, i.e. $\alpha = 0.05$, to assess the
 presence (or lack) of a underlying normal distribution. Based on its result, a
 parametric/non-parametric test is employed with a confidence level of $\alpha =
 0.05$. Due to the multiple comparisons involved \v{S}idák's $\alpha$ correction
-will be utilized~\cite{vsidak1967rectangular}.  The winner (or winners)
-method(s) will be used in further comparison against the literature.  The
+will be utilized~\cite{vsidak1967rectangular}. The winner (or winners)
+method(s) will be used in further comparison against the literature. The
 processing time for this stage is also analyzed. The time required from the
-start of the initial population generation until the final full atom model is
+start of the initial population generation until the final full atom model
 output is measured in seconds.
+\textcolor{red}{TODO: colocar parameter control analysis}
+\textcolor{red}{TODO: convergence analysis}
+\textcolor{red}{TODO: ffi analysis}
+\textcolor{red}{TODO: mc vs remc analysis}
+
+% Present the "free for all" analysis
+In the second analysis step, a direct comparison against several works in the
+literature is considered. Since there is a severe lack of standardization in the
+literature regarding experimentation, the following methodology was used. Works
+that provided the best RMSD had their proteins listed. The proteins that occured
+the most were used for comparison. It is worth noting that the majority of works
+provide little information about how the experimentation was conducted. The way
+in which the results are analysed lacks a standard. As such, this work does a
+direct comparison using the best RMSD achieved in a set of runs. While this is
+not ideal, due to different works running each method different number of times,
+this is possibly the only way to a comparison against several works. The presence
+of outliers also weaken this comparison. Also, since only the most used proteins
+are select, it is possible that some works are only represented partially, i.e.
+some of the results are left out. Nevertheless, at the end of the day for the
+PSPP what matters is having the lowest possible error. As such, comparing just
+the best RMSD still a worthwhile analysis, albeit not ideal.
 
 % Present the protein set
-In the second stage of experimentation, 10 independent runs apart from the
-first stage are used to compare with related works found in the literature. A
-set of proteins was selected based on previous experiments by other authors. To
-be able to fully compare the proposed methods with others in the literature
-only experiments using the same metrics and protein were utilized. This
-decision limits the number of previous works that can be compared to this one.
-Furthermore, it also limits the number of times that the proposed methods can
-be ran. Nevertheless, it provides a solid comparison standard. The metrics
-utilized are the best scorefxn energy function and the best \ac{RMSD} from all
-runs, and the mean and standard deviation of the scorefxn energy function of
-all runs. A direct comparison of the minimum energy and \ac{RMSD} will be used
-as criterion for comparing the methods. % as well as an unpaired Student T
-Test.
-%
-
-With this constraints and considerations a set of four proteins was assembled:
-1ZDD, 1CRN, 1ENH and 1AIL. Table~\ref{tab:protein-targets} presents some
-characteristics of the set of proteins chosen as test suit.  The column
-\textbf{Name} contains the protein identification code as in PDB.  The
-\textbf{Size} column shows the number of amino acids in the protein.  The
-\textbf{Backbone Angles} column shows the number of angles in the backbone,
+With that in mind, the set of proteins presented in Table~\ref{tab:protein-targets}
+was chosen. The column \textbf{Name} contains the protein identification code
+as in PDB.  The \textbf{Size} column shows the number of amino acids in the protein.
+The \textbf{Backbone Angles} column shows the number of angles in the backbone,
 this also has a one to one relation to the number of variables to be optimized
 for a given protein. The \textbf{Structure} column holds the secondary
 structures present in the protein set represented by $\alpha$-helices or
@@ -86,9 +99,15 @@ $\beta$-sheets.
   \begin{tabular}{ l | c | c | c | c }
     \hline \hline
     Name & Size & Backbone Angles & Structure         \\ \hline \hline
+    1L2Y & 20   & 60              & $2\alpha$         \\ \hline
+    1WQC & 26   & 78              & $2\alpha$         \\ \hline
+    1ACW & 29   & 87              & $1\alpha, 2\beta$ \\ \hline
     1ZDD & 35   & 105             & $2\alpha$         \\ \hline
+    2MR9 & 44   & 132             & $3\alpha$         \\ \hline
     1CRN & 46   & 138             & $2\alpha, 2\beta$ \\ \hline
     1ENH & 54   & 162             & $3\alpha$         \\ \hline
+    1ROP & 63   & 189             & $2\alpha$         \\ \hline
+    1UTG & 70   & 210             & $4\alpha$         \\ \hline
     1AIL & 72   & 216             & $3\alpha$         \\ \hline
     \hline
   \end{tabular}
@@ -98,7 +117,7 @@ $\beta$-sheets.
 
 % present each protein (or maybe not)
 
-% present the two algorithms (MC vs REMC
+% present the two algorithms (MC vs REMC)
 
 % Present the parameters
 
@@ -108,8 +127,8 @@ $\beta$-sheets.
         Parameter & Value \\ \hline \hline
         SaDE learning Phase & 50 \\ \hline
         Population Size & 100 \\ \hline
-        Function Evaluation Budget & 500000 \\ \hline
-        MC/REMC Function Evaluation Budget & 100 \\ \hline \hline
+        Function Evaluation Budget & 100000 \\ \hline
+        MC/REMC Function Evaluation Budget & 25 \\ \hline \hline
     \end{tabular}
     \caption{Parameters utilized in the proposed methods}
     \label{tab:parameters}
@@ -121,7 +140,7 @@ $\beta$-sheets.
 
 % Show the energy and distance table
 
-%Analyze energy
+% Analyze energy
 
 % Analyze RMSD
 
@@ -130,16 +149,22 @@ $\beta$-sheets.
 % Analyze the overall results and conclude
 
 \section{Convergence and Diversity Analysis}
+% AVG rmsd plot
 
 \section{Parameter Analysis and Operator Usage}
+% Most used parameters over time
 
 \section{Forced Fragment Insertion Analysis}
+% What was the impact? How good/bad it was
 
 \section{Repacking Impact}
+% How much does the rmsd change before after
+% If ranked by energy, does the ranking change before/after repacking
 
 \section{Processing time}
 
 \section{Comparison with Competing Methods}
+% Big table here
 
 \section{GDT-TS and TM-Score metrics}
 
