@@ -120,6 +120,16 @@ $\beta$-sheets.
 % present the two algorithms (MC vs REMC)
 
 % Present the parameters
+The two proposed methods all operates with the same parameters, as presented
+in~\ref{tab:parameters}.The first columns contains the parameter name and the
+second one its respective value. The SaDE learning Phase has its default value,
+as presented in~\cite{qin2009differential}. There are 100 simultaneous
+trajectories throughout the execution, i.e. a population size of 100. A million
+function evaluations are available for the optimization phase, where each
+fragment insertion routine can use up to 25 at a time. \ac{FFI} uses a fragment
+size of 9 and is applied with a probability of 2\% before each standard fragment
+insertion. The other methods being compared uses the same values from
+Table~\ref{tab:parameters} as apliable.
 
 \begin{table}[ht]
     \centering
@@ -127,8 +137,13 @@ $\beta$-sheets.
         Parameter & Value \\ \hline \hline
         SaDE learning Phase & 50 \\ \hline
         Population Size & 100 \\ \hline
-        Function Evaluation Budget & 100000 \\ \hline
-        MC/REMC Function Evaluation Budget & 25 \\ \hline \hline
+        Function Evaluation Budget & 1000000 \\ \hline
+        MC/REMC Function Evaluation Budget & 25 \\ \hline
+        Spicker cluster size & 10 \\ \hline
+        Crowding factor & 5 \\ \hline
+        Crowding distance method & RMSD \\ \hline
+        \ac{FFI} probability & 0.02 \\ \hline
+        \ac{FFI} length & 9 \\ \hline \hline
     \end{tabular}
     \caption{Parameters utilized in the proposed methods}
     \label{tab:parameters}
