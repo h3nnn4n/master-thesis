@@ -535,7 +535,7 @@ to employ an optimizer in order to search for an conformation of least
 potential energy. This procedure must sample the conformation space accessible
 from the computational representation of a given protein. A vast range of
 methods has been employed over the years in the literature.
-In~\cite{li1987monte} a Monte Marlo based search is used to optimize a set of
+In~\cite{li1987monte} a Monte Carlo based search is used to optimize a set of
 dihedral angles. Basin-hopping is a method where a random perturbation is
 applied to the conformation and then a hill-climbing type of algorithm is
 employed to find a local minima. It has been used in~\cite{prentiss2008protein}
@@ -546,7 +546,7 @@ literature are bio inspired algorithms. The more well established algorithms
 are present in the literature, such as the \ac{PSO}~\cite{geng2017protein},
 \ac{DE}~\cite{hao2017conformational} and the \ac{GA}~\cite{higgs2010genetic}.
 Other algorithms that are not so widely used have been also explored for the
-\ac{PSPP} such as the Cucko Search (CS)~\cite{ramyachitra2017modcsa} and the
+\ac{PSPP} such as the Cuckoo Search (CS)~\cite{ramyachitra2017modcsa} and the
 Bee Colony Algorithm~\cite{li2015balance}. This topic is explored in further
 detail in Section~\ref{sec:bioinspired}.
 
@@ -799,10 +799,10 @@ end there will be a trajectory left by the successive moves by the solution.
 It is also possible that a more complex optimization method employs other
 optimizer algorithms inside. For instance, the \ac{GRASP} is a metaheuristic
 which utilizes both construction and improvement algorithms
-inside~\cite{feo1995greedy}. %This kind of algorithm is often referenced as
+inside~\cite{feo1995greedy}, %This kind of algorithm is often referenced as
 being a Hyper-heuristic~\cite{burke2003hyper}, a heuristic acting upon another.
 
-Going further, it is also possible to characterize trajectory algorithms into
+Going further, it is also possible to characterize optimization algorithms into
 being single or multi-trajectory. As the name implies, the categorization is
 based on the number of trajectories that the algorithm has. Single trajectory
 methods utilize only one during the full extent of the algorithm. Examples of
@@ -814,7 +814,7 @@ are propagated on the search space over time.
 
 % Bio Inspired Metaheuristics
 A set of very successful multi-trajectory optimizers that have been vastly
-utilized and explored both in the literature an commercially are bioinspired
+utilized and explored both in the literature an commercially are bio-inspired
 algorithms~\cite{olariu2005handbook}. It has been used to solve classical
 combinatorial problems, such as the
 \ac{TSP}~\cite{chatterjee1996genetic} and Graph Coloring~\cite{costa1995embedding}.
@@ -825,7 +825,7 @@ such as in economics~\cite{li1996economic}, medicine~\cite{wehrens1993hips},
 biology~\cite{cotta2002inferring} and bioinformatics~\cite{cotta2009metaheuristics}.
 
 % Present EA
-When considering bioinspired algorithms for optimization, two main groups
+When considering bio-inspired algorithms for optimization, two main groups
 exists: \ac{EA}~\cite{back1996evolutionary} and
 \ac{SI}~\cite{mavrovouniotis2017survey}. \ac{EA}s have its roots in the
 Darwinian theory of evolution. In the theory of evolution the fittest
@@ -857,7 +857,7 @@ based, in the sense that the method has several solutions at a given time.
 % uses the objective function to determine if a given solution is better than others.
 
 % Present SI
-Other class of bioinspired algorithms are the \ac{SI} algorithms, where differently from
+Other class of bio-inspired algorithms are the \ac{SI} algorithms, where differently from
 \ac{EA}s, the individuals(solutions) does not compete between them to replace each other.
 Instead, each solution improves over time based on a set of simple local rules which
 gives rise to emergent behavior. \ac{PSO}~\cite{eberhart1995new} is a classic
@@ -1087,13 +1087,13 @@ attempts. This success (and failure) history is used to select the operators
 in the future, in a way where the operators that had the biggest
 contribution to the improvement of the fitness function will be used more often.
 
-As the name implies, \ac{SaDE} was originaly intended to work as an improvement upon
-\ac{DE}. However, it is plasible to completely remove all elements of \ac{DE} from
+As the name implies, \ac{SaDE} was originally intended to work as an improvement upon
+\ac{DE}. However, it is plausible to completely remove all elements of \ac{DE} from
 \ac{SaDE} and use the parameter adaptation and operator selector on a different
 optimizer. Two strategies for controlling parameters can be employed, namely the
 ones from $Cr$ and $F$, where the former will find and use an optimal value and
 the latter will randomly select values from a predetermined distribution. The
-operator selector component can be used to select different optimination strategies
+operator selector component can be used to select different optimization strategies
 that does not belong to \ac{DE}, extending the capabilities of \ac{SaDE}.
 
 \subsection{Monte Carlo Methods} \label{sec:monte-carlo-methods}
@@ -1153,19 +1153,19 @@ objective function, a new pattern is searched. A decreasing level of tolerance
 is utilized until a target tolerance is reached and no improving pattern can be
 found and the current solution is returned.
 
-More formaly, Hooke-Jeeves Pattern Search can be defined in four steps:
+More formally, Hooke-Jeeves Pattern Search can be defined in four steps:
 \begin{enumerate}
     \item Find the best point $x_{neighbor}$ in the neighborhood of the current
-    solution $x_{current}$ by pertubating $x_{current}$ by a set ammount $tol$.
+    solution $x_{current}$ by perturbing $x_{current}$ by a set amount $tol$.
     Find the vector $\vec{v} = x_{neighbor} - x_i$.
     \item Move the current solution in the search space in the direction $\vec{v}$
     until $f(x_{current} + \vec{v}) > f(x_{current})$.
     \item Repeat steps 1 and 2 until $\vec{v}$ is $(0, 0)$.
     \item Reduce $tol$ by some factor.
-    \item Repeat steps 1 through 4 until the desided level of accuracy is reached.
+    \item Repeat steps 1 through 4 until the desired level of accuracy is reached.
 \end{enumerate}
 
-There are two way to utilize Hooke-Jeeve Pattern Search. The first is find a
+There are two way to utilize Hooke-Jeeves Pattern Search. The first is find a
 random point in the search space and use it as the starting point of the optimization.
 Then, Hooke-Jeeves can be considered as an optimization routine on its own. Another
 use of Hooke-Jeeves is to optimize a given function with a coarse optimizer and then
@@ -1176,7 +1176,7 @@ solution found by it can then be refined and improved.
 \section{Related Work}~\label{sec:related_works}
 
 This section provides a comparison with the most recent works in the literature.
-Only works using Ab-Initio with an all atom modeling or all backbone atoms with
+Only works using ab-initio with an all atom modeling or all backbone atoms with
 side-chains centroids are considered. The works are presented in order of year
 of publication.
 
@@ -1234,7 +1234,7 @@ that have a bigger affect on the conformation.
 
 
 A \ac{DE} approach is studied in~\cite{hao2017conformational} where the authors
-employed the use of multiple subpopulations. Each subpopulation is based on a cluster
+employed the use of multiple sub-populations. Each subpopulation is based on a cluster
 constructed using a feature reduction method. With this, similar solution vectors
 can be found, and then operators can be applied on similar individuals with the goal
 of intensifying the search. Extra cluster operators are also applied and help
@@ -1255,7 +1255,7 @@ approach is proposed. There, the authors process the PDB base in search of struc
 for coils and loops in the proteins of knows structure. The result of this search, called
 SPL, is then used as a domain specific operator in \ac{SaDE}. This work successfully utilized
 \ac{SaDE} in a hybrid environment, however, due to the data-mining approach to find structural
-patterns, this work might be considered a mix of an ab-initio method with some
+patterns, this work might be considered a mix of an \textit{ab initio} method with some
 characteristics of thread modeling, namely, the use of templates (structural patterns).
 
 A proposal based on the Genetic Algorithm is presented in~\cite{borguesan2018genetic}. It uses
@@ -1266,19 +1266,19 @@ which focus on inserting fragments which covers contiguous sections of the same 
 The \ac{GA} operators also uses information from NIAS, an \ac{APL} derivative,
 which feeds information into the sampling process.
 
-A multi stage strategy is utilized in~\cite{silva2018multistage} where the authors
+A multi-stage strategy is utilized in~\cite{silva2018multistage} where the authors
 presented the Multistage Simulated Annealing (MSA), which applies 5 different
 SA runs sequentially to a model with increasing levels of detail. Initially a
 very rough model is constructed and over time it is refined until a full atom
 configuration is used and a final refined model is output.
 
 In~\cite{kandathil2018improved} the authors proposed two changes to the Rosetta
-\textit{Ab Initio} protocol. The first consists of using a Bilevel
+\textit{ab initio} protocol. The first consists of using a Bilevel
 Optimization~\cite{sinha2018review}. As pointed by the authors, this approach had
 a sub par result. The another proposal was the use of \ac{ILS}. With ILS forced
 perturbations are employed for loop regions, where a perturbation is accepted
 regardless of the impact it had. The use of \ac{ILS} inside Rosetta's
-\textit{Ab Initio} protocol lead to an improvement in prediction power.
+\textit{ab initio} protocol lead to an improvement in prediction power.
 The authors also note the negative impact that mispredicted secondary structures
 can have on the tertiary structure prediction.
 
@@ -1294,7 +1294,7 @@ being optimized, along with bond and non-bond terms from the CHARMM22 energy
 function. A method using \ac{PSO} and \ac{SVD} is presented in~\cite{alvarez2018protein},
 where \ac{SVD} is utilized to reduce the number of variables, similarly to the
 more common \ac{PCA} method. Another Multi Objective \ac{PSO} is proposed
-in~\cite{song2018adoption}, where it uses two solution achives, density estimation
+in~\cite{song2018adoption}, where it uses two solution achieves, density estimation
 and a mutation operator. The output of the system consists of a set of cluster
 centroids, which allows for the end user to choose from a set of proteins the
 one with the desired properties.
@@ -1306,41 +1306,40 @@ operator. The modeling consists of a custom variant of Rosetta's score3 function
 using a centroid protein model. A method presented by~\cite{varela2019crowding}
 interleaves the stages of Rosetta Classic Abinitio protocol with \ac{DE} using
 Crowding. The proposal is to develop a hybrid methid which improve upon the
-Classic Abinitio protocol from Rosetta by adding several runs of \ac{DE}.
+Classic \textit{ab initio} protocol from Rosetta by adding several runs of \ac{DE}.
 
 Another multiobjective \ac{EA} is presented in~\cite{zaman2019balancing}, which
 consists of a memetic EA using \ac{MC}-based fragment insertion. A Crowding operator
 is utilized in order to keep the genotipic diversity and prevent some regions
 of the search space from getting oversampled. The population is generated using
-the first two steps from Rosetta'as Classic AbInition protocol.
+the first two steps from Rosetta'as Classic \textit{ab initio} protocol.
 
 % Close the chapter / literature review
-Based on the literature review, there are several noteworth points:
+Based on the literature review, there are several note-worth points:
 \begin{itemize}
-    \item The use of online parameter controls (self adaptive methods) for the PSPP.
+    \item The use of online parameter control (self adaptive methods) for the PSPP.
     Only two works (both from the same authors) using online parameter control
-    were found, and one of them is arguably not an pure \textit{ab initio}.
+    were found, and one of them is arguably not a pure \textit{ab initio}.
     Hence, this is an under-explored area of research.
     \item The use of hybrid methods for the PSPP. While recently this has received
     attention, it still has several points left for exploring. One of these points
     is the use of fragment insertion as a way of integrating domain specific operators.
-    \item The use of clustering as a way of outputing more than one solution in a
-    sistematic manner without simply bruteforcing it. This, in turn, allows for
+    \item The use of clustering as a way of outputting more than one solution in a
+    systematic manner without simply brute-forcing it. This, in turn, allows for
     a more direct use of the optimizer by a third-party which wants to predict the
     conformation from a protein. This allows for it to chose from a set of conformation.
 \end{itemize}
 
 These points are reinforced by Table~\ref{tab:related-works-comparison}. Column
-\ac{EA} indicated wether the method is based on an Evolutionary Algorithm or not. The
-majority of the methods are EA-based. Column \ac{FI} shows the use of fragment insertion
+\ac{EA} indicates when the method is based on an Evolutionary Algorithm or not. The majority of the methods are EA-based. Column \ac{FI} shows the use of fragment insertion
 in the methods. From the 18 related works, 7 used \ac{FI}. Column OPC indicates
 the use of Online Parameter Control. Only 3 works incorporated some form of
 parameter control. Column LS corresponds to the use of a Local Search procedure.
 It is worth noting that mutation/crossover operators from methods such as \ac{DE}
 and \ac{GA} are not considered in this column. However, stand alone procedures that
 were interleaved with another methods were. e.g. a \ac{MC} search during a \ac{PSO}.
-Column \ac{CC} considers the use of Conformational Clustering. Of the itens considered,
-this one was the most scarse with only two occurences. Column KD indicated the use
+Column \ac{CC} considers the use of Conformational Clustering. Of the items considered,
+this one was the most scarse with only two occurrences. Column KD indicated the use
 of Knowledge Domain Operators. Fragment indicates that \ac{FI} was the main
 source of knowledge domain. APL and SPL indicates that APL or SPL was utilized,
 as presented in~\cite{borguesan2015apl} and~\cite{oliveira2017sade}. From this
@@ -1373,11 +1372,10 @@ And as such, it is a point worth exploring.
     \end{tabular}
     \caption{Comparison of the works in the literature. FI means Fragment
     Insertion. OPC means Parameter Control. LS means local search. CC means
-    Conformation Clusterting. KD means Knowledge Domain. A dash indicates that
+    Conformation Clustering. KD means Knowledge Domain. A dash indicates that
     the relevant criteria in the column was not met.}
     \label{tab:related-works-comparison}
 \end{table}
 
-These points can be explored in simultainly through a hybrid evolutionary
-algorithm using online parameter control with domain specific operators. And with
-this leverage the advantage of several optimization algorithms and other tools.
+These points can be explored simultaneously through a hybrid evolutionary
+algorithm using online parameter control with domain specific operators. And with this leverage the advantage of several optimization algorithms and other tools.

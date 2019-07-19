@@ -59,8 +59,8 @@ Section~\ref{sec:secondary-structure-prediction} are considered.
 
 The secondary structures are classified using a DSSP8
 notation~\cite{frishman1995knowledge}.  For this work they were predicted using
-the PSIPRED server~\cite{mcguffin2000psipred}, available for academic use in:
-\url{http://bioinf.cs.ucl.ac.uk/psipred/}.  The knowledge from the secondary
+the PSIPRED\footnote{Available for academic use in:
+\url{http://bioinf.cs.ucl.ac.uk/psipred/}}  server~\cite{mcguffin2000psipred}. The knowledge from the secondary
 structure prediction is incorporated in the model using fragment insertion,
 which will be further explained in Section~\ref{sec:conformation-sampling}.
 
@@ -114,13 +114,13 @@ not fast enough. Therefore, due to its limitations,
 metaheuristic methods must be employed in order to search for good results
 in a reasonable amount of time. Many metaheuristics can be employed
 on the \ac{PSPP}, as shown in Section~\ref{sec:bioinspired}
-For this work, a simple Evolutionary Algorithm is employed due to its capability
+For this work, an Evolutionary Algorithm is employed due to its capability
 of easily integrating with the necessary tools, while having the required level
 of performance. Furthermore, to increase
 its performance, and online parameter control technique will be
 utilized based on the \ac{SaDE} framework~\cite{qin2005self,qin2009differential}.
 
-In~\cite{kim2009sampling} the author states that the bottleneck of solving the
+In~\cite{kim2009sampling} is stated that the bottleneck of solving the
 \ac{PSPP} is the conformation sampling procedure. Therefore, it is the part
 that must be more focused on, since increasing its performance will likely lead
 to better predictions. Furthermore, a blind optimizer that has no knowledge
@@ -258,16 +258,16 @@ output is fed to the selection routine. From there it is checked if the stop
 criteria was met. If it was not, then the parameter update routine is called,
 updating the parameters F and Cr (for all operators) as well as the
 probabilities for each operator. Since \ac{DE} is not used, the $Cr$ parameter
-actually controler the \ac{MC} temperature parameter. The parameter control is
+actually controller the \ac{MC} temperature parameter. The parameter control is
 agnostic to which parameter it is updating. Once the Parameter Update step is
 finished, the optimization cycle starts over again from the operator selection.
 
 The when stop criteria is ultimately met, the optimization phase stops and the
-post processing phase starts. The first postprocessing step is to cluster the
+post processing phase starts. The first post-processing step is to cluster the
 conformations. After the clustering process finishes, the cluster centroids are
-selected. The number of clusters are a parameter of the algorithms.
+selected. The number of clusters are a parameter of the algorithm.
 The conformations closest to the centroids are found and feed forward
-to the next steps, while the centroids themselves are discarted. A Hooke-Jeeves
+to the next steps, while the centroids themselves are discarded. A Hooke-Jeeves
 local search is applied. This helps to reach nearby local minima that might have
 been inaccessible by the fragments alone. Once the local search finishes, the
 repacking procedure is applied to all the conformations that were selected in
@@ -276,7 +276,7 @@ centroids and places rotamers (side-chains fragments). The conformation is again
 re-optimized, this time using a gradient descent guided by the scorefxn energy
 function. After this step finishes the conformations are returned. Returning
 the conformation nearest to each centroid (and re-optimizing/repacking it) allows
-for a human specialist to inspect multiple conformations that are appart from
+for a human specialist to inspect multiple conformations that are apart from
 each other and select the best one. In this way, one run can provide multiple
 potentially useful solutions.
 
@@ -286,4 +286,4 @@ a bigger overall diversity, and thus, returning conformations that are more
 different apart. Meanwhile, the \ac{REMC} variant is expect to exploit more at
 the expense of conformation diversity. That is, it may get stuck in a local
 minima more easily in exchange for a increased chance of finding a better solution.
-The first method is named SADE-MC-FINAL and the second is named SADE-REMC-FINAl.
+The first method is named SADE-MC-FINAL and the second is named SADE-REMC-FINAL.
