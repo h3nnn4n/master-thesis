@@ -77,7 +77,7 @@ three variables. Therefore, one can consider that the \ac{PSPP} is a
 challenging problem.
 
 % What are the main methods of solving it (ab initio, threading modeling, homology modeling)
-There are two main approaches to solving the \ac{PSPP}: Knowledge-based methods
+There are two main approaches to solving the \ac{PSPP}: knowledge-based methods
 and \textit{ab initio} methods. Knowledge-based methods have two subgroups:
 Threading and Homology-based method. Threading modeling is based on the use of
 templates that represents the vast majority of the proteins. These templates
@@ -88,16 +88,15 @@ to a protein of known structure, it will probably have a similar structure.
 Homology methods require homologous protein, whereas Threading methods relies
 on the templates being representative of the (unknown) target conformation. In
 contrast with Knowledge-based methods, \textit{ab initio} methods do not rely
-on previously known information. The main characteristic of \textit{Ab Initio}
+on previously known information. The main characteristic of \textit{ab initio}
 method is that it operates by building the conformation from scratch guided by
-an energy function. Its advantage \text{Ab Initio} over the other
+an energy function. Its advantage over the other
 methods is that is can (theoretically) predict any protein, regardless of a
 presence of a template or homologous protein. Furthermore, it can lead to
-further insights on the folding process. This works focus on solving the
-\ac{PSPP} with an \textit{Ab Initio} method.
+further insights on the folding process. The present work focuses on solving the \ac{PSPP} with an \textit{ab initio} method.
 
 % How can proteins be represented computationally (on and off-lattice)
-The \textit{In Silico} modeling and representation of proteins are split in two
+The \textit{in silico} modeling and representation of proteins are split in two
 groups: On lattice and off-lattice models. The former limits the angles between
 the amino acids in discrete increments, in such way that the protein is limited
 to be placed over a point in the lattice and can be considered to be a discrete
@@ -110,14 +109,13 @@ sub-models, with different levels of complexity and accuracy. The main models
 found in the literature are $C_\alpha$ Coordinates, all heavy atoms
 coordinates, backbone and centroid coordinates, backbone and side chain torsion
 angles, and all atoms coordinates~\cite{dorn2014three,rohl2004protein}.
-This work uses two models in its proposals: Backbone and centroids and backbone
-and side chains, both using torsion angles.
+This work uses two models in its proposals: Backbone and centroids, and backbone and side chains, both using torsion angles.
 
 % Energy potential
 Solving the \ac{PSPP} in an \textit{ab initio} approach requires an energy function
 which must be able to estimate the potential energy of a conformation. Since a
-protein \textit{In Natura} will fold towards the point of least potential
-energy, by estimating its potential energy \textit{In Silico}, it is possible to
+protein \textit{in natura} will fold towards the point of least potential
+energy, by estimating its potential energy \textit{in silico}, it is possible to
 use an optimizer to find the global minimum and give a prediction of the
 protein structure. The computational representation of this potential energy is
 an approximation of the real world interactions between the atoms and molecules
@@ -134,7 +132,7 @@ Rosetta~\cite{rohl2004protein,leaver2011rosetta3}.
 Given that the \ac{PSPP} can be represented as a $\mathcal{NP}$-hard optimization
 problem, a robust set of solvers for this kind of problem are
 \ac{MH}, and in particular, bio-inspired \ac{MH}~\cite{kar2016bio}.
-Some of the more employed \ac{MH}s in the literature are the
+Some of the most employed \ac{MH}s in the literature are the
 \ac{GA}~\cite{holland1992genetic} and the
 \ac{DE}~\cite{storn1997differential}. Both of them are
 \ac{EA} due to their inspiration by the Darwinian process of natural
@@ -173,7 +171,7 @@ relevant, and thus, possibly improve the overall performance.
 This work has as its primary goal to study and solve the \ac{PSPP}. For this an
 off-lattice \textit{ab initio} method will be used. The proteins will be
 represented computationally as torsion angles of the backbone and side chain
-centroids. The \textit{Ab Initio} model will be optimized using a hybrid
+centroids. The \textit{ab initio} model will be optimized using a hybrid
 optimizer based on \ac{MC} and Local Search with online parameter control.
 
 
@@ -195,7 +193,7 @@ understanding of the solving process of this kind of problems. It also can lead
 to better understanding of the solving mechanisms as well, giving insight on
 how to design better optimizers.
 
-\section{Objectives and Hypothesis}\label{sec:chap1_objectives}
+\section{Objectives}\label{sec:chap1_objectives}
 
 This work has as its main objective to explore the \ac{PSPP} and to develop a
 competitive solver for the off-lattice \textit{ab initio} \ac{PSPP} using a
@@ -203,10 +201,9 @@ hybrid optimizer with online parameter control. For this, several secondary
 objectives have to be achieved as well:
 
 \begin{itemize}
-    \item Propose a flexible and configurable framework for predicting protein conrmations;
+    \item Propose a flexible and configurable framework for predicting protein conformations;
     \item Assess the performance of the proposed method on several proteins;
-    \item Compare the reached performance agaisnt the state of the art;
-    \item Compare the reached performance agaisnt competing methods in the literature;
+    \item Compare the reached performance against the state-of-the-art approaches.
 \end{itemize}
 
 % This work has three hypothesis to test and/or confirm. They are:
@@ -217,7 +214,7 @@ objectives have to be achieved as well:
 \section{List of Publications}\label{sec:list_of_publications}
 
 \begin{itemize}
-    \item SILVA, R. S.; PARPINELLI, R. S. A multistage simulated annealing for protein structure prediction using rosetta. Anais do Computer on the Beach, p. 850–859, 2018.
+    \item SILVA, R. S.; PARPINELLI, R. S. A multistage simulated annealing for protein structure prediction using rosetta. Anais do Computer on the Beach, p. 850–859, 2018. Best paper award.
     \item PARPINELLI, R. S. et al. A review of technique for on-line control of parameters in swarm intelligence and evolutionary computation algorithms. International Journal of Bio-Inspired Computation (IJBIC), 2018.
     \item SILVA, R. S.; PARPINELLI, R. S. A self-adaptive differential evolution with fragment insertion  for  the  protein  structure  prediction  problem.  In:  SPRINGER. International Workshop on Hybrid Metaheuristics. 2019. p. 136–149.
 \end{itemize}
