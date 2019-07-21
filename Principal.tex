@@ -31,6 +31,19 @@
 
 \usepackage{lastpage}
 
+\makeatletter
+\newcommand*{\overtabline}{%
+  \noalign{%
+    % normal "baselineskip" in tabular is height + depth of \@arstrutbox
+    \vskip-.5\dimexpr\ht\@arstrutbox+\dp\@arstrutbox\relax
+    % default line thickness is 0.4pt
+    \vskip-.2pt\relax
+    \hrule
+    \vskip-.2pt\relax
+    \vskip+.5\dimexpr\ht\@arstrutbox+\dp\@arstrutbox\relax
+  }%
+}
+
 % TODO: get a title
 \titulo{A Self Adaptive Greedy Evolutionary Algorithm using Monte Carlo Fragment Insertion and Conformation Clustering}
 \autor{RENAN SAMUEL DA SILVA}

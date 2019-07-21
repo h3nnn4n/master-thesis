@@ -1,1 +1,17 @@
 \chapter{Mann-Whitney test results for RMSD}\label{appendix:mann-whitney-rmsd}
+
+\begin{table}
+  \centering
+  \begin{tabular}{r|c|c|c|c|c|c} 
+       & \rotatebox[origin=c]{270}{classic-abinitio} & \rotatebox[origin=c]{270}{sade-mc-ffi9-02} & \rotatebox[origin=c]{270}{sade-mc-final} & \rotatebox[origin=c]{270}{sade-remc} & \rotatebox[origin=c]{270}{sade-remc-ffi9-02} & \rotatebox[origin=c]{270}{sade-remc-final} \\ \hline \hline
+      classic-abinitio &  -     & $0.1769$      & $0.0000$      & $0.0000$      & $0.0000$      & $0.0000$      \\ \hline
+       sade-mc-ffi9-02 & $0.1769$      &  -     & $0.0000$      & $0.0020$      & $0.0028$      & $0.0000$      \\ \hline
+         sade-mc-final & $\bm{0.0000}$ & $\bm{0.0000}$ &  -     & $\bm{0.0000}$ & $\bm{0.0000}$ & $0.3000$      \\ \hline
+             sade-remc & $\bm{0.0000}$ & $\bm{0.0020}$ & $0.0000$      &  -     & $0.4684$      & $0.0000$      \\ \hline
+     sade-remc-ffi9-02 & $\bm{0.0000}$ & $\bm{0.0028}$ & $0.0000$      & $0.4684$      &  -     & $0.0000$      \\ \hline
+       sade-remc-final & $\bm{0.0000}$ & $\bm{0.0000}$ & $0.3000$      & $\bm{0.0000}$ & $\bm{0.0000}$ &  -     \\ \hline
+  \hline
+  \end{tabular}
+  \caption{Mann-Whitney for 1acw \texttt{best-by-rmsd} using RMSD}
+  \label{tab:mann-whitney-wilk-best-by-rmsd-RMSD}
+\end{table}

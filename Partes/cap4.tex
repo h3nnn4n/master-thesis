@@ -305,7 +305,7 @@ important, as it helps to prevent inference errors.
 The Kruskal–Wallis test was performed with an $\alpha = 0.05$. The null-hypothesis
 is that all the samples were drawn from the same distribution, i.e. all the
 methods have equivalent performance.
-Table~\ref{tab:kruskal-wallis-wilk-best-by-rmsd-RMSD} presents the result of the
+Table~\ref{tab:kruskal-wallis-best-by-rmsd-RMSD} presents the result of the
 tests for the RMSD.
 The column protein indicates the name of the protein, and the column
 $p$-value indicates the result of the test. When the $p$-value is less than
@@ -316,7 +316,7 @@ was less than $1e-05$ in all cases. For 1zdd, $H_0$ failed to be rejected, the
 most likely reason is that since this protein is (arguably) the easiest one,
 all methods reached near-native conformations.
 
-Table~\ref{tab:kruskal-wallis-wilk-best-by-energy-scorefxn} reads the same
+Table~\ref{tab:kruskal-wallis-best-by-energy-scorefxn} reads the same
 as the previous one, however, the data it displays regards to \texttt{scorefxn}.
 Protein 1zdd failed to reject $H_0$ again, as did 1l2y, another relatively
 simple and short protein. For all the remaining proteins $H_0$ was rejected.
@@ -332,28 +332,76 @@ Considering that both RMSD and \texttt{scorefxn} will be analized, each for
 10 proteins, a total of $20$ tables are necessary to expose all the data. As
 such, this information is exposed in Appendix~\ref{appendix:mann-whitney-rmsd}
 and~\ref{appendix:mann-whitney-scorefxn}, where the first presents the data for
-RMSD and the second for the energy.
+RMSD and the second for the energy. The resuls will be summarized reporting the
+overall results from the test. To keep focus and simplicity, first, the two
+proposed methods will be compared agaisnt the other methods. Then, they will be
+compared against rosetta. In both cases, the RMSD and \texttt{scorefxn} will be
+considered for the analysis.
 
+\input{Tabelas/mann-whitney-summary-internal.tex}
 
-\begin{table}
-  \centering
-  \begin{tabular}{r|c|c|c|c|c|c} 
-       & \rotatebox[origin=c]{270}{classic-abinitio} & \rotatebox[origin=c]{270}{sade-mc-ffi9-02} & \rotatebox[origin=c]{270}{sade-mc-final} & \rotatebox[origin=c]{270}{sade-remc} & \rotatebox[origin=c]{270}{sade-remc-ffi9-02} & \rotatebox[origin=c]{270}{sade-remc-final} \\ \hline \hline
-      classic-abinitio &  -     & $0.1769$      & $0.0000$      & $0.0000$      & $0.0000$      & $0.0000$      \\ \hline
-       sade-mc-ffi9-02 & $0.1769$      &  -     & $0.0000$      & $0.0020$      & $0.0028$      & $0.0000$      \\ \hline
-         sade-mc-final & $\bm{0.0000}$ & $\bm{0.0000}$ &  -     & $\bm{0.0000}$ & $\bm{0.0000}$ & $0.3000$      \\ \hline
-             sade-remc & $\bm{0.0000}$ & $\bm{0.0020}$ & $0.0000$      &  -     & $0.4684$      & $0.0000$      \\ \hline
-     sade-remc-ffi9-02 & $\bm{0.0000}$ & $\bm{0.0028}$ & $0.0000$      & $0.4684$      &  -     & $0.0000$      \\ \hline
-       sade-remc-final & $\bm{0.0000}$ & $\bm{0.0000}$ & $0.3000$      & $\bm{0.0000}$ & $\bm{0.0000}$ &  -     \\ \hline
-  \hline
-  \end{tabular}
-  \caption{Mann-Whitney for 1acw \texttt{best-by-rmsd} using RMSD}
-  \label{tab:mann-whitney-wilk-best-by-rmsd-RMSD}
-\end{table}
+Starting with the RMSD using \texttt{best-by-rmsd}, comparing the two proposed
+methods against the ones from a previous work, the results are shown in
+Table~\ref{tab:mann-whitney-summary-internal-best-by-rmsd-RMSD}. The column
+Protein displays the protein name. Column Wins, Loses and Draws shows the number
+of times that any of the two proposed methods outperformed, were outperformed,
+or had a similar performance than any of the other methods (excluding rosetta).
+Based on the results from Kruskal–Wallis, as show in
+Tables~\ref{tab:kruskal-wallis-best-by-rmsd-RMSD} and
+Tables~\ref{tab:kruskal-wallis-best-by-energy-scorefxn}, there is not
+difference between the methods for protein 1zdd both when considering RMSD and
+\texttt{scorefxn}. For 1l2y also there is no difference, however, only with
+\texttt{scorefxn}. As such, these rows in the table should be ignored.
+
+For all but two proteins, the two proposed methods outperformed the others. For
+1crn there is one of the proposed method that was outperformed. In this case,
+sade-mc-final was outperformed by sade-remc-final. That is, one of the proposed
+methods outperformed the other. For 1rop, sade-mc-final outperformed all other
+methods, including sade-remc-final. Furthermore, it was outperformed by all
+methods but sade-remc-ffi. For all proteins, excluding 1zdd, the proposed
+methods outperformed the other methods more times than they were outperformed.
+
+The summary concerning the energy of the conformations is show in
+Table~\ref{tab:mann-whitney-summary-internal-best-by-energy-scorefxn}. It
+reads the same as the table before. For proteins 1ail, 1crn, 1enh, 1wqc and 2mr9
+the proposed methods outperformed the others more times than they were
+outperformed. On 1acw, sade-mc-final outperformed sade-remc-final, while
+sade-remc-final was outperformed by the other 3 methods. The exact situation
+occured for 1rop. On 2mr9, sade-mc-final outperformed sade-remc-final, while
+sade-mc-final was outperformed by 2 other methods. Interestingly, on 1zdd
+and 1lwy, Mann-Whitney detected performance differences, disagreeing with
+the results from Kruskal–Wallis. Nevertheless, for these 2 proteins, the result
+from Kruskal–Wallis will be considered to be the correct one.
+
+\input{Tabelas/mann-whitney-summary-rosetta.tex}
+
+In Table~\ref{tab:mann-whitney-summary-rosetta-best-by-rmsd-RMSD} the
+comparison of the two proposed methods compared to Rosetta using RMSD is
+presented. For 1acw, 1enh, 1l2y, 1utg and 2mr9, totalling 5 proteins, both
+proposed methods outperformed rosetta. For 1ail only sade-remc-final
+outperformed rosetta. On 1rop, sade-mc-final outperformed rosetta, while
+sade-remc-final was outperformed. On 1crn, only sade-mc-final was outperformed
+by rosetta. From this, it is demonstrated that both the proposed methods
+consistenly outperform rosetta. In fact, rosetta outperformed the proposed
+methods only in 2 ocasions.
+
+The comaparison of rosetta and the proposed methods using \texttt{scorefxn}
+is presented in Table~\ref{tab:mann-whitney-summary-rosetta-best-by-rmsd-RMSD}.
+For this particular case, for 3 proteins, 1enh, 1utg and 2mr9, both proposed
+methods outperformed rosetta. On 1acw and 1rop rosetta outperformed only
+sade-remc-final. On 1ail, only sade-mc-final outperformed rosetta. Overall,
+the proposed methods outperformed rosetta in some cases and had equal
+significance in others.
+
+In light of these observations, it is safe to consider that the two proposed
+methods outperform the previous methods. It also outperforms rosetta, one of
+the state of the art methods in the literature and CASP winners.
 
 \subsection{Pareto Front Analysis}\label{sec:pareto-front-analysis}
 
-\subsection{Analysis Conclusions}\label{sec:analysis-conclusions}
+\textcolor{red}{Muitos dados pra analisar. Pouco retorno. Vou deixar de lado}
+
+% \subsection{Analysis Conclusions}\label{sec:analysis-conclusions}
 
 % Analyze the overall results and conclude
 
@@ -375,7 +423,54 @@ RMSD and the second for the energy.
 \section{Comparison with Competing Methods}
 % Big table here
 
+A comparison against methods in the literature is very difficult to conduct.
+Most of the methods in the literature are relativelly superficial in their
+explanations of how a given algorithm was implemented and what testing
+methodology was employed. Paper space seems to be a possible cause for this,
+since articles that spans more pages are usually more detailed about the
+implementation and methodology. As such, a comparison has to be based on the
+data provided in the works, which in most cases is not enough for a proper
+rigorous analysis to be conducted. Nevertheless, this work attempts to provide
+a simple framework for comparing the proposed methods with works in the
+literature. Several works were selected, where the model utilized was the
+full atomic model with and ab initio method, and their proteins and the RMSD
+of the best predition was recorded. From these, the proteins which appeared in
+more than four works were selected.
+
 \input{Tabelas/literature_comparison.tex}
+
+In Table~\ref{tab:literature-comparison}, this data is presented. The first
+column indicates the year of publication, where the data is presented in
+decreasing order. The column Source presents the source of the data, which is
+either a work in the literature, one of the proposed methods, or the results
+from rosetta that were collected during the development of this work. The
+remaining columns present several proteins, sorted by the frequency in which it
+appears in literature. The data in these columns is the best RMSD from the
+method in the given work.
+
+Given that more than 20 works are cited in this table, doing a detailed
+analysis and description would be rather cumbersome. Instead, some keynotes are
+provided. First, there appears to be a weak trend where the RMSD is slowly
+decreasing. Albeit this trend this trend has several counter examples.
+For instance, the works of~\cite{cazacu2014steel} and~\cite{judy2009multi}
+have competitive results even by today standards, even though they are more than
+a decade old. Another major point, is that the results are getting extremaly
+competitive in the last years. The competition probably is not any bigger due to
+the lack of common proteins between the workers. It is not rare to find works
+from the same author where a different set of proteins is utilized.
+
+Even in face of the competitiveness of the problem, the proposed methods were
+able to achieve the best RMSD in a couple of proteins. In many other proteins
+the results were competitive with the state of the art. For the protein 1wqc
+the best RMSD was achieved by sade-mc-final. On 2mr9 the proposed methods
+achieved the best and second best results. For 1rop and 1crn, the two most used
+proteins in the literature, one of the proposed methods was able to achieve
+the second best result. The same occured for 1enh. Another point worth stating
+is that some proteins might be way too easy for the current methods. Take 1zdd
+for example, all but two methods had RMSD smaller than 2.62. Considering that
+most proteins in PDB have a resolution ranging from 1 to 2\AA, trying to go
+smaller than that is more a pursue of luck than science. As such, this protein
+might only be useful to validating new methods, but not for measuring progress.
 
 \section{GDT-TS and TM-Score metrics}
 
