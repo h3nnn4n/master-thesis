@@ -254,11 +254,102 @@ will be utilized for this purpose.
 For the tests an $\alpha = 0.05$ was utilized. The RMSD and \texttt{scorefxn}
 of both the \texttt{best-by-rmsd} and \texttt{best-by-energy} were analysed for
 all the methods. For the sake of breviety the results are exposed outside this
-text, in Appendix~\ref{appendix:shapiro}.
+text, in Appendix~\ref{appendix:shapiro}. The null hyphotesis, $H_0$, is that
+the samples belong to a normal distribution. Therefore, if the test returns a $p$
+value less than $\alpha$, $H_0$ is rejected and the underlying distribution is
+not gaussian. If $p$ is equal or bigger than $\alpha$, then the test failed to
+reject $H_0$. Considering the data to be analyzed, this is not so straight
+forward. There are 2 metrics to be analysed, the RMSD and \texttt{scorefxn}.
+There are several methods which were executed. Furthermore, several proteins
+were utilized for testing. Not only this gives a bug amount of data to analyse,
+it is possible that some method, protein or metric may lead to a gaussian
+distribution, where others don't.
+
+For the RMSD using \texttt{best-by-rmsd}, there were $37$ cases where $H_0$
+failed to be rejected, and $23$ where it was rejected. All methods when applied
+to protein 1acw gave a gaussian distribution. For 1zdd, 5 of the 6 methods gave
+a non-gaussian distribution. The proteins, 1crn, 1l2y and 2mr9, had split results
+where half the methods rejected $H_0$ and half didn't. Some proteins appear to
+be more propense to generate gaussian distributions than others. By analysing
+the methods instead of the proteins, a new insight is given. The two proposed
+methods had $2$ and $1$ rejection of $H_0$, for sade-mc-final and sade-remc-final,
+respectively. Whereas sade-mc-ffi and sade-remc both had $6$ rejections. This
+indicates that some methods are more propense to generate gaussian distribution
+than others.
+
+Considering \texttt{scorefxn} with \texttt{best-by-energy}, there were $46$
+cases whenre $H_0$ failed to be rejected, and $14$ were it was rejected. On this
+situation, with the given metric, more methods are generating gaussian
+distributions. Three proteins, 1acw, 1crn and 1l2y, failed all times to reject $H_0$.
+For 1ail and 1enh, the results were split in the middle. 1zdd had the most
+rejections of $H_0$, with $4$. The remaining proteins had only a single
+rejection of $H_0$. with both metrics, 1zdd had the most rejections of $H_0$,
+whereas all methods on 1acw failed to reject $H_0$. Looking at the methods,
+there is no clear trend. The proposed method sade-remc-final had no rejection
+of $H_0$, while sade-mc-final had two.
+
+% Conclude the analysis and introduce the next analysis
+Given this, it appears that the underlying distribution, in most cases, is
+gaussian. However, there are consistent, albeit fewer, situations where they are
+not gaussian. As such, a non-parametric test must be employed. In this case, the
+analysis is split in two step. Firstly, Kruskal–Wallis test is applied in order
+to detect if there is a significant difference between the distribution, i.e.
+if there is a method that is better than some other. If there is, then
+a pairwise Mann-Whitney is utilized. Even though it is a non-parametric test, it
+has, relative to Student's t test, a similar performance. Therefore,
+Mann-Whitney's test can suit the needs to analyse the data at hand. Running
+Mann-Whitney only if Kruskal–Wallis detects a significant difference is
+important, as it helps to prevent inference errors.
+
+% Present kruskal-wallis RESULTS
+The Kruskal–Wallis test was performed with an $\alpha = 0.05$. The null-hypothesis
+is that all the samples were drawn from the same distribution, i.e. all the
+methods have equivalent performance.
+Table~\ref{tab:kruskal-wallis-wilk-best-by-rmsd-RMSD} presents the result of the
+tests for the RMSD.
+The column protein indicates the name of the protein, and the column
+$p$-value indicates the result of the test. When the $p$-value is less than
+$\alpha$ it is hilighted in boldface. The result if very straightforward to
+interpret. All the proteins with the exception of 1zdd had a $p$-value less
+than the selected $\alpha$. Moreover, when $H_0$ was rejected, the $p$-value
+was less than $1e-05$ in all cases. For 1zdd, $H_0$ failed to be rejected, the
+most likely reason is that since this protein is (arguably) the easiest one,
+all methods reached near-native conformations.
+
+Table~\ref{tab:kruskal-wallis-wilk-best-by-energy-scorefxn} reads the same
+as the previous one, however, the data it displays regards to \texttt{scorefxn}.
+Protein 1zdd failed to reject $H_0$ again, as did 1l2y, another relatively
+simple and short protein. For all the remaining proteins $H_0$ was rejected.
+Therefore, it is safe to do a pair-wise test using Mann-Whitney's.
+
+\input{Tabelas/kruskal.tex}
 
 % Present mann-whitney RESULTS
+The Mann-Whitney test was applied with $\alpha = 0.05$. The null hypothesis is
+that the two distributions are equal, i.e. both methods have the same
+performance. Rejection of $H_0$ indicates that one method is better than other.
+Considering that both RMSD and \texttt{scorefxn} will be analized, each for
+10 proteins, a total of $20$ tables are necessary to expose all the data. As
+such, this information is exposed in Appendix~\ref{appendix:mann-whitney-rmsd}
+and~\ref{appendix:mann-whitney-scorefxn}, where the first presents the data for
+RMSD and the second for the energy.
 
-% Present Friedmann rank test RESULTS
+
+\begin{table}
+  \centering
+  \begin{tabular}{r|c|c|c|c|c|c} 
+       & \rotatebox[origin=c]{270}{classic-abinitio} & \rotatebox[origin=c]{270}{sade-mc-ffi9-02} & \rotatebox[origin=c]{270}{sade-mc-final} & \rotatebox[origin=c]{270}{sade-remc} & \rotatebox[origin=c]{270}{sade-remc-ffi9-02} & \rotatebox[origin=c]{270}{sade-remc-final} \\ \hline \hline
+      classic-abinitio &  -     & $0.1769$      & $0.0000$      & $0.0000$      & $0.0000$      & $0.0000$      \\ \hline
+       sade-mc-ffi9-02 & $0.1769$      &  -     & $0.0000$      & $0.0020$      & $0.0028$      & $0.0000$      \\ \hline
+         sade-mc-final & $\bm{0.0000}$ & $\bm{0.0000}$ &  -     & $\bm{0.0000}$ & $\bm{0.0000}$ & $0.3000$      \\ \hline
+             sade-remc & $\bm{0.0000}$ & $\bm{0.0020}$ & $0.0000$      &  -     & $0.4684$      & $0.0000$      \\ \hline
+     sade-remc-ffi9-02 & $\bm{0.0000}$ & $\bm{0.0028}$ & $0.0000$      & $0.4684$      &  -     & $0.0000$      \\ \hline
+       sade-remc-final & $\bm{0.0000}$ & $\bm{0.0000}$ & $0.3000$      & $\bm{0.0000}$ & $\bm{0.0000}$ &  -     \\ \hline
+  \hline
+  \end{tabular}
+  \caption{Mann-Whitney for 1acw \texttt{best-by-rmsd} using RMSD}
+  \label{tab:mann-whitney-wilk-best-by-rmsd-RMSD}
+\end{table}
 
 \subsection{Pareto Front Analysis}\label{sec:pareto-front-analysis}
 
