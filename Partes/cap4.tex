@@ -418,6 +418,9 @@ the state of the art methods in the literature and CASP winners.
 % How much does the rmsd change before after
 % If ranked by energy, does the ranking change before/after repacking
 
+\section{Monte Carlo vs Replica Exchange Monte Carlo}
+% Compare sade-mc-final and sade-remc-final
+
 \section{Processing time}
 
 \section{Comparison with Competing Methods}
@@ -476,3 +479,46 @@ might only be useful to validating new methods, but not for measuring progress.
 
 \section{Visual Representation of the Predictions}
 
+A final step in the analysis of the proposed methods is to do a visual
+inspection. Considering that two methods were proposed, and that there are 10
+proteins being analysed, comparing the 20 best predictions would be very
+extensive. For this reason, sade-mc-final was selected to be inspected, since
+its preditions were over all more accurate.
+
+\input{Figuras/conformations.tex}
+
+In Figure~\ref{fig:all-conformations} all conformations from the 10 best
+predictions by sade-mc-final are presented. The proteins are presented in
+lexicographical order. The predicted conformation is presented in green and the
+native conformation is presented in red\footnote{For the readers with a black
+and white copy, the predicted conformation is in a light shade of grey, while
+the native conformation is in dark grey.}.
+
+Proteins 1enh, 1rop, 1utg, 1wqc, 1zdd and 2mr9 had near native conformations.
+There is very little to comment for these particular predictions. For protein 1acw,
+which had a relativelly high RMSD, consideringthe size of the protein, there are
+two main prediction errors. Firstly, the $\beta$-sheets did not form, and, where
+should be one, there is an $\alpha$ helix instead. The second error, is that the
+$\alpha$ helix is in the wrong place and split. It starts where it should,
+however, it only has a single turn. A second helix forms at the eighth residue
+and goes on for ten more residues. Both these erros can be traced down to an
+error in the Secondary Structure Prediction, which the proposed methods have no
+way to avoid. For 1ail, the prediction is mostly correct, however, two helixes
+are split apart. The first, to the left of the image, and the second, in the
+middle helix. These errors were prediction failures that occured in the proposed.
+This protein in particular has a correct secondary structure as an starting
+point.
+
+On 1crn, a relatively complex protein, has a overall correct fold. The fine
+details, however, are lacking. The two helixes are mostly missing and the
+sheets did not fold. These two errors can be traced down to the secondary
+structure prediction used as input. For 1l2y a similar scenario occurs, where
+the main source of error is in the data fed to the prediction engine. The
+overall shape of the protein was correctly predicted. The helix is completly
+missing.
+
+Interestingly, on 4 of the proteins with the biggest visually detectable error,
+3 of them had its source of error outside to the prediction. The proposed method
+relies heavilly on the predicted secondary structure, and as such, has do deal
+with uncentanty. In only a single case the major error in a prediction was
+generated during the prediction it self, as occured on 1ail.
