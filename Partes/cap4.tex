@@ -477,6 +477,99 @@ might only be useful to validating new methods, but not for measuring progress.
 
 \section{GDT-TS and TM-Score metrics}
 
+This section provides an in depth analysis of the results obtained in this
+work using the GDT-TS and the TM-Score metrics of the predicted proteins. The
+results can also be used by other works to compare against our own using
+these metrics. Tables~\ref{tab:gdtts-data} and~\ref{tab:tmscore-data} present
+for the two proposed methods, sade-remc-final and sade-mc-final with their
+respective GDT-TS and TM-Score. Both tables follows the same format. The
+first column presents the protein name. The results for both methods are
+presented in the same table, where each method has a column. Each one of the
+method's column is split into three subcolumns with the best result, the mean
+and the standard deviation.
+
+Both GDT-TS and TM-Score share the same property where values can be used as
+thresholds for prediction quality. A value of $0.2$ indicates the performance of
+a random prediction, while the value of $0.5$ indicates a prediction that has
+the same overall fold. Considering that, values of $0.5$ or above are marked
+in boldface font.
+
+\begin{table}
+  \centering
+  \begin{tabular}{r|c|c|c||c|c|c}
+            & \multicolumn{3}{c}{sade-mc-final} & \multicolumn{3}{||c}{sade-remc-final} \\ \hline
+    Protein & best          & mean          & stddev   & best          & mean          & stddev   \\ \hline \hline
+    1acw    & $\bm{0.5172}$ & $0.4605$      & $0.0302$ & $\bm{0.5603}$ & $0.4648$      & $0.0359$ \\ \hline
+    1ail    & $0.4932$      & $0.3938$      & $0.0494$ & $0.4897$      & $0.3957$      & $0.0406$ \\ \hline
+    1crn    & $\bm{0.5000}$ & $0.4033$      & $0.0409$ & $\bm{0.5435}$ & $0.4329$      & $0.0442$ \\ \hline
+    1enh    & $0.4861$      & $0.4262$      & $0.0369$ & $0.4907$      & $0.4425$      & $0.0328$ \\ \hline
+    1l2y    & $\bm{0.6625}$ & $\bm{0.5773}$ & $0.0439$ & $\bm{0.6625}$ & $\bm{0.5657}$ & $0.0344$ \\ \hline
+    1rop    & $\bm{0.6825}$ & $\bm{0.5772}$ & $0.0517$ & $\bm{0.6151}$ & $0.4985$      & $0.0551$ \\ \hline
+    1utg    & $\bm{0.5571}$ & $0.4346$      & $0.0631$ & $\bm{0.5607}$ & $0.4391$      & $0.0508$ \\ \hline
+    1wqc    & $\bm{0.7885}$ & $\bm{0.6446}$ & $0.0451$ & $\bm{0.7500}$ & $\bm{0.6390}$ & $0.0493$ \\ \hline
+    1zdd    & $0.4338$      & $0.4074$      & $0.0219$ & $0.4338$      & $0.4060$      & $0.0166$ \\ \hline
+    2mr9    & $\bm{0.8807}$ & $\bm{0.6891}$ & $0.0720$ & $\bm{0.8750}$ & $\bm{0.6920}$ & $0.0618$ \\ \hline
+  \end{tabular}
+  \caption{GDT-TS for sade-mc-final and sade-remc-final}
+  \label{tab:gdtts-data}
+\end{table}
+
+Analysing the GDT-TS values, comparing one method gaisnt the other, there are no
+major differences. With the exception of 1rop, due a difference of $0.0025$, all
+methods had the same results regarding valued above $0.5$. In fact, both methods
+have very similar results for all proteins, with little difference. The protein
+with the biggest difference was 1rop, where the means were $0.0787$ units apart
+and the best value was $0.0674$ units apart. Interestingly, 1zdd, the protein
+with the lowest RMSD has a GDT-TS of $0.43$ for methods. Meanwhile, 1wqc and
+2mr9 had values above $0.75$ and $0.87$, respectivelly. Meaning that the two
+metrics dont always agree.
+
+\begin{table}
+  \centering
+  \begin{tabular}{r|c|c|c||c|c|c}
+            & \multicolumn{3}{c}{sade-mc-final} & \multicolumn{3}{||c}{sade-remc-final} \\ \hline
+    Protein & best          & mean          & stddev   & best          & mean          & stddev   \\ \hline \hline
+    1acw    & $0.2475$      & $0.1930$      & $0.0202$ & $0.2583$      & $0.1945$      & $0.0280$ \\ \hline
+    1ail    & $0.4515$      & $0.3261$      & $0.0526$ & $0.4366$      & $0.3270$      & $0.0457$ \\ \hline
+    1crn    & $0.3245$      & $0.2458$      & $0.0356$ & $0.3879$      & $0.2774$      & $0.0471$ \\ \hline
+    1enh    & $0.3489$      & $0.2628$      & $0.0272$ & $0.3397$      & $0.2725$      & $0.0315$ \\ \hline
+    1l2y    & $0.2495$      & $0.1924$      & $0.0294$ & $0.2304$      & $0.1771$      & $0.0362$ \\ \hline
+    1rop    & $\bm{0.6229}$ & $0.4588$      & $0.0646$ & $\bm{0.5006}$ & $0.3915$      & $0.0565$ \\ \hline
+    1utg    & $0.4938$      & $0.3676$      & $0.0632$ & $\bm{0.5154}$ & $0.3756$      & $0.0506$ \\ \hline
+    1wqc    & $0.3757$      & $0.2852$      & $0.0346$ & $0.3861$      & $0.2831$      & $0.0463$ \\ \hline
+    1zdd    & $0.2881$      & $0.2502$      & $0.0284$ & $0.3158$      & $0.2648$      & $0.0314$ \\ \hline
+    2mr9    & $\bm{0.7514}$ & $\bm{0.5117}$ & $0.0900$ & $\bm{0.7456}$ & $\bm{0.5186}$ & $0.0769$ \\ \hline
+  \end{tabular}
+  \caption{TM Score for sade-mc-final and sade-remc-final}
+  \label{tab:tmscore-data}
+\end{table}
+
+Considering the TM-Score, there is a very low number of values above the
+threshold of $0.5$. Again, both methods had similar values overall with very
+little difference. Furthermore, not only RMSD and GDT-TS disagree on some cases,
+TM-Score can differ from the other two metrics in some cases as well. For
+instance, on 1wqc the GDT-TS value was $0.75$ or higher, while the respective
+TM-Scores were $0.31$ or lower. Also, TM-Score evaluated some methods as having
+a performance worst than random for 1acw and 1l2y. This contradicts the results
+both from RMSD and GDT-TS.
+
+One noteworth aspect of GDT-TS and TM-Score, is that they appear to be more
+rigorous than RMSD. Take 1enh for example, it had the second best RMSD found
+in the literature, yet, with GDT-TS it did not make the cut of $0.5$. More so,
+both 1enh and 1ail, two relativelly big proteins, had their best RMSD more
+than two units apart with sade-mc-final. However, with the GDT-TS for the same
+method, the two conformations are less than $0.01$ units apart. This is possible
+due to RMSD being a metric with an unbounded upper limit, which scales
+quadratically with the number of residues. GDT-TS on the other hand, has a
+normalized value between $0$ and $1$, which allows the predictive performance
+to be compared not only across method, but across proteins of different sizes.
+Unfurtunatelly, very few works in the literature use these metrics. This work,
+with the goal of improving future comparisons of higher quality than the allowed
+at the time of writing shares these metrics. Complementary, the raw data is
+provided in Appendix~\ref{appendix:gdtts-data} and~\ref{appendix:tmscore-data},
+with the goal of allowing future methods to do a rigorous statistical analysis
+using this one as reference.
+
 \section{Visual Representation of the Predictions}
 
 A final step in the analysis of the proposed methods is to do a visual
