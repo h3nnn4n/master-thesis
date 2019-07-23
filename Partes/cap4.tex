@@ -421,7 +421,58 @@ the state of the art methods in the literature and CASP winners.
 \section{Monte Carlo vs Replica Exchange Monte Carlo}
 % Compare sade-mc-final and sade-remc-final
 
-\section{Processing time}
+\section{Processing time and functions evaluations}
+
+In Table~\ref{tab:processing-times} the processing times for the two proposed
+methods is diplayed. The first column shows the protein name, the second and
+third column shows the data for each of the methods. Each subcolumn for the
+methods contains the mean time and its standard deviantion, measured in seconds.
+The total processing time of the method does not include the pre-processing
+steps, i.e. secondary structure prediction, the fragment picker, etc. The total
+time considered is the sum of several steps of the algorithm. The time starts
+counting for the main optimization phase when the initial population is
+generated and it stops when the definied 1 million function evaluations is
+spent. Then, the post processign phase starts, which is devided into three
+sub steps. The first is the clustering, which overall averages less than a
+second by itself. The second step is running Hooke-Jeeves for all the
+conformations nearest to the cluster centroids. The final step is applying
+repacking to the resulting conformations from Hooke-Jeeves. The final
+processing time is the sum of all these steps.
+
+\begin{table}
+  \centering
+  \begin{tabular}{r|c|c||c|c}
+            & \multicolumn{2}{c}{sade-mc-final} & \multicolumn{2}{||c}{sade-remc-final} \\ \hline
+    protein & mean & stddev & mean & stddev \\ \hline \hline
+    1acw & $ 381.8566$ & $ 76.8664$ & $ 397.3399$ & $ 39.2449$ \\ \hline
+    1ail & $1141.1461$ & $142.2935$ & $1127.3899$ & $139.9729$ \\ \hline
+    1crn & $ 721.0492$ & $118.6126$ & $ 696.0591$ & $ 78.4302$ \\ \hline
+    1enh & $ 763.7677$ & $ 86.2599$ & $ 783.4028$ & $ 95.5297$ \\ \hline
+    1l2y & $ 252.8980$ & $ 19.1262$ & $ 252.7463$ & $ 18.8516$ \\ \hline
+    1rop & $ 963.2695$ & $124.7610$ & $ 940.5557$ & $203.5212$ \\ \hline
+    1utg & $1010.0412$ & $142.8927$ & $1018.6922$ & $193.5863$ \\ \hline
+    1wqc & $ 341.4484$ & $ 35.1510$ & $ 346.3862$ & $ 36.6248$ \\ \hline
+    1zdd & $ 462.3010$ & $127.2581$ & $ 483.3383$ & $ 50.8998$ \\ \hline
+    2mr9 & $ 702.5817$ & $ 95.6492$ & $ 695.9580$ & $189.4521$ \\ \hline
+  \end{tabular}
+  \caption{Processing times, in seconds, for sade-mc-final and sade-remc-final}
+  \label{tab:processing-times}
+\end{table}
+
+As expected, there is a direct correlation between the number of residues in a
+given proteins and the time required to predict its structure. The two smallest
+proteins had the faster processing times, while the bigger proteins had the
+highest times. The prediction times on average range from about 4 minutes up to
+20 minutes per run.
+
+For the majority of proteins, both method had very close means. One interesting
+difference noticed was the standard deviation for 1rop. For sade-mc-final,
+which had a relativelly good prediction performance on this protein had
+a standard deviation around $124$. The other method, sade-remc-final, had a
+standard deviation of around $203$. There might be a correlation between the
+poor performance of this method and the more spread out processing times.
+For 1utg a similar situation happened, however, the performance of the two
+methods was much closer.
 
 \section{Comparison with Competing Methods}
 % Big table here
