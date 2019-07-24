@@ -474,6 +474,51 @@ poor performance of this method and the more spread out processing times.
 For 1utg a similar situation happened, however, the performance of the two
 methods was much closer.
 
+Another performance analisys that can be made on top of the proposed methods,
+is the study of the spent function evaluations. The main optimization phase has
+a fixed budged of 1 million function evaluations. The post-processing phase,
+however, uses a separate budget, which is non fixed. The Hooke-Jeeves
+search procedure is applied multiple times successvelly, until no improvement
+is detected. In order to prevent a single run from running from too long or
+using too many evaluations a strategy is employed. If a single call to
+Hooke-Jeeves spents more than $5000$ evaluations, it is flaged for termination
+at the next iteration. As such, each call spends around $5000$ to $6000$
+evaluations. However, multiple calls can be made in sucession.
+
+\begin{table}
+  \centering
+  \begin{tabular}{r|c|c||c|c}
+            & \multicolumn{2}{c}{sade-mc-final} & \multicolumn{2}{||c}{sade-remc-final} \\ \hline
+    protein & mean         & stddev       & mean         & stddev \\ \hline \hline
+    1acw    & $19894.6690$ & $9323.3251$  & $19818.5598$ & $8795.8194$  \\ \hline
+    1ail    & $23215.9890$ & $12096.6411$ & $24927.3000$ & $11983.8881$ \\ \hline
+    1crn    & $23704.9947$ & $11297.4331$ & $22657.6200$ & $10469.2788$ \\ \hline
+    1enh    & $21141.6667$ & $11922.8046$ & $24419.4684$ & $13052.6594$ \\ \hline
+    1l2y    & $16022.7659$ & $7145.3393$  & $15968.0817$ & $6859.0816$  \\ \hline
+    1rop    & $21008.9153$ & $11595.2773$ & $23404.5686$ & $11476.0593$ \\ \hline
+    1utg    & $23257.8303$ & $13708.3805$ & $26221.2802$ & $20265.7668$ \\ \hline
+    1wqc    & $18342.0987$ & $8163.8972$  & $18962.6016$ & $8634.9350$  \\ \hline
+    1zdd    & $21848.3618$ & $10229.3850$ & $21914.6842$ & $9503.5863$  \\ \hline
+    2mr9    & $22260.8176$ & $11415.6200$ & $24356.2630$ & $31478.7399$ \\ \hline
+  \end{tabular}
+  \caption{Function evaluations spent on Hooke-Jeeves, for sade-mc-final and sade-remc-final}
+  \label{tab:spent-evals}
+\end{table}
+
+Table~\ref{tab:spent-evals} presents the mean spent function evaluations and
+the respective function evaluations. For all ten proteins and the two methods,
+the mean stays relativelly close to $20000$. A manual inspection of the logs
+reveals that no methods spent more than $100000$ evaluations, with two rare
+exceptions. As can be seem for 1utg and 2mr9, the standard deviation is very
+large. The root cause of this value is a single outlier in each of the runs
+for these proteins. For 2mr9 there was a single call to Hooke-Jeeves which spent
+$803278$ function evaluations. The same happened with 1utg, where a single call
+spent $412117$ function evaluations. Nevertheless, by inspection the logs it
+was found that all these function evaluations did not impact the energy nor the
+RMSD. In fact, it appears that the root cause of such a high amount of
+spent energy evaluations was spent due to numeric instability, which caused
+a fault in the convergence of the method.
+
 \section{Comparison with Competing Methods}
 % Big table here
 
