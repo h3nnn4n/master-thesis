@@ -418,6 +418,114 @@ the state of the art methods in the literature and CASP winners.
 % How much does the rmsd change before after
 % If ranked by energy, does the ranking change before/after repacking
 
+A major component of the proposed methods is the use of repacking. It allows for
+the method to operate on a simplified model, with side chain represented as
+centroids, that has a more smooth energy landscape and is faste to evaluate. On
+the other hand, this model has reduced biological plausibility. As such,
+repacking allows for this centroid model to be converted to a full atomic
+representation of the protein. As such, investigating the impact that repacking
+has is crucial in order to understand the performance of the proposed methods.
+In order to understand it, two analysis must be made, one of the RMSD, which is
+straight foward. The other, for the energy, is more complex. The energies before
+and after the repacking are essentialy different units of measure. Therefore, a
+more careful analysis is required.
+
+\begin{table}
+  \centering
+  \begin{tabular}{r|r|c||r|c||r|c}
+            & \multicolumn{2}{c}{classic-abinitio} & \multicolumn{2}{||c}{sade-mc-final} & \multicolumn{2}{||c}{sade-remc-final} \\ \hline
+    protein & mean      & stddev   & mean      & stddev   & mean      & stddev   \\ \hline \hline
+    1acw    & $-0.1656$ & $0.3372$ & $0.2616$  & $0.4944$ & $0.2589$  & $0.5765$ \\ \hline
+    1ail    & $-0.1113$ & $0.4629$ & $0.2470$  & $0.7731$ & $0.2379$  & $0.7278$ \\ \hline
+    1crn    & $-0.0620$ & $0.4203$ & $-0.0297$ & $0.5865$ & $-0.1128$ & $0.4368$ \\ \hline
+    1enh    & $-0.0558$ & $0.4854$ & $-0.1277$ & $0.5577$ & $-0.1380$ & $0.6081$ \\ \hline
+    1l2y    & $0.2505$  & $0.3773$ & $0.3856$  & $0.5036$ & $0.6653$  & $0.7176$ \\ \hline
+    1rop    & $0.8336$  & $0.4484$ & $0.7814$  & $0.9170$ & $1.2214$  & $1.3530$ \\ \hline
+    1utg    & $-0.3506$ & $0.4712$ & $0.1346$  & $0.5762$ & $0.1793$  & $0.7202$ \\ \hline
+    1wqc    & $-0.2543$ & $0.4381$ & $0.1729$  & $0.5624$ & $0.2160$  & $0.6377$ \\ \hline
+    1zdd    & $0.2283$  & $0.4144$ & $0.7429$  & $0.6098$ & $0.7470$  & $0.9897$ \\ \hline
+    2mr9    & $-0.2667$ & $0.6094$ & $0.2190$  & $0.5679$ & $0.1875$  & $0.6957$ \\ \hline
+  \end{tabular}
+  \caption{RMSD change caused by repacking}
+  \label{tab:repack-impact-rmsd}
+\end{table}
+
+Table~\ref{tab:repack-impact-rmsd} presents the RMSD delta from before and after
+the repacking. Since the proposed methods are mainly compared against rosetta,
+it was included here as well. With this, it is possible to detect if repacking
+gave unfair advantage to any of the three methods. A few patterns are detected
+in the restults. Firstly, both 1crn and 1enh had a increase of RMSD. While
+relativelly small, specially for rosetta, it is interesting that it happened for
+the two proteins for all three methods. No other protein has this happen.
+Another interesting point is that with the exception of 1l2y, 1rop and 1zdd,
+rosetta had an increase of RMSD for all the reimaining seven proteins. The
+biggest mean difference was on 1utg, with a value of $-0.3506$. Comparing these
+results with the medians from Table~\ref{fig:boxplot-rmsd} shows that the
+impact of repacking for the RMSD has no impact in the statistical tests. Rosetta,
+for 1utg, had a median above $10$, while the two proposed methods had a median
+below $8$. Finally, the third noteworth aspect of the results is that the only
+mean above $1$ was on 1rop for sade-remc-final, which had the worst performance
+on that protein. This result could be explainer due to the method having poor
+optimization performance for this particular case. As such, repacking had more
+room for improvement.
+
+The energy impact of using repacking is more complex to conduct. As an
+alternative of doing a direct delta of the values before and after, it is
+possible to apply the same statistical analysis from
+Section~\ref{sec:statistical-analysis}. The results can then be compared
+against Table~\ref{tab:mann-whitney-summary-rosetta-best-by-energy-scorefxn}.
+If the repacking procedure had an unfair advantage to any of the methods
+it will be detectable.
+
+\begin{table}
+  \centering
+  \begin{tabular}{r|r|r|r}
+  Protein & Wins & Loses & Draws \\ \hline \hline
+   1acw &  2 &  0 &  0 \\ \hline
+   1ail &  0 &  0 &  2 \\ \hline
+   1crn &  1 &  1 &  0 \\ \hline
+   1enh &  1 &  0 &  1 \\ \hline
+   1l2y &  2 &  0 &  0 \\ \hline
+   1rop &  2 &  0 &  0 \\ \hline
+   1utg &  2 &  0 &  0 \\ \hline
+   1wqc &  2 &  0 &  0 \\ \hline
+   1zdd &  2 &  0 &  0 \\ \hline
+   2mr9 &  2 &  0 &  0 \\ \hline
+  \end{tabular}
+  \caption{Summary of Mann-Whitney using score3}
+  \label{tab:mann-whitney-summary-best-by-energy-score3}
+\end{table}
+
+The same sequence of statistical tests from
+Section~\ref{sec:statistical-analysis} was applied again, but now, only
+considering the energy from before repacking, as scored by~\texttt{score3}.
+In order to keep the analysis short, yet complete, only a summary of the
+results is provided, presented in
+Table~\ref{tab:mann-whitney-summary-best-by-energy-score3}. This table can
+directly be compared against
+Table~\ref{tab:mann-whitney-summary-rosetta-best-by-energy-scorefxn}.
+It is worth noting that the results from Kruskal–Wallis returned that there is
+statistical difference for all the proteins, therefore, all proteins are
+considered this time.
+
+With the energy data from after the repacking, there was $3$ proteins where the
+two proposed methods outperformed rosetta. Using the data from before, there are
+$7$ proteins. A clear indicator that repacking had a considerable impact in the
+energy of the final conformations. Furthermore, with \texttt{scorefxn} there
+were two times were rosetta outperformed one of the proposed methods, with
+\texttt{score3} there is only one. The number of draws between rosetta and the
+proposed methods was also reduced. With \texttt{scorefxn} there were $11$
+occurences, while for \texttt{score3} here are $3$.
+
+With these results, it is clear that repacking had a significant impact in the
+energy of the final predicted conformations. By applying repacking, which is
+essentially another optimizer, the results of the proposed methods and rosetta
+reached close energy distributions several times. Nevertheless, even with
+repacking the proposed methods were able to outperform rosetta in multiple
+occasions. With this, it can be concluded two main points. Firstly, using
+repacking did not benefit only the proposed methods. Secondly, repacking
+appears to impact more the energy than RMSD.
+
 \section{Monte Carlo vs Replica Exchange Monte Carlo}
 % Compare sade-mc-final and sade-remc-final
 
