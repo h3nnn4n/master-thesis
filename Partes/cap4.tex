@@ -1,13 +1,22 @@
 \chapter{Experiments, Results and Analysis}\label{chap:experiments_and_results}
 
 % Present the chapter
-In this Chapter the experiment design is presented. Results are shown and an in
-depth analysis is conducted, including: Energy and distance metrics for
-measuring the performance of the proposed methods; A rigorous statistic testing
-of the proposed methods; A comparison to competing methods in the literature in
-order to validate the proposed methods; Finally, a visual inspection of the
-best predictions and a comparison against the native conformation.
-\textcolor{red}{TODO: tem q atualizar aqui conforme for escrevendo}
+In this Chapter, the experiments results are presented and a rigorous
+analysis is realized. In Section~\ref{sec:design_of_experiments}
+the design of experiments is presented, where the outlines of how
+and where the experiments were executed is explained. The methodology
+for comparison is also discussed in that section. In
+Section~\ref{sec:methods-analysis} a rigorous set of statistical
+tests is presented and applied to the results, with the goal of
+comparing the proposed methods against references in the literature.
+The processing time for this stage is also analyzed, as presented in
+Section~\ref{sec:time-and-evals}.
+In Section~\ref{sec:repacking-impact} an analysis of the impact that
+repacking has on the proposed methods is presented. This, compares how
+the RMSD and energy, relative to rosetta, changed when repacking was
+applied. This section has two goals. First, to identify if repacking
+did or did not influence the results from the statistical tests.
+Secondly, to simply document its impact.
 
 \section{Design of Experiments}\label{sec:design_of_experiments}
 
@@ -18,7 +27,7 @@ presents the machine utilized to run all the experiments. Each run of a
 prediction method consists of a serial program that run continually without
 interruption. The experiments were run in parallel, limited to at most one
 running test per core\footnote{Only physical cores were considered. No virtual
-(Hyperthreading) core was involved in the computations.}. To ensure maximum
+(Hyper-threading) core was involved in the computations.}. To ensure maximum
 repeatability the machine had no graphical interface enabled or any other form
 of user interaction during the course of the experimentation.
 
@@ -29,7 +38,7 @@ of user interaction during the course of the experimentation.
         Operating System & Arch Linux \\ \hline
         Kernel &  Arch Linux Kernel 4.18.16 \\ \hline
         CPU & Intel(R) Core(TM) i5-3570K CPU @ 4.20GHz \\ \hline
-        Number of Cores & 4 Physical cores, no hyperthreading cores \\ \hline
+        Number of Cores & 4 Physical cores, no hyper-threading cores \\ \hline
         RAM & 16 GB @ 1400 MHz \\ \hline \hline
     \end{tabular}
     \caption{The Machine Setup}
@@ -43,7 +52,7 @@ Lastly, the Rosetta Ab Initio protocol is also included, amounting to five
 different methods being ran.
 
 The analysis is divided in two steps. In the first one, the two proposed methods
-are compared agaisnt the works in~\cite{silva2019self} and the Rosetta Ab Initio
+are compared against the works in~\cite{silva2019self} and the Rosetta Ab Initio
 Protocol.
 % Present the "in house" comparison
 The metrics utilized in this are the \textit{scorefxn} energy value of the
@@ -52,40 +61,47 @@ results were collected over 50 independent runs of each method for each target
 protein. A graphical analysis is conducted in order to identify visually the
 relative performance between the proposed methods. Considering that a visual
 analysis is not enough (in this case), a more rigorous numerical statistic set
-of test is conducted.  The Shapiro-Wilk~\cite{wilk1968joint} normality test is
+of test is conducted. The Shapiro-Wilk~\cite{wilk1968joint} normality test is
 employed with a confidence level of 5\%, i.e. $\alpha = 0.05$, to assess the
 presence (or lack) of a underlying normal distribution. Based on its result, a
 parametric/non-parametric test is employed with a confidence level of $\alpha =
-0.05$. Due to the multiple comparisons involved \v{S}idák's $\alpha$ correction
-will be utilized~\cite{vsidak1967rectangular}. The winner (or winners)
-method(s) will be used in further comparison against the literature. The
-processing time for this stage is also analyzed. The time required from the
-start of the initial population generation until the final full atom model
-output is measured in seconds.
-\textcolor{red}{TODO: colocar parameter control analysis}
-\textcolor{red}{TODO: convergence analysis}
-\textcolor{red}{TODO: ffi analysis}
-\textcolor{red}{TODO: mc vs remc analysis}
+0.05$. Due the presence of multiple comparisons, the Kruskal-Wallis test is
+applied in order to detect if there is any method with a performance that
+is different than the others. If there is, then, the Mann-Whitney test is
+employed pairwise with the proposed methods against its competitors.
+
+The processing time required to run the proposed methods is exposed in
+Section~\ref{sec:time-and-evals}, along with the number of spent function
+evaluations. Then, in Section~\ref{sec:competing-methods} an in depth
+analysis of the two proposed methods is presented, where they are
+compared versus more than 20 works in the literature.
+Section~\ref{sec:other-metrics} presents an analysis using GDT-TS
+and TM-Score, with the aim of providing further insight on the results.
+Furthermore, the raw data from the experiments is also provided with
+the object of allowing further works to more easily compare with the
+presented methods. A visual analysis of the best conformations is
+presented in Section~\ref{sec:visual-analysis}, where some of the
+prediction problems can be identified and are commented.
 
 % Explain the clustering results
 The use of clustering to extract and return different conformations from the
 proposed methods require extra steps during the analysis. First, the main use of
 returning several conformations is to allow an human expert to choose one that
-has the desired properties. This, can not be automated in a test enviroment where
-hundres of experiments are performed computationaly each day. As such, the human
+has the desired properties. This, can not be automated in a test environment where
+hundreds of experiments are performed computationally each day. As such, the human
 expert, for the purposes of performance evaluation, must be replaced by a
 computer oracle. This oracle can always find the conformation with the lowest
 RMSD or the conformation with the lowest energy. This, of course, would not
 be possible in a real world scenario where a protein without a know structure is
 being predicted. With that in mind, the analysis of the two proposed methods is
-devided in two sub groups. The first is named \texttt{best-by-rmsd} and the second
+divided in two sub groups. The first is named \texttt{best-by-rmsd} and the second
 is named \texttt{best-by-energy}.
 
 % Present the "free for all" analysis
 In the second analysis step, a direct comparison against several works in the
 literature is considered. Since there is a severe lack of standardization in the
 literature regarding experimentation, the following methodology was used. Works
-that provided the best RMSD had their proteins listed. The proteins that occured
+that provided the best RMSD had their proteins listed. The proteins that occurred
 the most were used for comparison. It is worth noting that the majority of works
 provide little information about how the experimentation was conducted. The way
 in which the results are analysed lacks a standard. As such, this work does a
@@ -113,16 +129,16 @@ $\beta$-sheets.
   \begin{tabular}{ l | c | c | c | c }
     \hline \hline
     Name & Size & Backbone Angles & Structure         \\ \hline \hline
-    1L2Y & 20   & 60              & $2\alpha$         \\ \hline
-    1WQC & 26   & 78              & $2\alpha$         \\ \hline
-    1ACW & 29   & 87              & $1\alpha, 2\beta$ \\ \hline
-    1ZDD & 35   & 105             & $2\alpha$         \\ \hline
-    2MR9 & 44   & 132             & $3\alpha$         \\ \hline
-    1CRN & 46   & 138             & $2\alpha, 2\beta$ \\ \hline
-    1ENH & 54   & 162             & $3\alpha$         \\ \hline
-    1ROP & 63   & 189             & $2\alpha$         \\ \hline
-    1UTG & 70   & 210             & $4\alpha$         \\ \hline
-    1AIL & 72   & 216             & $3\alpha$         \\ \hline
+    1l2y & 20   & 60              & $2\alpha$         \\ \hline
+    1wqc & 26   & 78              & $2\alpha$         \\ \hline
+    1acw & 29   & 87              & $1\alpha, 2\beta$ \\ \hline
+    1zdd & 35   & 105             & $2\alpha$         \\ \hline
+    2mr9 & 44   & 132             & $3\alpha$         \\ \hline
+    1crn & 46   & 138             & $2\alpha, 2\beta$ \\ \hline
+    1enh & 54   & 162             & $3\alpha$         \\ \hline
+    1rop & 63   & 189             & $2\alpha$         \\ \hline
+    1utg & 70   & 210             & $4\alpha$         \\ \hline
+    1ail & 72   & 216             & $3\alpha$         \\ \hline
     \hline
   \end{tabular}
   \caption{Target proteins and their features}
@@ -143,7 +159,7 @@ function evaluations are available for the optimization phase, where each
 fragment insertion routine can use up to 25 at a time. \ac{FFI} uses a fragment
 size of 9 and is applied with a probability of 2\% before each standard fragment
 insertion. The other methods being compared uses the same values from
-Table~\ref{tab:parameters} as apliable.
+Table~\ref{tab:parameters} as applicable.
 
 \begin{table}[ht]
     \centering
@@ -154,8 +170,6 @@ Table~\ref{tab:parameters} as apliable.
         Function Evaluation Budget & 1000000 \\ \hline
         MC/REMC Function Evaluation Budget & 25 \\ \hline
         Spicker cluster size & 10 \\ \hline
-        Crowding factor & 5 \\ \hline
-        Crowding distance method & RMSD \\ \hline
         \ac{FFI} probability & 0.02 \\ \hline
         \ac{FFI} length & 9 \\ \hline \hline
     \end{tabular}
@@ -166,18 +180,18 @@ Table~\ref{tab:parameters} as apliable.
 \section{Energy and \ac{RMSD} Analysis}\label{sec:methods-analysis}
 
 % Present the goals
-In this section the results from the experiments are analysed. The analysis
-is devides in two subsections. In Subsection~\ref{sec:statistical-analysis} the
-results are display and a sequence of statistical analysis is presented.
-Subsection~\ref{sec:pareto-front-analysis} presents an analysis of the algorithms
-using a pareto front analysis. Subection~\ref{sec:analysis-conclusions} presents
-the conclusions from these analysis.
+% In this section the results from the experiments are analysed.The analysis
+% is divides in two subsections. In Subsection~\ref{sec:statistical-analysis} the
+% results are display and a sequence of statistical analysis is presented.
+% Subsection~\ref{sec:pareto-front-analysis} presents an analysis of the algorithms
+% using a pareto front analysis. Subection~\ref{sec:analysis-conclusions} presents
+% the conclusions from these analysis.
 
-\subsection{Statistical Analysis}\label{sec:statistical-analysis}
+% \subsection{Statistical Analysis}\label{sec:statistical-analysis}
 
 % Introduce the analysis
 Due the amount of data generated by the experiments, most of the analysis will
-be conducted by visual inspection or by summarizing the results and keypoints.
+be conducted by visual inspection or by summarizing the results and key-points.
 However, for the sake of completude and scientific rigor, complementary
 information is provided in the Appendices.
 
@@ -194,18 +208,18 @@ significant margin. Moreover, the two proposed methods had better medians than
 the other methods (not including rosetta) in 8 of the 10 proteins. For 1rop
 sade-mc-ffi had the second best result, behind sade-mc-final, while sade-remc-final
 had the second worst result. For 1zdd, the two proposed methods had the two worst
-medians, however, by a relativelly small amount.
+medians, however, by a relatively small amount.
 
-In a direct comparison agaisnt rosetta, in proteins 1acw, 1enh, 1l2y, 1utg and 2mr9
+In a direct comparison against rosetta, in proteins 1acw, 1enh, 1l2y, 1utg and 2mr9
 the proposed methods had a significant improved upon rosetta. For 1crn the rosetta
 appears to have outperformed the proposed methods. In the remaining proteins visual
-inspection is not enough to acuratelly detect significant performance differences.
+inspection is not enough to accurately detect significant performance differences.
 
-Some other behaviours are worth noting too. The manisfestation of uniqueness each
+Some other behaviours are worth noting too. The manifestation of uniqueness each
 proteins is visible in the distribution of different methods. For example, on
 2mr9, rosetta had a worst performance than the other methods by a significant margin,
-whereas the other methods had a versy similar performance. For 1utg, the two proposed
-methods outclassed the other methods, including rosetta. Forthermore, the worst
+whereas the other methods had a very similar performance. For 1utg, the two proposed
+methods outclassed the other methods, including rosetta. Furthermore, the worst
 result from sade-remc-final was better than the medians of all the other methods.
 Now, interestingly, for 1wqc and 1crn, rosetta and the two proposed methods had
 better performance than the other methods. Also, for some proteins, such as 1enh,
@@ -232,29 +246,29 @@ structure more than others.
 
 Figure~\ref{fig:boxplot-energy} presents data similarly to the previous figure,
 however, the y axis now represents the \texttt{scorefxn} energy function. Considering
-the energy results, when compared to the rmsd boxplot, the results are relativelly
+the energy results, when compared to the rmsd boxplot, the results are relatively
 more similar. Nevertheless, for some proteins there are some behaviours that are
 more visible. For 1rop, sade-remc-final appears to have had a worst performance
 than the other methods. Same as with the RMSD data. For 1crn, rosetta and the two
 proposed methods appears to have a better result overall. For 2mr9, rosetta
 appears to be lagging behind in performance. These observations are just visual
-trends which helps understand the relative performance. In order to properlly
+trends which helps understand the relative performance. In order to properly
 access their differences a more rigorous statistical approach is required.
 
-% Present shapiro-wilk RESULTS
+% Present Shapiro-Wilk RESULTS
 To scientifically assess the performance of the proposed methods relative to
-other competing methods, proper statistical tests are required. A pre-requisite
+other competing methods, proper statistical tests are required. A prerequisite
 before applying the tests which evaluate performance, is to detect the
 underlying distribution of the data to be analysed. There are several ways to
-acomplish this. One, is to visualy inspect a histogram or a Quartile-Quantile
+accomplish this. One, is to visually inspect a histogram or a Quantile-Quantile
 plot. A more rigorous approach is to use a statistical test which can evaluate
 the presence of a gaussian distribution. One such test is Shapiro-Wilk and it
 will be utilized for this purpose.
 
 For the tests an $\alpha = 0.05$ was utilized. The RMSD and \texttt{scorefxn}
 of both the \texttt{best-by-rmsd} and \texttt{best-by-energy} were analysed for
-all the methods. For the sake of breviety the results are exposed outside this
-text, in Appendix~\ref{appendix:shapiro}. The null hyphotesis, $H_0$, is that
+all the methods. For the sake of brevity the results are exposed outside this
+text, in Appendix~\ref{appendix:shapiro}. The null hypothesis, $H_0$, is that
 the samples belong to a normal distribution. Therefore, if the test returns a $p$
 value less than $\alpha$, $H_0$ is rejected and the underlying distribution is
 not gaussian. If $p$ is equal or bigger than $\alpha$, then the test failed to
@@ -278,7 +292,7 @@ indicates that some methods are more propense to generate gaussian distribution
 than others.
 
 Considering \texttt{scorefxn} with \texttt{best-by-energy}, there were $46$
-cases whenre $H_0$ failed to be rejected, and $14$ were it was rejected. On this
+cases where $H_0$ failed to be rejected, and $14$ were it was rejected. On this
 situation, with the given metric, more methods are generating gaussian
 distributions. Three proteins, 1acw, 1crn and 1l2y, failed all times to reject $H_0$.
 For 1ail and 1enh, the results were split in the middle. 1zdd had the most
@@ -309,7 +323,7 @@ Table~\ref{tab:kruskal-wallis-best-by-rmsd-RMSD} presents the result of the
 tests for the RMSD.
 The column protein indicates the name of the protein, and the column
 $p$-value indicates the result of the test. When the $p$-value is less than
-$\alpha$ it is hilighted in boldface. The result if very straightforward to
+$\alpha$ it is highlighted in boldface. The result if very straightforward to
 interpret. All the proteins with the exception of 1zdd had a $p$-value less
 than the selected $\alpha$. Moreover, when $H_0$ was rejected, the $p$-value
 was less than $1e-05$ in all cases. For 1zdd, $H_0$ failed to be rejected, the
@@ -328,13 +342,13 @@ Therefore, it is safe to do a pair-wise test using Mann-Whitney's.
 The Mann-Whitney test was applied with $\alpha = 0.05$. The null hypothesis is
 that the two distributions are equal, i.e. both methods have the same
 performance. Rejection of $H_0$ indicates that one method is better than other.
-Considering that both RMSD and \texttt{scorefxn} will be analized, each for
+Considering that both RMSD and \texttt{scorefxn} will be analyzed, each for
 10 proteins, a total of $20$ tables are necessary to expose all the data. As
 such, this information is exposed in Appendix~\ref{appendix:mann-whitney-rmsd}
 and~\ref{appendix:mann-whitney-scorefxn}, where the first presents the data for
-RMSD and the second for the energy. The resuls will be summarized reporting the
+RMSD and the second for the energy. The results will be summarized reporting the
 overall results from the test. To keep focus and simplicity, first, the two
-proposed methods will be compared agaisnt the other methods. Then, they will be
+proposed methods will be compared against the other methods. Then, they will be
 compared against rosetta. In both cases, the RMSD and \texttt{scorefxn} will be
 considered for the analysis.
 
@@ -367,9 +381,9 @@ reads the same as the table before. For proteins 1ail, 1crn, 1enh, 1wqc and 2mr9
 the proposed methods outperformed the others more times than they were
 outperformed. On 1acw, sade-mc-final outperformed sade-remc-final, while
 sade-remc-final was outperformed by the other 3 methods. The exact situation
-occured for 1rop. On 2mr9, sade-mc-final outperformed sade-remc-final, while
+occurred for 1rop. On 2mr9, sade-mc-final outperformed sade-remc-final, while
 sade-mc-final was outperformed by 2 other methods. Interestingly, on 1zdd
-and 1lwy, Mann-Whitney detected performance differences, disagreeing with
+and 1l2y, Mann-Whitney detected performance differences, disagreeing with
 the results from Kruskal–Wallis. Nevertheless, for these 2 proteins, the result
 from Kruskal–Wallis will be considered to be the correct one.
 
@@ -382,10 +396,10 @@ proposed methods outperformed rosetta. For 1ail only sade-remc-final
 outperformed rosetta. On 1rop, sade-mc-final outperformed rosetta, while
 sade-remc-final was outperformed. On 1crn, only sade-mc-final was outperformed
 by rosetta. From this, it is demonstrated that both the proposed methods
-consistenly outperform rosetta. In fact, rosetta outperformed the proposed
-methods only in 2 ocasions.
+consistently outperform rosetta. In fact, rosetta outperformed the proposed
+methods only in 2 occasions.
 
-The comaparison of rosetta and the proposed methods using \texttt{scorefxn}
+The comparison of rosetta and the proposed methods using \texttt{scorefxn}
 is presented in Table~\ref{tab:mann-whitney-summary-rosetta-best-by-rmsd-RMSD}.
 For this particular case, for 3 proteins, 1enh, 1utg and 2mr9, both proposed
 methods outperformed rosetta. On 1acw and 1rop rosetta outperformed only
@@ -397,9 +411,9 @@ In light of these observations, it is safe to consider that the two proposed
 methods outperform the previous methods. It also outperforms rosetta, one of
 the state of the art methods in the literature and CASP winners.
 
-\subsection{Pareto Front Analysis}\label{sec:pareto-front-analysis}
+% \subsection{Pareto Front Analysis}\label{sec:pareto-front-analysis}
 
-\textcolor{red}{Muitos dados pra analisar. Pouco retorno. Vou deixar de lado}
+% \textcolor{red}{Muitos dados pra analisar. Pouco retorno. Vou deixar de lado}
 
 % \subsection{Analysis Conclusions}\label{sec:analysis-conclusions}
 
@@ -414,20 +428,20 @@ the state of the art methods in the literature and CASP winners.
 \section{Forced Fragment Insertion Analysis}
 % What was the impact? How good/bad it was
 
-\section{Repacking Impact}
+\section{Repacking Impact} \label{sec:repacking-impact}
 % How much does the rmsd change before after
 % If ranked by energy, does the ranking change before/after repacking
 
 A major component of the proposed methods is the use of repacking. It allows for
 the method to operate on a simplified model, with side chain represented as
-centroids, that has a more smooth energy landscape and is faste to evaluate. On
+centroids, that has a more smooth energy landscape and is fast to evaluate. On
 the other hand, this model has reduced biological plausibility. As such,
 repacking allows for this centroid model to be converted to a full atomic
 representation of the protein. As such, investigating the impact that repacking
 has is crucial in order to understand the performance of the proposed methods.
 In order to understand it, two analysis must be made, one of the RMSD, which is
-straight foward. The other, for the energy, is more complex. The energies before
-and after the repacking are essentialy different units of measure. Therefore, a
+straight forward. The other, for the energy, is more complex. The energies before
+and after the repacking are essentially different units of measure. Therefore, a
 more careful analysis is required.
 
 \begin{table}
@@ -454,18 +468,18 @@ Table~\ref{tab:repack-impact-rmsd} presents the RMSD delta from before and after
 the repacking. Since the proposed methods are mainly compared against rosetta,
 it was included here as well. With this, it is possible to detect if repacking
 gave unfair advantage to any of the three methods. A few patterns are detected
-in the restults. Firstly, both 1crn and 1enh had a increase of RMSD. While
-relativelly small, specially for rosetta, it is interesting that it happened for
+in the results. Firstly, both 1crn and 1enh had a increase of RMSD. While
+relatively small, specially for rosetta, it is interesting that it happened for
 the two proteins for all three methods. No other protein has this happen.
 Another interesting point is that with the exception of 1l2y, 1rop and 1zdd,
-rosetta had an increase of RMSD for all the reimaining seven proteins. The
+rosetta had an increase of RMSD for all the remaining seven proteins. The
 biggest mean difference was on 1utg, with a value of $-0.3506$. Comparing these
 results with the medians from Table~\ref{fig:boxplot-rmsd} shows that the
 impact of repacking for the RMSD has no impact in the statistical tests. Rosetta,
 for 1utg, had a median above $10$, while the two proposed methods had a median
-below $8$. Finally, the third noteworth aspect of the results is that the only
+below $8$. Finally, the third noteworthy aspect of the results is that the only
 mean above $1$ was on 1rop for sade-remc-final, which had the worst performance
-on that protein. This result could be explainer due to the method having poor
+on that protein. This result could be explained due to the method having poor
 optimization performance for this particular case. As such, repacking had more
 room for improvement.
 
@@ -515,7 +529,7 @@ energy of the final conformations. Furthermore, with \texttt{scorefxn} there
 were two times were rosetta outperformed one of the proposed methods, with
 \texttt{score3} there is only one. The number of draws between rosetta and the
 proposed methods was also reduced. With \texttt{scorefxn} there were $11$
-occurences, while for \texttt{score3} here are $3$.
+occurrences, while for \texttt{score3} here are $3$.
 
 With these results, it is clear that repacking had a significant impact in the
 energy of the final predicted conformations. By applying repacking, which is
@@ -529,18 +543,18 @@ appears to impact more the energy than RMSD.
 \section{Monte Carlo vs Replica Exchange Monte Carlo}
 % Compare sade-mc-final and sade-remc-final
 
-\section{Processing time and functions evaluations}
+\section{Processing time and functions evaluations} \label{sec:time-and-evals}
 
 In Table~\ref{tab:processing-times} the processing times for the two proposed
-methods is diplayed. The first column shows the protein name, the second and
-third column shows the data for each of the methods. Each subcolumn for the
-methods contains the mean time and its standard deviantion, measured in seconds.
-The total processing time of the method does not include the pre-processing
+methods is displayed. The first column shows the protein name, the second and
+third column shows the data for each of the methods. Each sub-column for the
+methods contains the mean time and its standard deviation, measured in seconds.
+The total processing time of the method does not include the preprocessing
 steps, i.e. secondary structure prediction, the fragment picker, etc. The total
 time considered is the sum of several steps of the algorithm. The time starts
 counting for the main optimization phase when the initial population is
-generated and it stops when the definied 1 million function evaluations is
-spent. Then, the post processign phase starts, which is devided into three
+generated and it stops when the defined 1 million function evaluations is
+spent. Then, the post processing phase starts, which is divided into three
 sub steps. The first is the clustering, which overall averages less than a
 second by itself. The second step is running Hooke-Jeeves for all the
 conformations nearest to the cluster centroids. The final step is applying
@@ -575,23 +589,23 @@ highest times. The prediction times on average range from about 4 minutes up to
 
 For the majority of proteins, both method had very close means. One interesting
 difference noticed was the standard deviation for 1rop. For sade-mc-final,
-which had a relativelly good prediction performance on this protein had
+which had a relatively good prediction performance on this protein had
 a standard deviation around $124$. The other method, sade-remc-final, had a
 standard deviation of around $203$. There might be a correlation between the
 poor performance of this method and the more spread out processing times.
 For 1utg a similar situation happened, however, the performance of the two
 methods was much closer.
 
-Another performance analisys that can be made on top of the proposed methods,
+Another performance analysis that can be made on top of the proposed methods,
 is the study of the spent function evaluations. The main optimization phase has
 a fixed budged of 1 million function evaluations. The post-processing phase,
 however, uses a separate budget, which is non fixed. The Hooke-Jeeves
-search procedure is applied multiple times successvelly, until no improvement
+search procedure is applied multiple times successively, until no improvement
 is detected. In order to prevent a single run from running from too long or
 using too many evaluations a strategy is employed. If a single call to
-Hooke-Jeeves spents more than $5000$ evaluations, it is flaged for termination
+Hooke-Jeeves spends more than $5000$ evaluations, it is flaged for termination
 at the next iteration. As such, each call spends around $5000$ to $6000$
-evaluations. However, multiple calls can be made in sucession.
+evaluations. However, multiple calls can be made in succession.
 
 \begin{table}
   \centering
@@ -615,7 +629,7 @@ evaluations. However, multiple calls can be made in sucession.
 
 Table~\ref{tab:spent-evals} presents the mean spent function evaluations and
 the respective function evaluations. For all ten proteins and the two methods,
-the mean stays relativelly close to $20000$. A manual inspection of the logs
+the mean stays relatively close to $20000$. A manual inspection of the logs
 reveals that no methods spent more than $100000$ evaluations, with two rare
 exceptions. As can be seem for 1utg and 2mr9, the standard deviation is very
 large. The root cause of this value is a single outlier in each of the runs
@@ -628,10 +642,11 @@ spent energy evaluations was spent due to numeric instability, which caused
 a fault in the convergence of the method.
 
 \section{Comparison with Competing Methods}
+\label{sec:competing-methods}
 % Big table here
 
 A comparison against methods in the literature is very difficult to conduct.
-Most of the methods in the literature are relativelly superficial in their
+Most of the methods in the literature are relatively superficial in their
 explanations of how a given algorithm was implemented and what testing
 methodology was employed. Paper space seems to be a possible cause for this,
 since articles that spans more pages are usually more detailed about the
@@ -641,7 +656,7 @@ rigorous analysis to be conducted. Nevertheless, this work attempts to provide
 a simple framework for comparing the proposed methods with works in the
 literature. Several works were selected, where the model utilized was the
 full atomic model with and ab initio method, and their proteins and the RMSD
-of the best predition was recorded. From these, the proteins which appeared in
+of the best prediction was recorded. From these, the proteins which appeared in
 more than four works were selected.
 
 \input{Tabelas/literature_comparison.tex}
@@ -661,7 +676,7 @@ provided. First, there appears to be a weak trend where the RMSD is slowly
 decreasing. Albeit this trend this trend has several counter examples.
 For instance, the works of~\cite{cazacu2014steel} and~\cite{judy2009multi}
 have competitive results even by today standards, even though they are more than
-a decade old. Another major point, is that the results are getting extremaly
+a decade old. Another major point, is that the results are getting extremely
 competitive in the last years. The competition probably is not any bigger due to
 the lack of common proteins between the workers. It is not rare to find works
 from the same author where a different set of proteins is utilized.
@@ -672,7 +687,7 @@ the results were competitive with the state of the art. For the protein 1wqc
 the best RMSD was achieved by sade-mc-final. On 2mr9 the proposed methods
 achieved the best and second best results. For 1rop and 1crn, the two most used
 proteins in the literature, one of the proposed methods was able to achieve
-the second best result. The same occured for 1enh. Another point worth stating
+the second best result. The same occurred for 1enh. Another point worth stating
 is that some proteins might be way too easy for the current methods. Take 1zdd
 for example, all but two methods had RMSD smaller than 2.62. Considering that
 most proteins in PDB have a resolution ranging from 1 to 2\AA, trying to go
@@ -680,6 +695,7 @@ smaller than that is more a pursue of luck than science. As such, this protein
 might only be useful to validating new methods, but not for measuring progress.
 
 \section{GDT-TS and TM-Score metrics}
+\label{sec:other-metrics}
 
 This section provides an in depth analysis of the results obtained in this
 work using the GDT-TS and the TM-Score metrics of the predicted proteins. The
@@ -689,7 +705,7 @@ for the two proposed methods, sade-remc-final and sade-mc-final with their
 respective GDT-TS and TM-Score. Both tables follows the same format. The
 first column presents the protein name. The results for both methods are
 presented in the same table, where each method has a column. Each one of the
-method's column is split into three subcolumns with the best result, the mean
+method's column is split into three sub-columns with the best result, the mean
 and the standard deviation.
 
 Both GDT-TS and TM-Score share the same property where values can be used as
@@ -718,14 +734,14 @@ in boldface font.
   \label{tab:gdtts-data}
 \end{table}
 
-Analysing the GDT-TS values, comparing one method gaisnt the other, there are no
+Analysing the GDT-TS values, comparing one method agaisnt the other, there are no
 major differences. With the exception of 1rop, due a difference of $0.0025$, all
 methods had the same results regarding valued above $0.5$. In fact, both methods
 have very similar results for all proteins, with little difference. The protein
 with the biggest difference was 1rop, where the means were $0.0787$ units apart
 and the best value was $0.0674$ units apart. Interestingly, 1zdd, the protein
 with the lowest RMSD has a GDT-TS of $0.43$ for methods. Meanwhile, 1wqc and
-2mr9 had values above $0.75$ and $0.87$, respectivelly. Meaning that the two
+2mr9 had values above $0.75$ and $0.87$, respectively. Meaning that the two
 metrics dont always agree.
 
 \begin{table}
@@ -757,17 +773,17 @@ TM-Scores were $0.31$ or lower. Also, TM-Score evaluated some methods as having
 a performance worst than random for 1acw and 1l2y. This contradicts the results
 both from RMSD and GDT-TS.
 
-One noteworth aspect of GDT-TS and TM-Score, is that they appear to be more
+One noteworthy aspect of GDT-TS and TM-Score, is that they appear to be more
 rigorous than RMSD. Take 1enh for example, it had the second best RMSD found
 in the literature, yet, with GDT-TS it did not make the cut of $0.5$. More so,
-both 1enh and 1ail, two relativelly big proteins, had their best RMSD more
+both 1enh and 1ail, two relatively big proteins, had their best RMSD more
 than two units apart with sade-mc-final. However, with the GDT-TS for the same
 method, the two conformations are less than $0.01$ units apart. This is possible
 due to RMSD being a metric with an unbounded upper limit, which scales
 quadratically with the number of residues. GDT-TS on the other hand, has a
 normalized value between $0$ and $1$, which allows the predictive performance
 to be compared not only across method, but across proteins of different sizes.
-Unfurtunatelly, very few works in the literature use these metrics. This work,
+Unfortunately, very few works in the literature use these metrics. This work,
 with the goal of improving future comparisons of higher quality than the allowed
 at the time of writing shares these metrics. Complementary, the raw data is
 provided in Appendix~\ref{appendix:gdtts-data} and~\ref{appendix:tmscore-data},
@@ -775,6 +791,7 @@ with the goal of allowing future methods to do a rigorous statistical analysis
 using this one as reference.
 
 \section{Visual Representation of the Predictions}
+\label{sec:visual-analysis}
 
 A final step in the analysis of the proposed methods is to do a visual
 inspection. Considering that two methods were proposed, and that there are 10
@@ -793,29 +810,29 @@ the native conformation is in dark grey.}.
 
 Proteins 1enh, 1rop, 1utg, 1wqc, 1zdd and 2mr9 had near native conformations.
 There is very little to comment for these particular predictions. For protein 1acw,
-which had a relativelly high RMSD, consideringthe size of the protein, there are
+which had a relatively high RMSD, considering the size of the protein, there are
 two main prediction errors. Firstly, the $\beta$-sheets did not form, and, where
 should be one, there is an $\alpha$ helix instead. The second error, is that the
 $\alpha$ helix is in the wrong place and split. It starts where it should,
 however, it only has a single turn. A second helix forms at the eighth residue
 and goes on for ten more residues. Both these erros can be traced down to an
 error in the Secondary Structure Prediction, which the proposed methods have no
-way to avoid. For 1ail, the prediction is mostly correct, however, two helixes
+way to avoid. For 1ail, the prediction is mostly correct, however, two helices
 are split apart. The first, to the left of the image, and the second, in the
-middle helix. These errors were prediction failures that occured in the proposed.
+middle helix. These errors were prediction failures that occurred in the proposed.
 This protein in particular has a correct secondary structure as an starting
 point.
 
 On 1crn, a relatively complex protein, has a overall correct fold. The fine
-details, however, are lacking. The two helixes are mostly missing and the
+details, however, are lacking. The two helices are mostly missing and the
 sheets did not fold. These two errors can be traced down to the secondary
 structure prediction used as input. For 1l2y a similar scenario occurs, where
 the main source of error is in the data fed to the prediction engine. The
-overall shape of the protein was correctly predicted. The helix is completly
+overall shape of the protein was correctly predicted. The helix is completely
 missing.
 
 Interestingly, on 4 of the proteins with the biggest visually detectable error,
 3 of them had its source of error outside to the prediction. The proposed method
-relies heavilly on the predicted secondary structure, and as such, has do deal
-with uncentanty. In only a single case the major error in a prediction was
-generated during the prediction it self, as occured on 1ail.
+relies heavily on the predicted secondary structure, and as such, has do deal
+with uncertainty. In only a single case the major error in a prediction was
+generated during the prediction it self, as occurred on 1ail.
