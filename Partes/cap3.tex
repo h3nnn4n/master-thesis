@@ -109,16 +109,24 @@ representation of the protein.
 \section{Conformation Sampling}
 \label{sec:conformation-sampling}
 
-Given the computational complexity of the problem, exact search procedures are
-not fast enough. Therefore, due to its limitations,
-metaheuristic methods must be employed in order to search for good results
-in a reasonable amount of time. Many metaheuristics can be employed
+% Given the computational complexity of the problem, exact search procedures are
+% not fast enough. Therefore, due to its limitations,
+% metaheuristic methods must be employed in order to search for good results
+% in a reasonable amount of time.
+Many metaheuristics can be employed
 on the \ac{PSPP}, as shown in Section~\ref{sec:bioinspired}
 For this work, an Evolutionary Algorithm is employed due to its capability
-of easily integrating with the necessary tools, while having the required level
-of performance. Furthermore, to increase
+of easily integrating with the necessary tools,
+% while having the required level of performance.
+while being able of detecting promising regions in the search landscape of the
+problem. Furthermore, to increase
 its performance, and online parameter control technique will be
 utilized based on the \ac{SaDE} framework~\cite{qin2005self,qin2009differential}.
+Since this work does not use any of the operators from \ac{DE}, from now on
+\ac{SaDE} will be referenced as \ac{SaEA}, with the goal of clarifying
+and reinforce that the proposed method in use does not rely on \ac{DE}.
+Nevertheless, regarding online parameter control, \ac{SaDE} and \ac{SaEA}
+are all the same.
 
 In~\cite{kim2009sampling} is stated that the bottleneck of solving the
 \ac{PSPP} is the conformation sampling procedure. Therefore, it is the part
@@ -147,13 +155,13 @@ being a local search operator. The nature of this operator
 is to try to negate the changes of the first fragment insertion by using
 a second one specially localized. This leads to smaller changes on the
 overall protein conformation, even though twice the residues are changed.
-The use of this operator allows for \ac{SaDE} to have a domain specific local
+The use of this operator allows for \ac{SaEA} to have a domain specific local
 search, which stays effective over the whole optimization process.
 
 These four fragment insertion operators require a criteria to be used. For
 this, a \ac{MC} based search is employed. Two different Monte Carlo based
 approaches are utilized. The first being a simple \ac{MC} search, where
-\ac{SaDE} selects one of the four fragment insertion operator and runs a small
+\ac{SaEA} selects one of the four fragment insertion operator and runs a small
 (less than 100 iterations) batch of insertions. The other procedure consists of
 a Replica Exchange Monte Carlo (REMC). In \ac{REMC} either a fragment is
 inserted or the whole conformation is exchanged with another conformation
@@ -234,12 +242,12 @@ reaches zero.
 
 With the initial population generated, the optimization procedure itself starts
 guided by the score3 energy function. The basis of the search procedure is
-carried out by the \ac{SaDE} algorithm, which consists of the \textit{Online
+carried out by the \ac{SaEA} algorithm, which consists of the \textit{Online
 Parameter Control} part without the \textit{Differential Evolution Operators}.
 The hybridization happens when the \textit{Domain Operators} are added to the
 search procedure.
 
-Firstly, the online parameter control portion of \ac{SaDE} selects which
+Firstly, the online parameter control portion of \ac{SaEA} selects which
 operator to use for each individual in the population.
 %
 The operators can be either \ac{MC} or \ac{REMC}, with different fragment sizes.
@@ -256,7 +264,7 @@ based on the operator chosen. This search takes a fixed amount of function
 evaluation that is fed as a parameter. When this search procedure stops the
 output is fed to the selection routine. From there it is checked if the stop
 criteria was met. If it was not, then the parameter update routine is called,
-updating the parameters F and Cr (for all operators) as well as the
+updating the parameter Cr (for all operators) as well as the
 probabilities for each operator. Since \ac{DE} is not used, the $Cr$ parameter
 actually controller the \ac{MC} temperature parameter. The parameter control is
 agnostic to which parameter it is updating. Once the Parameter Update step is

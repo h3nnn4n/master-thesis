@@ -9,14 +9,25 @@ for comparison is also discussed in that section. In
 Section~\ref{sec:methods-analysis} a rigorous set of statistical
 tests is presented and applied to the results, with the goal of
 comparing the proposed methods against references in the literature.
-The processing time for this stage is also analyzed, as presented in
-Section~\ref{sec:time-and-evals}.
 In Section~\ref{sec:repacking-impact} an analysis of the impact that
 repacking has on the proposed methods is presented. This, compares how
 the RMSD and energy, relative to rosetta, changed when repacking was
 applied. This section has two goals. First, to identify if repacking
 did or did not influence the results from the statistical tests.
 Secondly, to simply document its impact.
+
+The processing time required to run the proposed methods is exposed in
+Section~\ref{sec:time-and-evals}, along with the number of spent function
+evaluations. Then, in Section~\ref{sec:competing-methods} an in depth
+analysis of the two proposed methods is presented, where they are
+compared versus more than 20 works in the literature.
+Section~\ref{sec:other-metrics} presents an analysis using GDT-TS
+and TM-Score, with the aim of providing further insight on the results.
+Furthermore, the raw data from the experiments is also provided with
+the object of allowing further works to more easily compare with the
+presented methods. A visual analysis of the best conformations is
+presented in Section~\ref{sec:visual-analysis}, where some of the
+prediction problems can be identified and are commented.
 
 \section{Design of Experiments}\label{sec:design_of_experiments}
 
@@ -69,19 +80,6 @@ parametric/non-parametric test is employed with a confidence level of $\alpha =
 applied in order to detect if there is any method with a performance that
 is different than the others. If there is, then, the Mann-Whitney test is
 employed pairwise with the proposed methods against its competitors.
-
-The processing time required to run the proposed methods is exposed in
-Section~\ref{sec:time-and-evals}, along with the number of spent function
-evaluations. Then, in Section~\ref{sec:competing-methods} an in depth
-analysis of the two proposed methods is presented, where they are
-compared versus more than 20 works in the literature.
-Section~\ref{sec:other-metrics} presents an analysis using GDT-TS
-and TM-Score, with the aim of providing further insight on the results.
-Furthermore, the raw data from the experiments is also provided with
-the object of allowing further works to more easily compare with the
-presented methods. A visual analysis of the best conformations is
-presented in Section~\ref{sec:visual-analysis}, where some of the
-prediction problems can be identified and are commented.
 
 % Explain the clustering results
 The use of clustering to extract and return different conformations from the
@@ -486,7 +484,7 @@ room for improvement.
 The energy impact of using repacking is more complex to conduct. As an
 alternative of doing a direct delta of the values before and after, it is
 possible to apply the same statistical analysis from
-Section~\ref{sec:statistical-analysis}. The results can then be compared
+Section~\ref{sec:methods-analysis}. The results can then be compared
 against Table~\ref{tab:mann-whitney-summary-rosetta-best-by-energy-scorefxn}.
 If the repacking procedure had an unfair advantage to any of the methods
 it will be detectable.
@@ -511,7 +509,7 @@ it will be detectable.
 \end{table}
 
 The same sequence of statistical tests from
-Section~\ref{sec:statistical-analysis} was applied again, but now, only
+Section~\ref{sec:methods-analysis} were applied again, but now, only
 considering the energy from before repacking, as scored by~\texttt{score3}.
 In order to keep the analysis short, yet complete, only a summary of the
 results is provided, presented in

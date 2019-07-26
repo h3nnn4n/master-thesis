@@ -348,7 +348,7 @@ each substructure relates to each other instead of having to figure out how all
 amino acids relates to each other. Therefore, knowing, even only approximately,
 the secondary structure of a protein is a very important asset during the
 process of predicting the tertiary structure.
-
+background
 Currently, there is no \textit{in vitro} method of determining only the
 secondary structures of a protein. However, it is possible to employ
 mathematical and computational methods. Considering that some amino acids have
@@ -753,16 +753,19 @@ Equation~\eqref{eq:tm-score-d0}.
 
 When comparing \ac{GDT-TS} and \ac{TM-Score} to \ac{RMSD} some key points are
 worth noting. Firstly, \ac{RMSD} scales quadratically, meaning that the same
-difference between the \ac{RMSD} of two conformations at difference magnitudes
-are not necessarily equally proportional. For example, the error between two
-conformations of an \ac{RMSD} of 2 and 3 is bigger than two conformations of
-\ac{RMSD} 6 and 7. \ac{GDT-TS} offers a linearly proportional metric. Another
+difference between the \ac{RMSD} of two conformations with different magnitudes
+are not necessarily equally proportional. That is, the difference between
+an RMSD of 3 and 4 is not the same as the difference of RMSD 9 and 10.
+\ac{GDT-TS} and \ac{TM-Score} offers a linearly proportional metric.
+
+Another
 key point is that \ac{GDT-TS} and \ac{TM-Score} offers a normalized value which
 is meaningful over different proteins. That is, it is possible to measure if a
 method performs better on one protein on another directly. Lastly, studies such
 as~\cite{xu2010significant} shows that some values of these scores can be used
 as milestones. For instance a value of 0.5 or higher indicates that the same
-fold was achieved. For \ac{GDT-TS} a score less than 0.2 corresponds to the
+fold was achieved, for both GDT-TS and TM-Score.
+For \ac{GDT-TS} a score less than 0.2 corresponds to the
 performance of a random search. For \ac{TM-Score} that value is somewhere
 between 0.15 and 0.2. With this information it is possible to evaluate a
 methods performance using only these error metrics.
@@ -788,7 +791,10 @@ of this class of algorithm are the Dijkstra
 Algorithm~\cite{dijkstra1959dijkstra} and A*~\cite{hart1968formal}. Most of the
 instances of Construction Algorithms are exact methods (such as the Dijkstra
 Algorithm) or heuristic ones (as the A* and \ac{ACO}~\cite{dorigo1999ant}.  The
-other class of optimization algorithms consists of improvement algorithms. This
+other class of optimization algorithms consists of improvement algorithms.
+Examples are: Hill-Climbing, Simulated Annealing and Monte Carlo.
+
+This
 one is characterized by starting with a (set of) solution(s) and step by step
 improving it. Thus, they start with a solution and output a solution that has
 been improved based on the original one. Improvement algorithms can also be
@@ -1188,7 +1194,7 @@ it is worth noting that the authors used Met-enkephalin (1PLW), a very small
 protein composed of only 5 amino acids, for the testing.
 
 In~\cite{borguesan2015apl} the authors present a \ac{GA} and a \ac{PSO} use
-of \ac{APL}. Both \ac{GA} and \ac{PSO}sider the statistical distribution of
+of \ac{APL}. Both \ac{GA} and \ac{PSO} consider the statistical distribution of
 dihedral angles in the search operators. The use of that information lead to a
 significant boost in prediction performance.
 
@@ -1234,7 +1240,7 @@ that have a bigger affect on the conformation.
 
 
 A \ac{DE} approach is studied in~\cite{hao2017conformational} where the authors
-employed the use of multiple sub-populations. Each subpopulation is based on a cluster
+employed the use of multiple sub-populations. Each sub-population is based on a cluster
 constructed using a feature reduction method. With this, similar solution vectors
 can be found, and then operators can be applied on similar individuals with the goal
 of intensifying the search. Extra cluster operators are also applied and help
@@ -1305,21 +1311,22 @@ results from the proposal with four variants of \ac{DE}, each with a different
 operator. The modeling consists of a custom variant of Rosetta's score3 function
 using a centroid protein model. A method presented by~\cite{varela2019crowding}
 interleaves the stages of Rosetta Classic Abinitio protocol with \ac{DE} using
-Crowding. The proposal is to develop a hybrid methid which improve upon the
+Crowding. The proposal is to develop a hybrid method which improve upon the
 Classic \textit{ab initio} protocol from Rosetta by adding several runs of \ac{DE}.
 
-Another multiobjective \ac{EA} is presented in~\cite{zaman2019balancing}, which
+Another multi-objective \ac{EA} is presented in~\cite{zaman2019balancing}, which
 consists of a memetic EA using \ac{MC}-based fragment insertion. A Crowding operator
 is utilized in order to keep the genotipic diversity and prevent some regions
-of the search space from getting oversampled. The population is generated using
-the first two steps from Rosetta'as Classic \textit{ab initio} protocol.
+of the search space from getting over-sampled. The population is generated using
+the first two steps from Rosetta's Classic \textit{ab initio} protocol.
 
 % Close the chapter / literature review
 Based on the literature review, there are several note-worth points:
 \begin{itemize}
     \item The use of online parameter control (self adaptive methods) for the PSPP.
     Only two works (both from the same authors) using online parameter control
-    were found, and one of them is arguably not a pure \textit{ab initio}.
+    were found, and one of them is arguably not a pure \textit{ab initio}, namely
+    \citeonline{oliveira2017sade}.
     Hence, this is an under-explored area of research.
     \item The use of hybrid methods for the PSPP. While recently this has received
     attention, it still has several points left for exploring. One of these points
@@ -1339,7 +1346,7 @@ It is worth noting that mutation/crossover operators from methods such as \ac{DE
 and \ac{GA} are not considered in this column. However, stand alone procedures that
 were interleaved with another methods were. e.g. a \ac{MC} search during a \ac{PSO}.
 Column \ac{CC} considers the use of Conformational Clustering. Of the items considered,
-this one was the most scarse with only two occurrences. Column KD indicated the use
+this one was the most scarce with only two occurrences. Column KD indicated the use
 of Knowledge Domain Operators. Fragment indicates that \ac{FI} was the main
 source of knowledge domain. APL and SPL indicates that APL or SPL was utilized,
 as presented in~\cite{borguesan2015apl} and~\cite{oliveira2017sade}. From this
@@ -1368,12 +1375,14 @@ And as such, it is a point worth exploring.
         \cite{song2018adoption}      & yes & -   & -   & -   & yes & -        \\ \hline
         \cite{narloch2019knowledge}  & yes & -   & yes & -   & -   & apl      \\ \hline
         \cite{varela2019crowding}    & yes & yes & -   & yes & -   & fragment \\ \hline
-        \cite{zaman2019balancing}    & yes & yes & -   & yes & -   & fragment \\ \hline \hline
+        \cite{zaman2019balancing}    & yes & yes & -   & yes & -   & fragment \\ \hline
+        Proposed Methods             & yes & yes & yes & yes & yes & fragment \\ \hline \hline
     \end{tabular}
     \caption{Comparison of the works in the literature. FI means Fragment
     Insertion. OPC means Parameter Control. LS means local search. CC means
     Conformation Clustering. KD means Knowledge Domain. A dash indicates that
-    the relevant criteria in the column was not met.}
+    the relevant criteria in the column was not met. The last line categorizes the
+    methods proposed in this work}
     \label{tab:related-works-comparison}
 \end{table}
 

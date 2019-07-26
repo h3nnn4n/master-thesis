@@ -32,24 +32,24 @@ or via Edman Degradation~\cite{edman1967protein}.
 On the other hand, finding the three-dimensional structure of a protein is a
 much harder and expensive process~\cite{guntert2004automated}.
 Currently, the two main methods are
-\ac{NMR} and X-Rays Crystallography. Both methods take more
+\acf{NMR} and X-Rays Crystallography. Both methods take more
 time, money and are susceptible to have errors in the results.
 
 % TODO: Update PDB / UniProt numbers
 Due to these differences in determining the sequence and structure of a
 protein, there is a significant difference between the number of known protein
-primary and tertiary structures. There are \num{139694261} protein sequences 
+primary and tertiary structures. There are \num{158532418} protein sequences 
 catalogued in UniProtKB/TrEMBL\footnote{\url{https://www.ebi.ac.uk/uniprot/TrEMBLstats}},
-whereas only \num{148037} protein structures are catalogued in
-the \ac{PDB}\footnote{\url{https://www.rcsb.org/}}\footnote{Numbers from January 19th, 2019}.
-This is often refered as the protein gap, and currently measures three orders of magnitude.
+whereas only \num{154243} protein structures are catalogued in
+the \ac{PDB}\footnote{\url{https://www.rcsb.org/}}\footnote{Numbers from June 26, 2019}.
+This is often referred as the protein gap, and currently measures three orders of magnitude.
 
 % What is the protein structure prediction
 Given the ever so growing protein gap, several scientists from the fields of
 mathematics, physics, chemistry, biology, and computer science have worked for
 decades with the common goal of being to predict the conformation of a sequence
 of amino acids and help close this gap. This problem is known as the
-\ac{PSPP} and has been one of the leading open problems
+\acf{PSPP} and has been one of the leading open problems
 in structural biology and computer science~\cite{dorn2014three}. The \ac{PSPP} consists of
 taking an amino acid sequence as input and outputting a prediction of the protein structure.
 
@@ -131,7 +131,7 @@ Rosetta~\cite{rohl2004protein,leaver2011rosetta3}.
 % What are metaheuristics and natural computing
 Given that the \ac{PSPP} can be represented as a $\mathcal{NP}$-hard optimization
 problem, a robust set of solvers for this kind of problem are
-\ac{MH}, and in particular, bio-inspired \ac{MH}~\cite{kar2016bio}.
+\ac{MH}, and in particular, bio-inspired Meta Heuristics~\cite{kar2016bio}.
 Some of the most employed \ac{MH}s in the literature are the
 \ac{GA}~\cite{holland1992genetic} and the
 \ac{DE}~\cite{storn1997differential}. Both of them are
@@ -145,7 +145,7 @@ the next generation.
 % What is parameter control and why do we need it
 Bio-inspired algorithms are known to have several parameters and to have their
 performance dependant on both the problem instance and the set of parameters in
-use~\cite{eiben2007parameter}.
+use~\cite{parpinelli18review}.
 Finding the best set of parameters for a given \ac{MH} is a time-consuming
 process since it requires the runs of the same \ac{MH} for the same instances
 several times to assess its performance. Furthermore, using a different set of
@@ -156,7 +156,7 @@ process is to enable the \ac{MH} to be able to detect parameters have the best
 improvement potential and which operations lead more successful explorations of
 the solution space. The process of changing the parameter while the algorithm
 is running is known as online parameter control and is an active area of
-research~\cite{parpinelli18review}.
+research.
 
 % What are hybrid algorithms
 Furthermore, given the high complexity of the problem, a blind optimizer might
@@ -215,7 +215,7 @@ objectives have to be achieved as well:
 
 \begin{itemize}
     \item SILVA, R. S.; PARPINELLI, R. S. A multistage simulated annealing for protein structure prediction using rosetta. Anais do Computer on the Beach, p. 850–859, 2018. Best paper award.
-    \item PARPINELLI, R. S. et al. A review of technique for on-line control of parameters in swarm intelligence and evolutionary computation algorithms. International Journal of Bio-Inspired Computation (IJBIC), 2018.
+    \item PARPINELLI, R. S. et al. A review of technique for on-line control of parameters in swarm intelligence and evolutionary computation algorithms. International Journal of Bio-Inspired Computation (IJBIC), 2019. v. 13. p. 1-20.
     \item SILVA, R. S.; PARPINELLI, R. S. A self-adaptive differential evolution with fragment insertion  for  the  protein  structure  prediction  problem.  In:  SPRINGER. International Workshop on Hybrid Metaheuristics. 2019. p. 136–149.
 \end{itemize}
 

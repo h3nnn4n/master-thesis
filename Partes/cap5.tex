@@ -24,38 +24,40 @@ using \texttt{score0}, \texttt{score3} and \texttt{scorefxn} energy functions
 from Rosetta. The protein was modeled using a full atomic model of the backbone,
 manipulated using fragments and torsions angles, as well as side chain centroids.
 In later stages of the prediction the model was switch to a full atomic
-representation of the protein. The proposed method is capable of outputing
+representation of the protein. The proposed method is capable of outputting
 several conformations that are different from each other, this is accomplished
 by using a clustering process. This, in turn, allows for a human expert to
 evaluate and choose the best conformation based on its knowledge and intuition.
 
 The proposed method were compared against a method from a previous work as
 well as two variants. In a first stage, the two proposed methods were compared
-agaisnt the other methods using both the RMSD and potential energy. For both
+against the other methods using both the RMSD and potential energy. For both
 metrics a rigorous set of statistical tests was applied, which identified that
 the proposed methods consistently outperform the competitors both with lower
-RMSD and lower potential energies. In a second stage, tosetta, one of the
-winners and top competitors at CASP was choosen to be compared against, as a
+RMSD and lower potential energies. In a second stage, rosetta, one of the
+winners and top competitors at CASP was chosen to be compared against, as a
 representative of state-of-the-art. The same statistical framework was applied.
 The results indicates that the proposed method is able to give equal or better
 predictions than rosetta in most cases.
 
-A second analysis of prediction error was realized using GTD-TS and TM-Score,
-which provided further insights, complementary to RMSD. Firstly, it was observerd
+A second analysis of prediction error was realized using GDT-TS and TM-Score,
+which provided further insights, complementary to RMSD. Firstly, it was observed
 that GDT-TS appears to be more strict about the results than RMSD. Furthermore,
-TM-Score appears to be even stricter. Another keypoint observed, is that the
+TM-Score appears to be even stricter. Another key-point observed, is that the
 three metrics does not always agree, where they gave values significantly
-apart. Nevertheless, studying the GTD-TS and TM-Score gave the insights that
+apart. Nevertheless, studying the GDT-TS and TM-Score gave the insights that
 the prediction could be improved even further for several of the proteins which
 judging just by RMSD alone were considered near native conformations. In the end,
 the raw data from these observations was made available in order to allow for
-future works to compare agaisnt ours using rigorous statistical methods.
+future works to compare against ours using rigorous statistical methods.
 
-A visual analysis was utilized to try and indentify what the main prediction
+A visual analysis was utilized to try and identify what the main prediction
 errors were. Four proteins were detected as having major errors. From these,
 three had its errors tracked down to the predicted secondary structure, which is
 and input of the proposed methods. As such, the predictions were made using
 incorrect data, leading to a sub par performance.
+
+\section{Main Contributions} \label{sec:main-contributions}
 
 \section{Future Works}\label{sec:future_works}
 
@@ -94,20 +96,20 @@ acceptance rate while having a low impact in the overall structure.
 % Add restarts
 Running a method for too long will most likely given diminishing returns, as
 the diversity decreases. One way to give better predictions is to periodically
-reset parts of the population or the full population if stagination occurs. This
+reset parts of the population or the full population if stagnation occurs. This
 can allow for the method to run longer and possibly lead to better predictions.
-In particular, partial population reinitialization allows for old information
+In particular, partial population re-initialization allows for old information
 to contribute to the newer generated individuals.
 
 % LS for SaDE
-The proposed methods applied Hooke-Jeeves patern search as one of the last steps.
+The proposed methods applied Hooke-Jeeves pattern search as one of the last steps.
 However, on direction would be to use Hooke-Jeeves, or other local search
 procedure as an operator for SaDE. This would allow for the method to quickly
 find local regions of good potential energy. However, this could also lead to
 premature convergence, and as such, it must have a counter acting way of
-preventing the populationg from getting stuck. Further, due to the nature of
+preventing the population from getting stuck. Further, due to the nature of
 SaDE, it is possible that the local search operators perform too well at the
 start, making SaDE heavily prefer it. Then, at latter stages, they will
-have diminishing returns. However, SaDE will keep heavily appling the
+have diminishing returns. However, SaDE will keep heavily applying the
 same operators over and over again. Therefore, it might be required for another
 strategy to be utilized to control which operator is applied.
