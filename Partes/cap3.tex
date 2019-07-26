@@ -289,9 +289,12 @@ each other and select the best one. In this way, one run can provide multiple
 potentially useful solutions.
 
 Two variant of this algorithm exist. One using \ac{MC} for the fragment insertion
-and the other using \ac{REMC}. It is expected that the \ac{MC} variant will have
-a bigger overall diversity, and thus, returning conformations that are more
-different apart. Meanwhile, the \ac{REMC} variant is expect to exploit more at
-the expense of conformation diversity. That is, it may get stuck in a local
-minima more easily in exchange for a increased chance of finding a better solution.
-The first method is named SADE-MC-FINAL and the second is named SADE-REMC-FINAL.
+and the other using \ac{REMC}.
+The main objective of have these two proposals is that the \ac{MC} and \ac{REMC}
+might have a different impact on the genotipic populational diversity. It is
+plausible to expect the \ac{REMC} variant to be more aggressive in copying and
+exploiting good conformations, potentially leading to premature convergence.
+
+The proposed algorithms were implemented using \ac{RPPF}\footnote{Available at
+\url{https://github.com/h3nnn4n/vai-ter-link-aqui-depois}}. Based on that, the
+first method is named RPPF-MC and the second is named RPPF-REMC.

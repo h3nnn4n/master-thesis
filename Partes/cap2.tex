@@ -1179,7 +1179,38 @@ feed the optimal coarse solution found to Hooke-Jeeves. With this, an initial
 optimizer can quickly sample the search space taking aggressive steps and the best
 solution found by it can then be refined and improved.
 
-\section{Related Work}~\label{sec:related_works}
+\section{Clustering}
+\label{sec:clustering}
+
+As stated by~\citeonline{anfinsen1973principles}, the native conformation is
+expected to be the point the conformational space where it has the lowest
+potential energy. While this hypothesis is reasonable, when dealing with
+\ac{PSPP}, this rarely is the case~\cite{shortle1998clustering}. Due to
+inperfections and lack of accuracy in energy functions and computational
+protein representations it is possible that the native conformation will not be
+localized at the global minimum of the energy. Notwithstanding, it should be
+in a nearby region. Therefore, in order to find the native conformation a better
+strategy might be to generate a number of protein predictions, then cluster it.
+One of the cluster centroids should then be near the native
+conformation~\cite{zhang2004spicker}.
+
+While there are several clustering methods in the literature, when dealing with
+\ac{PSPP} more robust methods are often required. The data being clustered is
+highly structured, and often, very big in size and number. Therefore, clustering
+methods designed to be used for clustering conformations can deal and make use
+of the structured data, as well as deal smartly with regard to the number of
+conformations being used. One of such methods is SPICKER~\cite{zhang2004spicker},
+which has been used by QUARK~\cite{xu2012ab}, one of the top contenders of CASP.
+
+SPICKER works by first identifying a \ac{RMSD} cutoff value, which is then used
+for creating the clusters. With this cutoff value, the conformation with the
+highest number of neighbors is selected and designated as the first cluster.
+The same process is repeated for the remaining conformations until all
+conformations belong to a cluster. For more information on SPICKER, the reader
+is redirected to~\cite{zhang2004spicker}.
+
+\section{Related Work}
+\label{sec:related_works}
 
 This section provides a comparison with the most recent works in the literature.
 Only works using ab-initio with an all atom modeling or all backbone atoms with
@@ -1326,7 +1357,7 @@ Based on the literature review, there are several note-worth points:
     \item The use of online parameter control (self adaptive methods) for the PSPP.
     Only two works (both from the same authors) using online parameter control
     were found, and one of them is arguably not a pure \textit{ab initio}, namely
-    \citeonline{oliveira2017sade}.
+    \cite{oliveira2017sade}.
     Hence, this is an under-explored area of research.
     \item The use of hybrid methods for the PSPP. While recently this has received
     attention, it still has several points left for exploring. One of these points
