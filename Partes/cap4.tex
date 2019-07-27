@@ -409,7 +409,135 @@ the state of the art methods in the literature and CASP winners.
 % Analyze the overall results and conclude
 
 \section{Convergence and Diversity Analysis}
-% AVG rmsd plot
+
+In this Section, the behaviour of the two proposed methods is analysed. The
+analysis is divided in a genotipic and a fenotipic convergence analysis. The
+genotipic analysis is related to how diverse the conformations are. This is
+measured as the mean pairwise RMSD between all $100$ conformations in the
+population. The fenotipic analysis is made considering both the energy of
+the best individual and the mean energy in the population. Considering that
+$50$ independent runs of each method were ran, the data to be analysed is
+the mean over all runs. That is, the data on the following graphs are
+the mean of mean pairwise rmsd, the mean of the best individual and the mean
+of the mean population energy. Moreover, there are $20$ such graphs. As such,
+a few select proteins are selected for analysis.
+Appendix~\ref{appendix:convergence-plots} contains the plots for all 10
+proteins.
+
+\begin{figure}[ht]
+  \begin{subfigure}{0.499\linewidth}
+    \centering
+    \includegraphics[width=1\linewidth]{Figuras/plots/energy_convergence/energy_convergence_1enh.pdf}
+    \caption{1enh}
+    \label{fig:1enh-energy-convergence}
+  \end{subfigure}
+%
+  \begin{subfigure}{0.499\linewidth}
+    \centering
+    \includegraphics[width=1\linewidth]{Figuras/plots/energy_convergence/energy_convergence_2mr9.pdf}
+    \caption{2mr9}
+    \label{fig:2mr9-energy-convergence}
+  \end{subfigure}
+  \caption{The best energy and average energy for proteins 1enh and 2mr9. The
+  continuous line represents the best energy. The dashed line represents the
+  average of the population. The X Axis represents the function evaluations and
+  the Y Axis indicates the value of the \texttt{score3} energy function being
+  optimized.}
+  \label{fig:energy-convergence-1enh-2mr9}
+\end{figure}
+
+In Figure~\ref{fig:energy-convergence-1enh-2mr9} the behaviour of the two
+proposed methods is displayed. Protein 1enh was chosen as a representative
+of standard behaviour. There are seven other proteins with the same overall
+characteristics. In blue, it is possible to see that rppf-remc has a very fast
+convergence during the first 50 thousand function evaluations. After that, it
+quickly comes down to a halt in convergence. This, is a classic symptom of
+premature convergence. With the dashed lines, representing the average of the
+population, the same overall behaviour is observable. It is worth noting that
+the line is not smooth. The small "bumps" presents are caused by FFI, which
+can disrupt the mean energy of the population. For rppf-mc the convergence
+starts slower than for rppf-remc, however, the best energy keeps improving
+for more than three fifths of the available budget of functions evaluations.
+Furthermore, on the dashed line representing the average energy, it is possible
+to see that the the average improved over time as well.
+
+When comparing rppf-mc and rppf-remc, by looking at the best energy of the two
+methods, there is a lead for rppf-remc during the first 50 thousand function
+evaluations. However, eventually rppf-mc achieves a best result and keeps
+improving for the bigger part of the process. For all 10 proteins this can be
+observed. Furthermore, when considering the average, rppf-remc had the best
+results in all cases.
+
+Two of the proteins had a increase of the average populational energy over time.
+This happened only for protein 2mr9 with rppf-mc. This is the reason that this
+protein was selected for analysis. The best energy for both methods and the
+average energy for rppc-remc shows the same behavior as 1enh. However, the
+average energy for rppf-mc, after approximately 70 thousand function iterations
+starts to increase until reaching a point of equilibrium at 700 thousand
+function evaluations, where it starts relatively stable. This behaviour is
+caused by FFI. FFI has a $2\%$ chance of being applied before any other operator
+is applied. For this particular protein, FFI managed to destroy more information
+than the MC fragment insertion could recover.
+
+A similar situation happened on 1l2y, however, for the best energy for
+rppc-remc. There, the best energy eventually started to increase and continued
+to steadly decrease until the optimization stoped. This can also be explained
+by FFI.
+
+\begin{figure}[ht]
+  \begin{subfigure}{0.499\linewidth}
+    \centering
+    \includegraphics[width=1\linewidth]{Figuras/plots/rmsd_convergence/avg_rmsd_1rop.pdf}
+    \caption{1rop}
+    \label{fig:1rop-rmsd-convergence}
+  \end{subfigure}
+%
+  \begin{subfigure}{0.499\linewidth}
+    \centering
+    \includegraphics[width=1\linewidth]{Figuras/plots/rmsd_convergence/avg_rmsd_1utg.pdf}
+    \caption{1utg}
+    \label{fig:1utg-rmsd-convergence}
+  \end{subfigure}
+  \caption{The average pairwise RMSD for proteins 1rop and 1utg.
+  The X Axis represents the function evaluations and
+  the Y Axis indicates the value of the \texttt{score3} energy function being
+  optimized.}
+  \label{fig:rmsd-convergence-1rop-1utg}
+\end{figure}
+
+The genetopic convergence of the methods is presented in
+Figure~\ref{fig:rmsd-convergence-1rop-1utg}, where the average pairwise RMSD of
+the population is measured. Two proteins were selected as representatives.
+Both proteins, 1rop and 1utg, have the same overall behavior as the other 8.
+In both Figures~\ref{fig:1rop-rmsd-convergence}
+and~\ref{fig:1utg-rmsd-convergence} rppf-remc has a lower diversity. For 9 of
+the then proteins this distance is around 2 or less. Both methods sharply
+decrease the diversity during the first few thousands function evaluations.
+After that, it stays relatively stable. For rppf-mc, in some proteins, such as
+1utg, the diversity slowly decreases. Since there is no exchange of information
+between trajectories in this method, this indicates that the whole population
+is slowly converging to the same direction. The sharp decrease in diversity for
+rppf-remc is explained by its Replica Exchange mechanism, where one trajectory
+can be compied to another, replacing it.
+
+The protein where rppc-remc has the worst performance was 1rop, where it was
+statistically worst than the other methods analysed. Comparing the average
+diversity of both rppf derived methods, it is possible to see that there is a
+gap of about $6$\AA, where the other proteins had a gap of $2$\AA or less.
+Since the population feeds the repacking stage with information, a low diversity
+for such a big protein, might have lead to too many conformations being to close.
+This, in turn generated clusters that are too close together.
+
+With this analysis, is possible to detect that rppf-mc over has better
+convergence for the best individual than rppf-remc. However, when considering
+the average energy of the population, rppf-remc has the best results.
+Nevertheless, rppf-mc would be an interesting candidate for expanding the
+budget of function evaluations available, since it keeps improving for a
+longer period of time than rppf-remc and contains a bigger overall diversity in
+the population.
+
+\section{Monte Carlo vs Replica Exchange Monte Carlo}
+% Compare RPPF-MC and RPPF-REMC
 
 \section{Parameter Analysis and Operator Usage}
 % Most used parameters over time
@@ -528,9 +656,6 @@ repacking the proposed methods were able to outperform rosetta in multiple
 occasions. With this, it can be concluded two main points. Firstly, using
 repacking did not benefit only the proposed methods. Secondly, repacking
 appears to impact more the energy than RMSD.
-
-\section{Monte Carlo vs Replica Exchange Monte Carlo}
-% Compare RPPF-MC and RPPF-REMC
 
 \section{Processing time and functions evaluations} \label{sec:time-and-evals}
 
