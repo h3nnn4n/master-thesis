@@ -1,17 +1,150 @@
 \chapter{Mann-Whitney test results for RMSD}\label{appendix:mann-whitney-rmsd}
 
-\begin{table}
-  \centering
-  \begin{tabular}{r|c|c|c|c|c|c} 
-       & \rotatebox[origin=c]{270}{classic-abinitio} & \rotatebox[origin=c]{270}{sade-mc-ffi9-02} & \rotatebox[origin=c]{270}{sade-mc-final} & \rotatebox[origin=c]{270}{sade-remc} & \rotatebox[origin=c]{270}{sade-remc-ffi9-02} & \rotatebox[origin=c]{270}{sade-remc-final} \\ \hline \hline
-      classic-abinitio &  -     & $0.1769$      & $0.0000$      & $0.0000$      & $0.0000$      & $0.0000$      \\ \hline
-       sade-mc-ffi9-02 & $0.1769$      &  -     & $0.0000$      & $0.0020$      & $0.0028$      & $0.0000$      \\ \hline
-         sade-mc-final & $\bm{0.0000}$ & $\bm{0.0000}$ &  -     & $\bm{0.0000}$ & $\bm{0.0000}$ & $0.3000$      \\ \hline
-             sade-remc & $\bm{0.0000}$ & $\bm{0.0020}$ & $0.0000$      &  -     & $0.4684$      & $0.0000$      \\ \hline
-     sade-remc-ffi9-02 & $\bm{0.0000}$ & $\bm{0.0028}$ & $0.0000$      & $0.4684$      &  -     & $0.0000$      \\ \hline
-       sade-remc-final & $\bm{0.0000}$ & $\bm{0.0000}$ & $0.3000$      & $\bm{0.0000}$ & $\bm{0.0000}$ &  -     \\ \hline
-  \hline
-  \end{tabular}
-  \caption{Mann-Whitney for 1acw \texttt{best-by-rmsd} using RMSD}
-  \label{tab:mann-whitney-wilk-best-by-rmsd-RMSD}
+This Appendix presents the individual results from Mann-Whitney test for all 10
+proteins using the results from RMSD. The tables are interpreted as follows.
+Each row and column represents a method. The value in the cell corresponds to
+to the $p$-value of comparison of the methods in the row agaisnt the one in the
+column. A value smaller than $0.0500$, the selected value for $\alpha$ indicates
+statistical significance. If the number is in boldface, then the method in the
+row outperformed the one in the column. If not, then the method in the row was
+outperformed.
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{r|c|c|c|c} 
+      & \rotatebox[origin=c]{270}{classic-abinitio} & \rotatebox[origin=c]{270}{rppf-mc} & \rotatebox[origin=c]{270}{rppf-remc} & \rotatebox[origin=c]{270}{sade-remc} \\ \hline \hline
+    classic-abinitio &  -            & $0.0000$      & $0.0000$      & $0.0000$      \\ \hline
+              rppf-mc & $\bm{0.0000}$ &  -            & $0.3000$      & $\bm{0.0000}$ \\ \hline
+            rppf-remc & $\bm{0.0000}$ & $0.3000$      &  -            & $\bm{0.0000}$ \\ \hline
+            sade-remc & $\bm{0.0000}$ & $0.0000$      & $0.0000$      &  -            \\ \hline
+\hline
+\end{tabular}
+\caption{Mann-Whitney for 1acw \texttt{best-by-rmsd} using RMSD}
+\label{tab:mann-whitney-1acw-best-by-rmsd-RMSD}
+\end{table}
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{r|c|c|c|c} 
+      & \rotatebox[origin=c]{270}{classic-abinitio} & \rotatebox[origin=c]{270}{rppf-mc} & \rotatebox[origin=c]{270}{rppf-remc} & \rotatebox[origin=c]{270}{sade-remc} \\ \hline \hline
+    classic-abinitio &  -            & $0.2915$      & $0.0244$      & $\bm{0.0088}$ \\ \hline
+              rppf-mc & $0.2915$      &  -            & $0.0317$      & $\bm{0.0001}$ \\ \hline
+            rppf-remc & $\bm{0.0244}$ & $\bm{0.0317}$ &  -            & $\bm{0.0000}$ \\ \hline
+            sade-remc & $0.0088$      & $0.0001$      & $0.0000$      &  -            \\ \hline
+\hline
+\end{tabular}
+\caption{Mann-Whitney for 1ail \texttt{best-by-rmsd} using RMSD}
+\label{tab:mann-whitney-1ail-best-by-rmsd-RMSD}
+\end{table}
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{r|c|c|c|c} 
+      & \rotatebox[origin=c]{270}{classic-abinitio} & \rotatebox[origin=c]{270}{rppf-mc} & \rotatebox[origin=c]{270}{rppf-remc} & \rotatebox[origin=c]{270}{sade-remc} \\ \hline \hline
+    classic-abinitio &  -            & $\bm{0.0203}$ & $0.0870$      & $\bm{0.0000}$ \\ \hline
+              rppf-mc & $0.0203$      &  -            & $0.0527$      & $\bm{0.0000}$ \\ \hline
+            rppf-remc & $0.0870$      & $0.0527$      &  -            & $\bm{0.0000}$ \\ \hline
+            sade-remc & $0.0000$      & $0.0000$      & $0.0000$      &  -            \\ \hline
+\hline
+\end{tabular}
+\caption{Mann-Whitney for 1crn \texttt{best-by-rmsd} using RMSD}
+\label{tab:mann-whitney-1crn-best-by-rmsd-RMSD}
+\end{table}
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{r|c|c|c|c} 
+      & \rotatebox[origin=c]{270}{classic-abinitio} & \rotatebox[origin=c]{270}{rppf-mc} & \rotatebox[origin=c]{270}{rppf-remc} & \rotatebox[origin=c]{270}{sade-remc} \\ \hline \hline
+    classic-abinitio &  -            & $0.0000$      & $0.0000$      & $0.0440$      \\ \hline
+              rppf-mc & $\bm{0.0000}$ &  -            & $0.0660$      & $\bm{0.0232}$ \\ \hline
+            rppf-remc & $\bm{0.0000}$ & $0.0660$      &  -            & $\bm{0.0008}$ \\ \hline
+            sade-remc & $\bm{0.0440}$ & $0.0232$      & $0.0008$      &  -            \\ \hline
+\hline
+\end{tabular}
+\caption{Mann-Whitney for 1enh \texttt{best-by-rmsd} using RMSD}
+\label{tab:mann-whitney-1enh-best-by-rmsd-RMSD}
+\end{table}
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{r|c|c|c|c} 
+      & \rotatebox[origin=c]{270}{classic-abinitio} & \rotatebox[origin=c]{270}{rppf-mc} & \rotatebox[origin=c]{270}{rppf-remc} & \rotatebox[origin=c]{270}{sade-remc} \\ \hline \hline
+    classic-abinitio &  -            & $0.0000$      & $0.0000$      & $0.3561$      \\ \hline
+              rppf-mc & $\bm{0.0000}$ &  -            & $0.4194$      & $\bm{0.0000}$ \\ \hline
+            rppf-remc & $\bm{0.0000}$ & $0.4194$      &  -            & $\bm{0.0000}$ \\ \hline
+            sade-remc & $0.3561$      & $0.0000$      & $0.0000$      &  -            \\ \hline
+\hline
+\end{tabular}
+\caption{Mann-Whitney for 1l2y \texttt{best-by-rmsd} using RMSD}
+\label{tab:mann-whitney-1l2y-best-by-rmsd-RMSD}
+\end{table}
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{r|c|c|c|c} 
+      & \rotatebox[origin=c]{270}{classic-abinitio} & \rotatebox[origin=c]{270}{rppf-mc} & \rotatebox[origin=c]{270}{rppf-remc} & \rotatebox[origin=c]{270}{sade-remc} \\ \hline \hline
+    classic-abinitio &  -            & $0.0000$      & $\bm{0.0003}$ & $\bm{0.0219}$ \\ \hline
+              rppf-mc & $\bm{0.0000}$ &  -            & $\bm{0.0000}$ & $\bm{0.0000}$ \\ \hline
+            rppf-remc & $0.0003$      & $0.0000$      &  -            & $0.0203$      \\ \hline
+            sade-remc & $0.0219$      & $0.0000$      & $\bm{0.0203}$ &  -            \\ \hline
+\hline
+\end{tabular}
+\caption{Mann-Whitney for 1rop \texttt{best-by-rmsd} using RMSD}
+\label{tab:mann-whitney-1rop-best-by-rmsd-RMSD}
+\end{table}
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{r|c|c|c|c} 
+      & \rotatebox[origin=c]{270}{classic-abinitio} & \rotatebox[origin=c]{270}{rppf-mc} & \rotatebox[origin=c]{270}{rppf-remc} & \rotatebox[origin=c]{270}{sade-remc} \\ \hline \hline
+    classic-abinitio &  -            & $0.0000$      & $0.0000$      & $0.2596$      \\ \hline
+              rppf-mc & $\bm{0.0000}$ &  -            & $0.3747$      & $\bm{0.0000}$ \\ \hline
+            rppf-remc & $\bm{0.0000}$ & $0.3747$      &  -            & $\bm{0.0000}$ \\ \hline
+            sade-remc & $0.2596$      & $0.0000$      & $0.0000$      &  -            \\ \hline
+\hline
+\end{tabular}
+\caption{Mann-Whitney for 1utg \texttt{best-by-rmsd} using RMSD}
+\label{tab:mann-whitney-1utg-best-by-rmsd-RMSD}
+\end{table}
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{r|c|c|c|c} 
+      & \rotatebox[origin=c]{270}{classic-abinitio} & \rotatebox[origin=c]{270}{rppf-mc} & \rotatebox[origin=c]{270}{rppf-remc} & \rotatebox[origin=c]{270}{sade-remc} \\ \hline \hline
+    classic-abinitio &  -            & $0.3795$      & $0.1419$      & $\bm{0.0000}$ \\ \hline
+              rppf-mc & $0.3795$      &  -            & $0.2399$      & $\bm{0.0000}$ \\ \hline
+            rppf-remc & $0.1419$      & $0.2399$      &  -            & $\bm{0.0000}$ \\ \hline
+            sade-remc & $0.0000$      & $0.0000$      & $0.0000$      &  -            \\ \hline
+\hline
+\end{tabular}
+\caption{Mann-Whitney for 1wqc \texttt{best-by-rmsd} using RMSD}
+\label{tab:mann-whitney-1wqc-best-by-rmsd-RMSD}
+\end{table}
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{r|c|c|c|c} 
+      & \rotatebox[origin=c]{270}{classic-abinitio} & \rotatebox[origin=c]{270}{rppf-mc} & \rotatebox[origin=c]{270}{rppf-remc} & \rotatebox[origin=c]{270}{sade-remc} \\ \hline \hline
+    classic-abinitio &  -            & $0.0658$      & $0.1059$      & $0.3434$      \\ \hline
+              rppf-mc & $0.0658$      &  -            & $0.1588$      & $0.0953$      \\ \hline
+            rppf-remc & $0.1059$      & $0.1588$      &  -            & $0.2570$      \\ \hline
+            sade-remc & $0.3434$      & $0.0953$      & $0.2570$      &  -            \\ \hline
+\hline
+\end{tabular}
+\caption{Mann-Whitney for 1zdd \texttt{best-by-rmsd} using RMSD}
+\label{tab:mann-whitney-1zdd-best-by-rmsd-RMSD}
+\end{table}
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{r|c|c|c|c} 
+      & \rotatebox[origin=c]{270}{classic-abinitio} & \rotatebox[origin=c]{270}{rppf-mc} & \rotatebox[origin=c]{270}{rppf-remc} & \rotatebox[origin=c]{270}{sade-remc} \\ \hline \hline
+    classic-abinitio &  -            & $0.0000$      & $0.0000$      & $0.0000$      \\ \hline
+              rppf-mc & $\bm{0.0000}$ &  -            & $0.2209$      & $\bm{0.0025}$ \\ \hline
+            rppf-remc & $\bm{0.0000}$ & $0.2209$      &  -            & $\bm{0.0000}$ \\ \hline
+            sade-remc & $\bm{0.0000}$ & $0.0025$      & $0.0000$      &  -            \\ \hline
+\hline
+\end{tabular}
+\caption{Mann-Whitney for 2mr9 \texttt{best-by-rmsd} using RMSD}
+\label{tab:mann-whitney-2mr9-best-by-rmsd-RMSD}
 \end{table}
