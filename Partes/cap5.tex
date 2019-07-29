@@ -7,8 +7,8 @@ considered to be the working horses of the cells. The biological
 function of any given protein is directly dependent on its
 function, in a way that knowing it is a very valuable information
 for several fields of science. The Human
-Genome~\footnote{\url{https://www.genome.gov/10001772/all-about-the--human-genome-project-hgp/}}
-and Human Proteome~\footnote{\url{https://hupo.org/human-proteome-project}} project
+Genome\footnote{\url{https://www.genome.gov/10001772/all-about-the--human-genome-project-hgp/}}
+and Human Proteome\footnote{\url{https://hupo.org/human-proteome-project}} project
 lead to a exponentially increasing number of sequenced proteins.
 However, due to the price and time efforts required to structure
 these proteins, a gap quickly formed between the number of sequenced
@@ -18,8 +18,8 @@ physicists, chemists and biologists have been working to accurately
 predict the structure of a protein from its primary
 sequence and it is known as \textit{ab initio} PSPP.
 
-In light of this, this work proposed two method, sade-mc-final and
-sade-remc-final, to attempt to solve the problem. The proteins were evaluated
+In light of this, this work proposed two methods, ppf-mc and
+ppf-remc, to attempt to solve the problem. The proteins were evaluated
 using \texttt{score0}, \texttt{score3} and \texttt{scorefxn} energy functions
 from Rosetta. The protein was modeled using a full atomic model of the backbone,
 manipulated using fragments and torsions angles, as well as side chain centroids.
@@ -29,17 +29,34 @@ several conformations that are different from each other, this is accomplished
 by using a clustering process. This, in turn, allows for a human expert to
 evaluate and choose the best conformation based on its knowledge and intuition.
 
+% RMSD and Energy with sade-remc and rosetta
 The proposed method were compared against a method from a previous work as
-well as two variants. In a first stage, the two proposed methods were compared
-against the other methods using both the RMSD and potential energy. For both
-metrics a rigorous set of statistical tests was applied, which identified that
-the proposed methods consistently outperform the competitors both with lower
+well as rosetta. In a first stage, the two proposed methods were compared
+against the other method from literature using both the RMSD and potential energy.
+For both metrics a rigorous set of statistical tests was applied, which identified that
+the proposed methods consistently outperformed the competitor both with lower
 RMSD and lower potential energies. In a second stage, rosetta, one of the
 winners and top competitors at CASP was chosen to be compared against, as a
 representative of state-of-the-art. The same statistical framework was applied.
 The results indicates that the proposed method is able to give equal or better
-predictions than rosetta in most cases.
+predictions than rosetta for several proteins.
 
+% Convergence
+The behavior of the two proposed methods was then inspected and analysed. It was
+found that ppf-mc maintened an average pairwise RMSD in the population
+consistently higher than ppf-remc. For one of the targets, this difference was
+of $6\AA$. On the remaining targets this difference varied between $1$ to about
+$2\AA$.
+
+% MC vs REMC
+
+% Repacking Impact
+
+% Processing time and function evaluations
+
+% Literature comparison
+
+% GDT-TS and TMScore
 A second analysis of prediction error was realized using GDT-TS and TM-Score,
 which provided further insights, complementary to RMSD. Firstly, it was observed
 that GDT-TS appears to be more strict about the results than RMSD. Furthermore,
@@ -51,6 +68,7 @@ judging just by RMSD alone were considered near native conformations. In the end
 the raw data from these observations was made available in order to allow for
 future works to compare against ours using rigorous statistical methods.
 
+% Visual Analysis
 A visual analysis was utilized to try and identify what the main prediction
 errors were. Four proteins were detected as having major errors. From these,
 three had its errors tracked down to the predicted secondary structure, which is
