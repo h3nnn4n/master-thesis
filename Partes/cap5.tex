@@ -46,9 +46,27 @@ The behavior of the two proposed methods was then inspected and analysed. It was
 found that ppf-mc maintened an average pairwise RMSD in the population
 consistently higher than ppf-remc. For one of the targets, this difference was
 of $6\AA$. On the remaining targets this difference varied between $1$ to about
-$2\AA$.
+$2\AA$. One of the properties of ppf-remc is the capacity of one trajectory to
+effectly copy and replace another, which may lead to faster convergence and
+exploitation. However, as observed, this lead to premature convergence and, in
+some cases, worst results. Meanwhile, ppf-mc was able to cope well with the
+clustering phase of the resulting conformation, thanks to its high diversity.
+Nevertheless, during this analysis, it was observed by tracking the best energy
+and average energy, that FFI was worsening the convergence for some methods.
+Due to its nature, for 1enh and 2mr9 it was observed that despite the greedy
+selection of conformation FFI was making the energy increase faster than the
+optimizer could keep up.
 
 % MC vs REMC
+With data from the convergence of the two proposed methods and statistical
+analysis, a direct comparison of both methods was realized. When considering
+only the RMSD there was statistical significance only for one protein, 1rop.
+However, when considering the potential energy, ppf-mc had statistically
+significant better energies for $5$ of the $10$ protein targets. Moreover,
+despite the statistical significance of RMSD for only one target, ppf-mc had
+the conformations with the best RMSD for $5$ target. This, plus the fact that
+ppf-mc has more diversity combined with the conformational clustering leads to
+the conclusing that ppf-mc is the superior method.
 
 % Repacking Impact
 
