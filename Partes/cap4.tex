@@ -1,7 +1,7 @@
 \chapter{Experiments, Results and Analysis}\label{chap:experiments_and_results}
 
 % Present the chapter
-In this Chapter, the experiments results are presented and a rigorous
+In this Chapter, the results are presented and a rigorous
 analysis is realized. In Section~\ref{sec:design_of_experiments}
 the design of experiments is presented, where the outlines of how
 and where the experiments were executed is explained. The methodology
@@ -14,7 +14,7 @@ repacking has on the proposed methods is presented. This, compares how
 the RMSD and energy, relative to rosetta, changed when repacking was
 applied. This section has two goals. First, to identify if repacking
 did or did not influence the results from the statistical tests.
-Secondly, to simply document its impact.
+Secondly, to document its impact.
 
 The processing time required to run the proposed methods is exposed in
 Section~\ref{sec:time-and-evals}, along with the number of spent function
@@ -63,7 +63,7 @@ Lastly, the Rosetta Ab Initio protocol is also included, amounting to four
 different methods being ran.
 
 The analysis is divided in two steps. In the first one, the two proposed methods
-is compared against the work from~\citeonline{silva2019self} and the Rosetta Ab Initio
+are compared against the work from~\citeonline{silva2019self} and the Rosetta Ab Initio
 Protocol.
 % Present the "in house" comparison
 The metrics utilized in this are the \textit{scorefxn} energy value of the
@@ -74,12 +74,12 @@ relative performance between the proposed methods. Considering that a visual
 analysis is not enough (in this case), a more rigorous numerical statistic set
 of test is conducted. The Shapiro-Wilk~\cite{wilk1968joint} normality test is
 employed with a confidence level of 5\%, i.e. $\alpha = 0.05$, to assess the
-presence (or lack) of a underlying normal distribution. Based on its result, a
+presence (or lack) of an underlying normal distribution. Based on its result, a
 parametric/non-parametric test is employed with a confidence level of $\alpha =
 0.05$. Due the presence of multiple comparisons, the Kruskal-Wallis test is
 applied in order to detect if there is any method with a performance that
-is different than the others. If there is, then, the Mann-Whitney test is
-employed pairwise with the proposed methods against its competitors.
+is different than the others. If there is, then, the pairwise Mann-Whitney test is
+employed with the proposed methods against its competitors.
 
 % Explain the clustering results
 The use of clustering to extract and return different conformations from the
@@ -90,7 +90,7 @@ hundreds of experiments are performed computationally each day. As such, the hum
 expert, for the purposes of performance evaluation, must be replaced by a
 computer oracle. This oracle can always find the conformation with the lowest
 RMSD or the conformation with the lowest energy. This, of course, would not
-be possible in a real world scenario where a protein without a know structure is
+be possible in a real world scenario where a protein without a known structure is
 being predicted. With that in mind, the analysis of the two proposed methods is
 divided in two sub groups. The first is named \texttt{best-by-rmsd} and the second
 is named \texttt{best-by-energy}.
@@ -145,7 +145,7 @@ $\beta$-sheets.
 
 % Present the parameters
 The two proposed methods all operates with the same parameters, as presented
-in~\ref{tab:parameters}. The first columns contains the parameter name and the
+in Table~\ref{tab:parameters}. The first column contains the parameter name and the
 second one its respective value.
 Population Initialization refers to the \ac{MC} search that is made using
 \texttt{score0}. It has $10000$ function evaluations available, such that up to
@@ -156,7 +156,7 @@ trajectories throughout the execution, i.e. a population size of 100. A million
 function evaluations are available for the optimization phase, where each
 fragment insertion routine can use up to 25 at a time. \ac{FFI} uses a fragment
 size of 9 and is applied with a probability of 2\% before each standard fragment
-insertion. The other method being compared uses the same values from
+insertion. The other methods being compared use the same values from
 Table~\ref{tab:parameters} as applicable.
 
 \begin{table}[ht]
