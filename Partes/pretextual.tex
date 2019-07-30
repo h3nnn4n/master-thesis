@@ -119,10 +119,7 @@
 % ---
 % Epígrafe
 % ---
-% TODO: Maybe get a new quote?
 \begin{epigrafe}
-  % ``Ever tried. Ever failed. No matter. Try Again. Fail again. Fail better.''
-  % Samuel Beckett
   ``It is not because things are difficult that we do not dare, but because we do not dare, things are difficult.''
   \\
   \par
@@ -143,13 +140,37 @@
 % Inglês
 % TODO: Update resumo en
 \begin{resumo}
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec commodo risus mollis turpis posuere, quis iaculis odio suscipit. Vestibulum vehicula augue id lacus aliquam feugiat. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Duis mollis purus sed sollicitudin fermentum. Etiam porta in tortor eget pretium. Nunc ac justo egestas nibh laoreet euismod. Donec a erat non lorem porttitor facilisis ut a tortor. Curabitur in finibus eros. Etiam scelerisque, mauris vel aliquam fringilla, nunc nisl egestas metus, sed facilisis urna risus et quam. Duis vitae dapibus dolor.
-
-  Aenean ultricies metus a lacinia mollis. Sed commodo tempor ipsum sed vehicula. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nunc ut vulputate eros. Maecenas aliquet, dui ut cursus sollicitudin, lorem lacus accumsan urna, at hendrerit elit purus in nunc. In dolor quam, auctor nec maximus a, lacinia id metus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Pellentesque euismod eleifend sapien, eu tincidunt turpis porta non. Quisque finibus bibendum pellentesque.
+  The Protein Structure Prediction Problem (PSPP) is currently one of the
+  most important and challenging open problems in both computer science and
+  in structural bioinformatics. Being able to accurately predict protein
+  conformations would have a significant impact on several fields.
+  Proteinopathies would be better understood, intelligent protein based drugs
+  could be designed more easily and the overall understanding of the protein
+  functions in organisms would be further increased. Albeit the problem being
+  several decades old, no viable general solution was found. Currently, only
+  able small protein are able to be predicted to satisfatory levels of
+  accuracy. As such, this work has as its main goal to attempt to improve the
+  prediction power of ab initio methods by utilizing an self adaptive
+  evolution algorithm using Monte Carlo based fragment insertion and
+  conformational clustering. With this, a powerful meta heuristic is utilized
+  as the core of the conformation sampling process with fragment insertion
+  feeding domain specific information into the process. The online parameter
+  control allows the method to adapt to proteins of different characteristics
+  and also to adapt to different stages of the optimization process. The main
+  contribution of this work is a novel combination of online parameter
+  control, fragment insertion, conformational clustering and metaheuristics.
+  In order to access the performance of the proposed methods they were
+  compared against each other and two reprentatives from the literature using
+  a series of statistical methods. The proposed methods were then compared
+  against several methods in the literature, utilizing only the RMSD. It was
+  concluded that the proposed methods were able to outperform rosetta, one of
+  the state-of-the-art methods. Moreso, the RMSD of the protein targets were
+  either the best one so far, or the second best in the literature, over more
+  than 20 works reviewed.
   \\
   \vspace{\onelineskip}
   \noindent
-  \textbf{Keywords}: Differential Evolution, Hybrid Methods, Monte Carlo, Fragment Insertion, Protein Structure Prediction Problem, Parameter Control.
+  \textbf{Keywords}: Monte Carlo, Fragment Insertion, Protein Structure Prediction Problem, Parameter Control, Clustering.
 \end{resumo}
 
 % ---
@@ -163,13 +184,39 @@
 % TODO: Update resumo pt-br
 \begin{resumo}[Resumo]
   \begin{otherlanguage*}{brazil}
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ex ante, cursus aliquam interdum vitae, varius sit amet leo. Etiam eleifend aliquet justo, in commodo risus. Nam quis libero et odio suscipit egestas. Etiam porta, sem vel venenatis pulvinar, dolor nisl vestibulum est, et suscipit nisl libero et erat. Mauris ullamcorper aliquam eros, id pellentesque mi sagittis vel. Maecenas id neque volutpat, varius purus ac, cursus lacus. Maecenas vel tincidunt mauris, eu tempus dui. Vivamus consequat, urna at lobortis tincidunt, purus nisl ultricies lacus, nec efficitur elit ipsum nec nisl. Nam tincidunt commodo velit, sed hendrerit velit condimentum nec. Curabitur tempor molestie scelerisque. Proin dignissim sollicitudin vulputate. Aliquam nec lorem eu dolor tincidunt scelerisque. Pellentesque nisl risus, dapibus vel tortor nec, ultrices venenatis lectus. Nam mattis, tortor vitae semper fermentum, ligula felis facilisis eros, ac commodo nulla lorem quis mauris. Nam blandit eros eget neque facilisis, ut suscipit est volutpat. Cras eu faucibus ante.
-
-    Nunc quis quam dui. Suspendisse at posuere nibh. Maecenas ligula arcu, ullamcorper eu massa in, porta accumsan sapien. Etiam cursus porttitor venenatis. Nullam eleifend id metus ut fermentum. Nulla viverra tempor cursus. Maecenas elit sapien, hendrerit at ornare id, aliquet pulvinar dui. In iaculis justo at tempor mattis. Nulla tempor eu nunc non tincidunt. Pellentesque neque augue, pulvinar id convallis a, consequat vitae nunc. Integer vel erat felis. Vivamus sodales enim eu ipsum congue tempus.
+    O Problema de Predição de Estrutura de Proteína é atualmente um dos mais
+    importantes e desafiadores problemas em aberto na ciência da computação e
+    na bioinformárica estrutural. Ser capaz de predizer a estrutura de proteínas
+    com acurácia teria um impacto significativo em multiplas áread do
+    conhecimento. Proteinopatias seriam melhor entendidas, drogas inteligentes
+    baseadas em proteínas poderia ser projetadas mais facilmente e o
+    conhecimento em geral de proteínas nos seres vivos seria expandido.
+    Apesar do problema de predição ter várias decadas, até hoje nenhuma solução
+    generalizada viável foi encontrada. Atualmente, apenas pequenas proteínas
+    podem ter sua estrutura predita com um nível desejável de acurária. Deste
+    modo, este trabalho tem como principal objetivo tentar melhorar o poder
+    preditivo de métodos ab initio atravéz da utilização de um algoritmo
+    evolucionário auto adaptativo usando inserçao de fragmentos baseada em
+    Monte Carlo e clusterização de conformações. Com isto, uma poderoza meta
+    heurística será utilizada como núcleo para o processo de amostragem de
+    conformações com a inserção de fragmentos agregando informação do domínio do
+    problema. O controle online de parametros permitirá que o método se adapte a
+    proteínas de diferentes caracteristicas e também a diferentes etapas do
+    processo de otimização. A principal contribuição deste trabalho está na
+    inovativa proposta de combinar controle online de parametros, inserção de
+    fragmentos, clusterização de conformações e meta heurísticas. Com o objetivo
+    de aferir a performance dos métodos propostos, estes foram comparados contra
+    dois outros métodos da literatura, utilizando uma série de métodos
+    estatísticos. Os métodos propostos foram então comparados contra diversos
+    outros na literuatura, utilizando apenas o RMSD. Foi concluído que os
+    métodos propostos foram capazes the obter performance superior a rosetta, um
+    os métodos estado da arte. Finalmente, o RMSD das proteínas alvo foram ou
+    a melhor ou a segunda melhor encontradas na literatura, dentre mais de 20
+    trabalhos analisados.
     \\
     \vspace{\onelineskip}
     \noindent
-    \textbf{Palavras-chave}: Differential Evolution, Métodos Híbrids, Monte Carlo, Inserção de fragmento, Problema de Predição de Estrutura de Proteínas, Controle de Parâmetros.
+    \textbf{Palavras-chave}: Monte Carlo, Inserção de fragmento, Problema de Predição de Estrutura de Proteínas, Controle de Parâmetros, Clusterização.
   \end{otherlanguage*}
 \end{resumo}
 
