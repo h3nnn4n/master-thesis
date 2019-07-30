@@ -62,7 +62,7 @@ of user interaction during the course of the experimentation.
 \end{table}
 
 The experimentation consisted of running the two proposed methods, namely
-ppf-remc and ppf-mc. One of the methods proposed
+PPF-REMCc and PPF-MC. One of the methods proposed
 in~\cite{silva2019self} is also included, namely SADE-REMC.
 Lastly, the Rosetta Ab Initio protocol is also included, amounting to four
 different methods being ran.
@@ -71,8 +71,8 @@ The analysis is divided in two steps. In the first one, the two proposed methods
 are compared against the work from~\citeonline{silva2019self} and the Rosetta Ab Initio
 Protocol.
 % Present the "in house" comparison
-The metrics utilized in this are the \textit{scorefxn} energy value of the
-best solution and the \ac{RMSD} associated with the same conformation. The
+The metrics utilized are the \textit{scorefxn} energy value of the
+best solution and the \ac{RMSD} associated with the this conformation. The
 results were collected over 50 independent runs of each method for each target
 protein. A graphical analysis is conducted in order to identify visually the
 relative performance between the proposed methods. Considering that a visual
@@ -110,12 +110,8 @@ provide little information about how the experimentation was conducted. The way
 in which the results are analysed lacks a standard. As such, this work does a
 direct comparison using the best RMSD achieved in a set of runs. While this is
 not ideal, due to different works running each method different number of times,
-this is possibly the only way to a comparison against several works. The presence
-of outliers also weaken this comparison. Also, since only the most used proteins
-are select, it is possible that some works are only represented partially, i.e.
-some of the results are left out. Nevertheless, at the end of the day for the
-PSPP what matters is having the lowest possible error. As such, comparing just
-the best RMSD still a worthwhile analysis, albeit not ideal.
+this is possibly the only way to a comparison against several works. %The presence of outliers also weaken this comparison. Also, since only the most used proteins are select, it is possible that some works are only represented partially, i.e. some of the results are left out. 
+Nevertheless, at the end of the day for the PSPP what matters is having the lowest possible error. As such, comparing the best RMSD is a worthwhile analysis. %, albeit not ideal.
 
 % Present the protein set
 With that in mind, the set of proteins presented in Table~\ref{tab:protein-targets}
@@ -193,32 +189,28 @@ Section~\ref{sec:statistical-analysis} a strictly statistical analysis is
 presented. Section~\ref{sec:pareto-front-analysis} presents an analysis of the
 best results achieved using Parto Front.
 
-\subsection{Statistical Analysis}
-\label{sec:statistical-analysis}
-
 % Present the box plots
-In Figure~\ref{fig:boxplot-rmsd} the RMSD from the predictions is presented.
-The proteins, presented in the x axis, are displayed in lexicographical order.
-The y axis presents the RMSD, where lower is better. The methods are grouped
+In Figure~\ref{fig:boxplot-rmsd} the RMSD from the predictions is presented as box-plots.
+The proteins, presented in the x-axis, are displayed in lexicographical order.
+The y-axis presents the RMSD, where lower is better. The methods are grouped
 horizontally by protein.
 
-It is possible to see that for 9 of the 10 proteins the
+It is possible to verify that for 9 out of 10 proteins (with exception for XXX protein) the
 two proposed methods, in orange and green, had a very close overall performance,
-considering the median.
-However, for protein 1rop, ppf-mc outperformed the other methods by a
+considering the median, presented as the line inside the box of each method.
+Also, for protein 1rop, the ppf-mc outperformed the other methods by a
 significant margin. Moreover, the two proposed methods had better medians than
-the other methods (not including rosetta) in 8 of the 10 proteins. For 1rop
-sade-mc-ffi had the second best result, behind ppf-mc, while ppf-remc
-had the second worst result. For 1zdd, the two proposed methods had the two worst
+the other methods (not including rosetta) in 8 of the 10 proteins, with exception for XXX proteins. For 1rop, the sade-mc-ffi had the second best result, behind ppf-mc, while ppf-remc
+had the second worst result. For the 1zdd protein, the two proposed methods had the two worst
 medians, however, by a relatively small amount.
 
 In a direct comparison against rosetta, in proteins 1acw, 1enh, 1l2y, 1utg and 2mr9
 the proposed methods had a significant improvement upon rosetta. For 1crn the rosetta
-appears to have outperformed the proposed methods. In the remaining proteins visual
+has a slightly better performance compared to the proposed methods. In the remaining proteins visual
 inspection is not enough to accurately detect significant performance differences.
 
-Some other behaviours are worth noting too. The manifestation of uniqueness each
-proteins is visible in the distribution of different methods. For example, on
+Some other behaviours are worth noting. The manifestation of each
+proteins uniqueness is visible in the distribution of different methods. For example, on
 2mr9, rosetta had a worst performance than the other methods by a significant margin,
 whereas the other methods had a very similar performance. For 1utg, the two proposed
 methods outclassed the other methods, including rosetta. Furthermore, the worst
@@ -238,6 +230,17 @@ structure more than others.
   \label{fig:boxplot-rmsd}
 \end{figure}
 
+Figure~\ref{fig:boxplot-energy} presents data similarly to the previous figure,
+however, the y-axis now represents the \texttt{scorefxn} energy function. Considering
+the energy results, when compared to the rmsd boxplot, the results are relatively
+more similar. Nevertheless, for some proteins there are some behaviours that are
+more visible. For 1rop, ppf-remc appears to have had a worst performance
+than the other methods. Same as with the RMSD data. For 1crn, rosetta and the two
+proposed methods appears to have a better overall result. For 2mr9, rosetta
+appears to be lagging behind in performance. These observations are just visual
+trends which helps understand the relative performance. In order to properly
+access their differences a more rigorous statistical approach is required and exposed next.
+
 \begin{figure}
   \includegraphics[width=\linewidth]{Figuras/boxplots/boxplot_best_by_energy_scorefxn.pdf}
   \caption{Boxplot presenting the \texttt{scorefxn} for the protein predictions with the
@@ -246,30 +249,20 @@ structure more than others.
   \label{fig:boxplot-energy}
 \end{figure}
 
-Figure~\ref{fig:boxplot-energy} presents data similarly to the previous figure,
-however, the y axis now represents the \texttt{scorefxn} energy function. Considering
-the energy results, when compared to the rmsd boxplot, the results are relatively
-more similar. Nevertheless, for some proteins there are some behaviours that are
-more visible. For 1rop, ppf-remc appears to have had a worst performance
-than the other methods. Same as with the RMSD data. For 1crn, rosetta and the two
-proposed methods appears to have a better result overall. For 2mr9, rosetta
-appears to be lagging behind in performance. These observations are just visual
-trends which helps understand the relative performance. In order to properly
-access their differences a more rigorous statistical approach is required.
+\subsection{Statistical Analysis}
+\label{sec:statistical-analysis}
 
 % Present Shapiro-Wilk RESULTS
 To scientifically assess the performance of the proposed methods relative to
 other competing methods, proper statistical tests are required. A prerequisite
-before applying the tests which evaluate performance, is to detect the
+before applying the tests which evaluate performance is to detect the
 underlying distribution of the data to be analysed. There are several ways to
 accomplish this. One, is to visually inspect a histogram or a Quantile-Quantile
 plot. A more rigorous approach is to use a statistical test which can evaluate
-the presence of a gaussian distribution. One such test is Shapiro-Wilk and it
+the presence of a gaussian distribution. One such test is the Shapiro-Wilk and it
 will be utilized for this purpose.
 
-For the tests an $\alpha = 0.05$ was utilized. The RMSD and \texttt{scorefxn}
-of both the \texttt{best-by-rmsd} and \texttt{best-by-energy} were analysed for
-all the methods. For the sake of brevity the results are exposed outside this
+For the statistical analysis, an $\alpha = 0.05$ was utilized indicating a confidence level of 5\%. The RMSD and \texttt{scorefxn} of both the \texttt{best-by-rmsd} and \texttt{best-by-energy} were analysed for all the methods. For the sake of brevity the results are exposed outside this
 text, in Appendix~\ref{appendix:shapiro}. The null hypothesis, $H_0$, is that
 the samples belong to a normal distribution. Therefore, if the test returns a $p$
 value less than $\alpha$, $H_0$ is rejected and the underlying distribution is
@@ -305,10 +298,9 @@ there is no clear trend. The proposed method ppf-remc had no rejection
 of $H_0$, while ppf-mc had two.
 
 % Conclude the analysis and introduce the next analysis
-Given this, it appears that the underlying distribution, in most cases, is
-gaussian. However, there are consistent, albeit fewer, situations where they are
+Given this, it appears that the underlying distribution, in most cases, is gaussian. However, there are consistent, albeit fewer, situations where they are
 not gaussian. As such, a non-parametric test must be employed. In this case, the
-analysis is split in two step. Firstly, Kruskal–Wallis test is applied in order
+analysis is split in two steps. Firstly, Kruskal–Wallis test is applied in order
 to detect if there is a significant difference between the distribution, i.e.
 if there is a method that is better than some other. If there is, then
 a pairwise Mann-Whitney is utilized. Even though it is a non-parametric test, it
@@ -348,7 +340,7 @@ Considering that both RMSD and \texttt{scorefxn} will be analyzed, each for
 10 proteins, a total of $20$ tables are necessary to expose all the data. As
 such, this information is exposed in Appendix~\ref{appendix:mann-whitney-rmsd}
 and~\ref{appendix:mann-whitney-scorefxn}, where the first presents the data for
-RMSD and the second for the energy. The results will be summarized reporting the
+RMSD and the second for the energy, respqctivelly. The results will be summarized reporting the
 overall results from the test. To keep focus and simplicity, first, the two
 proposed methods will be compared against the other method. Then, they will be
 compared against rosetta. In both cases, the RMSD and \texttt{scorefxn} will be
@@ -359,9 +351,8 @@ considered for the analysis.
 Starting with the RMSD using \texttt{best-by-rmsd}, comparing the two proposed
 methods against the ones from a previous work, the results are shown in
 Table~\ref{tab:mann-whitney-summary-internal-best-by-rmsd-RMSD}. The column
-Protein displays the protein name. Column Wins, Loses and Draws shows the number
-of times that any of the two proposed methods outperformed, were outperformed,
-or had a similar performance than the other method (not including rosetta).
+Protein displays the protein name. Columns \textbf{Wins}, \textbf{Loses} and \textbf{Draws} show the number of times that any of the two proposed methods outperformed, were outperformed,
+or had the same performance than the other method (not including rosetta).
 Based on the results from Kruskal–Wallis, as show in
 Tables~\ref{tab:kruskal-wallis-best-by-rmsd-RMSD} and
 Tables~\ref{tab:kruskal-wallis-best-by-energy-scorefxn}, there is no
@@ -391,8 +382,7 @@ from Kruskal–Wallis will be considered to be the correct one.
 \input{Tabelas/mann-whitney-summary-rosetta.tex}
 
 In Table~\ref{tab:mann-whitney-summary-rosetta-best-by-rmsd-RMSD} the
-comparison of the two proposed methods compared to Rosetta using RMSD is
-presented. For 1acw, 1enh, 1l2y, 1utg and 2mr9, totalling 5 proteins, both
+two proposed methods is compared against Rosetta using RMSD. For 1acw, 1enh, 1l2y, 1utg and 2mr9, totalling 5 proteins, both
 proposed methods outperformed rosetta. For 1ail only ppf-remc
 outperformed rosetta. On 1rop, ppf-mc outperformed rosetta, while
 ppf-remc was outperformed. On 1crn, only ppf-mc was outperformed
@@ -409,12 +399,12 @@ the proposed methods outperformed rosetta in some cases and had equal
 significance in others.
 
 In light of these observations, it is safe to consider that the two proposed
-methods outperform the previous methods. It also outperforms rosetta, one of
+methods outperform the SADE-REMC. It also outperforms rosetta, one of
 the state of the art methods in the literature and CASP winners.
 
 \subsection{Pareto Front Analysis}\label{sec:pareto-front-analysis}
 
-In this Section an analysis of the pareto front of the four methods under
+In this Section an analysis of the Pareto front of the four methods under
 analysis is presented. Considering that the end user would most likely only be
 interested in the best prediction, this analysis considers the conformation with
 the best RMSD and its respective energy, for the two proposed methods. For
@@ -465,19 +455,18 @@ RMSD is used.
   \label{fig:pareto-front}
 \end{figure}
 
-The pareto front for all 10 proteins is presented in
-Figure~\ref{fig:pareto-front}. Each subfigure represents one protein. The X
-Axis contains the RMSD and the Y Axis contains the Energy. For proteins 1acw,
-1ail, 1rop, 1zdd and 2mr9 there are two methods in the pareto fronto. For
+The Pareto front for all 10 proteins is presented in
+Figure~\ref{fig:pareto-front}. Each subfigure represents one protein. The x-axis contains the RMSD and the y-axis contains the Energy. For proteins 1acw,
+1ail, 1rop, 1zdd and 2mr9 there are two methods in the Pareto front. For
 protein 1crn, there is one method which dominates all others. The remaining
-proteins have three methods in the pareto front, meaning that there is only one
+proteins have three methods in the Pareto front, meaning that there is only one
 method being dominated.
 
-A summary of the which methods are present in the pareto front is presented
-in Table~\ref{tab:pareto-front-summary}. Column Method contains the method,
+A summary of the which methods are present in the Pareto front is presented
+in Table~\ref{tab:pareto-front-summary}. Column \textbf{Method} contains the method,
 sorted by the number of times it appeared in the front. The second column,
-Proteins, contains the proteins in which the method was in the pareto front.
-The third column, Total, contains the number of time the protein appeared in the
+\textbf{Proteins}, contains the proteins in which the method was in the Pareto front.
+The third column, \textbf{Total}, contains the number of times the protein appeared in the
 front.
 
 \begin{table}
@@ -489,19 +478,19 @@ front.
     rosetta   & 1ail 1enh 1l2y 1utg 1wqc 1zdd      & 6     \\ \hline
     sade-remc & 1acw 1ail 1enh 1rop                & 4     \\
   \end{tabular}
-  \caption{Summary of the method in the pareto front}
+  \caption{Summary of the method in the Pareto front}
   \label{tab:pareto-front-summary}
 \end{table}
 
-One of the proposed methods, ppf-remc, appeared in the pareto front for $7$ of
-the $10$ proteins. Both roseta and ppf-mc appeared in $6$ proteins. Finally,
+One of the proposed methods, ppf-remc, appeared in the Pareto front for $7$ out of 
+$10$ proteins. Both rosetta and ppf-mc appeared in $6$ proteins. Finally,
 sade-remc appeared only in $4$. On 1acw, 1crn, 1rop and 2mr9 at least one of the
 proposed methods appeared in the front while rosetta did not. The converse,
 rosetta being in the front while none of the proposed methods were, happened
 only for 1ail.
 
 Considering these observations, the two proposed methods and rosetta have a
-similar performance regarding the pareto front. However, rosetta was only
+similar performance regarding the Pareto front. However, rosetta was only
 able to dominate the two proposed method in one occasion. Meanwhile, rosetta was
 dominated in $4$. Taking this into account, it can be concluded that the two
 proposed methods are able to give good conformations with varying properties
@@ -519,7 +508,7 @@ the best individual and the mean energy in the population. Considering that
 $50$ independent runs of each method were ran, the data to be analysed is
 the mean over all runs. That is, the data on the following graphs are
 the mean of mean pairwise rmsd, the mean of the best individual and the mean
-of the mean population energy. Moreover, there are $20$ such graphs. As such,
+of the mean population energy. Moreover, there are $20$ convergence graphs. As such,
 a few select proteins are selected for analysis.
 Appendix~\ref{appendix:convergence-plots} contains the plots for all 10
 proteins.
@@ -568,7 +557,7 @@ improving for the bigger part of the process. For all 10 proteins this can be
 observed. Furthermore, when considering the average, ppf-remc had the best
 results in all cases.
 
-Two of the proteins had a increase of the average populational energy over time.
+Two of the proteins had an increase of the average populational energy over time.
 This happened only for protein 2mr9 with ppf-mc. This is the reason that this
 protein was selected for analysis. The best energy for both methods and the
 average energy for rppc-remc shows the same behavior as 1enh. However, the
@@ -622,13 +611,13 @@ can be compied to another, replacing it.
 
 The protein where rppc-remc has the worst performance was 1rop, where it was
 statistically worst than the other methods analysed. Comparing the average
-diversity of both rppf derived methods, it is possible to see that there is a
-gap of about $6$\AA, where the other proteins had a gap of $2$\AA or less.
+diversity of both ppf derived methods, it is possible to see that there is a
+gap of about $6$\AA, where the other proteins had a gap of $2$\AA  or less.
 Since the population feeds the repacking stage with information, a low diversity
 for such a big protein, might have lead to too many conformations being to close.
 This, in turn generated clusters that are too close together.
 
-With this analysis, is possible to detect that ppf-mc over has better
+With this analysis, is possible to detect that ppf-mc has better
 convergence for the best individual than ppf-remc. However, when considering
 the average energy of the population, ppf-remc has the best results.
 Nevertheless, ppf-mc would be an interesting candidate for expanding the
@@ -798,7 +787,7 @@ appears to impact more the energy than RMSD.
 \section{Processing time and functions evaluations} \label{sec:time-and-evals}
 
 In Table~\ref{tab:processing-times} the processing times for the two proposed
-methods is displayed. The first column shows the protein name, the second and
+methods are displayed. The first column shows the protein name, the second and
 third column shows the data for each of the methods. Each sub-column for the
 methods contains the mean time and its standard deviation, measured in seconds.
 The total processing time of the method does not include the preprocessing
