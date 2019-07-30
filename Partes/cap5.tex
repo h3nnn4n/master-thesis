@@ -69,10 +69,50 @@ ppf-mc has more diversity combined with the conformational clustering leads to
 the conclusing that ppf-mc is the superior method.
 
 % Repacking Impact
+An analysis to assess the impact of repacking was also realized. The goals were
+twofold. Firstly, there was the interest in verifying that the repacking process
+was not misleading or interfering in the results. Secondly, just the plain
+documentation of how much repacking impacted the process was desirable. This
+information was not found in the literature. Based on this, it was found that
+the repacking process had a small negative impact in the energies of the
+proposed methods. Before repacking, both proposed methods had more results that
+were better than rosetta with statistical significe. After applying repacking,
+this number decreased. The mean change in RMSD was also documented. It was found
+to be very low. In most cases it was lower than $0.5\AA$ on average.
 
 % Processing time and function evaluations
+The processing time was also documented. There was no significant difference
+between the proposed methods. The main goal of analysing the processing time was
+to give a timeframe of how long it taked for the prediction to be made. Along
+with this, an analysis of the total of function evaluations spent also was
+presented. The methods, on average, take less than 20 minutes to run, even for
+the bigger proteins. For the smaller proteins, the targers can be predicted in
+10 minutes or less.
+
+The optimization phase of the proposed method uses 1 million of function
+evaluations, using the \texttt{score3} energy function. This is were the bulk
+of processing happen. Before this phase, the \texttt{score0} energy function
+can spend up to 10 thousand function evaluations for generating the initial
+population. Finally, in the post processing phase, the Hooke-Jeeves search
+procedure spends on average 20 thousand function evaluations. A value relatively
+small compared to the budged from the optimization phase. Nevertheless, this
+data is made available in order to give a solid groud for future comparisons
+with the presented methods.
 
 % Literature comparison
+To be able to compare the proposed methods agaisnt the literature, a literature
+review was realized. From this review, the proteins used as target were listed.
+The proteins which occured more often and had the same metrics available for
+comparison were selected. From this, were found 10 recurring proteins of which
+all had the best RMSD made available. The proposed methods were ran using these
+proteins targets 50 times each. The best RMSD was selected and compared against
+the literature. Based on this, it was found that the proposed methods are
+competitive with several methods in the literature. For two targets 1wqc and
+2mr9 the proposed methods were able to overpass the best result found in the
+literature. For 1rop and 1crn, the two proteins used more often in the
+literature, one of the proposed methods were able to get the second best
+prediction. The same occured for 1enh. For the remaining targets the proposed
+methods achieved results that were often close to the best ones.
 
 % GDT-TS and TMScore
 A second analysis of prediction error was realized using GDT-TS and TM-Score,
@@ -92,8 +132,6 @@ errors were. Four proteins were detected as having major errors. From these,
 three had its errors tracked down to the predicted secondary structure, which is
 and input of the proposed methods. As such, the predictions were made using
 incorrect data, leading to a sub par performance.
-
-\section{Main Contributions} \label{sec:main-contributions}
 
 \section{Future Works}\label{sec:future_works}
 
