@@ -788,7 +788,7 @@ appears to impact more the energy than RMSD.
 
 In Table~\ref{tab:processing-times} the processing times for the two proposed
 methods are displayed. The first column shows the protein name, the second and
-third column shows the data for each of the methods. Each sub-column for the
+third column show the data for each of the methods. Each sub-column for the
 methods contains the mean time and its standard deviation, measured in seconds.
 The total processing time of the method does not include the preprocessing
 steps, i.e. secondary structure prediction, the fragment picker, etc. The total
@@ -823,21 +823,21 @@ processing time is the sum of all these steps.
 \end{table}
 
 As expected, there is a direct correlation between the number of residues in a
-given proteins and the time required to predict its structure. The two smallest
+given protein and the time required to predict its structure. The two smallest
 proteins had the faster processing times, while the bigger proteins had the
 highest times. The prediction times on average range from about 4 minutes up to
 20 minutes per run.
 
-For the majority of proteins, both method had very close means. One interesting
+For the majority of proteins, both methods had very close means. One interesting
 difference noticed was the standard deviation for 1rop. For ppf-mc,
-which had a relatively good prediction performance on this protein had
+which had a relatively good prediction performance, on this protein it had
 a standard deviation around $124$. The other method, ppf-remc, had a
-standard deviation of around $203$. There might be a correlation between the
+standard deviation around $203$. There might be a correlation between the
 poor performance of this method and the more spread out processing times.
 For 1utg a similar situation happened, however, the performance of the two
 methods was much closer.
 
-Another performance analysis that can be made on top of the proposed methods,
+Another performance analysis that can be made on top of the proposed methods
 is the study of the spent function evaluations. The main optimization phase has
 a fixed budged of 1 million function evaluations. The post-processing phase,
 however, uses a separate budget, which is non fixed. The Hooke-Jeeves
@@ -878,9 +878,7 @@ for these proteins. For 2mr9 there was a single call to Hooke-Jeeves which spent
 $803278$ function evaluations. The same happened with 1utg, where a single call
 spent $412117$ function evaluations. Nevertheless, by inspection the logs it
 was found that all these function evaluations did not impact the energy nor the
-RMSD. In fact, it appears that the root cause of such a high amount of
-spent energy evaluations was spent due to numeric instability, which caused
-a fault in the convergence of the method.
+RMSD. %In fact, it appears that the root cause of such a high amount of spent energy evaluations was spent due to numeric instability, which caused a fault in the convergence of the method.
 
 \section{Comparison with Competing Methods}
 \label{sec:competing-methods}
@@ -902,24 +900,23 @@ more than four works were selected.
 
 \input{Tabelas/literature_comparison.tex}
 
-In Table~\ref{tab:literature-comparison}, this data is presented. The first
-column indicates the year of publication, where the data is presented in
-decreasing order. The column Source presents the source of the data, which is
-either a work in the literature, one of the proposed methods, or the results
-from rosetta that were collected during the development of this work. The
+In Table~\ref{tab:literature-comparison}, the results obtained are presented. The first
+column indicates the year of the publication presented in
+decreasing order. The column \textbf{Source} presents the source of the data, which is one of the proposed methods, the results
+from rosetta, or a work in the literature. The
 remaining columns present several proteins, sorted by the frequency in which it
-appears in literature. The data in these columns is the best RMSD from the
+appears in the literature. The data in these columns is the best RMSD from the
 method in the given work.
 
 Given that more than 20 works are cited in this table, doing a detailed
 analysis and description would be rather cumbersome. Instead, some keynotes are
 provided. First, there appears to be a weak trend where the RMSD is slowly
-decreasing. Albeit this trend this trend has several counter examples.
+decreasing. Albeit this trend has several counter examples.
 For instance, the works of~\cite{cazacu2014steel} and~\cite{judy2009multi}
 have competitive results even by today standards, even though they are more than
 a decade old. Another major point, is that the results are getting extremely
 competitive in the last years. The competition probably is not any bigger due to
-the lack of common proteins between the workers. It is not rare to find works
+the lack of common proteins between the works. It is not rare to find works
 from the same author where a different set of proteins is utilized.
 
 Even in face of the competitiveness of the problem, the proposed methods were
@@ -942,16 +939,16 @@ This section provides an in depth analysis of the results obtained in this
 work using the GDT-TS and the TM-Score metrics of the predicted proteins. The
 results can also be used by other works to compare against our own using
 these metrics. Tables~\ref{tab:gdtts-data} and~\ref{tab:tmscore-data} present
-for the two proposed methods, ppf-remc and ppf-mc with their
-respective GDT-TS and TM-Score. Both tables follows the same format. The
+for the ppf-remc and ppf-mc, their
+GDT-TS and TM-Score values, respectively. Both tables follows the same format. The
 first column presents the protein name. The results for both methods are
-presented in the same table, where each method has a column. Each one of the
+presented in separated columns. Each one of the
 method's column is split into three sub-columns with the best result, the mean
-and the standard deviation.
+and the standard deviation, respectively.
 
 Both GDT-TS and TM-Score share the same property where values can be used as
-thresholds for prediction quality. A value of $0.2$ indicates the performance of
-a random prediction, while the value of $0.5$ indicates a prediction that has
+thresholds for prediction quality. A value close to $0.2$ indicates the performance of
+a random prediction, while the value of $0.5$ or above indicates a prediction that has
 the same overall fold. Considering that, values of $0.5$ or above are marked
 in boldface font.
 
@@ -975,7 +972,7 @@ in boldface font.
   \label{tab:gdtts-data}
 \end{table}
 
-Analysing the GDT-TS values, comparing one method agaisnt the other, there are no
+Analysing the GDT-TS values, comparing one method against the other, there are no
 major differences. With the exception of 1rop, due a difference of $0.0025$, all
 methods had the same results regarding valued above $0.5$. In fact, both methods
 have very similar results for all proteins, with little difference. The protein
@@ -983,7 +980,7 @@ with the biggest difference was 1rop, where the means were $0.0787$ units apart
 and the best value was $0.0674$ units apart. Interestingly, 1zdd, the protein
 with the lowest RMSD has a GDT-TS of $0.41$ and $0.43$ for the two methods.
 Meanwhile, 1wqc and 2mr9 had values above $0.75$ and $0.87$, respectively.
-Meaning that the two metrics dont always agree.
+Meaning that the two metrics don't always agree.
 
 \begin{table}
   \centering
@@ -1007,26 +1004,26 @@ Meaning that the two metrics dont always agree.
 
 Considering the TM-Score, there is a very low number of values above the
 threshold of $0.5$. Again, both methods had similar values overall with very
-little difference. Furthermore, not only RMSD and GDT-TS disagree on some cases,
+little difference. Furthermore, not only RMSD and GDT-TS disagree on some cases, but
 TM-Score can differ from the other two metrics in some cases as well. For
 instance, on 1wqc the GDT-TS value was $0.75$ or higher, while the respective
 TM-Scores were $0.31$ or lower. Also, TM-Score evaluated some methods as having
-a performance worst than random for 1acw and 1l2y. This contradicts the results
+a performance worst than random search for 1acw and 1l2y. This contradicts the results
 both from RMSD and GDT-TS.
 
-One noteworthy aspect of GDT-TS and TM-Score, is that they appear to be more
+One noteworthy aspect of GDT-TS and TM-Score is that they appear to be more
 rigorous than RMSD. Take 1enh for example, it had the second best RMSD found
-in the literature, yet, with GDT-TS it did not make the cut of $0.5$. More so,
+in the literature, yet, with GDT-TS, it did not make the cut of $0.5$. More so,
 both 1enh and 1ail, two relatively big proteins, had their best RMSD more
 than two units apart with ppf-mc. However, with the GDT-TS for the same
 method, the two conformations are less than $0.01$ units apart. This is possible
 due to RMSD being a metric with an unbounded upper limit, which scales
 quadratically with the number of residues. GDT-TS on the other hand, has a
 normalized value between $0$ and $1$, which allows the predictive performance
-to be compared not only across method, but across proteins of different sizes.
+to be compared not only across different methods, but across proteins of different sizes.
 Unfortunately, very few works in the literature use these metrics. This work,
 with the goal of improving future comparisons of higher quality than the allowed
-at the time of writing shares these metrics. Complementary, the raw data is
+at the time of writing this work, shares these metrics. Complementary, the raw data is
 provided in Appendix~\ref{appendix:gdtts-data} and~\ref{appendix:tmscore-data},
 with the goal of allowing future methods to do a rigorous statistical analysis
 using this one as reference.
@@ -1038,7 +1035,7 @@ A final step in the analysis of the proposed methods is to do a visual
 inspection. Considering that two methods were proposed, and that there are 10
 proteins being analysed, comparing the 20 best predictions would be very
 extensive. For this reason, ppf-mc was selected to be inspected, since
-its preditions were over all more accurate.
+its predictions were overall more accurate.
 
 \input{Figuras/conformations.tex}
 
@@ -1056,15 +1053,15 @@ two main prediction errors. Firstly, the $\beta$-sheets did not form, and, where
 should be one, there is an $\alpha$ helix instead. The second error, is that the
 $\alpha$ helix is in the wrong place and split. It starts where it should,
 however, it only has a single turn. A second helix forms at the eighth residue
-and goes on for ten more residues. Both these erros can be traced down to an
+and goes on for ten more residues. Both these errors can be traced down to an
 error in the Secondary Structure Prediction, which the proposed methods have no
 way to avoid. For 1ail, the prediction is mostly correct, however, two helices
 are split apart. The first, to the left of the image, and the second, in the
-middle helix. These errors were prediction failures that occurred in the proposed.
+middle helix. These errors were prediction failures that occurred in the proposed methods.
 This protein in particular has a correct secondary structure as an starting
 point.
 
-On 1crn, a relatively complex protein, has a overall correct fold. The fine
+On 1crn, a relatively complex protein, has an overall correct fold. The fine
 details, however, are lacking. The two helices are mostly missing and the
 sheets did not fold. These two errors can be traced down to the secondary
 structure prediction used as input. For 1l2y a similar scenario occurs, where
@@ -1074,6 +1071,6 @@ missing.
 
 Interestingly, on 4 of the proteins with the biggest visually detectable error,
 3 of them had its source of error outside to the prediction. The proposed method
-relies heavily on the predicted secondary structure, and as such, has do deal
+relies heavily on the predicted secondary structure, and as such, has to deal
 with uncertainty. In only a single case the major error in a prediction was
-generated during the prediction it self, as occurred on 1ail.
+generated during the prediction itself, as occurred on 1ail.
