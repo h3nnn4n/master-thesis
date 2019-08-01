@@ -71,7 +71,7 @@ The analysis is divided in two steps. In the first one, the two proposed methods
 are compared against the work from~\citeonline{silva2019self} and the Rosetta Ab Initio
 Protocol.
 \textcolor{red}{Rosetta was selected as an representative of the state of art,
-while the other method, sade-remc, is a precursor of the two proposed methods.
+while the other method, SADE-REMC, is a precursor of the two proposed methods.
 Since there is open
 access to both methods, it is possible to run and analyze experiments with them
 more easily and to do a direct statistical analyse on the results.
@@ -221,7 +221,7 @@ For 1rop, the ppf-mc outperformed the other methods by a significant margin.
 Moreover, the two proposed methods had better medians than
 the other methods (not including rosetta) in 8 of the 10 proteins,
 with exception for 1rop and 1zdd.
-For 1rop, the sade-remc had the second best result, behind ppf-mc, while ppf-remc
+For 1rop, the SADE-REMC had the second best result, behind ppf-mc, while ppf-remc
 had the worst result.
 For the 1zdd protein, the two proposed methods had the two worst
 medians, however, by a relatively small amount.
@@ -321,7 +321,7 @@ both gaussian and non-gaussian distributions with little cost of accuracy.
 % be more propense to generate gaussian distributions than others. By analysing
 % the methods instead of the proteins, a new insight is given. The two proposed
 % methods had $2$ and $1$ rejection of $H_0$, for ppf-mc and ppf-remc,
-% respectively. Whereas sade-mc-ffi and sade-remc both had $6$ rejections. This
+% respectively. Whereas sade-mc-ffi and SADE-REMC both had $6$ rejections. This
 % indicates that some methods are more propense to generate gaussian distribution
 % than others.
 % 
@@ -391,12 +391,12 @@ considered for the analysis.
 \input{Tabelas/mann-whitney-summary-internal.tex}
 
 Starting with the RMSD using \texttt{best-by-rmsd}, comparing the two proposed
-methods against the ones from a previous work, sade-remc, the results are shown in
+methods against the ones from a previous work, SADE-REMC, the results are shown in
 Table~\ref{tab:mann-whitney-summary-internal-best-by-rmsd-RMSD}. The column
 Protein displays the protein name.
 Columns \textbf{Wins}, \textbf{Loses} and \textbf{Draws} show the number of
 times that any of the two proposed methods outperformed, were outperformed,
-or had the same performance than sade-remc (not including rosetta).
+or had the same performance than SADE-REMC (not including rosetta).
 Based on the results from Kruskal–Wallis, as show in
 Tables~\ref{tab:kruskal-wallis-best-by-rmsd-RMSD} and
 Tables~\ref{tab:kruskal-wallis-best-by-energy-scorefxn}, there is no
@@ -407,19 +407,19 @@ difference between the methods for protein 1zdd both when considering RMSD and
 These proteins are marked with an strike-through line in the following tables.
 }
 
-For all but two proteins, namely 1zdd and 1rop, the two proposed methods outperformed sade-remc.
+For all but two proteins, namely 1zdd and 1rop, the two proposed methods outperformed SADE-REMC.
 On 1zdd, the three methods had statistically equivalent performance. For
-1rop, sade-remc was able to outperform ppf-remc. Going back to the boxplots,
-this was expected. Interestingly, for 1rop, ppf-mc outperformed sade-remc, which means
+1rop, SADE-REMC was able to outperform ppf-remc. Going back to the boxplots,
+this was expected. Interestingly, for 1rop, ppf-mc outperformed SADE-REMC, which means
 that ppf-mc also outperformed ppf-remc.
 
 The summary concerning the energy of the conformations is show in
 Table~\ref{tab:mann-whitney-summary-internal-best-by-energy-scorefxn}. It
 reads the same as the table before.
 For proteins 1ail, 1crn, and 1wqc the proposed methods both outperformed
-sade-remc. On 1acw, sade-remc outperformed ppf-remc and was statistically
-equivalent to ppf-mc. For 1enh only ppf-mc outperformed sade-remc. For 1rop
-sade-remc outperformed ppf-remc. The only situation so far where all the
+SADE-REMC. On 1acw, SADE-REMC outperformed ppf-remc and was statistically
+equivalent to ppf-mc. For 1enh only ppf-mc outperformed SADE-REMC. For 1rop
+SADE-REMC outperformed ppf-remc. The only situation so far where all the
 methods had statistically equivalent performance, without counting the results
 from Kruskal–Wallis, was on 1utg and 1zdd.
 Interestingly, on 1l2y, Mann-Whitney detected performance differences, disagreeing with
@@ -526,7 +526,7 @@ front.
     ppf-remc  & 1acw 1crn 1l2y 1utg 1wqc 1zdd 2mr9 & 7     \\ \hline
     ppf-mc    & 1enh 1l2y 1rop 1utg 1wqc 2mr9      & 6     \\ \hline
     rosetta   & 1ail 1enh 1l2y 1utg 1wqc 1zdd      & 6     \\ \hline
-    sade-remc & 1acw 1ail 1enh 1rop                & 4     \\
+    SADE-REMC & 1acw 1ail 1enh 1rop                & 4     \\
   \end{tabular}
   \caption{Summary of the method in the Pareto front}
   \label{tab:pareto-front-summary}
@@ -534,7 +534,7 @@ front.
 
 One of the proposed methods, ppf-remc, appeared in the Pareto front for $7$ out of 
 $10$ proteins. Both rosetta and ppf-mc appeared in $6$ proteins. Finally,
-sade-remc appeared only in $4$. On 1acw, 1crn, 1rop and 2mr9 at least one of the
+SADE-REMC appeared only in $4$. On 1acw, 1crn, 1rop and 2mr9 at least one of the
 proposed methods appeared in the front while rosetta did not. The converse,
 rosetta being in the front while none of the proposed methods were, happened
 only for 1ail.
