@@ -217,11 +217,11 @@ horizontally by protein.
 It is possible to verify that for 9 out of 10 proteins (with exception for 1rop) the
 two proposed methods, in orange and green, had a very close overall performance,
 considering the median, presented as the line inside the box of each method.
-For 1rop, the ppf-mc outperformed the other methods by a significant margin.
+For 1rop, the PPF-MC outperformed the other methods by a significant margin.
 Moreover, the two proposed methods had better medians than
 the other methods (not including rosetta) in 8 of the 10 proteins,
 with exception for 1rop and 1zdd.
-For 1rop, the SADE-REMC had the second best result, behind ppf-mc, while ppf-remc
+For 1rop, the SADE-REMC had the second best result, behind PPF-MC, while PPF-REMC
 had the worst result.
 For the 1zdd protein, the two proposed methods had the two worst
 medians, however, by a relatively small amount.
@@ -244,7 +244,7 @@ a simple visual inspection on Figure~\ref{fig:boxplot-rmsd} shows that on
 2mr9, rosetta had a worst performance than the other methods by a significant margin,
 whereas the other methods had a very similar performance. For 1utg, the two proposed
 methods outclassed the other methods, including rosetta. Furthermore, the worst
-result from ppf-remc was better than the medians of all the other methods.
+result from PPF-REMC was better than the medians of all the other methods.
 Now, interestingly, for 1wqc and 1crn, rosetta and the two proposed methods had
 better performance than the other methods. Also, for some proteins, such as 1enh,
 the overall performance is much closer. One possible explanation for this difference
@@ -265,7 +265,7 @@ Figure~\ref{fig:boxplot-energy} presents data similarly to the previous figure,
 however, the y-axis now represents the \texttt{scorefxn} energy function. Considering
 the energy results, when compared to the rmsd boxplot, the results are relatively
 more similar. Nevertheless, for some proteins there are some behaviours that are
-more visible. For 1rop, ppf-remc appears to have had a worst performance
+more visible. For 1rop, PPF-REMC appears to have had a worst performance
 than the other methods. Same as with the RMSD data. For 1crn, rosetta and the two
 proposed methods appears to have a better overall result. For 2mr9, rosetta
 appears to be lagging behind in performance. These observations are just visual
@@ -320,7 +320,7 @@ both gaussian and non-gaussian distributions with little cost of accuracy.
 % where half the methods rejected $H_0$ and half didn't. Some proteins appear to
 % be more propense to generate gaussian distributions than others. By analysing
 % the methods instead of the proteins, a new insight is given. The two proposed
-% methods had $2$ and $1$ rejection of $H_0$, for ppf-mc and ppf-remc,
+% methods had $2$ and $1$ rejection of $H_0$, for PPF-MC and PPF-REMC,
 % respectively. Whereas sade-mc-ffi and SADE-REMC both had $6$ rejections. This
 % indicates that some methods are more propense to generate gaussian distribution
 % than others.
@@ -333,8 +333,8 @@ both gaussian and non-gaussian distributions with little cost of accuracy.
 % rejections of $H_0$, with $4$. The remaining proteins had only a single
 % rejection of $H_0$. with both metrics, 1zdd had the most rejections of $H_0$,
 % whereas all methods on 1acw failed to reject $H_0$. Looking at the methods,
-% there is no clear trend. The proposed method ppf-remc had no rejection
-% of $H_0$, while ppf-mc had two.
+% there is no clear trend. The proposed method PPF-REMC had no rejection
+% of $H_0$, while PPF-MC had two.
 %
 % Conclude the analysis and introduce the next analysis
 % Given this, it appears that the underlying distribution, in most cases,
@@ -409,17 +409,17 @@ These proteins are marked with an strike-through line in the following tables.
 
 For all but two proteins, namely 1zdd and 1rop, the two proposed methods outperformed SADE-REMC.
 On 1zdd, the three methods had statistically equivalent performance. For
-1rop, SADE-REMC was able to outperform ppf-remc. Going back to the boxplots,
-this was expected. Interestingly, for 1rop, ppf-mc outperformed SADE-REMC, which means
-that ppf-mc also outperformed ppf-remc.
+1rop, SADE-REMC was able to outperform PPF-REMC. Going back to the boxplots,
+this was expected. Interestingly, for 1rop, PPF-MC outperformed SADE-REMC, which means
+that PPF-MC also outperformed PPF-REMC.
 
 The summary concerning the energy of the conformations is show in
 Table~\ref{tab:mann-whitney-summary-internal-best-by-energy-scorefxn}. It
 reads the same as the table before.
 For proteins 1ail, 1crn, and 1wqc the proposed methods both outperformed
-SADE-REMC. On 1acw, SADE-REMC outperformed ppf-remc and was statistically
-equivalent to ppf-mc. For 1enh only ppf-mc outperformed SADE-REMC. For 1rop
-SADE-REMC outperformed ppf-remc. The only situation so far where all the
+SADE-REMC. On 1acw, SADE-REMC outperformed PPF-REMC and was statistically
+equivalent to PPF-MC. For 1enh only PPF-MC outperformed SADE-REMC. For 1rop
+SADE-REMC outperformed PPF-REMC. The only situation so far where all the
 methods had statistically equivalent performance, without counting the results
 from Kruskal–Wallis, was on 1utg and 1zdd.
 Interestingly, on 1l2y, Mann-Whitney detected performance differences, disagreeing with
@@ -430,9 +430,9 @@ from Kruskal–Wallis will be considered to be the correct one.
 
 In Table~\ref{tab:mann-whitney-summary-rosetta-best-by-rmsd-RMSD} the
 two proposed methods is compared against Rosetta using RMSD. For 1acw, 1enh, 1l2y, 1utg and 2mr9, totalling 5 proteins, both
-proposed methods outperformed rosetta. For 1ail only ppf-remc
-outperformed rosetta. On 1rop, ppf-mc outperformed rosetta, while
-ppf-remc was outperformed. On 1crn, only ppf-mc was outperformed
+proposed methods outperformed rosetta. For 1ail only PPF-REMC
+outperformed rosetta. On 1rop, PPF-MC outperformed rosetta, while
+PPF-REMC was outperformed. On 1crn, only PPF-MC was outperformed
 by rosetta. From this, it is demonstrated that both the proposed methods
 consistently outperform rosetta. In fact, rosetta outperformed the proposed
 methods only in 2 occasions when considering the RMSD.
@@ -441,7 +441,7 @@ The comparison of rosetta and the proposed methods using \texttt{scorefxn}
 is presented in Table~\ref{tab:mann-whitney-summary-rosetta-best-by-rmsd-RMSD}.
 For this particular case, for 2 proteins, 1utg and 2mr9, both proposed
 methods outperformed rosetta. On 1acw and 1rop rosetta outperformed only
-ppf-remc. On 1ail, only ppf-mc outperformed rosetta. Overall,
+PPF-REMC. On 1ail, only PPF-MC outperformed rosetta. Overall,
 the proposed methods outperformed rosetta in some cases and had equal
 significance in others.
 
@@ -523,8 +523,8 @@ front.
   \centering
   \begin{tabular}{r | r | c}
     Method    & Proteins                           & Total \\ \hline \hline
-    ppf-remc  & 1acw 1crn 1l2y 1utg 1wqc 1zdd 2mr9 & 7     \\ \hline
-    ppf-mc    & 1enh 1l2y 1rop 1utg 1wqc 2mr9      & 6     \\ \hline
+    PPF-REMC  & 1acw 1crn 1l2y 1utg 1wqc 1zdd 2mr9 & 7     \\ \hline
+    PPF-MC    & 1enh 1l2y 1rop 1utg 1wqc 2mr9      & 6     \\ \hline
     rosetta   & 1ail 1enh 1l2y 1utg 1wqc 1zdd      & 6     \\ \hline
     SADE-REMC & 1acw 1ail 1enh 1rop                & 4     \\
   \end{tabular}
@@ -532,8 +532,8 @@ front.
   \label{tab:pareto-front-summary}
 \end{table}
 
-One of the proposed methods, ppf-remc, appeared in the Pareto front for $7$ out of 
-$10$ proteins. Both rosetta and ppf-mc appeared in $6$ proteins. Finally,
+One of the proposed methods, PPF-REMC, appeared in the Pareto front for $7$ out of 
+$10$ proteins. Both rosetta and PPF-MC appeared in $6$ proteins. Finally,
 SADE-REMC appeared only in $4$. On 1acw, 1crn, 1rop and 2mr9 at least one of the
 proposed methods appeared in the front while rosetta did not. The converse,
 rosetta being in the front while none of the proposed methods were, happened
@@ -596,30 +596,30 @@ proposed methods is displayed. Protein 1enh was chosen as a representative
 of standard behaviour.
 There are seven other proteins with the same overall characteristics. That is,
 the conclusions drawn from 1enh are also found in the other proteins.
-In blue, it is possible to see that ppf-remc has a very fast
+In blue, it is possible to see that PPF-REMC has a very fast
 convergence during the first 50 thousand function evaluations. After that, it
 quickly comes down to a halt in convergence. This, is a classic symptom of
 premature convergence. With the dashed lines, representing the average of the
 population, the same overall behaviour is observable. It is worth noting that
 the line is not smooth. The small "bumps" presents are caused by FFI, which
-can disrupt the mean energy of the population. For ppf-mc the convergence
-starts slower than for ppf-remc, however, the best energy keeps improving
+can disrupt the mean energy of the population. For PPF-MC the convergence
+starts slower than for PPF-REMC, however, the best energy keeps improving
 for more than three fifths of the available budget of functions evaluations.
 Furthermore, on the dashed line representing the average energy, it is possible
 to see that the the average improved over time as well.
 
-When comparing ppf-mc and ppf-remc, by looking at the best energy of the two
-methods, there is a lead for ppf-remc during the first 50 thousand function
-evaluations. However, eventually ppf-mc achieves a best result and keeps
+When comparing PPF-MC and PPF-REMC, by looking at the best energy of the two
+methods, there is a lead for PPF-REMC during the first 50 thousand function
+evaluations. However, eventually PPF-MC achieves a best result and keeps
 improving for the bigger part of the process. For all 10 proteins this can be
-observed. Furthermore, when considering the average, ppf-remc had the best
+observed. Furthermore, when considering the average, PPF-REMC had the best
 results in all cases.
 
 Two of the proteins had an increase of the average populational energy over time.
-This happened only for protein 2mr9 with ppf-mc. This is the reason that this
+This happened only for protein 2mr9 with PPF-MC. This is the reason that this
 protein was selected for analysis. The best energy for both methods and the
 average energy for rppc-remc shows the same behavior as 1enh. However, the
-average energy for ppf-mc, after approximately 70 thousand function iterations
+average energy for PPF-MC, after approximately 70 thousand function iterations
 starts to increase until reaching a point of equilibrium at 700 thousand
 function evaluations, where it starts relatively stable. This behaviour is
 caused by FFI. FFI has a $2\%$ chance of being applied before any other operator
@@ -657,14 +657,14 @@ Figure~\ref{fig:rmsd-convergence-1rop-1utg}, where the average pairwise RMSD of
 the population is measured. Two proteins were selected as representatives.
 Both proteins, 1rop and 1utg, have the same overall behavior as the other 8.
 In both Figures~\ref{fig:1rop-rmsd-convergence}
-and~\ref{fig:1utg-rmsd-convergence} ppf-remc has a lower diversity. For 9 of
+and~\ref{fig:1utg-rmsd-convergence} PPF-REMC has a lower diversity. For 9 of
 the then proteins this distance is around 2 or less. Both methods sharply
 decrease the diversity during the first few thousands function evaluations.
-After that, it stays relatively stable. For ppf-mc, in some proteins, such as
+After that, it stays relatively stable. For PPF-MC, in some proteins, such as
 1utg, the diversity slowly decreases. Since there is no exchange of information
 between trajectories in this method, this indicates that the whole population
 is slowly converging to the same direction. The sharp decrease in diversity for
-ppf-remc is explained by its Replica Exchange mechanism, where one trajectory
+PPF-REMC is explained by its Replica Exchange mechanism, where one trajectory
 can be copied to another, replacing it.
 
 The protein where rppc-remc has the worst performance was 1rop, where it was
@@ -675,17 +675,17 @@ Since the population feeds the repacking stage with information, a low diversity
 for such a big protein, might have lead to too many conformations being to close.
 This, in turn generated clusters that are too close together.
 
-With this analysis, is possible to detect that ppf-mc has better
-convergence for the best individual than ppf-remc. However, when considering
-the average energy of the population, ppf-remc has the best results.
-Nevertheless, ppf-mc would be an interesting candidate for expanding the
+With this analysis, is possible to detect that PPF-MC has better
+convergence for the best individual than PPF-REMC. However, when considering
+the average energy of the population, PPF-REMC has the best results.
+Nevertheless, PPF-MC would be an interesting candidate for expanding the
 budget of function evaluations available, since it keeps improving for a
-longer period of time than ppf-remc and contains a bigger overall diversity in
+longer period of time than PPF-REMC and contains a bigger overall diversity in
 the population.
 
 \section{Monte Carlo vs Replica Exchange Monte Carlo}
 \label{sec:methods-duel}
-% Compare ppf-mc and ppf-remc
+% Compare PPF-MC and PPF-REMC
 
 In this Section the two proposed methods are compared against each other, with
 the goal of assessing if there is a method with a better performance. If that is
@@ -694,7 +694,7 @@ using boxplots is first realized. Figures~\ref{fig:duel-boxplot-rmsd}
 and~\ref{fig:duel-boxplot-energy} presents a direct comparison of the two
 proposed methods. By inspecting the RMSD, in Figure~\ref{fig:duel-boxplot-rmsd},
 it is possible to see that the two proposed methods closely match each other for
-most of the proteins. For 1rop, was noticed in previous analysis, ppf-remc was
+most of the proteins. For 1rop, was noticed in previous analysis, PPF-REMC was
 outmatched for all other methods being analysed. In fact, as confirmed by
 Kruskal–Wallis (data not shown), 1rop is the only protein where there was
 a statistical significance between the two proposed method.
@@ -710,9 +710,9 @@ By analysing the Energy data, as displayed in
 Figure~\ref{fig:duel-boxplot-energy}, it is possible to see that the performance
 of the two proposed methods varied more than when RMSD was analysed. For protein
 1rop, as expected, there is a clear difference in performance. However, for
-several other proteins ppf-mc appears to have consistently reached lower
-energies. In fact, by applying the Mann-Whitney test, ppf-mc outperformed
-ppf-remc for proteins 1acw, 1ail, 1enh, 1rop and 2mr9.
+several other proteins PPF-MC appears to have consistently reached lower
+energies. In fact, by applying the Mann-Whitney test, PPF-MC outperformed
+PPF-REMC for proteins 1acw, 1ail, 1enh, 1rop and 2mr9.
 
 \begin{figure}
   \centering
@@ -721,13 +721,13 @@ ppf-remc for proteins 1acw, 1ail, 1enh, 1rop and 2mr9.
   \label{fig:duel-boxplot-energy}
 \end{figure}
 
-Interestingly, while ppf-mc outperformed ppf-remc for 1 protein considering
+Interestingly, while PPF-MC outperformed PPF-REMC for 1 protein considering
 the rmsd and on 5 proteins, it also had the best conformation prediction
 prediction in 5 of proteins too (data shown in Appendix~\ref{appendix:table-results}).
 Furthermore, by combining this analysis with the one
-from Section~\ref{sec:convergence-analysis}, where ppf-mc had a higher
+from Section~\ref{sec:convergence-analysis}, where PPF-MC had a higher
 diversity, a desirable property to match with clustering, it is safe to consider
-ppf-mc as the better method of the two.
+PPF-MC as the better method of the two.
 
 \section{Repacking Impact} \label{sec:repacking-impact}
 % How much does the rmsd change before after
@@ -748,7 +748,7 @@ more careful analysis is required.
 \begin{table}
   \centering
   \begin{tabular}{r|r|c||r|c||r|c}
-            & \multicolumn{2}{c}{classic-abinitio} & \multicolumn{2}{||c}{ppf-mc} & \multicolumn{2}{||c}{ppf-remc} \\ \hline
+            & \multicolumn{2}{c}{classic-abinitio} & \multicolumn{2}{||c}{PPF-MC} & \multicolumn{2}{||c}{PPF-REMC} \\ \hline
     protein & mean      & stddev   & mean      & stddev   & mean      & stddev   \\ \hline \hline
     1acw    & $-0.1656$ & $0.3372$ & $0.2616$  & $0.4944$ & $0.2589$  & $0.5765$ \\ \hline
     1ail    & $-0.1113$ & $0.4629$ & $0.2470$  & $0.7731$ & $0.2379$  & $0.7278$ \\ \hline
@@ -782,7 +782,7 @@ results with the medians from Table~\ref{fig:boxplot-rmsd} shows that the
 impact of repacking for the RMSD has no impact in the statistical tests. Rosetta,
 for 1utg, had a median above $10$, while the two proposed methods had a median
 below $8$. Finally, the third noteworthy aspect of the results is that the only
-mean above $1$ was on 1rop for ppf-remc, which had the worst performance
+mean above $1$ was on 1rop for PPF-REMC, which had the worst performance
 on that protein. This result could be explained due to the method having poor
 optimization performance for this particular case. As such, repacking had more
 room for improvement.
@@ -868,7 +868,7 @@ processing time is the sum of all these steps.
 \begin{table}
   \centering
   \begin{tabular}{r|c|c||c|c}
-            & \multicolumn{2}{c}{ppf-mc} & \multicolumn{2}{||c}{ppf-remc} \\ \hline
+            & \multicolumn{2}{c}{PPF-MC} & \multicolumn{2}{||c}{PPF-REMC} \\ \hline
     protein & mean & stddev & mean & stddev \\ \hline \hline
     1acw & $ 381.8566$ & $ 76.8664$ & $ 397.3399$ & $ 39.2449$ \\ \hline
     1ail & $1141.1461$ & $142.2935$ & $1127.3899$ & $139.9729$ \\ \hline
@@ -881,7 +881,7 @@ processing time is the sum of all these steps.
     1zdd & $ 462.3010$ & $127.2581$ & $ 483.3383$ & $ 50.8998$ \\ \hline
     2mr9 & $ 702.5817$ & $ 95.6492$ & $ 695.9580$ & $189.4521$ \\ \hline
   \end{tabular}
-  \caption{Processing times, in seconds, for ppf-mc and ppf-remc}
+  \caption{Processing times, in seconds, for PPF-MC and PPF-REMC}
   \label{tab:processing-times}
 \end{table}
 
@@ -893,9 +893,9 @@ highest times. The prediction times on average range from about 4 minutes up to
 20 minutes per run.
 
 For the majority of proteins, both methods had very close means. One interesting
-difference noticed was the standard deviation for 1rop. For ppf-mc,
+difference noticed was the standard deviation for 1rop. For PPF-MC,
 which had a relatively good prediction performance, on this protein it had
-a standard deviation around $124$. The other method, ppf-remc, had a
+a standard deviation around $124$. The other method, PPF-REMC, had a
 standard deviation around $203$. There might be a correlation between the
 poor performance of this method and the more spread out processing times.
 For 1utg a similar situation happened, however, the performance of the two
@@ -915,7 +915,7 @@ evaluations. However, multiple calls can be made in succession.
 \begin{table}
   \centering
   \begin{tabular}{r|c|c||c|c}
-            & \multicolumn{2}{c}{ppf-mc} & \multicolumn{2}{||c}{ppf-remc} \\ \hline
+            & \multicolumn{2}{c}{PPF-MC} & \multicolumn{2}{||c}{PPF-REMC} \\ \hline
     protein & mean         & stddev       & mean         & stddev \\ \hline \hline
     1acw    & $19894.6690$ & $9323.3251$  & $19818.5598$ & $8795.8194$  \\ \hline
     1ail    & $23215.9890$ & $12096.6411$ & $24927.3000$ & $11983.8881$ \\ \hline
@@ -928,7 +928,7 @@ evaluations. However, multiple calls can be made in succession.
     1zdd    & $21848.3618$ & $10229.3850$ & $21914.6842$ & $9503.5863$  \\ \hline
     2mr9    & $22260.8176$ & $11415.6200$ & $24356.2630$ & $31478.7399$ \\ \hline
   \end{tabular}
-  \caption{Function evaluations spent on Hooke-Jeeves, for ppf-mc and ppf-remc}
+  \caption{Function evaluations spent on Hooke-Jeeves, for PPF-MC and PPF-REMC}
   \label{tab:spent-evals}
 \end{table}
 
@@ -986,7 +986,7 @@ from the same author where a different set of proteins is utilized.
 Even in face of the competitiveness of the problem, the proposed methods were
 able to achieve the best RMSD in a couple of proteins. In many other proteins
 the results were competitive with the state of the art. For the protein 1wqc
-the best RMSD was achieved by ppf-mc. On 2mr9 the proposed methods
+the best RMSD was achieved by PPF-MC. On 2mr9 the proposed methods
 achieved the best and second best results. For 1rop and 1crn, the two most used
 proteins in the literature, one of the proposed methods was able to achieve
 the second best result. The same occurred for 1enh. Another point worth stating
@@ -1005,7 +1005,7 @@ work using the GDT-TS and the TM-Score metrics of the predicted proteins.
 The conformations analysed are the ones selected using \texttt{best-by-rmsd} strategy.
 The results can also be used by other works to compare against our own using
 these metrics. Tables~\ref{tab:gdtts-data} and~\ref{tab:tmscore-data} present
-for the ppf-remc and ppf-mc, their
+for the PPF-REMC and PPF-MC, their
 GDT-TS and TM-Score values, respectively. Both tables follows the same format. The
 first column presents the protein name. The results for both methods are
 presented in separated columns. Each one of the
@@ -1021,7 +1021,7 @@ in boldface font.
 \begin{table}
   \centering
   \begin{tabular}{r|c|c|c||c|c|c}
-            & \multicolumn{3}{c}{ppf-mc} & \multicolumn{3}{||c}{ppf-remc} \\ \hline
+            & \multicolumn{3}{c}{PPF-MC} & \multicolumn{3}{||c}{PPF-REMC} \\ \hline
     Protein & best          & mean          & stddev   & best          & mean          & stddev   \\ \hline \hline
     1acw    & $\bm{0.5172}$ & $0.4605$      & $0.0302$ & $\bm{0.5603}$ & $0.4648$      & $0.0359$ \\ \hline
     1ail    & $0.4932$      & $0.3794$      & $0.0473$ & $\bm{0.5856}$ & $0.3999$      & $0.0710$ \\ \hline
@@ -1034,7 +1034,7 @@ in boldface font.
     1zdd    & $0.4412$      & $0.4193$      & $0.0160$ & $0.4338$      & $0.4060$      & $0.0166$ \\ \hline
     2mr9    & $\bm{0.8807}$ & $\bm{0.6891}$ & $0.0720$ & $\bm{0.8750}$ & $\bm{0.6920}$ & $0.0618$ \\ \hline
   \end{tabular}
-  \caption{GDT-TS for ppf-mc and ppf-remc}
+  \caption{GDT-TS for PPF-MC and PPF-REMC}
   \label{tab:gdtts-data}
 \end{table}
 
@@ -1052,7 +1052,7 @@ Meaning that the two metrics, namely GDT-TS and RMSD, don't always agree.
 \begin{table}
   \centering
   \begin{tabular}{r|c|c|c||c|c|c}
-            & \multicolumn{3}{c}{ppf-mc} & \multicolumn{3}{||c}{ppf-remc} \\ \hline
+            & \multicolumn{3}{c}{PPF-MC} & \multicolumn{3}{||c}{PPF-REMC} \\ \hline
     Protein & best          & mean          & stddev   & best          & mean          & stddev   \\ \hline \hline
     1acw    & $0.2475$      & $0.1930$      & $0.0202$ & $0.2583$      & $0.1945$      & $0.0280$ \\ \hline
     1ail    & $0.4468$      & $0.3039$      & $0.0457$ & $\bm{0.5461}$ & $0.3336$      & $0.0697$ \\ \hline
@@ -1065,7 +1065,7 @@ Meaning that the two metrics, namely GDT-TS and RMSD, don't always agree.
     1zdd    & $0.3178$      & $0.2797$      & $0.0276$ & $0.3104$      & $0.2628$      & $0.0202$ \\ \hline
     2mr9    & $\bm{0.7514}$ & $\bm{0.5117}$ & $0.0900$ & $\bm{0.7456}$ & $\bm{0.5186}$ & $0.0769$ \\ \hline
   \end{tabular}
-  \caption{TM Score for ppf-mc and ppf-remc}
+  \caption{TM Score for PPF-MC and PPF-REMC}
   \label{tab:tmscore-data}
 \end{table}
 
@@ -1083,7 +1083,7 @@ One noteworthy aspect of GDT-TS and TM-Score is that they appear to be more
 rigorous than RMSD. Take 1enh for example, it had the second best RMSD found
 in the literature, yet, with GDT-TS, it did not make the cut of $0.5$. More so,
 both 1enh and 1ail, two relatively big proteins, had their best RMSD more
-than two units apart with ppf-mc. However, with the GDT-TS for the same
+than two units apart with PPF-MC. However, with the GDT-TS for the same
 method, the two conformations are less than $0.01$ units apart. This is possible
 due to RMSD being a metric with an unbounded upper limit, which scales
 quadratically with the number of residues. GDT-TS on the other hand, has a
@@ -1109,13 +1109,13 @@ good and bad predictions, making it a more suitable metric for such conditions.
 A final step in the analysis of the proposed methods is to do a visual
 inspection. Considering that two methods were proposed, and that there are 10
 proteins being analysed, comparing the 20 best predictions would be very
-extensive. For this reason, ppf-mc was selected to be inspected, since
+extensive. For this reason, PPF-MC was selected to be inspected, since
 its predictions were overall more accurate.
 
 \input{Figuras/conformations.tex}
 
 In Figure~\ref{fig:all-conformations} all conformations from the 10 best
-predictions measured by RMSD from ppf-mc are presented. The proteins are presented in
+predictions measured by RMSD from PPF-MC are presented. The proteins are presented in
 lexicographical order. The predicted conformation is presented in green and the
 native conformation is presented in red\footnote{For the readers with a black
 and white copy, the predicted conformation is in a light shade of grey, while
