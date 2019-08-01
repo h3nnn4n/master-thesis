@@ -6,9 +6,9 @@ Proteins are macromolecules found in all known living forms and are
 considered to be the working horses of the cells. The biological
 function of any given protein is directly dependent on its
 function, in a way that knowing it is a very valuable information
-for several fields of science. The Human
-Genome\footnote{\url{https://www.genome.gov/10001772/all-about-the--human-genome-project-hgp/}}
-and Human Proteome\footnote{\url{https://hupo.org/human-proteome-project}} project
+for several fields of science. The
+%Human Genome\footnote{\url{https://www.genome.gov/10001772/all-about-the--human-genome-project-hgp/}}
+Human Proteome\footnote{\url{https://hupo.org/human-proteome-project}} project
 lead to an exponentially increasing number of sequenced proteins.
 However, due to the price and time efforts required to structure
 these proteins, a gap quickly formed between the number of sequenced
@@ -19,7 +19,8 @@ predict the structure of a protein from its primary
 sequence and it is known as \textit{ab initio} PSPP.
 
 In light of this, this work proposed two methods, ppf-mc and
-ppf-remc, to attempt to solve the problem. The proposed methods make use of the \texttt{score0}, \texttt{score3} and \texttt{scorefxn} energy functions
+ppf-remc, to attempt to solve the problem.
+The proposed methods make use of the \texttt{score0}, \texttt{score3} and \texttt{scorefxn} energy functions
 from Rosetta. The protein was modeled using a full atomic model of the backbone,
 manipulated using fragments and torsions angles, as well as side chain centroids.
 In later stages of the prediction the model was switch to a full atomic
@@ -29,50 +30,53 @@ by using a clustering process. This, in turn, allows for a human expert to
 evaluate and choose the best conformation based on its knowledge and intuition.
 
 % RMSD and Energy with sade-remc and rosetta
-The proposed method were compared against a method from a previous work as
+The proposed method were compared against a method from a previous work, SADE-REMC, as
 well as rosetta. In a first stage, the two proposed methods were compared
-against the other method from literature using both the RMSD and potential energy.
+against SADE-REMC using both the RMSD and potential energy.
 For both metrics a rigorous set of statistical tests was applied, which identified that
 the proposed methods consistently outperformed the competitor both with lower
 RMSD and lower potential energies. In a second stage, rosetta, one of the
 winners and top competitors at CASP was chosen to be compared against, as a
 representative of state-of-the-art. The same statistical framework was applied.
 The results indicates that the proposed methods are able to give equal or better
-predictions than rosetta for several proteins.
+predictions than rosetta for the majority of proteins.
 
 % Convergence
 The behavior of the two proposed methods was then inspected and analysed. It was
-found that ppf-mc maintained an average pairwise RMSD in the population
-consistently higher than ppf-remc. For one of the targets, this difference was
-of $6\AA$. On the remaining targets this difference varied between $1$ to about
-$2\AA$. One of the properties of ppf-remc is the capacity of one trajectory to
-effectively copy and replace another, which may lead to faster convergence and
-exploitation. However, as observed, this lead to premature convergence and, in
-some cases, worst results. Meanwhile, ppf-mc was able to cope well with the
-clustering phase of the resulting conformation, thanks to its high diversity.
-Nevertheless, during this analysis, it was observed by tracking the best energy
-and average energy, that FFI was worsening the convergence for some methods.
-Due to its nature, for 1enh and 2mr9 it was observed that despite the greedy
-selection of conformation FFI was making the energy increase faster than the
-optimizer could keep up.
+found that PPF-MC maintained an average pairwise RMSD consistently higher than PPF-REMC.
+This lead to more variation in the clusters centroids, which in turn lead to
+better predictions. PPF-REMC suffered from premature convergence and stagnation.
+% For one of the targets, this difference was
+% of $6\AA$. On the remaining targets this difference varied between $1$ to about
+% $2\AA$. One of the properties of PPF-REMC is the capacity of one trajectory to
+% effectively copy and replace another, which may lead to faster convergence and
+% exploitation. However, as observed, this lead to premature convergence and, in
+% some cases, worst results. Meanwhile, PPF-MC was able to cope well with the
+% clustering phase of the resulting conformation, thanks to its high diversity.
+% Nevertheless, during this analysis, it was observed by tracking the best energy
+% and average energy, that FFI was worsening the convergence for some methods.
+% Due to its nature, for 1enh and 2mr9 it was observed that despite the greedy
+% selection of conformation FFI was making the energy increase faster than the
+% optimizer could keep up.
 
 % MC vs REMC
 With data from the convergence of the two proposed methods and statistical
 analysis, a direct comparison of both methods was realized. When considering
 only the RMSD there was statistical significance only for one protein, 1rop.
-However, when considering the potential energy, ppf-mc had statistically
+However, when considering the potential energy, PPF-MC had statistically
 significant better energies for $5$ out of $10$ protein targets. Moreover,
-despite the statistical significance of RMSD for only one target, ppf-mc had
+despite the statistical significance of RMSD for only one target, PPF-MC had
 the conformations with the best RMSD for $5$ targets. This, plus the fact that
-ppf-mc has more diversity combined with the conformational clustering leads to
-the conclusion that ppf-mc is the superior method.
+PPF-MC has more diversity combined with the conformational clustering leads to
+the conclusion that PPF-MC is the superior method.
 
 % Repacking Impact
-An analysis to assess the impact of repacking was also realized. The goals were
-twofold. Firstly, there was the interest in verifying that the repacking process
-was not misleading or interfering in the results. Secondly, just the plain
-documentation of how much repacking impacted the process was desirable. This
-information was not found in the literature. Based on this, it was found that
+% An analysis to assess the impact of repacking was also realized. The goals were
+% twofold. Firstly, there was the interest in verifying that the repacking process
+% was not misleading or interfering in the results. Secondly, just the plain
+% documentation of how much repacking impacted the process was desirable. This
+% information was not found in the literature.
+Based on an analysis of repacking, it was found that
 the repacking process had a small negative impact in the energies of the
 proposed methods. Before repacking, both proposed methods had more results that
 were better than rosetta with statistical significance. After applying repacking,
@@ -80,38 +84,34 @@ this number decreased. The mean change in RMSD was also documented. It was found
 to be very low. In most cases it was lower than $0.5\AA$ on average.
 
 % Processing time and function evaluations
-The processing time was also documented. There was no significant difference
-between the proposed methods. The main goal of analysing the processing time was
-to give a time-frame of how long it took for the prediction to be made. Along
-with this, an analysis of the total of function evaluations spent also was
-presented. The methods, on average, take less than 20 minutes to run, even for
-the bigger proteins. For the smaller proteins, the targets can be predicted in
-10 minutes or less.
+% The processing time was also documented. There was no significant difference
+% between the proposed methods. The main goal of analysing the processing time was
+% to give a time-frame of how long it took for the prediction to be made. Along
+% with this, an analysis of the total of function evaluations spent also was
+% presented. The methods, on average, take less than 20 minutes to run, even for
+% the bigger proteins. For the smaller proteins, the targets can be predicted in
+% 10 minutes or less.
 
-The optimization phase of the proposed method uses 1 million of function
-evaluations, using the \texttt{score3} energy function. This is were the bulk
-of processing happen. Before this phase, the \texttt{score0} energy function
-can spend up to 10 thousand function evaluations for generating the initial
-population. Finally, in the post processing phase, the Hooke-Jeeves search
-procedure spends on average 20 thousand function evaluations. A value relatively
-small compared to the budged from the optimization phase. Nevertheless, this
-data is made available in order to give a solid ground for future comparisons
-with the presented methods.
+% The optimization phase of the proposed method uses 1 million of function
+% evaluations, using the \texttt{score3} energy function. This is were the bulk
+% of processing happen. Before this phase, the \texttt{score0} energy function
+% can spend up to 10 thousand function evaluations for generating the initial
+% population. Finally, in the post processing phase, the Hooke-Jeeves search
+% procedure spends on average 20 thousand function evaluations. A value relatively
+% small compared to the budged from the optimization phase. Nevertheless, this
+% data is made available in order to give a solid ground for future comparisons
+% with the presented methods.
 
 % Literature comparison
 To be able to compare the proposed methods against the literature, a literature
-review was realized. From this review, the proteins used as target were listed.
-The proteins which occurred more often and had the same metrics available for
-comparison were selected. From this, were found 10 recurring proteins of which
-all had the best RMSD made available. The proposed methods were ran using these
-proteins targets 50 times each. The best RMSD was selected and compared against
-the literature. Based on this, it was found that the proposed methods are
+review was realized, which selected the 10 most common proteins.
+Based on this, it was found that the proposed methods are
 competitive with several methods in the literature. For two targets 1wqc and
 2mr9 the proposed methods were able to overpass the best result found in the
 literature. For 1rop and 1crn, the two proteins used more often in the
 literature, one of the proposed methods were able to get the second best
-prediction. The same occured for 1enh. For the remaining targets the proposed
-methods achieved results that were often close to the best ones.
+prediction. The same occurred for 1enh. For the remaining targets the proposed
+methods achieved results that were often close to the best results available.
 
 % GDT-TS and TMScore
 A second analysis of prediction error was realized using GDT-TS and TM-Score,
@@ -132,13 +132,14 @@ three had its errors tracked down to the predicted secondary structure, which is
 and input of the proposed methods. As such, the predictions were made using
 incorrect data, leading to a sub par performance.
 
+\textcolor{red}{
+Oi
+}
+
 \section{Future Works}\label{sec:future_works}
 
 % Secondary Structure Prediction
-While the proposed methods were able to outperform the methods from the
-literature some flaws and weak points were identified. Possibly the major
-source of errors in the proposed methods was the heavy dependence on the
-information from the Secondary Structure Predictor. A future research direction
+A future research direction
 would be to employ more than one predictor, in a way that if one is wrong,
 there is a chance that the other is not. It is also possible to research in the
 direction of making the Tertiary Structure Prediction either less dependent on
@@ -154,10 +155,12 @@ The further hybridization with methods can also be considered. One possible
 direction is the inclusion on gradient descent methods to quickly find nearby
 areas of low energy.
 % Diversity
-Another weak point of this work is that there is no passive or active method of
-controlling the diversity of the population. This, as show in other
-works~\cite{narloch2016diversification,simoncini2017balancing}, can lead to
-better predictions.
+%Another weak point of this work is that there is no passive or active method of
+%controlling the diversity of the population.
+As show in works~\citeonline{narloch2016diversification,simoncini2017balancing},
+actively or passively acting on populational diversity can lead to
+better predictions. As such, managing populations diversity might further
+extend the potential of using conformational clustering.
 
 % Better conformation sampling
 A recent trend worth exploring is the focusing the search on loops and coil
