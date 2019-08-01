@@ -19,8 +19,7 @@ predict the structure of a protein from its primary
 sequence and it is known as \textit{ab initio} PSPP.
 
 In light of this, this work proposed two methods, ppf-mc and
-ppf-remc, to attempt to solve the problem.
-The proposed methods make use of the \texttt{score0}, \texttt{score3} and \texttt{scorefxn} energy functions
+ppf-remc, to attempt to solve the problem. The proposed methods make use of the \texttt{score0}, \texttt{score3} and \texttt{scorefxn} energy functions
 from Rosetta. The protein was modeled using a full atomic model of the backbone,
 manipulated using fragments and torsions angles, as well as side chain centroids.
 In later stages of the prediction the model was switch to a full atomic
@@ -46,6 +45,10 @@ The behavior of the two proposed methods was then inspected and analysed. It was
 found that PPF-MC maintained an average pairwise RMSD consistently higher than PPF-REMC.
 This lead to more variation in the clusters centroids, which in turn lead to
 better predictions. PPF-REMC suffered from premature convergence and stagnation.
+\textcolor{red}{
+The lack of active control of convergence and populational diversity could be
+considered as point worth being addressed.
+}
 % For one of the targets, this difference was
 % of $6\AA$. On the remaining targets this difference varied between $1$ to about
 % $2\AA$. One of the properties of PPF-REMC is the capacity of one trajectory to
@@ -68,7 +71,7 @@ significant better energies for $5$ out of $10$ protein targets. Moreover,
 despite the statistical significance of RMSD for only one target, PPF-MC had
 the conformations with the best RMSD for $5$ targets. This, plus the fact that
 PPF-MC has more diversity combined with the conformational clustering leads to
-the conclusion that PPF-MC is the superior method.
+the conclusion that PPF-MC is the superior method. 
 
 % Repacking Impact
 % An analysis to assess the impact of repacking was also realized. The goals were
@@ -130,11 +133,9 @@ A visual analysis was utilized to try and identify what the main prediction
 errors were. Four proteins were detected as having major errors. From these,
 three had its errors tracked down to the predicted secondary structure, which is
 and input of the proposed methods. As such, the predictions were made using
-incorrect data, leading to a sub par performance.
-
-\textcolor{red}{
-Oi
-}
+incorrect data, leading to a sub par performance. The dependency on
+uncertain data is potentially one of the major weak-spots of the proposed methods.
+Nevertheless, for the majority of the predictions correct predictions were made.
 
 \section{Future Works}\label{sec:future_works}
 
