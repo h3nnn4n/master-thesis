@@ -29,13 +29,12 @@ achieved by processes such as protein mass
 spectroscopy~\cite{domon2006mass,covey1999protein}
 or via Edman Degradation~\cite{edman1967protein}.
 
-On the other hand, finding the three-dimensional structure of a protein is a
+On the other hand, determining the three-dimensional structure of a protein is a
 much harder and expensive process~\cite{guntert2004automated}.
 Currently, the two main methods are
-\acf{NMR} and X-Rays Crystallography. Both methods take more
+\acf{NMR} and X-Ray Crystallography. Both methods take more
 time, money and are susceptible to have errors in the results.
 
-% TODO: Update PDB / UniProt numbers
 Due to these differences in determining the sequence and structure of a
 protein, there is a significant difference between the number of known protein
 primary and tertiary structures. There are \num{158532418} protein sequences 
@@ -43,6 +42,11 @@ catalogued in UniProtKB/TrEMBL\footnote{\url{https://www.ebi.ac.uk/uniprot/TrEMB
 whereas only \num{154243} protein structures are catalogued in
 the \ac{PDB}\footnote{\url{https://www.rcsb.org/}}\footnote{Numbers from June 26, 2019}.
 This is often referred as the protein gap, and currently measures three orders of magnitude.
+It is worth noting that this number considers repeated proteins, which might have
+more than one structure associated from one or more repeated experiments. If
+structures with homologous sequences are removed, this number drops down to
+\num{37475}\footnote{\url{http://www.rcsb.org/pdb/results/results.do?tabtoshow=Current&qrid=B237D5AC}},
+further increasing the gap to four orders of magnitude.
 
 % What is the protein structure prediction
 Given the ever so growing protein gap, several scientists from the fields of
@@ -93,7 +97,13 @@ method is that it operates by building the conformation from scratch guided by
 an energy function. Its advantage over the other
 methods is that is can (theoretically) predict any protein, regardless of a
 presence of a template or homologous protein. Furthermore, it can lead to
-further insights on the folding process. The present work focuses on solving the \ac{PSPP} with an \textit{ab initio} method.
+further insights on the folding process. The \textit{ab initio} method itself
+can be further divided into pure \textit{ab initio} methods, where only
+physicochemical properties are used, and \textit{de novo} methods, where
+statistical data gathered over the years is utilized to improve the predictions.
+It is worth noting that some authors does not utilize this distinction, including
+CASP itself. The present work focuses on solving the \ac{PSPP} with an
+\textit{ab initio} method. More specifically, with an \textit{de novo} approach.
 
 % How can proteins be represented computationally (on and off-lattice)
 The \textit{in silico} modeling and representation of proteins are split in two
@@ -118,7 +128,7 @@ protein \textit{in natura} will fold towards the point of least potential
 energy, by estimating its potential energy \textit{in silico}, it is possible to
 use an optimizer to find the global minimum and give a prediction of the
 protein structure. The computational representation of this potential energy is
-an approximation of the real world interactions between the atoms and molecules
+an approximation of the real world interactions between the atoms and aminoacids
 in the protein~\cite{alford2017rosetta}. Therefore,
 different energy representations can lead to
 significantly different conformations. Furthermore, more accurate energy
@@ -165,7 +175,9 @@ search space. In this case, it is possible to employ a hybrid
 algorithm~\cite{blum2011hybrid}. A hybrid algorithm employs an optimizer which has no
 knowledge of the problem domain with a procedure that has. This allows for the
 optimization procedure to be guided to search directions which are more
-relevant, and thus, possibly improve the overall performance.
+relevant, and thus, possibly improve the overall performance. Given the
+high dimensionality of the problem and its multimodality, this becomes a
+requirement in order to improve the overall prediction quality.
 
 % Close the intro. How are we planning on solving PSPP.
 This work has as its primary goal to study and solve the \ac{PSPP}. For this an
@@ -173,6 +185,9 @@ off-lattice \textit{ab initio} method will be used. The proteins will be
 represented computationally as torsion angles of the backbone and side chain
 centroids. The \textit{ab initio} model will be optimized using a hybrid
 optimizer based on \ac{MC} and Local Search with online parameter control.
+More over, a passive control of population diversity will be employed in
+conjunction with a conformational clustering routine in order to identify
+promising regions of the search space.
 
 
 \section{Motivation}\label{sec:chap1_motivation}
