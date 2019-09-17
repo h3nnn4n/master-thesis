@@ -25,8 +25,10 @@ manipulated using fragments and torsions angles, as well as side chain centroids
 In later stages of the prediction the model was switch to a full atomic
 representation of the protein. The proposed method is capable of outputting
 several conformations that are different from each other, this is accomplished
-by using a clustering process. This, in turn, allows for a human expert to
-evaluate and choose the best conformation based on its knowledge and intuition.
+by using a clustering process. This, in turn, would allow for a human expert to
+evaluate each of the cluster centroids and choose the best conformation based
+on its knowledge and intuition. However, the human input was not explored in this
+work. Instead, an oracle was used to replace the human input.
 
 % RMSD and Energy with sade-remc and rosetta
 The proposed method were compared against a method from a previous work, SADE-REMC, as
