@@ -44,10 +44,12 @@ part models the predicted secondary structure. For the 1PLW it consists of
 simply a coil along all the protein.  Each cell of this vector holds the
 probabilities for each predicted secondary structure.  For instance, the middle
 amino acid in 1PLW named GLY could have $(C=0.9123, A=0.0731, B=0.0146)$,
-meaning that the predicted probability of that amino acid being a coil is of 91
+meaning that the predicted probability of that amino acid being in a coil is of 91
 percent, 7 percent for an $\alpha$-helix and 1 percent for a $\beta$-sheet. In
 the actual model all 8 classes presented in
-Section~\ref{sec:secondary-structure-prediction} are considered.
+Section~\ref{sec:secondary-structure-prediction} are considered. This value
+originates from the Secondary Protein Structure and is used to select
+the set of fragments which matches these probabilities.
 
 \begin{figure}
     \centering
@@ -82,26 +84,31 @@ the predicted protein, which is the output of the proposed approach.
 The energy function represents the domain information from the \ac{PSPP} in a
 mathematical equation. Different energy functions considers different aspects
 of the problem, which can be useful for different steps of the prediction. This
-work makes use of three energy functions available in Rosetta.
+work makes use of three energy functions\footnote{Strictly speaking, all energy
+functions included in Rosetta are the same. Their actual difference is the
+weight of each scoring term. For several scoring functions, such as
+\texttt{score0}, many of the terms have zero weight. Throughout this work
+scoring functions and scoring weights are used interchangeably.} available in
+Rosetta.
 
-The first energy function utilized is referenced in Rosetta as score0. This
+The first energy function utilized is referenced in Rosetta as \texttt{score0}. This
 energy function consists solely of the repulsive Van der Waals forces. The goal
 of this energy is to aid the generation of initial conformations. Since only
-the repulsive forces are considered, a score0 with a value of $0$ indicates
+the repulsive forces are considered, a \texttt{score0} with a value of $0$ indicates
 that a given conformation has no clashes between different parts of the
-protein. The assembly of the protein guided by the score0 function leads to
+protein. The assembly of the protein guided by the \texttt{score0} function leads to
 more plausible starting proteins.
 
-The second energy function utilized is referenced in Rosetta as score3. It uses
+The second energy function utilized is referenced in Rosetta as \texttt{score3}. It uses
 a full atom representation of the backbone and an ellipsoid to represent the
 side chains. A more in depth explanation of this energy function is explained
 in~\cite{alford2017rosetta}. Unfortunately, the only up to date documentation
-found for the energy functions is the Rosetta source code itself.  The score3
+found for the energy functions is the Rosetta source code itself.  The \texttt{score3}
 energy function is used during the main portion of the prediction process
 described next section.
 
-Finally, the last energy function is the scorefxn, as found in Rosetta. It
-encompasses the same information as score3, however, it considers a full atom
+Finally, the last energy function is the \texttt{scorefxn}, as found in Rosetta. It
+encompasses the same information as \texttt{score3}, however, it considers a full atom
 representation of the side chain as well. This energy function is utilized
 during the last step of the prediction in order to output a full atom
 representation of the protein.
@@ -234,14 +241,14 @@ Specially considering the waiting time for the PSIPRED server.
 The second phase is the optimization phase.  It starts with the step of
 generating the initial population. The initial population generation consists
 of assembly random protein conformations using the fragments generated in the
-initialization phase. A Monte Carlo search is ran using the score0 energy
+initialization phase. A Monte Carlo search is ran using the \texttt{score0} energy
 function in order to search for protein conformations that have no (or as few
 as possible) hysterical clashes. This step stops when a fixed number of samples
-is used for each solution vector in the population or when the score0 function
+is used for each solution vector in the population or when the \texttt{score0} function
 reaches zero.
 
 With the initial population generated, the optimization procedure itself starts
-guided by the score3 energy function. The basis of the search procedure is
+guided by the \texttt{score3} energy function. The basis of the search procedure is
 carried out by the \ac{SaEA} algorithm, which consists of the \textit{Online
 Parameter Control} part without the \textit{Differential Evolution Operators}.
 The hybridization happens when the \textit{Domain Operators} are added to the
@@ -257,7 +264,7 @@ operator itself.
 Before the operator is applied, the check for \ac{FFI} happens. The check occurs
 for all solution vectors. If the \ac{FFI} check passes, then a random fragment
 is applied. Regardless of \ac{FFI} being used or not, the next step is to apply
-the standard fragment insertion.
+the a probabilistic fragment insertion operator.
 %
 A \ac{MC} or \ac{REMC} search procedure is initialized,
 based on the operator chosen. This search takes a fixed amount of function
@@ -276,12 +283,13 @@ conformations. After the clustering process finishes, the cluster centroids are
 selected. The number of clusters are a parameter of the algorithm.
 The conformations closest to the centroids are found and feed forward
 to the next steps, while the centroids themselves are discarded. A Hooke-Jeeves
-local search is applied. This helps to reach nearby local minima that might have
+local search is applied acting on all three dihedral angles of the full protein
+backbone. This helps to reach nearby local minima that might have
 been inaccessible by the fragments alone. Once the local search finishes, the
 repacking procedure is applied to all the conformations that were selected in
 the clustering phase and then re-optimized. The repacking procedure removes the
 centroids and places rotamers (side-chains fragments). The conformation is again
-re-optimized, this time using a gradient descent guided by the scorefxn energy
+re-optimized, this time using a gradient descent guided by the \texttt{scorefxn} energy
 function. After this step finishes the conformations are returned. Returning
 the conformation nearest to each centroid (and re-optimizing/repacking it) allows
 for a human specialist to inspect multiple conformations that are apart from

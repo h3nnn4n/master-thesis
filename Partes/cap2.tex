@@ -12,8 +12,9 @@ Section~\ref{sec:related_works} presents the related works.
 
 % What are proteins
 Proteins are macromolecules synthesized by the body with direct information from
-the \ac{DNA}. The \ac{DNA} encodes an amino acid sequence, that when assembled correctly it
-will originate the desired protein. Upon creation and shortly after the protein
+the \ac{DNA}. The \ac{DNA} encodes an amino acid sequence that when assembled
+correctly will originate the desired protein.
+Upon creation and shortly after the protein
 assumes its native conformation. This conformation, i.e. the three dimensional
 structure, is directly responsible for the protein function
 \cite{lee2017ab}.
@@ -21,7 +22,7 @@ structure, is directly responsible for the protein function
 The process of protein assembly happens spontaneously, in a complex manner which
 is not currently fully understood~\cite{dill2008protein}.
 While each protein can be identified uniquely by
-its amino acid sequence, it is possible that the protein folds incorrectly.
+its amino acid sequence, it is possible that the protein can fold incorrectly.
 When this occurs the protein either can stop performing its
 original functionality or assume a toxic state where it can harm cells,
 tissues and even whole organs.
@@ -30,11 +31,15 @@ If this is a systematic issue then it is called a proteopathy.
 \subsection{Amino Acids}~\label{sec:amino-acids}
 
 % What are amino acids
-The building blocks of proteins are amino acids. There are 20 known naturally
-occurring amino acids with varying degrees of complexity. Of these, the human
-body can only synthesize 10, and the other 10 must be externally supplied
-(in the food). The lack of any of these amino acids will cause diminishing
-body functions, as shown in~\cite{crews1969weight}.
+The building blocks of proteins are amino acids. There are 20 canonical amino
+acids with varying degrees of complexity. These 20 amino acids are found
+encoded in the genetic material of several organisms. Many more amino acids
+exists, some of which only can happen synthetically, and others that are
+intermediates of metabolical pathways and only exist
+briefly~\cite{wagner1983new}. Of the 20 canonical amino acids, the human body
+can only synthesize 10, and the other 10 must be externally supplied (in the
+food). The lack of any of these amino acids will cause diminishing body
+functions, as shown in~\cite{crews1969weight}.
 
 % Amino acid structure
 Amino acids are composed of a main Carbon atom, called the $\alpha$ Carbon
@@ -96,18 +101,20 @@ out of Asparagine, Cysteine, Glutamine, Serine and Threonin. The acid group is
 composed of the Aspartic acid and Glutamic acid. The basic group contains Arginine,
 Histidine and Lysine. The Unique Amino Acids group contains Proline and Glycine.
 The Knowledge of these groups allow for further insight into the amino acids
-function inside a protein and are of valuable use in this work.
+function inside a protein and is of valuable use in this work.
 
 % Peptide bonds
-The composition of two or more amino acids to compose a protein is called
-a peptide bond. This bound happens between the amino group of an amino acid
+Two amino acids can bound together in order to form a peptide via a peptide
+bound. This bound happens between the amino group of an amino acid
 and the carboxyl group of another amino acid. In this process, as shown in
 Figure~\ref{fig:peptide-bond}, the carboxyl group loses an Oxygen and a Hydrogen
 atom which bounds with an Hydrogen atom of the amino group from the other amino
 acid. The bound is then formed between the carbon of the carboxyl group and the
-nitrogen of the amino group. This process can happen several times, where each
+nitrogen of the amino group. This process can happen several times, and each
 time it happens a new amino acid is aggregated to the chain and a water
-molecule is created in the process as a residue~\cite{garrett1999biochemistry}.
+molecule is a byproduct of the process~\cite{garrett1999biochemistry}. A small
+sequence of peptide bound together is called a peptide chain. Bigger sequences
+are considered proteins.
 
 \begin{figure}
     \centering
@@ -116,7 +123,7 @@ molecule is created in the process as a residue~\cite{garrett1999biochemistry}.
     \label{fig:peptide-bond}
 \end{figure}
 
-When a peptide bond is formed and it starts to grow, it will assume a three
+When a peptide bond is formed and it starts to grow, then it will assume a three
 dimensional conformation. The manner in which the chain grows is directly
 dependent on the dihedral angles that the peptide bond assumed. The dihedral
 angles are enough to describe the protein to a high level of detail. The $N -
@@ -138,8 +145,9 @@ Figure~\ref{fig:angles}.
     \label{fig:angles}
 \end{figure}
 
-The sequence of bonds $N - C_\alpha$, $C_\alpha - C$ and $C - N$ is called the
-backbone. This chain extends over all the protein and is responsible for the
+The sequence of bonds $N - C_\alpha$, $C_\alpha - C$ and $C - N$ extending over the
+full body of the protein is called the backbone.
+This chain extends over all the protein and is responsible for the
 shape that it assumes, along with its interactions with the side chains. Due to
 the constraints for $\omega$, the $N, C_\alpha, H$ and $O$ atoms will tend to
 be co-planar. Two possible configurations are possible, the \textit{cis} and
@@ -148,7 +156,7 @@ approximately $180^\circ$ and the side chains will have alternate sides after
 each peptide bond. This configuration is the most stable one. For the
 \textit{trans} configuration, which a $\omega$ angle of $0^\circ$, the side
 chains will be on the same side, making this configuration much less stable and
-consequently less frequent.
+consequently, less frequent.
 
 While the tuple $(\phi, \psi, \omega)$ of dihedral angles is enough to
 accurately describe the backbone, it lacks information about the side chains.
@@ -177,16 +185,18 @@ the number of side chain angles required to describe it.
 
 % Present the different levels of details of the proteins at micro and macro
 % levels
-The analysis of a protein happens on increasing levels of details. There are
-four structures commonly used in proteomics to identify, study and describe a
-given protein and its properties~\cite{tsai2003introduction}.
+The analysis of a protein happens with increasing levels of details. There are
+four abstract levels of detail commonly used in proteomics to identify, study
+and describe a given protein and its properties~\cite{tsai2003introduction}.
+These abstractions are the primary, secondary, tertiary and quaternary
+structures.
 
 % Primary structure
-The primary structure of a protein is determined by the chain of amino acids
+The primary structure of a protein is the chain of amino acids
 that form it. This sequence is encoded on the \ac{DNA}, and after the protein
-syntheses is complete it will be inside the protein. The primary structure is
-unique for each protein and can be used to uniquely identify it. For instance,
-the
+syntheses is complete it will represented as the sequence of amino acids in
+the protein. The primary structure is unique for each protein and can be used
+to uniquely identify it. For instance, the
 \textit{Methionine-Enkephalin}\footnote{\url{https://www.rcsb.org/structure/1plw}}
 (1PLW) is a very simple polypeptide formed by 5 amino acids: Tyrosine, Glycine,
 Glycine, Phenylalanine and Methionine. Using the one letter notation, the
@@ -227,10 +237,10 @@ to more than thirty, such as the human keratin (4ZRY).
 \end{figure}
 
 A seldom found type of helix is the $3_{10}$-helix. For this type of helix the
-amino acids are bonded to the amino acid three positions after. This implies in
+amino acids are bonded to the amino acid three positions ahead. This implies in
 a helix more densely packed, and thus, less stable. Each turn has $3$ amino
 acids and the torsion angles are around (-74, -4). A rarer type of helix is the
-$\pi$-helix, where the hydrogen bonds happens 5 amino acids apart. There, each
+$\pi$-helix, in which the hydrogen bonds happens 5 amino acids apart. There, each
 turn as approximately 4.6 amino acids and the torsion angles are (-57, -70).
 Accordingly to~\cite{borguesan2015apl}, $\alpha$-helix happens 34.1\% of the
 time, $3_{10}$-helix less than 1\% of the time and $\pi$-helix about 4\% of the
@@ -250,7 +260,7 @@ carboxyl groups of the amino acids, which happens in a alternating manner.
 There are 2 types of $\beta$-sheets: Parallel and Anti Parallel. In the
 parallel $\beta$-sheets all chains run in the same direction, as seem in
 Figure~\ref{fig:parallel-beta-sheet}. In the anti parallel $\beta$-sheet the
-chains runs in oposite directions, as represented in
+chains runs in opposite directions, as represented in
 Figure~\ref{fig:anti-parallel-beta-sheet}.
 
 \begin{figure}[htbp]
@@ -286,20 +296,22 @@ than resembles a cylinder.
 % other stuff (coils, turns and loops)
 Finally, when there are no recurrent patterns on the secondary structure, it
 can be either a loop, turn or a coil. A loop is a sequence of amino acids that
-holds two helix or $\beta$-sheets together. If a loop is short and makes a
-quick $180^\circ$ it is called a turn. If the amino acid sequence is located at
-the start or the end of a protein, then it is called a coil. Turns and loops
+holds two helix or $\beta$-sheets together. If a loop is short, makes a
+quick $180^\circ$ and has internal hydrogen bounds then it is called a turn.
+If the amino acid sequence is located at
+the start or the end of a protein, then it is called a coil. Turns and loops together
 represent 19.1\% of the secondary structures while coils represent 16.3\%.
 
 % Tertiary
 The tertiary structure is the three dimensional configuration of the amino
 acids of a given protein. It can be also referenced as the native conformation.
-The tertiary structure of a protein is directly dependant on the primary
+The tertiary structure of a protein is directly dependent on the primary
 structure. Also, the functionality of the protein is dependent on the tertiary
 structure. A fact that rises the importance of being able to determine the
 native conformation of a protein.
 
-While the secondary structure references amino acids only locally, on the
+While the secondary structure references amino acids only on specific locations
+of the protein, on the
 tertiary structure all amino acids are relevant to the final structure.
 Figure~\ref{fig:1ctf} shows a ribosomal protein of the Escherichia Coli
 (1CTF)\footnote{http://www.rcsb.org/structure/1CTF} composed by 74 residues.
@@ -316,8 +328,6 @@ secondary structure relates to each other.
     \caption{The native conformation of protein 1CTF (Source: RCSB PDB)}
     \label{fig:1ctf}
 \end{figure}
-
-% Levintal's paradox describes a seemingly paradoxical situation where the protein
 
 % Quaternary
 There are certain groups of proteins that on its own are not able to exercise
@@ -342,20 +352,20 @@ between the proteins.
 
 As previous shown on Section \ref{sec:protein-structures}, the secondary
 structure plays a significant role in describing the native conformation of a
-given protein. While not enough on its on, knowing in advance the secondary
+given protein. Knowing in advance the secondary
 structure of a protein allows one to work on how the groups of amino acids in
 each substructure relates to each other instead of having to figure out how all
 amino acids relates to each other. Therefore, knowing, even only approximately,
 the secondary structure of a protein is a very important asset during the
 process of predicting the tertiary structure.
-background
 Currently, there is no \textit{in vitro} method of determining only the
 secondary structures of a protein. However, it is possible to employ
 mathematical and computational methods. Considering that some amino acids have
 more propensity of forming certain secondary structures, it is possible to
 conduct an statistical analysis in order to assess the likelihood of an amino
 acid forming a particular structure. This kind of analysis has been done
-in~\cite{dunbrack1993backbone} and~\cite{borguesan2015apl}.
+in works such as~\cite{dunbrack1993backbone},
+\cite{ligabue2018everyone} and~\cite{borguesan2015apl}.
 
 Given the number of proteins with a known structure, it is possible to use data
 mining and artificial intelligence methods for predicting the secondary
@@ -407,7 +417,7 @@ The other more recent method is ~\ac{NMR}~\cite{nelson2008lehninger}. This
 method has a slighter lesser accuracy, however, it can work with proteins in an
 aqueous environment. Thus, having a trade off that can offset the downsides of
 X-Ray crystallography. Nevertheless, both methods are error prone, possibly
-outputting noisy data. They also are expensive and take a considerable human
+outputting noisy data. They also are expensive and require a considerable human
 effort and economic resources to be utilized.  Thus the need for a \textit{in
 silico} method of determining/predicting the protein structure.
 
@@ -416,8 +426,7 @@ represented computationally in some way. The folding process \textit{in natura}
 happens very fast, spontaneously and in a continuous environment. However, in
 order to represent the protein computationally, some trade off is required
 between level of detail and processing power required. Arguably the main
-division between the models are the on lattice models and the off lattice
-models.
+division between the models are the on and off lattice models.
 
 The on lattice model, as the name implies, are models where the structures are
 constrained to a lattice. Possibly the simplest model is the 2D \ac{HP} Model.
@@ -428,22 +437,22 @@ $\mathcal{NP}$-complete~\cite{berger1998protein}. A 3D approach to a \ac{FCC}
 lattice is presented in~\cite{hoque2007protein}, which also is a
 $\mathcal{NP}$-complete problem. A triangular lattice approach is studied
 in~\cite{agarwala1997local} in two and three dimensions. At the time of the
-publication it was not know if that particular model was a
+publication it was not known if that particular model was a
 $\mathcal{NP}$-complete problem, latter it was proved to be. In fact, as
 demonstrated by~\cite{hart1997robust}, the protein structure prediction problem
 is $\mathcal{NP}$-complete regardless of the lattice used to represent it.
 
 % explain off lattice models
-Despite the on lattice model simplicity, it still is an intractable problem on
+Despite the on lattice model's simplicity, it still is an intractable problem on
 large scale due to its $\mathcal{NP}$-completeness. Furthermore, from a
 practical point of view, these models can not represent a protein with enough
 details to be able to replace an \textit{in vitro} method for determining the
 protein structure. Therefore, a more robust representation is required. This
-higher representation power is possible using off lattice models, that is, a
-model that is not constrained by a lattice.
+is possible using off lattice models, that is, a model that is not constrained
+by a lattice.
 
-What can possible be considered the simplest model is the AB Off lattice model,
-which represents the amino acids as spheres that are either hydrophobic or
+The AB Off lattice model can be considered as the simplest model, in
+which the amino acids are represented as spheres that are either hydrophobic or
 polar, and the angles between them are not
 constrained~\cite{berger1998protein}.  A more detailed model consists of using
 the coordinates of the $C_\alpha$. In this model the amino acids are abstracted
@@ -462,17 +471,17 @@ possible to include an ellipsoid (also called centroid) to describe the amino
 acid side chain. With this, the shape of each amino acid also can be considered
 when predicting the three dimensional structure of the protein.
 
-To fully represent the protein, there are two main models. Backbone and side
-chain torsion angles and all atoms coordinates~\cite{rohl2004protein}.  The
+To fully represent the protein, there are two main models: The Backbone and side
+chain torsion angles; and all atoms coordinates~\cite{rohl2004protein}. The
 former describes all atoms in the protein, including the side chain. However,
 the bond length between these atoms are fixed as well as the position of the
 hydrogen atoms. This model is enough to describe the protein very accurately
 and to take into account most of its interactions. Nevertheless, since
 artificial constrains are imposed in the model, it is possible that some
 proteins can not be correctly predicted because it depends on one of the
-aspects that the model removed. For this reason the all atom coordinates model
-can be employed. In this model all atoms are considered and have all their
-degrees of freedom. Currently, this model is the most accurate one, at the
+aspects that the model abstracted away. For this reason the all atom coordinates
+model can be employed. In this model all atoms are represented and can be
+degree of freedom. Currently, this model is the most accurate one, at the
 expense of adding up a hundred variables per amino acid.
 
 \subsection{Ab Initio Methods}\label{sec:ab-initio}
@@ -489,10 +498,10 @@ Section~\ref{sec:pspp}. Its interactions are evaluated by energy functions (or
 scoring functions). A given protein \textit{in natura} seeks its point of least
 potential energy~\cite{anfinsen1973principles}. Based on this fact, an energy
 function for an \textit{ab initio} method tries to evaluate the potential
-energy of a given conformation. Then, with a search procedure it is
+energy of a given conformation. Then, with a search procedure, it is
 (theoretically) possible to find its point of least potential energy, which
 should be at least close to its respective native conformation. In other words,
-\textit{ab initio} methods can be seem as an optimization problem where the
+\textit{ab initio} methods can be seen as an optimization problem where the
 objective function is the energy function of the protein and its variables are
 the degrees of freedom from its computational representation.
 
@@ -501,17 +510,17 @@ There are several energy functions in the literature which allows for an
 \textit{ab initio} approach, such as the \ac{AMBER}, \ac{GROMOS}, \ac{CHARMM} e
 Rosetta.  The \ac{AMBER}~\cite{salomon2013overview} package contains a set of
 scoring functions based only on the potential energy of proteins (and other
-molecules). Its original use was intended for molecular dynamics simulations.
+molecules). It was originally designed for molecular dynamics simulations.
 However, its is possible to use it just to score a given conformation. Another
 package which offers energy functions for proteins is
 \ac{CHARMM}~\cite{brooks2009charmm}. Similar to \ac{AMBER}, it is also
 primarily intended for molecular dynamics simulations for several organic
 molecules of interest. Nevertheless, its scoring can be used for \textit{ab
 initio} methods. The \ac{GROMOS} package~\cite{eichenberger2011gromos++} also
-intended for molecular dynamics simulations can provide energy scoring of
-protein conformations. A more detailed discussion of the energy functions is
-available at~\cite{dorn2014three}. In~\cite{narloch2016diversification}
-explored the differences between \ac{AMBER}, \ac{CHARMM} and Rosetta. A further
+focus primarily on molecular dynamics simulations, but can provide energy scoring of
+protein conformations as well. A more detailed discussion of the energy functions is
+available at~\cite{dorn2014three}. In~\cite{narloch2016diversification} the authors
+explored the differences among \ac{AMBER}, \ac{CHARMM} and Rosetta. A further
 discussion on energy fields (from molecular dynamic packages) can be found
 in~\cite{vlachakis2014current}.
 
@@ -520,13 +529,13 @@ suite~\cite{rohl2004protein,kaufmann2010practically} contains multiple energy
 functions for all atom coordinates models, backbone and side chain torsion
 angles and backbone torsion angles with centroids for the side chains. This
 suite also allows for the customization and creation of new energy functions.
-The energy functions there consider both the physicochemical properties of the
+The Rosetta energy functions take into account both the physicochemical properties of the
 protein as well as its statistical nature, based on a knowledge database with
 propensities of each amino acids. Information regarding the compactness of the
 structure and other properties such as the formation of side chain structures
 are also computed. This removes the possibility of scoring the protein with an
 physical unit of measurement. Instead, the energy functions are measured by the
-\ac{REU}. More information about the information considered is available
+\ac{REU}. More information about the Rosetta energy function is available
 in~\cite{alford2017rosetta}.
 
 % Briefly present the optimizers
@@ -542,7 +551,7 @@ employed to find a local minima. It has been used in~\cite{prentiss2008protein}
 and~\cite{olson2012efficient}.
 
 One particular branch of algorithms that have been used extensively in the
-literature are bio inspired algorithms. The more well established algorithms
+literature are bio inspired algorithms. The well established algorithms
 are present in the literature, such as the \ac{PSO}~\cite{geng2017protein},
 \ac{DE}~\cite{hao2017conformational} and the \ac{GA}~\cite{higgs2010genetic}.
 Other algorithms that are not so widely used have been also explored for the
@@ -619,10 +628,10 @@ successful.
 \ac{TM} assumes that protein structure is, to some degree, preserved during the
 evolution of organisms. Therefore, proteins with a certain degree of difference
 in the primary sequence may have a very similar tertiary structure. A set of
-template proteins is used as to represent the conformation space. Then, the
+template proteins is used to represent the conformation space. Then, the
 amino acid sequence of the target and template protein are aligned in order to
 fit the target protein into the template. Then, the model is refined and the
-final prediction is then output. In the event of the target protein having the
+final prediction is then ready. In the event of the target protein having the
 same overall fold as the template, the prediction can achieve very high levels
 of accuracy. However, if a suitable template can not be found, the prediction
 will be of poor quality. This is one of the main downsides of the \ac{TM}
@@ -638,9 +647,10 @@ If such protein exists (and has its native conformation available) then it is
 possible to arrive a high degrees of accuracy.
 
 % downsides
-Both \ac{TM} HM require that a suitable known protein to exist to be used as
-template. Either one with evolutionary similarity for \ac{TM} a homologous
-protein for HM. If such proteins do exist, then these methods will have a very
+Both \ac{TM} and HM require that a suitable known protein to exist to be used as
+template. Either a protein with evolutionary similarity for \ac{TM} or one with 
+homologous sequence for HM. If such proteins do exist,
+then these methods will have a very
 high chance of outperforming \textit{ab initio} methods. However, as the degree
 of similarity decays so does the performance of the method. At this point
 \textit{ab initio} methods have a chance of outperforming knowledge based
@@ -1067,7 +1077,7 @@ The generation of the trial solution vectors is accomplished on line 10. There,
 for each individual $i$ and operator $k$ is chosen based on $P_{k,G}$ using a
 simple probability matching selection algorithm. The parameters
 $F_i$ and $CR_{i,k}$ are also considered. The trial vector is then
-generated as in the \ac{DE} algorithm shown in Algorithm~\ref{algo:de}. On line
+generated as in the \ac{DE} algorithm shown in Algorithm~\ref{algo:sade}. On line
 11 all solution vectors are evaluated using the fitness function.
 
 From lines 12 to 20 the parameter history is updated. Each
@@ -1284,7 +1294,7 @@ number of amino acids and more are added over the optimization. This, in a way, 
 the natural process where the protein is being folded while it is being assembled.
 
 
-In~\cite{oliveira2017sade} a method named SADE-SPL, consisting of a a data-mining
+In~\cite{oliveira2017sade} a method named SADE-SPL, consisting of a data-mining
 approach is proposed. There, the authors process the PDB base in search of structural patterns
 for coils and loops in the proteins of knows structure. The result of this search, called
 SPL, is then used as a domain specific operator in \ac{SaDE}. This work successfully utilized
@@ -1336,7 +1346,7 @@ one with the desired properties.
 In~\cite{narloch2019knowledge} the authors present the application of \ac{SaDE}
 using data from \ac{APL} as a way to hybridize the method. The work compared the
 results from the proposal with four variants of \ac{DE}, each with a different
-operator. The modeling consists of a custom variant of Rosetta's score3 function
+operator. The modeling consists of a custom variant of Rosetta's \texttt{score3} function
 using a centroid protein model. A method presented by~\cite{varela2019crowding}
 interleaves the stages of Rosetta Classic Abinitio protocol with \ac{DE} using
 Crowding. The proposal is to develop a hybrid method which improve upon the

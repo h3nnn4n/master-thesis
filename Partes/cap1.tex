@@ -8,20 +8,20 @@ where its functionality is directly dependent on the three-dimensional
 structure conformation~\cite{kihara2014protein}.
 
 % Why they are important
-In cases where this conformation is incorrectly structured (or misfolded) due to
-some environmental or genetic influence, a series of problems usually arrive.
+In cases where the conformation is incorrectly structured (or misfolded) due to
+some environmental or genetic influence, a series of problems will usually appear.
 Proteins can gain toxic properties or suffer loss of functionality,
-where it can cause damage to cells,
+then it can cause damage to cells,
 tissues, and organs. The diseases rooted in abnormal proteins formation or somehow
 caused by them are known as proteinopathies~\cite{shrestha2015yeast}.
-In light of this, knowing the conformation of a protein can give insights on its
+In this context, knowing the conformation of a protein can give insights on its
 functionality, aid the design of drugs and help understand, treat and even prevent diseases.
 
 % How do we find out the structure of a protein
 The \ac{DNA} (or \ac{RNA} in some less complex forms of life) encodes the information
 required to synthesize a protein. From the \ac{DNA}, the information is used to
 synthesize a protein through the process of translation and transcription. The
-construction of the protein happens by chaining a series of amino acids, which are
+construction of protein happens by chaining a series of amino acids, which are
 held together with peptide bonds. This chain of amino acids is called the primary
 sequence, and it can uniquely identify a protein. Determining the primary
 sequence is a very straightforward process and relatively cheap and can be
@@ -33,7 +33,7 @@ On the other hand, determining the three-dimensional structure of a protein is a
 much harder and expensive process~\cite{guntert2004automated}.
 Currently, the two main methods are
 \acf{NMR} and X-Ray Crystallography. Both methods take more
-time, money and are susceptible to have errors in the results.
+time and money and are susceptible to have errors in the results.
 
 Due to these differences in determining the sequence and structure of a
 protein, there is a significant difference between the number of known protein
@@ -51,14 +51,14 @@ further increasing the gap to four orders of magnitude.
 % What is the protein structure prediction
 Given the ever so growing protein gap, several scientists from the fields of
 mathematics, physics, chemistry, biology, and computer science have worked for
-decades with the common goal of being to predict the conformation of a sequence
+decades with the common goal to predict the conformation of a sequence
 of amino acids and help close this gap. This problem is known as the
 \acf{PSPP} and has been one of the leading open problems
-in structural biology and computer science~\cite{dorn2014three}. The \ac{PSPP} consists of
+in structural biology and Computer Science~\cite{dorn2014three}. The \ac{PSPP} consists of
 taking an amino acid sequence as input and outputting a prediction of the protein structure.
 
 % Why it is hard
-Solving the \ac{PSPP} has proven to be a very challenging problem, since that
+Since solving the \ac{PSPP} has proven to be a very challenging problem, even
 after more than 20 years no general viable solution has been found. From a
 strictly computational point of view, the \ac{PSPP} is expected to be a
 $\mathcal{NP}$-hard problem. No proof of the $\mathcal{NP}$-hardness of the
@@ -69,8 +69,8 @@ $\mathcal{NP}$-hard problem~\cite{berger1998protein}. Furthermore, several
 other models such as the triangular 2D and 3D \ac{HP}
 model~\cite{agarwala1997local} and the \ac{FCC} model~\cite{hoque2007protein},
 which have an increasing level of complexity, have been found to be
-$\mathcal{NP}$-hard problems.  Therefore, it is reasonable to expect the full
-problem to be $\mathcal{NP}$-hard as well.
+$\mathcal{NP}$-hard problems.  Therefore, it is reasonable to expect the
+problem using an atomic model to be $\mathcal{NP}$-hard as well.
 
 From a practical point of view, each amino acid in the protein has between 10
 to 27 atoms, where each one requires three variables to describe its position.
@@ -92,10 +92,10 @@ to a protein of known structure, it will probably have a similar structure.
 Homology methods require homologous protein, whereas Threading methods relies
 on the templates being representative of the (unknown) target conformation. In
 contrast with Knowledge-based methods, \textit{ab initio} methods do not rely
-on previously known information. The main characteristic of \textit{ab initio}
+on previously known information. The main feature of \textit{ab initio}
 method is that it operates by building the conformation from scratch guided by
 an energy function. Its advantage over the other
-methods is that is can (theoretically) predict any protein, regardless of a
+methods is that it can (theoretically) predict any protein, regardless of a
 presence of a template or homologous protein. Furthermore, it can lead to
 further insights on the folding process. The \textit{ab initio} method itself
 can be further divided into pure \textit{ab initio} methods, where only
@@ -140,21 +140,21 @@ Rosetta~\cite{rohl2004protein,leaver2011rosetta3}.
 
 % What are metaheuristics and natural computing
 Given that the \ac{PSPP} can be represented as a $\mathcal{NP}$-hard optimization
-problem, a robust set of solvers for this kind of problem are
-\ac{MH}, and in particular, bio-inspired Meta Heuristics~\cite{kar2016bio}.
+problem, a robust set of solvers for this kind of problem such as
+\ac{MH} are required, and in particular, bio-inspired Meta Heuristics~\cite{kar2016bio}.
 Some of the most employed \ac{MH}s in the literature are the
 \ac{GA}~\cite{holland1992genetic} and the
 \ac{DE}~\cite{storn1997differential}. Both of them are
 \ac{EA} due to their inspiration by the Darwinian process of natural
 selection. As all \ac{EA}s, \ac{GA} and \ac{DE} relies on a population
 (set of solutions) where an
-individual (a candidate solution) compete among each other where the fittest (the one
+individual (a candidate solution) compete among each other in which the fittest (the one
 with the best objective function) will have a higher chance of surviving into
 the next generation.
 
 % What is parameter control and why do we need it
-Bio-inspired algorithms are known to have several parameters and to have their
-performance dependant on both the problem instance and the set of parameters in
+Bio-inspired algorithms are known to have several parameters and their
+performance dependent on both the problem instance and the set of parameters in
 use~\cite{parpinelli18review}.
 Finding the best set of parameters for a given \ac{MH} is a time-consuming
 process since it requires the runs of the same \ac{MH} for the same instances
@@ -162,7 +162,7 @@ several times to assess its performance. Furthermore, using a different set of
 instances on the \ac{MH} with the previously found set of parameters may give a
 sub-optimal performance, requiring the same process to be rerun.  This process
 is known as offline parameter control. One way to avoid this time-intensive
-process is to enable the \ac{MH} to be able to detect parameters have the best
+process is to enable the \ac{MH} to be able to detect parameters that have the best
 improvement potential and which operations lead more successful explorations of
 the solution space. The process of changing the parameter while the algorithm
 is running is known as online parameter control and is an active area of
@@ -180,7 +180,7 @@ high dimensionality of the problem and its multimodality, this becomes a
 requirement in order to improve the overall prediction quality.
 
 % Close the intro. How are we planning on solving PSPP.
-This work has as its primary goal to study and solve the \ac{PSPP}. For this an
+This work has as its primary goal to study and attempt to solve the \ac{PSPP}. For this an
 off-lattice \textit{ab initio} method will be used. The proteins will be
 represented computationally as torsion angles of the backbone and side chain
 centroids. The \textit{ab initio} model will be optimized using a hybrid
@@ -194,9 +194,9 @@ promising regions of the search space.
 
 % Relevancy and Applications of the problem
 The \ac{PSPP} is currently one of the leading open problems in computer science and
-structural bioinformatics, and as such, it is a highly relevant one. Solving
-the \ac{PSPP} has numerous implications over many fields. It can help to understand
-proteinopathies better and aid the development of new smart drugs.
+structural bioinformatics, hence, it is a highly relevant one. Solving
+the \ac{PSPP} has numerous implications over many fields. It can help to better
+understand proteinopathies and aid the development of new smart drugs.
 Also, it can give access to research groups that cannot afford the use of the
 machinery required to determine the conformation of proteins and by doing so
 help to generate further knowledge.
@@ -205,7 +205,7 @@ help to generate further knowledge.
 Due to the $\mathcal{NP}$-hardness of the problem and its inherent complexity,
 being able to solve it in a reasonable time frame can lead to better
 understanding of the solving process of this kind of problems. It also can lead
-to better understanding of the solving mechanisms as well, giving insight on
+to better understanding of the optimization mechanisms as well, giving insight on
 how to design better optimizers.
 
 \section{Objectives}\label{sec:chap1_objectives}
