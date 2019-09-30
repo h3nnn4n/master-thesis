@@ -49,7 +49,8 @@ percent, 7 percent for an $\alpha$-helix and 1 percent for a $\beta$-sheet. In
 the actual model all 8 classes presented in
 Section~\ref{sec:secondary-structure-prediction} are considered. This value
 originates from the Secondary Protein Structure and is used to select
-the set of fragments which matches these probabilities.
+the set of fragments which matches these probabilities. The code used to generate
+the fragment set is shown in Appendix~\ref{appendix:data-source}.
 
 \begin{figure}
     \centering
@@ -62,7 +63,8 @@ the set of fragments which matches these probabilities.
 The secondary structures are classified using a DSSP8
 notation~\cite{frishman1995knowledge}.  For this work they were predicted using
 the PSIPRED\footnote{Available for academic use in:
-\url{http://bioinf.cs.ucl.ac.uk/psipred/}}  server~\cite{mcguffin2000psipred}. The knowledge from the secondary
+\url{http://bioinf.cs.ucl.ac.uk/psipred/}}  server~\cite{mcguffin2000psipred}.
+The knowledge from the secondary
 structure prediction is incorporated in the model using fragment insertion,
 which will be further explained in Section~\ref{sec:conformation-sampling}.
 
