@@ -28,12 +28,11 @@
 \usepackage{longtable}
 \usepackage{listings}
 \usepackage{pdfpages}
+\usepackage{lastpage}
 
 \pgfplotsset{compat=1.14}
 
 \DeclareMathOperator*{\argmin}{argmin}
-
-\usepackage{lastpage}
 
 \makeatletter
 \newcommand*{\overtabline}{%
@@ -63,6 +62,8 @@
 \orientadorRotulo{Dr. }
 
 \begin{document}
+
+\includepdf[fitpaper=true, pages=-]{Partes/capa}
 
 \include{Partes/pretextual}
 
