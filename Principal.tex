@@ -1,7 +1,7 @@
 \documentclass[
   12pt,
   openright,
-  oneside,
+  twoside,
   a4paper,
   chapter=TITLE,
   section=TITLE,
@@ -29,6 +29,13 @@
 \usepackage{listings}
 \usepackage{pdfpages}
 \usepackage{lastpage}
+\usepackage{afterpage}
+
+\newcommand\blankpage{%
+    \null
+    \thispagestyle{empty}%
+    \addtocounter{page}{-1}%
+    \newpage}
 
 \pgfplotsset{compat=1.14}
 
@@ -66,6 +73,8 @@
 \includepdf[fitpaper=true, pages=-]{Partes/capa}
 
 \include{Partes/pretextual}
+
+%\afterpage{\blankpage}
 
 % TODO: Update list of acronyms
 \begin{siglas}
@@ -148,6 +157,8 @@
   %ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ
 \end{siglas}
 
+%\afterpage{\blankpage}
+
 % TODO: Update list of symbols
 \begin{simbolos}
   \SingleSpacing
@@ -173,36 +184,57 @@
 \item[$\omega$] The dihedral angle in the $C-N$ atom pair
 \end{simbolos}
 
+%\afterpage{\blankpage}
+
 \pdfbookmark[0]{\contentsname}{toc}
 \tableofcontents*
-\cleardoublepage
+% \cleardoublepage
 
 \textual
 
 \pagestyle{eudesc}
 \aliaspagestyle{chapter}{eudesc}
 
+%\afterpage{\blankpage}
+%\newpage\null\thispagestyle{empty}\newpage
+
+%\newpage\null\thispagestyle{empty}\newpage
 \include{Partes/cap1}
+%\newpage\null\thispagestyle{empty}\newpage
 \include{Partes/cap2}
+%\newpage\null\thispagestyle{empty}\newpage
 \include{Partes/cap3}
+%\newpage\null\thispagestyle{empty}\newpage
 \include{Partes/cap4}
+%\newpage\null\thispagestyle{empty}\newpage
 \include{Partes/cap5}
+%\newpage\null\thispagestyle{empty}\newpage
 
 \bookmarksetup{startatroot}
 
 \postextual
 
+%\newpage\null\thispagestyle{empty}\newpage
 \bibliography{references}
 
 \begin{apendicesenv}
+  %\newpage\null\thispagestyle{empty}\newpage
   \include{Partes/appendix-data-source}
+  %\newpage\null\thispagestyle{empty}\newpage
   \include{Partes/appendix-tables-results}
+  %\newpage\null\thispagestyle{empty}\newpage
   \include{Partes/appendix-shapiro}
+  %\newpage\null\thispagestyle{empty}\newpage
   \include{Partes/appendix-mann-whitney-rmsd}
+  %\newpage\null\thispagestyle{empty}\newpage
   \include{Partes/appendix-mann-whitney-energy}
+  %\newpage\null\thispagestyle{empty}\newpage
   \include{Partes/appendix-convergence}
+  %\newpage\null\thispagestyle{empty}\newpage
   \include{Partes/appendix-gdtts}
+  %\newpage\null\thispagestyle{empty}\newpage
   \include{Partes/appendix-tmscore}
+  %\newpage\null\thispagestyle{empty}\newpage
   \include{Partes/apeA}
 \end{apendicesenv}
 

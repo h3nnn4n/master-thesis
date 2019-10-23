@@ -1,50 +1,53 @@
 \imprimircapa
 
+%\afterpage{\blankpage}
+%\newpage\null\thispagestyle{empty}\newpage
+
 \imprimirfolhaderosto*
 
 % ---
 % Caso a Biblioteca da UDESC forneça, utilize o comando
 % ---
-% \begin{fichacatalografica}
-%     \includepdf{fig_ficha_catalografica.pdf}
-% \end{fichacatalografica}
+\begin{fichacatalografica}
+    \includepdf{Partes/ficha.pdf}
+\end{fichacatalografica}
 
 % ---
 % Geração da Ficha Catalográfica Via LaTeX
 % ---
-\begin{fichacatalografica}
-  \vspace*{\fill}					% Posição vertical
-  \begin{center}					% Minipage Centralizado
-    \begin{minipage}[c]{12.5cm}		% Largura
-
-      da Silva, Renan Samuel
-
-      \hspace{0.5cm} \imprimirtitulo  / \imprimirautor. --
-      \imprimirlocal, \imprimirdata-
-
-      \hspace{0.5cm} \pageref{LastPage} p. : il. (algumas color.) ; 30 cm.\\
-
-      \hspace{0.5cm} Orientador: \imprimirorientadorRotulo~\imprimirorientador\\
-
-      \hspace{0.5cm}
-      \parbox[t]{\textwidth}{Dissertação (mestrado) -- Universidade do Estado de Santa Catarina, Centro de Ciências Tecnológicas, Programa de Pós-Graduação em Computação Aplicada, Joinville, 2019}\\
-
-      \hspace{0.5cm}
-      1. Monte Carlo.
-      2. Inserção de fragmento.
-      3. Problema de Predição de Estrutura de Proteínas.
-      4. Controle de Parâmetros.
-      5. Clusterização.
-      I. Parpinelli, Rafael Stubs.
-      II. Universidade do Estado de Santa Catarina.
-      III. Centro de Ciências Tecnológicas.
-      IV. Programa de Pós-Graduação em Computação Aplicada.
-
-      \hspace{8.75cm} CDU 02:121:005.7\\
-
-    \end{minipage}
-  \end{center}
-\end{fichacatalografica}
+%k\begin{fichacatalografica}
+%k  \vspace*{\fill}					% Posição vertical
+%k  \begin{center}					% Minipage Centralizado
+%k    \begin{minipage}[c]{12.5cm}		% Largura
+%k
+%k      da Silva, Renan Samuel
+%k
+%k      \hspace{0.5cm} \imprimirtitulo  / \imprimirautor. --
+%k      \imprimirlocal, \imprimirdata-
+%k
+%k      \hspace{0.5cm} \pageref{LastPage} p. : il. (algumas color.) ; 30 cm.\\
+%k
+%k      \hspace{0.5cm} Orientador: \imprimirorientadorRotulo~\imprimirorientador\\
+%k
+%k      \hspace{0.5cm}
+%k      \parbox[t]{\textwidth}{Dissertação (mestrado) -- Universidade do Estado de Santa Catarina, Centro de Ciências Tecnológicas, Programa de Pós-Graduação em Computação Aplicada, Joinville, 2019}\\
+%k
+%k      \hspace{0.5cm}
+%k      1. Monte Carlo.
+%k      2. Inserção de fragmento.
+%k      3. Problema de Predição de Estrutura de Proteínas.
+%k      4. Controle de Parâmetros.
+%k      5. Clusterização.
+%k      I. Parpinelli, Rafael Stubs.
+%k      II. Universidade do Estado de Santa Catarina.
+%k      III. Centro de Ciências Tecnológicas.
+%k      IV. Programa de Pós-Graduação em Computação Aplicada.
+%k
+%k      \hspace{8.75cm} CDU 02:121:005.7\\
+%k
+%k    \end{minipage}
+%k  \end{center}
+%k\end{fichacatalografica}
 
 % ---
 % Folha de Aprovação
@@ -92,6 +95,9 @@
   To my Father that is no longer with us and to my Mother that always stood by me.
 \end{dedicatoria}
 
+%\afterpage{\blankpage}
+%\newpage\null\thispagestyle{empty}\newpage
+
 % ---
 % Agradecimentos
 % ---
@@ -119,6 +125,9 @@
   I have. Her friendship made me a happier person.
 \end{agradecimentos}
 
+%\afterpage{\blankpage}
+%\newpage\null\thispagestyle{empty}\newpage
+
 % ---
 % Epígrafe
 % ---
@@ -129,6 +138,7 @@
   Seneca, Moral letters to Lucilius/Letter 104, verse 26
 \end{epigrafe}
 
+
 % ---
 % RESUMOS
 % ---
@@ -138,7 +148,8 @@
 % Dessa forma, deve-se forçar o resumo para iniciar em uma página ímpar, usando o seguinte comando:
 % ---
 
-%\newpage\null\thispagestyle{empty}\newpage
+%\afterpage{\blankpage}
+\newpage\null\thispagestyle{empty}\newpage
 
 % Inglês
 % TODO: Update resumo en
@@ -177,11 +188,13 @@
   \textbf{Keywords}: Monte Carlo, Fragment Insertion, Protein Structure Prediction Problem, Parameter Control, Clustering.
 \end{resumo}
 
+
 % ---
 % Ao usar o modo twoside (anverso e verso) o resumo não se posiciona na página ímpar.
 % Dessa forma, deve-se forçar o resumo para iniciar em uma página ímpar, usando o seguinte comando:
 % ---
 
+%\afterpage{\blankpage}
 %\newpage\null\thispagestyle{empty}\newpage
 
 % Português
@@ -224,6 +237,9 @@
   \end{otherlanguage*}
 \end{resumo}
 
+%\afterpage{\blankpage}
+%\newpage\null\thispagestyle{empty}\newpage
+
 % ---
 % Lista de Figuras
 % ---
@@ -231,6 +247,9 @@
 \listoffigures*
 \cleardoublepage
 % ---
+
+%\afterpage{\blankpage}
+%\newpage\null\thispagestyle{empty}\newpage
 
 % ---
 % Lista de Tabelas
